@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Livewire\ShoppingCart;
@@ -34,7 +35,10 @@ Route::get('products/{product}', [ProductController::class,'show'])->name('produ
 /* RUTA PARA INGRESAR AL CARRITO DE COMPRAS */
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
+/* RUTA PARA CREAR UNA ORDEN -> SOLO PARA USUARIOS REGISTADOS 'auth' */
 Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
+
+Route::get('orders/{order}/payment', [OrderController::class,'payment'] )->name('orders.payment');
 
 /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

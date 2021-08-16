@@ -13,7 +13,7 @@ class AddCartItemColor extends Component
     public $product, $colors;
     public $qty = 1; /* VARIABLE CANTIDAD DE PRODUCTOS */
     public $color_id=""; /* VARIABLE PARA CAPTURAR EL COLOR QUE SE HA SELECCIONADO */
-    public $quantity = 0; /* VARIABLE PARA STOCK */
+    public $quantity; /* VARIABLE PARA STOCK */
     public $options = [
         'size_id'=>null
     ];
@@ -31,6 +31,7 @@ class AddCartItemColor extends Component
         $color = $this->product->colors->find($value);
         $this->quantity = aty_avaliable($this->product->id ,$this->color_id);
         $this->options['color'] = $color->name;
+        $this->options['color_id'] = $color->id;
         
     }
     

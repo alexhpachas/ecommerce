@@ -20,4 +20,5 @@
                 wire:click="increment"> {{-- EJECUTA EL METODO INCREMENT CUANDO SE HAGA CLICK SOBRE EL BOTON --}}
         +
     </x-jet-secondary-button>
+    {{$quantity}}
 </div>

@@ -17,13 +17,20 @@ class AddCartItemSize extends Component
     public $size_id="";
     public $colors=[];
     public $qty = 1;
-    public $quantity = 0;
+    public $quantity;
     public $options = [];
 
     public function updatedSizeId($value){
         $size = Size::find($value);
         $this->colors = $size->colors;
         $this->options['size'] = $size->name;
+        $this->options['size_id'] = $size->id;
+        
+        $this->reset('color_id');    
+        $this->reset('quantity');
+        
+        
+        
     }
 
     public function updatedColorId($value){
@@ -31,6 +38,7 @@ class AddCartItemSize extends Component
         $color = $size->colors->find($value);
         $this->quantity = aty_avaliable($this->product->id ,$this->color_id,$this->size_id);
         $this->options['color'] = $color->name;
+        $this->options['color_id'] = $color->id;
 
     }
 
@@ -57,6 +65,7 @@ class AddCartItemSize extends Component
     }
 
     public function addItem(){
+        if($this->quantity > 0) {
         Cart::add([
                     'id' => $this->product->id,
                     'name' => $this->product->name, 
@@ -69,7 +78,7 @@ class AddCartItemSize extends Component
         $this->quantity = aty_avaliable($this->product->id ,$this->color_id,$this->size_id);  
         $this->reset('qty');      
         $this->emitTo('dropdown-cart','render');
-        
+    }
 
         /* Cart::destroy(); */
     }

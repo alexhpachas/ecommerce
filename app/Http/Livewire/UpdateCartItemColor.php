@@ -10,12 +10,15 @@ use Livewire\Component;
 class UpdateCartItemColor extends Component
 {
     public $rowId,$qty,$quantity;
+    public $product,$color;
 
     public function mount(){
         $item = Cart::get($this->rowId);
         $this->qty = $item->qty;
-        $color = Color::where('name',$item->options->color)->first();
-        $this->quantity = aty_avaliable($item->id,$color->id);
+        $this->color = Color::where('name',$item->options->color)->first();
+        $this->product = $item->id;
+        /* $this->quantity = aty_avaliable($item->id,$color->id); */
+        $this->quantity = aty_avaliable($this->product,$this->color->id);
 
     }
 
@@ -28,6 +31,7 @@ class UpdateCartItemColor extends Component
 
         Cart::update($this->rowId,$this->qty);
         $this->emit('render');
+        $this->quantity = aty_avaliable($this->product,$this->color->id);
         
         
     }
@@ -42,7 +46,8 @@ class UpdateCartItemColor extends Component
         
         $this->render();
             Cart::update($this->rowId,$this->qty);
-            $this->emit('render');                        
+            $this->emit('render');    
+            $this->quantity = aty_avaliable($this->product,$this->color->id);                    
     }
     
     public function render()

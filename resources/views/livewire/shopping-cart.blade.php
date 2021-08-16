@@ -150,6 +150,7 @@
         @endif        
     </section>
 
+    {{-- SI EXISTE PRODUCTOS EN EL CARRITO MOSTRAMOS EL BOTON PARA QUE PUEDA CONTINUAR CON EL PROCESO DE COMPRA --}}
     @if (Cart::count())
         <div class="bg-white rounded-lg shadow-lg px-6 py-4 mt-4">
             <div class="flex justify-between items-center">
@@ -161,7 +162,7 @@
                 </div>
 
                 <div>
-                    <x-button-enlace>
+                    <x-button-enlace href="{{route('orders.create')}}">
                         Continuar
                     </x-button-enlace>
                 </div>

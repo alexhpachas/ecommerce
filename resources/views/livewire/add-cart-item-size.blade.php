@@ -30,11 +30,14 @@
     </div>
 
     <p class="text-gray-700 my-4"><span class="font-semibold text-lg">Stock disponible: </span>
-        @if ($quantity)
+        @if (isset($quantity))
             {{$quantity}}
         @else
             {{$product->stock}}
         @endif
+
+        
+        
     </p>
 
     <div class="flex">
@@ -69,7 +72,7 @@
                     wire:click="addItem"
                     wire:loading.attr="disabled"
                     wire:target="addItem"
-                    x-bind:disabled="!$wire.quantity" color="orange" class="w-full">
+                    x-bind:disabled="!$wire.quantity || !$wire.color_id " color="orange" class="w-full">
                 Agregar al carrito de compras
             </x-button>       
         </div>

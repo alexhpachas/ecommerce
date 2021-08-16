@@ -9,13 +9,17 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 class UpdateCartItem extends Component
 {
     public $rowId,$qty,$quantity;
+    public $product;
 
     protected $listeners =['render'];
 
     public function mount(){
         $item = Cart::get($this->rowId);
+        $this->product = $item->id;
+        $this->quantity = aty_avaliable($this->product);
         $this->qty = $item->qty;
-        $this->quantity = aty_avaliable($item->id);
+        /* $this->quantity = aty_avaliable($item->id); */
+        
     }
 
     /* METODO PARA INCREMENTAR LA CANTIDAD DE PRODUCTOS QUE VAMOS A COMPRAR */
@@ -23,10 +27,14 @@ class UpdateCartItem extends Component
         if($this->quantity == 0)
         $this->qty = $this->qty;
         else
+        
         $this->qty = $this->qty + 1;
 
+        
         Cart::update($this->rowId,$this->qty);
         $this->emit('render');
+        $this->quantity = aty_avaliable($this->product);
+        
         
         
     }
@@ -41,7 +49,8 @@ class UpdateCartItem extends Component
         
         $this->render();
             Cart::update($this->rowId,$this->qty);
-            $this->emit('render');                        
+            $this->emit('render');   
+            $this->quantity = aty_avaliable($this->product);                     
     }
 
     public function render()

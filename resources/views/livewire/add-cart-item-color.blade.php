@@ -9,14 +9,14 @@
     </select>
     
     <p class="text-gray-700 my-4"><span class="font-semibold text-lg">Stock disponible: </span>
-        @if ($quantity)
+        @if (isset($quantity))
             {{$quantity}}
         @else
             {{$product->stock}}
         @endif
     </p>
 
-    <p class="text-gray-700 my-4"><span class="font-semibold text-lg">Otro Stock disponible:{{$quantity}} </span></p>
+    
 
     <div class="flex mt-4">
         <div class="mr-4">

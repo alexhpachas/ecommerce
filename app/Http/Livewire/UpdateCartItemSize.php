@@ -10,13 +10,18 @@ use Livewire\Component;
 class UpdateCartItemSize extends Component
 {
     public $rowId,$qty,$quantity;
+    public $product,$color,$size;
 
     public function mount(){
-        $item = Cart::get($this->rowId);
+        $item = Cart::get($this->rowId);        
         $this->qty = $item->qty;
-        $color = Color::where('name',$item->options->color)->first();
-        $size = Size::where('name',$item->options->size)->first();
-        $this->quantity = aty_avaliable($item->id,$color->id,$size->id);
+        $this->color = Color::where('name',$item->options->color)->first();
+        $this->size = Size::where('name',$item->options->size)->first();
+
+        $this->product = $item->id;
+        $this->quantity = aty_avaliable($this->product,$this->color->id,$this->size->id);
+
+        /* $this->quantity = aty_avaliable($item->id,$color->id,$size->id); */
     }
 
     /* METODO PARA INCREMENTAR LA CANTIDAD DE PRODUCTOS QUE VAMOS A COMPRAR */
@@ -28,6 +33,7 @@ class UpdateCartItemSize extends Component
 
         Cart::update($this->rowId,$this->qty);
         $this->emit('render');
+        $this->quantity = aty_avaliable($this->product,$this->color->id,$this->size->id);
         
         
     }
@@ -42,7 +48,8 @@ class UpdateCartItemSize extends Component
         
         $this->render();
             Cart::update($this->rowId,$this->qty);
-            $this->emit('render');                        
+            $this->emit('render');   
+            $this->quantity = aty_avaliable($this->product,$this->color->id,$this->size->id);                     
     }
     
     public function render()
