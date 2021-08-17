@@ -4,12 +4,14 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\WebhooksController;
 use App\Http\Livewire\ShoppingCart;
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\WelcomeController;
 use App\Http\Livewire\CreateOrder;
+use App\Http\Livewire\PaymentOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +40,18 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 /* RUTA PARA CREAR UNA ORDEN -> SOLO PARA USUARIOS REGISTADOS 'auth' */
 Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
 
-Route::get('orders/{order}/payment', [OrderController::class,'payment'] )->name('orders.payment');
+/* RUTA PARA CUANDO EL PAGO SEA APROBADO PASARELA MERCADOPAGO */
+Route::get('orders/{order}', [OrderController::class,'show'])->name('orders.show');
+
+/* RUTA PARA CUANDO YA CREAMOS UNA ORDEN DE COMPRA Y NECESITAMOS PAGARLO  */
+/* Route::get('orders/{order}/payment', [OrderController::class,'payment'] )->name('orders.payment'); */
+
+Route::get('orders/{order}/payment',PaymentOrder::class)->name('orders.payment');
+
+Route::get('orders/{order}/pay', [OrderController::class,'pay'] )->name('orders.pay');
+
+/* RUTA PARA RECIBIR NOTIFICACIONES CADA VEZ QUE SE HACE UN PAGO EN MERCADO PAGO */
+Route::post('webhooks', WebhooksController::class);
 
 /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -112,11 +112,53 @@
 
     </div> --}}
 
+    @php
+        // SDK de Mercado Pago  siempre poner base_path('/vendor/autoload.php');
+        require base_path('/vendor/autoload.php');
+        // Agrega credenciales   config -> nos posiciona en la carpeta config -> luego le damos el archivo services con el punto
+        // le decimos que quiero ingresar a mercadopago(esta dentro del archivo services.php) -> luego con el punto le decimos
+        //que quiero acceder al token
+        MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+
+        // Crea un objeto de preferencia
+        $preference = new MercadoPago\Preference();
+
+        $shipments = new MercadoPago\Shipments();
+
+        $shipments->cost = $order->shipping_cost;
+        $shipments->mode = "not_specified";
+
+        $preference->shipments = $shipments;
+
+        foreach ($items as $product) { //cada q itere no lo almacenamos en $item xk entrara en conflicto con la variable $item de mercado pago es un variable propia
+                // Crea un ítem en la preferencia
+            $item = new MercadoPago\Item();
+            $item->title = $product->name;
+            $item->quantity = $product->qty;
+            $item->unit_price = $product->price;
+
+            $products[] = $item;
+        }
+
+        $preference->back_urls = array(
+            "success" => route('orders.pay',$order),
+            "failure" => "http://www.tu-sitio/failure",
+            "pending" => "http://www.tu-sitio/pending"
+        );
+        $preference->auto_return = "approved";
+
+
+        $preference->items = $products;
+        $preference->save();
+
+    @endphp
+
+
     <div class="container py-8 grid grid-cols-5 gap-6">
 
         <div class="col-span-3">
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="">
+                <div class="text-center">
                     <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden : </span>Order-{{$order->id}}</p>
                 </div>
             </div>
@@ -152,7 +194,7 @@
             </div>
 
             <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
-                <p class="text-xl font-semibold mb-4 border-b-2 text-center">Resumen de compra</p>
+                <p class="text-xl font-semibold mb-4 border-b-2 text-center">RESUMEN DE COMPRA</p>
     
                 <table class="table-auto w-full">
                     <thead>
@@ -212,18 +254,17 @@
 
         <div class="col-span-2">
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="text-center text-lg bg-gray-100 border-b-2 mb-3 font-bold">
+                <div class="text-center text-lg bg-gray-100 border-b-2 font-bold">
                     RESUMEN DE PAGO
                 </div>                
-
-
-                <div class="text-gray-700 px-5 bg-gray-100">
+                
+                <div class="text-gray-700 px-5 bg-gray-100 mt-4">
                     <p class="flex justify-between items-center">
                         Subtotal
                         <span class="font-semibold">S/. {{$order->total - $order->shipping_cost}}</span>
                     </p>
                     
-                    <p class="flex justify-between items-center">
+                    <p class="flex justify-between items-center mt-1">
                         Costo de envío
                         <span class="font-semibold">                            
                                 S/. {{$order->shipping_cost}}                        
@@ -235,21 +276,84 @@
                     <p class="flex justify-between items-center font-semibold">
                         <span class="text-lg"> Total</span>
                         
-                            S/. {{$order->total + $order->shipping_cost}}    
-                       
-                        
+                            S/. {{$order->total}}                                                   
                     </p>
     
                 </div>
-            </div>
-
-            <div class="container bg-white rounded-lg shadow-lg p-6 flex justify-between items-center mt-4">
-
+                
                 <img class="h-15" src="{{asset('img/VI_MA_DI.png')}}" alt="">
-    
-            
+                
+            </div>            
+
+            {{-- BOTON MERCADO PAGO --}}
+            <div class="container bg-white rounded-lg shadow-lg p-6 flex  items-center mt-4 mb-4">
+                <div class="cho-container w-full">
+               
+                </div>                
             </div>
+
+            <div class="container  rounded-lg content-center">
+                
+                    <div id="paypal-button-container" class="w-full">
+
+                    </div> 
+                     
+            </div>
+
         </div>
 
     </div>
+
+    {{-- CDN PARA MERCADO PAGO --}}
+
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
+
+    {{-- SCRIPT PARA MERCADO PAGO --}}
+    <script>
+        // Agrega credenciales de SDK
+          const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
+                locale: 'es-AR'
+          });
+        
+          // Inicializa el checkout
+          mp.checkout({
+              preference: {
+                  id: '{{$preference->id}}'
+              },
+              render: {
+                    container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
+                    label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+              }
+        });
+    </script>
+
+    {{-- SCRIPT PAYPAL  --}}
+    <script 
+        src="https://www.paypal.com/sdk/js?client-id={{config('services.paypal.client_id')}}"> //AQUI ESPECIFICAMOS ID PAYPAL SIMILAR A MERCADO PAGO
+    </script>
+
+<script>
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        // This function sets up the details of the transaction, including the amount and line item details.
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: "{{$order->total}}"
+            }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        // This function captures the funds from the transaction.
+        return actions.order.capture().then(function(details) {
+          // This function shows a transaction success message to your buyer.
+          alert('Transaction completed by ' + details.payer.name.given_name);
+        });
+      }
+    }).render('#paypal-button-container');
+    //This function displays Smart Payment Buttons on your web page.
+  </script>
+
 </x-app-layout>
