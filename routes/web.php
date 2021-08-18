@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\PaymentOrder;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,22 +38,31 @@ Route::get('products/{product}', [ProductController::class,'show'])->name('produ
 /* RUTA PARA INGRESAR AL CARRITO DE COMPRAS */
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
-/* RUTA PARA CREAR UNA ORDEN -> SOLO PARA USUARIOS REGISTADOS 'auth' */
-Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create');
 
-/* RUTA PARA CUANDO EL PAGO SEA APROBADO PASARELA MERCADOPAGO */
-Route::get('orders/{order}', [OrderController::class,'show'])->name('orders.show');
+Route::middleware('auth')->group(function(){
 
-/* RUTA PARA CUANDO YA CREAMOS UNA ORDEN DE COMPRA Y NECESITAMOS PAGARLO  */
-/* Route::get('orders/{order}/payment', [OrderController::class,'payment'] )->name('orders.payment'); */
+    /* RUTA PARA VER NUESTRAS COMPRAS - ORDENES */
+    Route::get('orders', [OrderController::class,'index'])->name('orders.index');
 
-Route::get('orders/{order}/payment',PaymentOrder::class)->name('orders.payment');
+    /* RUTA PARA CREAR UNA ORDEN -> SOLO PARA USUARIOS REGISTADOS 'auth' */
+    Route::get('orders/create', CreateOrder::class)->middleware('auth')->name('orders.create'); 
 
-Route::get('orders/{order}/pay', [OrderController::class,'pay'] )->name('orders.pay');
+    /* RUTA PARA CUANDO EL PAGO SEA APROBADO PASARELA MERCADOPAGO */
+    Route::get('orders/{order}', [OrderController::class,'show'])->name('orders.show');
 
-/* RUTA PARA RECIBIR NOTIFICACIONES CADA VEZ QUE SE HACE UN PAGO EN MERCADO PAGO */
-Route::post('webhooks', WebhooksController::class);
+    /* RUTA PARA CUANDO YA CREAMOS UNA ORDEN DE COMPRA Y NECESITAMOS PAGARLO  */
+    /* Route::get('orders/{order}/payment', [OrderController::class,'payment'] )->name('orders.payment'); */
 
-/* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard'); */
+    Route::get('orders/{order}/payment',PaymentOrder::class)->name('orders.payment');
+
+    Route::get('orders/{order}/pay', [OrderController::class,'pay'] )->name('orders.pay');
+
+    /* RUTA PARA RECIBIR NOTIFICACIONES CADA VEZ QUE SE HACE UN PAGO EN MERCADO PAGO */
+    Route::post('webhooks', WebhooksController::class);
+
+    /* Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard'); */
+
+});
+

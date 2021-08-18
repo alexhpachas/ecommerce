@@ -5,8 +5,14 @@ namespace App\Http\Livewire;
 use App\Models\Order;
 use Livewire\Component;
 
+/* PARA USAR POLICE EN UN COMPONENTE DE LIVEWIRE */
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+
+
 class PaymentOrder extends Component
 {
+    use AuthorizesRequests;
+
     public $order;
     
     protected $listeners =['payOrder'];
@@ -26,6 +32,11 @@ class PaymentOrder extends Component
 
     public function render()
     {
+        /* LLAMAMOS AL POLICE QUE CREAMOS EN app/Polices/OrderPolicy/autorize */
+        $this->authorize('author',$this->order);
+
+        $this->authorize('payment',$this->order);
+
         $items = json_decode($this->order->content);
 
         return view('livewire.payment-order',compact('items'));

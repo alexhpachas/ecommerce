@@ -55,6 +55,72 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
     }
 
+    /* FUNCION PARA GUARDAR EL STOCK EN LA BD DESPUES DE UNA COMPRA  */
+
+    function discount($item){
+
+        $product = Product::find($item->id);
+        
+        $qty_available = aty_avaliable($item->id ,$item->options->color_id, $item->options->size_id);
+
+        if ($item->options->size_id) {
+
+            $size = Size::find($item->options->size_id);
+            $size->colors()->detach($item->options->color_id);
+            $size->colors()->attach([
+            $item->options->color_id =>['quantity'=>$qty_available]
+        ]);
+            
+        }elseif($item->options->color_id){
+
+            
+            $product->colors()->detach($item->options->color_id);
+
+            $product->colors()->attach([
+                $item->options->color_id => ['quantity' => $qty_available]
+            ]);
+
+        }else{
+            $product->quantity = $qty_available;
+            $product->save();
+        }
+
+        
+    }
+
+
+    /* FUNCIONA PARA DEVOLVER EL STOCK DE UNA COMPRA QUE NO HA SIDO PAGADA DESPUES DE 10 MINUTOS */
+    function increase($item){
+
+        $product = Product::find($item->id);
+        
+        $quantity = quantity($item->id ,$item->options->color_id, $item->options->size_id) + $item->qty;
+
+        if ($item->options->size_id) {
+
+            $size = Size::find($item->options->size_id);
+            $size->colors()->detach($item->options->color_id);
+            $size->colors()->attach([
+            $item->options->color_id =>['quantity'=>$quantity]
+        ]);
+            
+        }elseif($item->options->color_id){
+
+            
+            $product->colors()->detach($item->options->color_id);
+
+            $product->colors()->attach([
+                $item->options->color_id => ['quantity' => $quantity]
+            ]);
+
+        }else{
+            $product->quantity = $quantity;
+            $product->save();
+        }
+
+        
+    }
+
 
 
     

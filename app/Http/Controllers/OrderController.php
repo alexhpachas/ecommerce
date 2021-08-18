@@ -9,20 +9,35 @@ use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
+    /* METODO QUE PERMITE VER NUESTRAS COMPRAS */
+    public function index(){
 
-    public function show(Order $order){
-        return view('orders.show',compact('order'));
+        $orders = Order::query()->where('user_id',auth()->user()->id);
+
+        if (request('status')) {
+            $orders = $orders->where('status',request('status'));
+        }
+        
+        $orders = $orders->orderBy('created_at','desc')->get();
+
+        $pendiente = Order::where('status',1)->where('user_id',auth()->user()->id)->count();
+        $recibido = Order::where('status',2)->where('user_id',auth()->user()->id)->count();
+        $enviado = Order::where('status',3)->where('user_id',auth()->user()->id)->count();
+        $entregado = Order::where('status',4)->where('user_id',auth()->user()->id)->count();
+        $anulado = Order::where('status',5)->where('user_id',auth()->user()->id)->count();
+
+        return view('orders.index',compact('orders','pendiente','recibido','enviado','entregado','anulado'));
     }
 
-    /* METODO PARA PAGAR UNA ORDEN POR MERCADO PAGO */
+    public function show(Order $order){
 
-    /* public function payment(Order $order){
+        /* LLAMAMOS AL POLICE QUE CREAMOS EN app/Polices/OrderPolicy/autorize */
+        $this->authorize('author',$order);
+
         $items = json_decode($order->content);
-        return view('orders.payment',compact('order','items'));
-    } */
 
-    /* METODO PAYMENT NO UTILIZADO */
-    
+        return view('orders.show',compact('order','items'));
+    }
 
     /* METODO PARA OBTENER EL ID DE COMPRA POR MERCADO PAGO */
     public function pay(Order $order,Request $request){
