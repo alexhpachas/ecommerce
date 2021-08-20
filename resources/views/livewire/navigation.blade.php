@@ -10,8 +10,11 @@
             <span class="text-sm hidden md:block">Categoria</span>
         </a>
 
-        <a href="/" class="mx-6">
+        {{-- <a href="/" class="mx-6">
             <x-jet-application-mark class="block h-9 w-auto" />
+        </a> --}}
+        <a href="/" class="mx-6">
+            <img class="h-16 object-cover" src="{{asset('img/LOGO.png')}}" alt="">
         </a>
 
         <div class="flex-1 hidden md:block">
@@ -41,9 +44,14 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
 
-                        {{-- PERFILES --}}
+                        {{-- MIS COMPRAS --}}
                         <x-jet-dropdown-link href="{{ route('orders.index') }}">
                             Mis compras
+                        </x-jet-dropdown-link>
+
+                        {{-- MIS COMPRAS --}}
+                        <x-jet-dropdown-link href="{{ route('admin.index') }}">
+                            Administrador
                         </x-jet-dropdown-link>
 
                         <div class="border-t border-gray-100"></div>
