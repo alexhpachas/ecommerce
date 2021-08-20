@@ -46,7 +46,7 @@ class Product extends Model
     /* RELACION ENTRE PRODUCTO Y COLOR  MUCHOS A MUCHOS POR QUE HAY UNA TABLA INTERMEDIA */
 
     public function colors(){
-        return $this->belongsToMany(Color::class)->withPivot('quantity');
+        return $this->belongsToMany(Color::class)->withPivot('quantity','id');
     }
 
     /* RELACION ENTRE PRODUCTS Y SIZES  UNO A MUCHOS */

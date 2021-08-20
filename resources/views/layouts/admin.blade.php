@@ -24,11 +24,12 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
 
         {{-- JSQUERY --}}
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
+        {{-- CKEDITOR --}}
         <script src="https://cdn.ckeditor.com/ckeditor5/29.1.0/classic/ckeditor.js"></script>
 
+        {{-- SWEET ALERT 2 --}}
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
