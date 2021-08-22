@@ -57,7 +57,12 @@
                         <a class="cursor-pointer" href="{{route('products.show',$product)}}">
                         <article >
                             <figure>
-                                <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                                @if ($product->images->count())
+                                    <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                                @else
+                                    <img class="h-48 w-full object-cover object-center" src="{{ asset('img/product-default.png') }}" alt="">    
+                                @endif
+                                
                             </figure>
 
                             <div class="my-4 mx-6">

@@ -1,6 +1,8 @@
-<div>
-    <div class="bg-white my-12 shadow-lg rounded-lg p-6">
-        {{-- COLOR --}}
+<div class="mt-4">
+
+    {{-- FORMULARIO PARA COLOR Y STOCK A UNA TALLA--}}
+
+    <div class="bg-gray-100 shadow-lg rounded-lg p-6">        
         <div class="mb-6">
             <x-jet-label value="Color" />
 
@@ -17,7 +19,7 @@
             <x-jet-input-error for="color_id" />
         </div>
 
-        {{-- CANTIDAD --}}
+        {{-- INPUT DE CANTIDAD --}}
         <div>
             <x-jet-label value="Cantidad" />
             <x-jet-input wire:model.defer="quantity" class="w-full" type="number" placeholder="Ingrese una cantidad" />            
@@ -41,9 +43,13 @@
         </div>
     </div>
 
-    @if ($product->colors->count())
+
+
+    {{-- LISTA DE LOS COLORES Y STOCK --}}
+
+    @if ($size_colors->count())
             
-        <div class="bg-white shadow-lg rounded-lg p-6">
+        <div class="mt-8">
             <table>
                 <thead>
                     <tr>
@@ -53,25 +59,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($product_colors as $product_color)
-                        <tr wire:key="product_color-{{$product_color->pivot->color_id}}">
-                            <td class="capitalize px-4 py-2">
-                                {{-- ACCEDER A LA TABLA PIVOT --}}
-                                {{-- {{$product_color->pivot}} --}}
-                                {{__($colors->find($product_color->pivot->color_id)->name)}}
+                    @foreach ($size_colors as $size_color)
+                        <tr wire:key="size_color-{{$size_color->pivot->color_id}}">
+                            <td class="capitalize px-4 py-2">                            
+                                {{__($colors->find($size_color->pivot->color_id)->name)}}
                             </td>
                             <td class="px-4 py-2">
-                                {{$product_color->pivot->quantity}} unidades                            
+                                {{$size_color->pivot->quantity}} unidades                            
                             </td>
                             <td class="px-4 py-2 flex">
+                                
+                                {{-- BOTON ACTUALIZAR --}}
                                 <x-jet-secondary-button 
                                         wire:loading.attr="disabled"
-                                        wire:target="edit"
-                                        wire:click="edit({{$product_color->pivot->id}})" class="ml-auto mr-2">
+                                        wire:target="edit({{$size_color->pivot->id}})"
+                                        wire:click="edit({{$size_color->pivot->id}})" class="ml-auto mr-2">
                                     ACTUALIZAR
                                 </x-jet-secondary-button>
 
-                                <x-jet-danger-button wire:click="$emit('deletePivot',{{$product_color->pivot->id}})">
+                                {{-- BOTON ELIMINAR --}}
+                                <x-jet-danger-button wire:click="$emit('deleteColorSize',{{$size_color->pivot->id}})">
                                     ELIMINAR
                                 </x-jet-danger-button>
                             </td>
@@ -81,9 +88,8 @@
             </table>
 
         </div>
-        
+    
     @endif
-
 
     {{-- MODAL PARA ACTUALIZAR EL STOCK --}}
 
@@ -136,7 +142,8 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-    {{-- @push('script')
+
+    @push('script')
         <script>
             Livewire.on('deletePivot', pivot =>{            
                 Swal.fire({
@@ -151,7 +158,7 @@
                 }).then((result) => {
                 if (result.isConfirmed) {
 
-                    Livewire.emitTo('admin.color-product','delete',pivot)
+                    Livewire.emitTo('admin.color-size','delete',pivot)
                     Swal.fire({
                     position: 'center',
                     icon: 'success',
@@ -165,5 +172,6 @@
 
         </script>
         
-    @endpush --}}
+    @endpush
+
 </div>

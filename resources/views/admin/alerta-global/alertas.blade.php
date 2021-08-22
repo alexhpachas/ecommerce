@@ -1,4 +1,46 @@
+@push('script')    
 <script>
+    Livewire.on('actualizar', pivot =>{   
+                
+        const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+        })
+        
+        Toast.fire({
+        icon: 'success',
+        title: 'Actualizado Correctamente'
+        
+        })
+
+        
+        
+    })
+
+</script>
+
+<script>
+    Livewire.on('validacion', mensaje =>{                           
+        Swal.fire({
+            
+            icon: 'warning',
+            title: mensaje,
+            showConfirmButton: false,
+            timer: 2000
+        })                     
+        
+    })
+
+</script>
+@endpush
+{{-- <script>
     @if(session('info-create'))
         Swal.fire({
             
@@ -48,7 +90,7 @@
             timer: 2000
         })             
     @endif 
-</script>
+</script> --}}
 {{-- <script>
     Livewire.on('deletePivot', pivot =>{            
         Swal.fire({

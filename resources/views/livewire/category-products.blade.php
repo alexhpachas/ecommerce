@@ -7,7 +7,11 @@
                 <li class="bg-white rounded-xl shadow hover:shadow-inner hover:bg-gray-200 hover:border-b-2 hover:border-red-500 {{ $loop->last ? '' : 'sm:mr-4' }}">
                     <article>
                         <figure>
-                            <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                            @if ($product->images->count())                                                            
+                                <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
+                            @else
+                                <img class="h-48 w-full object-cover object-center" src="{{ asset('img/product-default.png') }}" alt="">
+                            @endif
                         </figure>
 
                         <div class="my-4 mx-6 item">

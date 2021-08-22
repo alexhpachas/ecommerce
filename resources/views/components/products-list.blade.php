@@ -2,7 +2,12 @@
 <li class="mb-4">
     <article class="flex bg-white rounded-lg shadow-lg">
         <figure>
-            <img class="h-48 w-56 object-cover object-center" src="{{Storage::url($product->images->first()->url)}}" alt="">
+            @if ($product->images->count())
+                <img class="h-48 w-56 object-cover object-center" src="{{Storage::url($product->images->first()->url)}}" alt="">  
+            @else
+                <img class="h-48 w-56 object-cover object-center" src="{{ asset('img/product-default.png')}}" alt="">  
+            @endif
+            
         </figure>
 
         <div class="flex-1 py-4 px-6 flex flex-col">

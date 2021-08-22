@@ -1,6 +1,35 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-gray-700">
     <h1 class="text-3xl text-center font-semibold mb-8 border-b-2">CREAR UN PRODUCTO</h1>
 
+    <div class="mb-4" wire:ignore>
+        <form action="{{route('admin.products.files',$product)}}"
+        method="POST"
+                class="dropzone"
+                id="my-awesome-dropzone">
+        </form>
+    </div>
+
+    @if ($product->images->count())
+            
+        <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
+            <h1 class=" text-2xl text-center font-semibold mb-2">Imagenes del producto</h1>
+            <ul class="flex flex-wrap ">
+                @foreach ($product->images as $image)
+                    <li class="relative" wire:key="'image-{{$image->id}}">
+                        <img class="w-32 h-20 object-cover" src="{{Storage::url($image->url)}}" alt="">
+                        <x-jet-danger-button 
+                                wire:loading.attr="disabled"
+                                wire:target="deleteImage({{$image->id}})"
+                                wire:click="deleteImage({{$image->id}})" class=" w-5 h-5 absolute right-1 top-1">
+                            x
+                        </x-jet-danger-button>
+                    </li>
+                    
+                @endforeach
+            </ul>            
+        </section>
+    @endif
+
     <div class="bg-white shadow-xl rounded-lg p-6">
         <div class="grid grid-cols-2 gap-6">
 
@@ -117,7 +146,8 @@
             <x-jet-button 
                     wire:loading.attr="disabled"
                     wire:target="save"
-                    wire:click="save"
+                    wire:click="save"                    
+                    {{-- wire:click="$emit('save')" --}}
                     >
                 Actualizar Producto
             </x-jet-button>
@@ -133,5 +163,109 @@
         @endif
         
     @endif
+
+
+    {{-- SWEET ALERT PARA EL METODO SAVE --}}
+
+    
+    @section('js')
+        @include('admin.alerta-global.alertas')
+    @endsection
+
+    @push('script')
+        <script>
+            Dropzone.options.myAwesomeDropzone = {
+                headers: {
+                    'X-CSRF-TOKEN' : "{{ csrf_token() }}"
+                },
+                dictDefaultMessage: 'Arrastre una imagen al recuadro',
+                acceptedFiles: 'image/*',
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: 2, // MB
+                complete: function(file){
+                    this.removeFile(file);
+                },
+                queuecomplete: function(){
+                    Livewire.emit('refreshProduct');
+                }
+            };
+
+            Livewire.on('deleteSize', sizeId =>{            
+                Swal.fire({
+                title: 'Desea Eliminar la Talla?',
+                text: "No podra recuperar el registro!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, Eliminar!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    Livewire.emitTo('admin.size-product','delete',sizeId)
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Eliminado Correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                }
+                })
+            })
+
+            Livewire.on('deletePivot', pivot =>{            
+                Swal.fire({
+                title: 'Desea Eliminar el Color?',
+                text: "No podra recuperar el registro!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, Eliminar!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    Livewire.emitTo('admin.color-product','delete',pivot)
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Eliminado Correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                }
+                })
+            })
+
+            Livewire.on('deleteColorSize', pivot =>{            
+                Swal.fire({
+                title: 'Desea Eliminar el Color?',
+                text: "No podra recuperar el registro!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, Eliminar!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    Livewire.emitTo('admin.color-size','delete',pivot)
+                    Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Eliminado Correctamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                    })
+                }
+                })
+            })
+        </script>
+        
+    @endpush
 
 </div>

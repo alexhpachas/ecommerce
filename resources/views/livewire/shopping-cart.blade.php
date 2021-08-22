@@ -29,6 +29,7 @@
                         <tr>
                             <td>
                                 <div class="flex mt-1 items-center">
+                                    
                                     <img class="h-15 w-20 object-cover object-center mr-4" src="{{$item->options->image}}" alt="">
 
                                     <div>
