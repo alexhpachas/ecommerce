@@ -18,6 +18,16 @@ class CategoryFilter extends Component
     /* VARIABLE PARA CAPTURAR SI EL CONTENIDO SERA VISTO EN LISTA O GRID */
     public $view = 'grid';
 
+    public $queryString = ['subcategoria','marca'];
+
+    public function updatedSubcategoria(){
+        $this->resetPage();
+    }
+
+    public function updatedMarca(){
+        $this->resetPage();
+    }
+
     public function render()
     {
         /* $products = $this->category->products()->where('status',2)->paginate(20); */
@@ -29,7 +39,7 @@ class CategoryFilter extends Component
         /* FILTRO POR CATEGORIA */
         if($this->subcategoria){
             $productsQuery = $productsQuery->whereHas('subcategory',function(Builder $query){
-                $query->where('name',$this->subcategoria);            
+                $query->where('slug',$this->subcategoria);            
             });
         }
 
@@ -50,6 +60,6 @@ class CategoryFilter extends Component
 
     /* ELIMINAR TODO EL FILTRO DE BUSQUEDA CATEGORIA Y MARCA */
     public function limpiar(){
-        $this->reset(['subcategoria','marca']);
+        $this->reset(['subcategoria','marca','page']);
     }
 }

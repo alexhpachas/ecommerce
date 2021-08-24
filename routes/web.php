@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function(){
     /* RUTA PARA CUANDO YA CREAMOS UNA ORDEN DE COMPRA Y NECESITAMOS PAGARLO  */    
     Route::get('orders/{order}/payment',PaymentOrder::class)->name('orders.payment');
 
+    /* CUANDO LA ORDEN YA FUE PAGADA. RUTA PARA VER LAS COMPRAS ECHAS */    
     Route::get('orders/{order}/pay', [OrderController::class,'pay'] )->name('orders.pay');
 
     /* RUTA PARA RECIBIR NOTIFICACIONES CADA VEZ QUE SE HACE UN PAGO EN MERCADO PAGO */

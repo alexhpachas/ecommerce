@@ -23,7 +23,7 @@
 
                 @foreach ($category->subcategories as $subcategory)
                     <li class="py-2 text-sm">
-                        <a wire:click="$set('subcategoria','{{$subcategory->name}}')" class="cursor-pointer hover:text-orange-500 capitalize {{$subcategoria == $subcategory->name ? 'text-orange-500 font-semibold' : ''}}" >{{$subcategory->name}}</a>
+                        <a wire:click="$set('subcategoria','{{$subcategory->slug}}')" class="cursor-pointer hover:text-orange-500 capitalize {{$subcategoria == $subcategory->slug ? 'text-orange-500 font-semibold' : ''}}" >{{$subcategory->name}}</a>
                     </li>                    
                 @endforeach
             </ul>
@@ -52,33 +52,41 @@
             @if ($view=='grid')                            
 
                 <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    @foreach ($products as $product)
-                    <li class="bg-white rounded-xl shadow }}">
-                        <a class="cursor-pointer" href="{{route('products.show',$product)}}">
-                        <article >
-                            <figure>
-                                @if ($product->images->count())
-                                    <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
-                                @else
-                                    <img class="h-48 w-full object-cover object-center" src="{{ asset('img/product-default.png') }}" alt="">    
-                                @endif
-                                
-                            </figure>
+                    @forelse ($products as $product)
+                        <li class="bg-white rounded-xl shadow }}">
+                            <a class="cursor-pointer" href="{{route('products.show',$product)}}">
+                                <article >
+                                    <figure>
+                                        @if ($product->images->count())
+                                            <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">    
+                                        @else
+                                            <img class="h-48 w-full object-cover object-center" src="{{ asset('img/product-default.png') }}" alt="">    
+                                        @endif
+                                        
+                                    </figure>
 
-                            <div class="my-4 mx-6">
-                                <h1 class="text-lg font-semibold">
+                                    <div class="my-4 mx-6">
+                                        <h1 class="text-lg font-semibold">
 
-                                    <a href="{{route('products.show',$product)}}">
-                                        {{ Str::limit($product->name, 20) }}
-                                    </a>
-                                </h1>
+                                            <a href="{{route('products.show',$product)}}">
+                                                {{ Str::limit($product->name, 20) }}
+                                            </a>
+                                        </h1>
 
-                                <p class="font-bold text-trueGray-700"> S/. {{ $product->price }}</p>
+                                        <p class="font-bold text-trueGray-700"> S/. {{ $product->price }}</p>
+                                    </div>
+                                </article>  
+                            </a>
+                        </li>   
+                    @empty
+                        <li class="md:col-span-2 lg:col-span-4">
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Upss!</strong>
+                                <span class="block sm:inline">No existe ningún producto con ese filtro.</span>                                
                             </div>
-                        </article>
-                    </a>
-                    </li>                    
-                    @endforeach 
+                        </li>
+                    
+                    @endforelse 
                 </ul>
 
             @else
@@ -86,13 +94,20 @@
                 {{-- LISTADO DE PRODUCTOS EN VISTA MODO LISTA --}}
 
                 <ul>
-                    @foreach ($products as $product)
+                    @forelse ($products as $product)
                         {{-- PRODUCTS-LIST COMPONENTE QUE HEMOS CREADO --}}
                         <x-products-list :product="$product">
                             
                         </x-products-list>
+                    @empty
+                        <li class="md:grid-cols-2 lg:grid-cols-4">
+                            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                                <strong class="font-bold">Upss!</strong>
+                                <span class="block sm:inline">No existe ningún producto con ese filtro.</span>                                
+                            </div>
+                        </li>
                         
-                    @endforeach
+                    @endforelse
                 </ul>
 
                 

@@ -14,17 +14,17 @@ use Illuminate\Support\Str;
 
 class EditProduct extends Component
 {
-    public $product,$categories,$subcategories,$brands;
+    public $product,$categories,$subcategories,$brands,$slug;
 
     public $category_id;
 
-    protected $listeners = ['refreshProduct'];
+    protected $listeners = ['refreshProduct','delete'];
 
     protected $rules=[
         'category_id' => 'required',
         'product.subcategory_id' => 'required',
         'product.name' => 'required',
-        'product.slug' =>'required|unique:products,slug',
+        'slug' =>'required|unique:products,slug',
         'product.description' => 'required',
         'product.brand_id' =>'required',
         'product.price' => 'required',
@@ -37,6 +37,7 @@ class EditProduct extends Component
         $this->categories = Category::all();
         $this->category_id = $product->subcategory->category->id;
         $this->subcategories = Subcategory::where('category_id',$this->category_id)->get();
+        $this->slug = $this->product->slug;
         $this->brands = Brand::whereHas('categories',function(Builder $query){
             $query->where('category_id',$this->category_id);
         })->get();
@@ -63,13 +64,13 @@ class EditProduct extends Component
     }
 
     public function updatedProductName($value){
-        $this->product->slug = Str::slug($value);
+        $this->slug = Str::slug($value);
     }
 
     public function save(){
         $rules = $this->rules;
 
-        $rules['product.slug'] = 'required|unique:products,slug,'. $this->product->id;
+        $rules['slug'] = 'required|unique:products,slug,'. $this->product->id;
 
         if ($this->product->subcategory_id) {
             if (!$this->subcategory->color && !$this->subcategory->size) {
@@ -89,6 +90,18 @@ class EditProduct extends Component
         $this->emit('actualizar');
 
         
+    }
+
+    public function delete(){
+        $images = $this->product->images;
+        foreach ($images as $image) {
+            Storage::delete($image->url);
+            $image->delete();            
+        }
+
+        $this->product->delete();
+        return redirect()->route('admin.index');
+
     }
     
     

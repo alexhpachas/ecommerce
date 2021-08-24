@@ -66,7 +66,9 @@
 
         @livewireScripts
 
-
+        @section('js')
+            @include('admin.alerta-global.alertas')
+        @endsection    
 
         
         @stack('script')
