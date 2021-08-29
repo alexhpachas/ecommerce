@@ -14,6 +14,8 @@ class PaymentOrder extends Component
     use AuthorizesRequests;
 
     public $order;
+    public $contar = 0;
+    public $type=1;
     
     protected $listeners =['payOrder'];
 
@@ -39,6 +41,7 @@ class PaymentOrder extends Component
 
         $items = json_decode($this->order->content);
         $envio = json_decode($this->order->envio);
+        
 
         return view('livewire.payment-order',compact('items','envio'));
     }

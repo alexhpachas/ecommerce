@@ -10,7 +10,8 @@ class ShowDepartment extends Component
 {
     protected $listeners = ['delete'];
 
-    public $department,$cities,$city;    
+    public $department,$cities,$city;   
+    public $openCreateCity = false; 
 
     public $createForm = [
         'name' =>'',
@@ -37,13 +38,13 @@ class ShowDepartment extends Component
     public function save(){
 
         $this->validate([
-            'createForm.name' => 'required',
+            'createForm.name' => 'required|unique:cities,name',
             'createForm.cost' => 'required|numeric|min:1|max:100'
         ]);
 
         $this->department->cities()->create($this->createForm);
         /* City::create($this->createForm); */
-        $this->reset('createForm');
+        $this->reset('createForm','openCreateCity');
         $this->getCities();
         $this->emit('actualizar');
     }
@@ -56,9 +57,14 @@ class ShowDepartment extends Component
         $this->editForm['cost']= $city->cost;        
     }
 
+    public function cancelar(){
+        $this->resetValidation();
+        $this->reset('createForm','editForm','openCreateCity');
+    }
+
     public function update(){
         $this->validate([
-            'editForm.name' => 'required',
+            'editForm.name' => 'required|unique:cities,name,'.$this->city->id,
             'editForm.cost' => 'required'
         ]);
         

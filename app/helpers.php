@@ -116,9 +116,12 @@ use Gloudemans\Shoppingcart\Facades\Cart;
         }else{
             $product->quantity = $quantity;
             $product->save();
-        }
+        }        
+    }
 
-        
+    function convertir($monto,$montos){
+        $total = floatval($monto) + floatval($montos);
+        return $total;
     }
 
 

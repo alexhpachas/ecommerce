@@ -2,19 +2,32 @@
 
     {{-- DISEÑO DE NUESTRA VISTA DETALLE PRODUCTO --}}
     <div class="container py-8">
-        <div class="grid grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
 
             {{-- PLUGINS FLEXSLIDER PARA MOSTRAR DETALLE DE PRODUCTO MAS INFO -> http://flexslider.woothemes.com/thumbnail-controlnav.html --}}
-            <div>
+            <div>                                                    
                 <div class="flexslider">
                     <ul class="slides">
-                        @foreach ($product->images as $image)                                            
-                            <li data-thumb="{{Storage::url($image->url)}}">
-                                <img src="{{Storage::url($image->url)}}" />
-                            </li>                                                           
-                        @endforeach
+                        @if ($product->images->count())
+                            @foreach ($product->images as $image)                                            
+                                <li data-thumb="{{Storage::url($image->url)}}">
+                                    <img src="{{Storage::url($image->url)}}" />
+                                </li>                                                           
+                            @endforeach
+                        @else
+                            <li data-thumb="{{asset('img/product-default.png')}}">
+                                <img src="{{asset('img/product-default.png')}}" />
+                            </li>  
+                                
+                        @endif
                     </ul>
                 </div>
+
+                <div class="-mt-10 text-gray-700">
+                    <h2 class="font-bold text-lg">Descripción</h2>
+                    {!!$product->description!!}
+                </div>
+                
             </div>
 
             {{-- MOSTRAMOS LOS DATOS DEL PRODUCTO QUE VAMOS A COMPRAR --}}

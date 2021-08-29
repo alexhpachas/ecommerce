@@ -31,7 +31,7 @@
             <x-jet-input-error for="subcategory_id" />
         </div>
     </div>
-    {{$description}}
+    
     {{-- NOMBRE DEL PRODUCTO --}}
     <div class="mb-4">
         <x-jet-label value="Nombre" />

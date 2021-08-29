@@ -13,12 +13,17 @@ class ShoppingCart extends Component
     public function destroy(){
         Cart::destroy();
         $this->emitTo('dropdown-cart','render');
+
+        /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
+        $this->emitTo('cart-mobil','render');
     }
 
     /* FUNCION PARA BORRAR UN PRODUCTO DEL CARRITO DE COMPRAS */
     public function delete($rowId){
         Cart::remove($rowId);
         $this->emitTo('dropdown-cart','render');
+        /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
+        $this->emitTo('cart-mobil','render');
     }
 
 

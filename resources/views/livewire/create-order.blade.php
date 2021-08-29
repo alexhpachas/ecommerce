@@ -1,11 +1,11 @@
-<div class="container py-8 grid grid-cols-5 gap-6">
+<div class="container py-8 grid lg:grid-cols-2 xl:grid-cols-5 grid-cols-1 gap-6">
 
     {{-- PRIMERA COLUMNA  DATOS DE LA VENTA --}}
-    <div class="col-span-3">
+    <div class="order-2 lg:order-1 lg:col-span-1 xl:col-span-3">
 
         {{-- DATOS DEL COMPRADOR --}}
         <div class="bg-white rounded-lg shadow-lg p-6">
-            <div class="mb-4">
+            <div class="mb-2">
                 <x-jet-label value="Ingrese nombre de contacto" />                
                 <x-jet-input wire:model.defer="contact" class="w-full" type="text" placeholder="Ingrese nombre de la persona que recibirá el producto" />  
                 
@@ -23,7 +23,7 @@
 
         {{-- DATOS DE ENVIOS --}}
         <div x-data = "{ envio_type : @entangle('envio_type') }">
-            <p class="text-gray-700 font-semibold text-lg mb-3 mt-6">Envíos</p>
+            <p class="text-gray-700 font-semibold text-lg mb-3 mt-2">Envíos</p>
         
             <label class="bg-white rounded-lg shadow-lg px-6 py-4 flex items-center mb-4">
 
@@ -51,7 +51,7 @@
                 </label>
 
                 {{-- SELECTS DEPARTAMENTOS CUIDADES Y DISTRITOS --}}
-                <div class="px-6 pb-6 grid grid-cols-2 gap-6 hidden" :class="{ 'hidden': envio_type != 2}">                    
+                <div class="px-6 pb-6 grid grid-cols-2 gap-3 hidden" :class="{ 'hidden': envio_type != 2}">                    
 
                     {{-- DEPARTAMENTO --}}
                     <div>
@@ -69,9 +69,9 @@
 
                     {{-- CUIDADES --}}                    
                     <div>
-                        <x-jet-label value="Cuidad" />
+                        <x-jet-label value="Provincia" />
                         <select wire:model="city_id" class="form-control w-full">
-                            <option value="" disabled selected>Seleccione una Cuidad</option>
+                            <option value="" disabled selected>Seleccione una provincia</option>
                             @foreach ($cities as $city)
                                 <option value="{{$city->id}}">{{$city->name}}</option>                                
                             @endforeach
@@ -131,11 +131,11 @@
     </div>
 
     {{-- SEGUNDA COLUMNA RESUMEN DE PRODUCTO Y RESUMEN DE PAGO --}}
-    <div class="col-span-2">
+    <div class="order-1 lg:order-2 lg:col-span-1 xl:col-span-2">
         <div class="bg-white rounded-lg shadow-lg p-6">
-            <ul>
+            <ul class="{{ Cart::content()->count() > 4 ? 'overflow-y-auto h-80' : ''}}">
                 @forelse (Cart::content() as $item)
-                    <li class="flex p-2 border-b border-gray-200">
+                    <li class="flex p-2 border-b border-gray-200 ">
                         <img class="h-15 w-20 object-cover mr-4 object-center " src="{{$item->options->image}}" alt="">
                         
                         <article class="flex-1">
@@ -187,9 +187,9 @@
                 <p class="flex justify-between items-center font-semibold">
                     <span class="text-lg"> Total</span>
                     @if ($this->envio_type == 1)
-                        S/. {{Cart::subtotal()}}    
+                        S/. {{Cart::subtotalFloat()}}    
                     @else
-                    S/. {{Cart::subtotal() + $shipping_cost}}
+                        S/. {{Cart::subtotalFloat() + $shipping_cost}}
                     @endif
                     
                 </p>

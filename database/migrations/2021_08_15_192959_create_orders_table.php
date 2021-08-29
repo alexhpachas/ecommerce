@@ -25,6 +25,7 @@ class CreateOrdersTable extends Migration
             $table->float('shipping_cost');
             $table->float('total');
             $table->json('content');
+            $table->integer('cant_items');
             /* $table->unsignedBigInteger('department_id')->nullable();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();

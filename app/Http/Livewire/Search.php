@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\Product;
 use Livewire\Component;
 
@@ -23,6 +24,7 @@ class Search extends Component
     
     public function render()
     {
+        $categories = Category::all();
         if ($this->search) {
             $products = Product::where('name','like','%'.$this->search.'%')
                             ->where('status',2)
@@ -33,6 +35,6 @@ class Search extends Component
         }
         
         
-        return view('livewire.search',compact('products'));
+        return view('livewire.search',compact('products','categories'));
     }
 }

@@ -16,20 +16,28 @@
                         PRODUCTOS
                     </x-jet-nav-link>
 
-                    <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
-                        CATEGORIAS
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                        ORDENES
+                    <x-jet-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
+                        COLORES
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
                         MARCAS
                     </x-jet-nav-link>
 
+                    <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                        CATEGORIAS
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
+                        ORDENES
+                    </x-jet-nav-link>                    
+
                     <x-jet-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
                         DEPARTAMENTOS
+                    </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
+                        USUARIOS
                     </x-jet-nav-link>
                 </div>
             </div>
@@ -158,20 +166,28 @@
                 PRODUCTOS
             </x-jet-responsive-nav-link>
 
-            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
-                CATEGORIAS
-            </x-jet-responsive-nav-link>
-
-            <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                ORDENES
+            <x-jet-responsive-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
+                COLORES
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
                 MARCAS
             </x-jet-responsive-nav-link>
 
+            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                CATEGORIAS
+            </x-jet-responsive-nav-link>
+            
+            <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
+                ORDENES
+            </x-jet-responsive-nav-link>
+            
             <x-jet-responsive-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
                 DEPARTAMENTOS
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
+                USUARIO
             </x-jet-responsive-nav-link>
         </div>
 

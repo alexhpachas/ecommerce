@@ -48,7 +48,7 @@
                 <thead>
                     <tr>
                         <th class="px-4 py-2 w-1/3">Color</th>
-                        <th class="px-4 py-2 w-1/3">Cantidad</th>
+                        <th class="px-4 py-2 w-1/3">Stock</th>
                         <th class="px-4 py-2 w-1/3"></th>
                     </tr>
                 </thead>

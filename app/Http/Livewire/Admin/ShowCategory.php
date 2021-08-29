@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 class ShowCategory extends Component
 {
     public $category, $subcategories,$subcategory;
+    public $openSubcategoryCreate=false;
 
     protected $listeners=['delete'];
 
@@ -64,7 +65,7 @@ class ShowCategory extends Component
     public function save(){
         $this->validate();
         $this->category->subcategories()->create($this->createForm);
-        $this->reset('createForm');
+        $this->reset('createForm','openSubcategoryCreate');
         $this->getSubCategories();
     }
 
@@ -76,6 +77,11 @@ class ShowCategory extends Component
         $this->editForm['color'] = $subcategory->color;
         $this->editForm['size'] = $subcategory->size;
         $this->subcategory =$subcategory;
+    }
+
+    public function cancelar(){
+        $this->reset('createForm','editForm','openSubcategoryCreate');
+        $this->resetValidation();
     }
 
     public function update(){

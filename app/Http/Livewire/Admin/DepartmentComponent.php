@@ -10,6 +10,7 @@ class DepartmentComponent extends Component
     protected $listeners = ['delete'];
 
     public $departments,$department;    
+    public $openCreateDepartamento=false;
 
     public $createForm = [
         'name' =>''
@@ -17,7 +18,7 @@ class DepartmentComponent extends Component
 
     public $editForm =[
         'open' => false,
-        'name' =>'required'
+        'name' =>null
     ];
 
     protected $validationAttributes = [
@@ -37,11 +38,11 @@ class DepartmentComponent extends Component
     public function save(){
 
         $this->validate([
-            'createForm.name' => 'required'
+            'createForm.name' => 'required|unique:departments,name'
         ]);
 
         Department::create($this->createForm);
-        $this->reset('createForm');
+        $this->reset('createForm','openCreateDepartamento');
         $this->getDepartments();
         $this->emit('actualizar');
     }
@@ -55,7 +56,7 @@ class DepartmentComponent extends Component
 
     public function update(){
         $this->validate([
-            'editForm.name' => 'required'
+            'editForm.name' => 'required|unique:departments,name,'.$this->department->id,
         ]);
         
         $this->department->name = $this->editForm['name'];
@@ -70,6 +71,11 @@ class DepartmentComponent extends Component
 
         /* EMITIMOS MENSAJE PARA SWEET ALERT2 */
         $this->emit('eliminar','Departamento fue Eliminado');
+    }
+
+    public function cancelar(){
+        $this->reset(['editForm','openCreateDepartamento']);
+        $this->resetValidation();
     }
 
     public function render()

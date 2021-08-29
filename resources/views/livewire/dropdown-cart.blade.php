@@ -16,8 +16,10 @@
         {{-- CONTENIDO DEL CARRITO DE COMPRAS --}}
         <x-slot name="content">
 
-            <ul>
+            <ul class="{{ Cart::content()->count() > 4 ? 'overflow-y-auto h-80' : ''}}">
+                
                 @forelse (Cart::content() as $item)
+                
                     <li class="flex p-2 border-b border-gray-200">
                         <img class="h-15 w-20 object-cover mr-4 object-center " src="{{$item->options->image}}" alt="">
                         
@@ -35,7 +37,7 @@
                                 @endisset
                             </div>
                             
-                            <p>S/. {{$item->price}}</p>
+                            <p>S/. {{$item->price * $item->qty}}</p>
                         </article>
                     </li>
                     

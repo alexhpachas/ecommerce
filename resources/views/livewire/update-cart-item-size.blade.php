@@ -1,5 +1,5 @@
 <div class="flex items-center" x-data>
-    {{$quantity}}
+    {{-- {{$quantity}} --}}
     {{-- BOTON DISMINUIR -> METODO DECREMENT DEFINIDO EN EL COMPONENTE LIVEWIRE --}}
     <x-jet-secondary-button class="rounded-full" 
                 disabled {{-- DESHABILITAMOS EL BOTON YA QUE POR DEFECTO EL VALOR DE QTY ES 1 --}}

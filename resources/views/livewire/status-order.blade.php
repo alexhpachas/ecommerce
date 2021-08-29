@@ -48,24 +48,24 @@
             </p>
 
             <form wire:submit.prevent="update">
-                <div class="flex space-x-3 mt-2 text-center">
-                    <x-jet-label>
-                        <input wire:model="status" class="mr-2" type="radio" name="status" value="2">
+                <div class="flex space-x-5 mt-2 text-center lg:justify-center">
+                    <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="2">
                             RECIBIDO
                     </x-jet-label>
 
-                    <x-jet-label>
-                        <input wire:model="status" class="mr-2" type="radio" name="status" value="3">
+                    <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="3">
                             ENVIADO
                     </x-jet-label>
 
-                    <x-jet-label>
-                        <input wire:model="status" class="mr-2" type="radio" name="status" value="4">
+                    <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="4">
                             ENTREGADO
                     </x-jet-label>
 
-                    <x-jet-label>
-                        <input wire:model="status" class="mr-2" type="radio" name="status" value="5">
+                    <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="5">
                             ANULADO
                     </x-jet-label>
                 </div>
@@ -133,9 +133,9 @@
                                     src="{{ $item->options->image }}" alt="">
 
                                 <article>
-                                    <h1 class="font-bold">{{ $item->name }}</h1>
+                                    <h1 class="font-bold ">{{ $item->name }}</h1>
 
-                                    <div class="flex text-sx">
+                                    <div class="flex ">
                                         @isset($item->options->color)
                                             Color: {{ __($item->options->color) }}
                                         @endisset
@@ -161,10 +161,41 @@
                 @endforeach
 
 
-            </tbody>
+            </tbody>            
 
-        </table>
-
+        </table>  
+          
     </div>
+
+    <div class="order-1 lg:order-2 xl:col-span-2">
+        <div class="bg-white rounded-lg shadow-lg p-4 -mt-5">
+           
+
+            <div class="text-gray-700 px-5 bg-gray-100 mt-2">
+                <p class="flex justify-between items-center lg:mr-4">
+                    Subtotal
+                    <span class="font-semibold">S/. {{ $order->total - $order->shipping_cost }}</span>
+                </p>
+
+                <p class="flex justify-between items-center mt-1 lg:mr-4">
+                    Costo de envío
+                    <span class="font-semibold">
+                        S/. {{ $order->shipping_cost }}
+                    </span>
+                </p>
+
+                <hr class="mt4 mb-3">
+
+                <p class="flex justify-between items-center font-semibold lg:mr-4">
+                    <span class="text-lg"> Total</span>
+
+                    <span class="font-bold text-red-600">S/. {{ $order->total }}</span>
+                </p>
+
+            </div>
+
+            
+
+        </div>
 
 </div>

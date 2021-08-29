@@ -10,7 +10,7 @@
     <script>
         Livewire.on('deleteCategory', categorySlug =>{            
                     Swal.fire({
-                    title: 'Desea Eliminar el Producto?',
+                    title: 'Desea Eliminar la Categoria?',
                     text: "No podra recuperar el registro!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -22,13 +22,13 @@
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.create-category','delete',categorySlug)
-                        Swal.fire({
+                        /* Swal.fire({
                         position: 'center',
                         icon: 'success',
                         title: 'Eliminado Correctamente',
                         showConfirmButton: false,
                         timer: 1500
-                        })
+                        }) */
                     }
                     })
                 })

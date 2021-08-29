@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
+/* IMPORTAMOS ESA CLASE PARA CREAR UN ROL */
+use Spatie\Permission\Models\Role;
+
+
 
 class UserSeeder extends Seeder
 {
@@ -15,10 +19,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        /* CREAMOS UN ROL */
+        
+
         User::create([
             'name'=>'Alex Pachas',
             'email'=>'alex.pachas@gmail.com',
             'password'=>bcrypt('123456789')
-        ]);
+        ])->assignRole('superadmin');;
+
+        User::factory(50)->create();
     }
 }

@@ -21,7 +21,7 @@
 
         {{-- INPUT DE CANTIDAD --}}
         <div>
-            <x-jet-label value="Cantidad" />
+            <x-jet-label value="Stock" />
             <x-jet-input wire:model.defer="quantity" class="w-full" type="number" placeholder="Ingrese una cantidad" />            
 
             <x-jet-input-error for="quantity" />
@@ -54,7 +54,7 @@
                 <thead>
                     <tr>
                         <th class="px-4 py-2 w-1/3">Color</th>
-                        <th class="px-4 py-2 w-1/3">Cantidad</th>
+                        <th class="px-4 py-2 w-1/3">Stock</th>
                         <th class="px-4 py-2 w-1/3"></th>
                     </tr>
                 </thead>
@@ -118,7 +118,7 @@
 
             <div>
                 <x-jet-label>
-                    Cantidad
+                    Stock
                 </x-jet-label>
 
                 <x-jet-input wire:model="pivot_quantity" class="w-full" type="number" placeholder="Ingrese cantidad">

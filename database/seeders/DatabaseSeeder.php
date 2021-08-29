@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('subcategories');
         Storage::makeDirectory('subcategories');
         
-
+        $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(SubcategorySeeder::class);
@@ -35,5 +35,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SizeSeeder::class);
         $this->call(ColorSizeSeeder::class);
         $this->call(DepartmentSeeder::class);
+        
     }
 }

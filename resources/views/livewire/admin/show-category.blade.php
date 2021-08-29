@@ -1,7 +1,179 @@
 <div class="container py-12">
+          
+    {{-- MODAL PARA CREAR SUBCATEGORIA --}}
+    <x-jet-dialog-modal wire:model="openSubcategoryCreate">
+        <x-slot name="title">
+            CREAR NUEVA SUBCATEGORIA
+        </x-slot>
 
+        <x-slot name="content">
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label>
+                    Nombre
+                </x-jet-label>
+
+                <x-jet-input wire:model="createForm.name" class="w-full mt-1" type="text" />
+
+                <x-jet-input-error for="createForm.name" />
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label>
+                    Slug
+                </x-jet-label>
+
+                <x-jet-input wire:model="createForm.slug" class="w-full mt-1 bg-gray-100" disabled type="text" />
+
+                <x-jet-input-error for="createForm.slug" />
+            </div>
+
+            <div class="col-span-6 sm:col-span-4 mt-3">
+                <div class="flex items-center">
+                    <p>¿Esta sub categoria necesita espedicificar color?</p>
+
+                    <div class="ml-auto">
+
+                        {{-- TOGGLE --}}
+                        <div class="flex justify-items-start">
+                            <label for="toogleButton" class="flex items-center cursor-pointer">                                
+                                <div class="relative">
+                                    <input wire:model.defer="createForm.color" name="estadoVisita" id="toogleButton" type="checkbox" class="hidden" />
+                                    
+                                    <div class="toggle-path bg-gray-200 w-9 h-5 rounded-full shadow-inner">
+
+                                    </div>
+                                    
+                                    <div class="toggle-circle absolute w-3.5 h-3.5 bg-white rounded-full shadow inset-y-0 left-0">
+
+                                    </div>
+                                </div>                                
+                            </label>
+                        </div>
+                        {{-- FIN TOOGLE --}}                        
+                    </div>
+
+                    <x-jet-input-error for="createForm.color" />
+                </div>
+            </div>
+
+            <div class="col-span-6 sm:col-span-4 mt-3">
+                <div class="flex items-center">
+                    <p>¿Esta sub categoria necesita espedicificar Talla?</p>
+
+                    <div class="ml-auto">                                
+                        {{-- TOOGLE --}}
+                        <div class="flex justify-items-start">                                                            
+                            <label for="toogleButton2" class="flex items-center cursor-pointer">                                
+                                <div class="relative">
+                                    <input wire:model.defer="createForm.size" name="estadoVisita" id="toogleButton2" type="checkbox" class="hidden" />
+                                        
+                                    <div class="toggle-path bg-gray-200 w-9 h-5 rounded-full shadow-inner">
+
+                                    </div>
+                                        
+                                    <div class="toggle-circle absolute w-3.5 h-3.5 bg-white rounded-full shadow inset-y-0 left-0">
+
+                                    </div>
+                                </div>
+                            </label>
+                        </div>                                                    
+                    </div>
+                </div>
+                <x-jet-input-error for="createForm.size" />
+            </div>
+            
+        </x-slot>
+
+        <x-slot name="footer">            
+            
+            <x-jet-button wire:click="save">
+                CREAR SUBCATEGORIA
+            </x-jet-button>
+
+            <x-jet-secondary-button wire:click="cancelar">
+                CANCELAR
+            </x-jet-secondary-button>
+            
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    {{-- LISTA DE CATEGORIAS --}}
+    <div class="container py-9">    
+        {{-- CABECERA DE LAS CATEGORIAS --}}
+        <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
+            <h2 class="font-semibold text-xl text-gray-600">
+                
+                <span class="uppercase">SUBCATEGORIAS DE - {{$category->name}}</span>
+            </h2>
+
+            <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
+                NUEVA SUBCATEGORIA
+            </x-jet-button>
+
+        </div>
+        <x-table-responsive>
+            @if ($subcategories->count())
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-full">
+                                Nombre de Subcategoria
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Editar</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($subcategories as $subcategory)
+                            <tr class="hover:bg-gray-200 hover:text-red-600">
+                                <td class="py-2">
+                                    
+
+                                    <a class="uppercase  ml-4">
+                                        {{ $subcategory->name }}
+                                    </a>
+
+                                </td>
+                                <td class="py-2">
+                                    <span class="flex">                                          
+                                                                            
+                                        <div wire:click="edit('{{$subcategory->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
+                                            <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
+                                        </div>
+
+                                        <div wire:click="$emit('deleteSubcategory','{{$subcategory->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </div>
+
+                                    </span>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        <!-- More people... -->
+                    </tbody>
+                </table>
+            @else
+                <div class="px-6 py-4">
+                    No se encontraron categorias coincidente..!
+                </div>
+            @endif
+            
+        </x-table-responsive>
+    </div>
+    
     {{-- FORMULARIO CREAR CATEGORIAS --}}
-    <x-jet-form-section submit="save" class="mb-6">
+    {{-- <x-jet-form-section submit="save" class="mb-6">
         <x-slot name="title">
             <div class="mb-4">
                 CREAR NUEVA SUBCATEGORIA   
@@ -39,7 +211,7 @@
 
                     <div class="ml-auto">
 
-                        {{-- TOGGLE --}}
+                       
                         <div class="flex justify-items-start">
                             <label for="toogleButton" class="flex items-center cursor-pointer">                                
                                 <div class="relative">
@@ -55,7 +227,7 @@
                                 </div>                                
                             </label>
                         </div>
-                        {{-- FIN TOOGLE --}}
+                        
 
                         <label>
                             <input wire:model.defer="createForm.color" type="radio" value="1" name="color">                            
@@ -89,7 +261,7 @@
                         </label>
                               
 
-                        {{-- TOOGLE --}}
+                        
                         <div class="flex justify-items-start">                                                            
                             <label for="toogleButton2" class="flex items-center cursor-pointer">                                
                                 <div class="relative">
@@ -122,10 +294,10 @@
                 Agregar
             </x-jet-button>
         </x-slot>
-    </x-jet-form-section>
+    </x-jet-form-section> --}}
 
     {{-- LISTA SUB CATEGORIAS --}}
-    <x-jet-action-section>
+    {{-- <x-jet-action-section>
         <x-slot name="title">
             LISTA DE SUBCATEGORIAS
         </x-slot>
@@ -166,7 +338,7 @@
                 </tbody>
             </table>
         </x-slot>
-    </x-jet-action-section>
+    </x-jet-action-section> --}}
 
     {{-- MODAL EDITAR --}}
     <x-jet-dialog-modal wire:model="editForm.open">
@@ -219,17 +391,7 @@
                                     </div>                                
                                 </label>
                             </div>
-                            {{-- FIN TOOGLE --}}
-    
-                            <label>
-                                <input wire:model.defer="editForm.color" type="radio" value="1" name="color">                            
-                                Si
-                            </label>
-    
-                            <label>                            
-                                <input wire:model.defer="editForm.color" type="radio" value="0" name="color">
-                                No
-                            </label>
+                            {{-- FIN TOOGLE --}}                                
                         </div>
     
                         <x-jet-input-error for="editForm.color" />
@@ -240,19 +402,8 @@
                     <div class="flex items-center">
                         <p>¿Esta sub categoria necesita espedicificar Talla?</p>
     
-                        <div class="ml-auto">
-                            
-                            <label>
-                                <input wire:model.defer="editForm.size" type="radio" value="1" name="size">                            
-                                Si
-                            </label>
-    
-                            <label>                            
-                                <input wire:model.defer="editForm.size" type="radio" value="0" name="size">
-                                No
-                            </label>
-                                  
-    
+                        <div class="ml-auto">                                                       
+                                      
                             {{-- TOOGLE --}}
                             <div class="flex justify-items-start">                                                            
                                 <label for="toogleButton2Edit" class="flex items-center cursor-pointer">                                
@@ -286,6 +437,10 @@
                         wire:loading.attr="disabled">
                 ACTUALIZAR
             </x-jet-danger-button>
+
+            <x-jet-secondary-button wire:click="cancelar">
+                CANCELAR
+            </x-jet-secondary-button>
             
         </x-slot>
     </x-jet-dialog-modal>
@@ -311,7 +466,7 @@
         <script>
             Livewire.on('deleteSubcategory', subcategoryId =>{            
                         Swal.fire({
-                        title: 'Desea Eliminar la Sub Categoria?',
+                        title: 'Desea Eliminar la SubCategoria?',
                         text: "No podra recuperar el registro!",
                         icon: 'warning',
                         showCancelButton: true,

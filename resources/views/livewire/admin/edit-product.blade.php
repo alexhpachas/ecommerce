@@ -32,7 +32,7 @@
                 <h1 class=" text-2xl text-center font-semibold mb-2">Imagenes del producto</h1>
                 <ul class="flex flex-wrap ">
                     @foreach ($product->images as $image)
-                        <li class="relative" wire:key="'image-{{$image->id}}">
+                        <li class="relative" wire:key="'image-{{$image->id}}'">
                             <img class="w-32 h-20 object-cover" src="{{Storage::url($image->url)}}" alt="">
                             <x-jet-danger-button 
                                     wire:loading.attr="disabled"

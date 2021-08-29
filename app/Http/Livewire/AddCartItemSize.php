@@ -44,7 +44,10 @@ class AddCartItemSize extends Component
 
     public function mount(){
         $this->sizes = $this->product->sizes;
-        $this->options['image']= Storage::url($this->product->images->first()->url);
+        if ($this->product->images->count()) {
+            $this->options['image']= Storage::url($this->product->images->first()->url);
+        }
+        
 
     }    
 
@@ -78,6 +81,8 @@ class AddCartItemSize extends Component
         $this->quantity = aty_avaliable($this->product->id ,$this->color_id,$this->size_id);  
         $this->reset('qty');      
         $this->emitTo('dropdown-cart','render');
+        /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
+        $this->emitTo('cart-mobil','render');
     }
 
         /* Cart::destroy(); */

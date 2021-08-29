@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->call(function(){
-        $hora = now()->subMinute(1);
+        $hora = now()->subMinute(10);
 
         $orders = Order::where('status',1)->whereTime('created_at','<=',$hora)->get();
 
@@ -42,7 +42,7 @@ class Kernel extends ConsoleKernel
         $order->save();
         }
 
-        })->everyMinute();
+        })->everyTenMinutes();
     }
 
     /**

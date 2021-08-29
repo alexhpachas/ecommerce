@@ -71,8 +71,10 @@ class CreateOrder extends Component
         $order->phone = $this->phone;
         $order->envio_type = $this->envio_type;
         $order->shipping_cost = 0;
-        $order->total = $this->shipping_cost + Cart::subtotal();
+        $order->total = $this->shipping_cost + Cart::subtotalFloat();
         $order->content = Cart::content();
+
+        $order->cant_items = Cart::content()->count();
 
         if ($this->envio_type == 2) {
             $order->shipping_cost=$this->shipping_cost;
@@ -98,7 +100,12 @@ class CreateOrder extends Component
 
         Cart::destroy();
 
+        /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA COMPUTADOR */
         $this->emitTo('dropdown-cart','render');
+
+        /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
+        $this->emitTo('cart-mobil','render');
+
 
         return redirect()->route('orders.payment',$order);
         

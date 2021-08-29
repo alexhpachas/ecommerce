@@ -19,8 +19,11 @@ class CreateCategory extends Component
     protected $listeners=['delete'];
     public $brands;
     public $rand;
+    public $randEdit;
     public $categories;    
     public $category;
+    public $openCreate = false;
+    public $search;
     
     
 
@@ -79,6 +82,7 @@ class CreateCategory extends Component
         $this->getCategories();
 
         $this->rand= rand();
+        $this->randEdit = rand();
     }
 
     public function getBrands(){
@@ -99,7 +103,7 @@ class CreateCategory extends Component
 
         $category->brands()->attach($this->createForm['brands']);
         $this->rand= rand();
-        $this->reset('createForm');
+        $this->reset('createForm','openCreate');
         $this->getCategories();
 
         $this->emit('saved');
@@ -147,14 +151,23 @@ class CreateCategory extends Component
 
         $this->category->brands()->sync($this->editForm['brands']);
 
+        $this->randEdit = rand();
+
         $this->reset(['editForm','editImage']);
 
         $this->getCategories();
     }
 
+    public function cancelar(){
+        $this->resetValidation();
+        $this->reset('editForm','createForm','openCreate');
+    }
+
     public function delete(Category $category){
         $category->delete();
         $this->getCategories();
+
+        $this->emit('eliminar','La Categoria fue Eliminada');
     }
 
     public function render()

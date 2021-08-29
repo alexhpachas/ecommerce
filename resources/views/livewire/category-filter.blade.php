@@ -5,7 +5,7 @@
             <h1 class="font-semibold uppercase text-gray-700">{{$category->name}}</h1>
 
             {{-- BOTONES VISTA GRID O LISTA --}}
-            <div class="grid grid-cols-2 border border-gray-400 divide-x divide-gray-400 text-gray-400">            
+            <div class="hidden md:block grid grid-cols-2 border border-gray-400 divide-x divide-gray-400 text-gray-400">            
                 <i wire:click="$set('view','grid')" class="fas fa-border-all p-3 cursor-pointer {{$view == 'grid' ? 'text-orange-500' : ''}}" ></i>
                 <i wire:click="$set('view','lista')" class="fas fa-th-list p-3 cursor-pointer {{$view == 'lista' ? 'text-orange-500' : ''}}" ></i>
             </div>

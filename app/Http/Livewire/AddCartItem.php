@@ -57,6 +57,9 @@ class AddCartItem extends Component
 
             $this->reset('qty');
             $this->emitTo('dropdown-cart','render');      
+            
+            /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
+            $this->emitTo('cart-mobil','render');
         }
         
         /* Cart::destroy(); */

@@ -7,9 +7,9 @@ use Livewire\Component;
 
 class BrandComponent extends Component
 {
-    public $brands,$brand;
+    public $brands,$brand,$openMarcaCreate=false;
 
-    protected $listeners = ['delete'];
+    protected $listeners = ['delete','render'];
 
     /* CREAMOS ESA PROPIEDA Y DEFINIMOS TODOS LOS CAMPOS A CREAR  */
     public $createForm=[
@@ -24,7 +24,7 @@ class BrandComponent extends Component
 
     /* DEFINIMOS LA REGLAS DE VALIDACION DE LA PROPIEDAD ACCEDO AL CAMPOS Y LE DECIMOS QUE ES UN CAMPO REQUERIDO */
     public $rules = [
-        'createForm.name' => 'required'
+        'createForm.name' => 'required|unique:brands,name'
     ];
 
     /* SI FALLA LA VALIDACION EN EL CAMPO NAME QUE ME MUESTRE COMO NOMBRE, YA QUE POR DEFECTO MUESTRA CREATEFORM.NAME */
@@ -46,7 +46,7 @@ class BrandComponent extends Component
     public function save(){
         $this->validate();
         Brand::create($this->createForm);
-        $this->reset('createForm');
+        $this->reset('createForm','openMarcaCreate');
         $this->getBrands();
     }
 
@@ -59,14 +59,24 @@ class BrandComponent extends Component
 
     public function update(){
         $this->validate([
-            'editForm.name' => 'required'
+            'editForm.name' => 'required|unique:brands,name,'.$this->brand->id,
         ]);
         $this->brand->update($this->editForm);
-        $this->reset('editForm');
+        $this->reset('editForm');        
+        
         $this->getBrands();
+        
+        return redirect()->route('admin.brands.index');
+
     }
 
-    public function delete(Brand $brand){
+    public function cancelar(){
+        $this->reset('createForm','editForm','openMarcaCreate');
+        $this->resetValidation();
+    }
+
+    public function delete(Brand $brand){    
+        $this->emit('eliminar',"La Marca Fue Eliminada");
         $brand->delete();
         $this->getBrands();
     }

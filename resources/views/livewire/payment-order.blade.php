@@ -155,9 +155,9 @@
     @endphp
 
 
-    <div class="container py-8 grid grid-cols-5 gap-6">
+    <div class="container py-8 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-5 gap-6">
 
-        <div class="col-span-3">
+        <div class="order-2 lg:order-1 xl:col-span-3">
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <div class="text-center">
                     <p class="text-gray-700 uppercase"><span class="font-semibold">Número de orden :
@@ -166,107 +166,110 @@
             </div>
 
             <div class="bg-white rounded-lg shadow-lg p-3 mb-6 mt-4 text-center">
-                <div class="grid grid-cols-2 gap-3 text-gray-700">
+                <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-3 text-gray-700">
                     <div>
-                        <p class="text-lg font-semibold uppercase border-b-2 bg-gray-200 text-center">Datos de Envío</p>
+                        <p class="text-lg font-bold uppercase border-b-2 bg-gray-200 opacity-75 text-center">Datos de Envío</p>
 
                         @if ($order->envio_type == 1)
                             <p class="text-sm">Los productos deben ser recogidos en tienda</p>
                             <p class="text-sm">Calle falsa 123</p>
                         @else
-                            <p class="text-sm font-semibold">Los productos serán enviados a :</p>
+                            <p class="text-sm font-bold">Dirección de envío :</p>
                             <p class="text-sm uppercase">{{ $envio->address }}</p>
-                            <p>{{ $envio->department }} - {{ $envio->city }} - {{ $envio->district }}
+                            <p class="text-sm uppercase">{{ $envio->department }} - {{ $envio->city }} - {{ $envio->district }}
                             </p>
-                            <p class="text-sm font-semibold">Referencia: </p>
-                            <p>{{ $envio->references }}</p>
+                            <p class="text-sm font-bold">Referencia: </p>
+                            <p class="text-sm uppercase">{{ $envio->references }}</p>
 
                         @endif
                     </div>
 
                     <div>
-                        <p class="text-lg font-semibold uppercase border-b-2 bg-gray-200 text-center">Datos de contacto
+                        <p class="text-lg font-bold uppercase border-b-2 bg-gray-200 opacity-75 text-center">Datos de contacto
                         </p>
-                        <p class="text-sm font-semibold">Persona que recibira el producto:</p>
-                        <p class="text-sm font-uppercase">{{ $order->contact }}</p>
-                        <p class="text-sm font-semibold">Telefono de contacto:</p>
+                        <p class="text-sm font-bold">Persona que recibira el producto:</p>
+                        <p class="text-sm uppercase">{{ $order->contact }}</p>
+                        <p class="text-sm font-bold">Telefono de contacto:</p>
                         <p class="text-sm uppercase">{{ $order->phone }}</p>
 
                     </div>
 
                 </div>
             </div>
-
+            
+            
             <div class="bg-white rounded-lg shadow-lg p-6 text-gray-700 mb-6">
                 <p class="text-xl font-semibold mb-4 border-b-2 text-center">RESUMEN DE COMPRA</p>
+                <div class="{{ $order->cant_items > 4 ? 'overflow-y-auto h-64' : ''}}">
+                    <table class="table-auto w-full">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
 
-                <table class="table-auto w-full">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
+                        <tbody class="divide-x divide-gray-200">
+                            @foreach ($items as $key => $item)
+                            
+                                <tr class="items-center ">
+                                    <td>
+                                        <div class="flex items-center">
+                                            <img class="h-15 w-20 object-cover object-center mr-4"
+                                                src="{{ $item->options->image }}" alt="">
 
-                    <tbody class="divide-x divide-gray-200">
-                        @foreach ($items as $item)
-                            <tr class="items-center ">
-                                <td>
-                                    <div class="flex items-center">
-                                        <img class="h-15 w-20 object-cover object-center mr-4"
-                                            src="{{ $item->options->image }}" alt="">
+                                            <article>
+                                                <h1 class="font-bold">{{ $item->name }}</h1>
 
-                                        <article>
-                                            <h1 class="font-bold">{{ $item->name }}</h1>
+                                                <div class="flex text-sx">
+                                                    @isset($item->options->color)
+                                                        Color: {{ __($item->options->color) }}
+                                                        
+                                                    @endisset
 
-                                            <div class="flex text-sx">
-                                                @isset($item->options->color)
-                                                    Color: {{ __($item->options->color) }}
-                                                @endisset
+                                                    @isset($item->options->size)
+                                                        - {{ $item->options->size }}
+                                                    @endisset
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </td>
 
-                                                @isset($item->options->size)
-                                                    - {{ $item->options->size }}
-                                                @endisset
-                                            </div>
-                                        </article>
-                                    </div>
-                                </td>
+                                    <td class="text-center">
+                                        S/. {{ $item->price }}
+                                    </td>
+                                    <td class="text-center">
+                                        {{ $item->qty }}
+                                    </td>
+                                    <td class="text-center justify-items-end {{ $loop->last ? 'border-b-2' : '' }} ">
+                                        S/. {{ $item->price * $item->qty }}
+                                    </td>
 
-                                <td class="text-center">
-                                    S/. {{ $item->price }}
-                                </td>
-                                <td class="text-center">
-                                    {{ $item->qty }}
-                                </td>
-                                <td class="text-center justify-items-end {{ $loop->last ? 'border-b-2' : '' }} ">
-                                    S/. {{ $item->price * $item->qty }}
-                                </td>
-
-                        @endforeach
+                            @endforeach
 
 
-                    </tbody>
+                        </tbody>
 
-                </table>
-
+                    </table>
+                </div>
             </div>
 
         </div>
 
 
 
-        <div class="col-span-2">
-            <div class="bg-white rounded-lg shadow-lg p-6">
-                <div class="text-center text-lg bg-gray-100 border-b-2 font-bold">
+        <div class="order-1 lg:order-2 xl:col-span-2">
+            <div class="bg-white rounded-lg shadow-lg p-6 mb-3">
+                <div class="text-center text-gray-700 text-lg bg-gray-100 border-b-2 font-bold">
                     RESUMEN DE PAGO
                 </div>
 
                 <div class="text-gray-700 px-5 bg-gray-100 mt-4">
                     <p class="flex justify-between items-center">
                         Subtotal
-                        <span class="font-semibold">S/. {{ $order->total - $order->shipping_cost }}</span>
+                        <span class="font-semibold">S/. {{ floatval($order->total) - floatval($order->shipping_cost) }}</span>
                     </p>
 
                     <p class="flex justify-between items-center mt-1">
@@ -281,32 +284,65 @@
                     <p class="flex justify-between items-center font-semibold">
                         <span class="text-lg"> Total</span>
 
-                        S/. {{ $order->total }}
+                        <span class="font-bold text-red-600">S/. {{ $order->total }}</span>
                     </p>
 
                 </div>
 
-                <img class="h-15" src="{{ asset('img/VI_MA_DI.png') }}" alt="">
+                            
 
-            </div>
+            </div>    
+            
+            
+            <div class="bg-white items-center justify-center content-center py-2">
+                <div class="items-center justify-center content-center text-center object-center">
+                    {{-- <img class="h-14 w-full object-center object-cover" src="{{ asset('img/VI_MA_DI.png') }}" alt="">     --}}
 
-            {{-- BOTON MERCADO PAGO --}}
-            <div class="container bg-white rounded-lg shadow-lg p-6 flex  items-center mt-4 mb-4">
-                <div class="cho-container w-full">
+                    <p class="font-bold text-2xl text-gray-700 text-center mt-3">METODOS DE PAGO</p>
+                </div>
+               
+                <br>
+
+                {{-- BOTON MERCADO PAGO --}}            
+                <div class="cho-container justify-center text-center content-center w-full" style="width: 100" >
 
                 </div>
-            </div>
+                
+                <br>
 
-            <div class="container  rounded-lg content-center">
+                {{-- BOTON PAGO POR PAYPAL --}}
+                <div class="container  rounded-lg content-center">
 
-                <div id="paypal-button-container" class="w-full">
+                    <div id="paypal-button-container" class="w-full">
+
+                    </div>
 
                 </div>
 
+                <div class="flex text-center justify-center">
+                    <div class="mr-1">
+                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/soles.png')}}" alt="">
+                    </div>
+
+                    <div class="mr-2">
+                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/lukita.png')}}" alt="">
+                    </div>
+
+                    <div class="mr-2">
+                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/tunki.png')}}" alt="">
+                    </div>
+
+                    <div class="mr-2">
+                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/yape.png')}}" alt="">
+                    </div>
+                    <div class="mr-2">
+                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/plin2.png')}}" alt="">
+                    </div>
+
+                </div>                                                                      
             </div>
 
-        </div>
-
+        </div>        
     </div>
 
 
@@ -330,7 +366,8 @@
                 },
                 render: {
                     container: '.cho-container', // Indica el nombre de la clase donde se mostrará el botón de pago
-                    label: 'Pagar', // Cambia el texto del botón de pago (opcional)
+                    label: 'Pagar con mercado pago', // Cambia el texto del botón de pago (opcional)
+                    type: 'wallet',
                 }
             });
         </script>
