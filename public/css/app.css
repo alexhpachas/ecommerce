@@ -1473,8 +1473,8 @@ select {
 .w-3 {
 	width: 0.75rem;
 }
-.w-40 {
-	width: 10rem;
+.w-28 {
+	width: 7rem;
 }
 .w-2 {
 	width: 0.5rem;
@@ -3067,6 +3067,10 @@ select {
 		display: flex;
 	}
 
+	.lg\:max-w-screen-lg {
+		max-width: 1024px;
+	}
+
 	.lg\:grid-cols-2 {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
@@ -3091,6 +3095,16 @@ select {
 	.lg\:text-xl {
 		font-size: 1.25rem;
 		line-height: 1.75rem;
+	}
+
+	.lg\:text-lg {
+		font-size: 1.125rem;
+		line-height: 1.75rem;
+	}
+
+	.lg\:text-base {
+		font-size: 1rem;
+		line-height: 1.5rem;
 	}
 
 	.lg\:uppercase {
