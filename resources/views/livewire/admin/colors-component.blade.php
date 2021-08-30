@@ -3,7 +3,7 @@
 
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">          
 
-            <span class="font-semibold lg:text-xl sm:text-sm text-gray-600">LISTA DE COLORES</span>            
+            <span class="font-semibold lg:text-xl sm:text-sm text-gray-600 uppercase">LISTA DE COLORES</span>            
 
             <x-jet-button class="ml-auto rounded-full sm:text-xs transform hover:scale-105" wire:click="$set('openCreateColor',true)">
                 NUEVO COLOR

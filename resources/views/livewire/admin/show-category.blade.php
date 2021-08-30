@@ -6,11 +6,11 @@
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
             <h2 class="font-semibold text-xl text-gray-600">
                 
-                <span class="uppercase sm:text-xs">SUBCATEGORIAS DE - {{$category->name}}</span>
+                <span class="uppercase sm:text-sm">SUBCATEGORIAS DE - {{$category->name}}</span>
             </h2>
 
             @can('admin.subcategories.create')
-                <x-jet-button class="ml-auto rounded-full sm:text-xs transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
+                <x-jet-button class="ml-auto rounded-full sm:text-sm transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
                     NUEVA SUBCATEGORIA
                 </x-jet-button>    
             @endcan

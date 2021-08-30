@@ -4,12 +4,12 @@
     <div class="container">    
         
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600">
-                LISTA DE CATEGORIAS
-            </h2>
+
+            <span class="font-semibold lg:text-xl text-gray-600 sm:text-sm">LISTA DE CATEGORIAS</span>
+           
 
             @can('admin.categories.create')                            
-                <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openCreate',true)">
+                <x-jet-button class="ml-auto rounded-full sm:text-sm transform hover:scale-105" wire:click="$set('openCreate',true)">
                     NUEVA CATEGORIA
                 </x-jet-button>                                                   
             @endcan
