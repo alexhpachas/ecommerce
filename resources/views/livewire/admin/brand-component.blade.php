@@ -3,9 +3,8 @@
     <div class="container">    
 
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600 sm:text-xs">
-                LISTA DE MARCAS
-            </h2>
+
+            <span class="font-semibold lg:text-xl text-gray-600 sm:text-sm">LISTA DE MARCAS</span>            
 
             @can('admin.brands.create')                            
                 <x-jet-button class="ml-auto rounded-full transform sm:text-xs hover:scale-105" wire:click="$set('openMarcaCreate',true)">
