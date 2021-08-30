@@ -2,12 +2,12 @@
 
     <div class="container">    
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl sm:text-sm text-gray-600">
+            <h2 class="font-semibold text-xl sm:text-xs text-gray-600">
                 LISTA DE DEPARTAMENTOS
             </h2>
 
             @can('admin.departments.create')                            
-                <x-jet-button class="ml-auto rounded-full sm:text-sm transform hover:scale-105" wire:click="$set('openCreateDepartamento',true)">
+                <x-jet-button class="ml-auto rounded-full sm:text-xs transform hover:scale-105" wire:click="$set('openCreateDepartamento',true)">
                     NUEVO DEPARTAMENTO
                 </x-jet-button>            
             @endcan
