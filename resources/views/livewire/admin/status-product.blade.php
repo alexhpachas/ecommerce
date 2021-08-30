@@ -13,14 +13,18 @@
         </label>        
     </div>
 
-    <div class="flex justify-end">
-        <x-jet-button 
-                wire:loading.attr="disabled"
-                wire:target="save"
-                wire:click="save">
-            ACTUALIZAR
-        </x-jet-button>
-    </div>
+
+    @can('admin.products.public', Model::class)
+        <div class="flex justify-end">
+            <x-jet-button 
+                    wire:loading.attr="disabled"
+                    wire:target="save"
+                    wire:click="save">
+                ACTUALIZAR
+            </x-jet-button>
+        </div>            
+    @endcan
+    
 
 
     {{-- TOGLLE BOTON --}}

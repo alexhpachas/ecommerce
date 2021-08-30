@@ -16,6 +16,8 @@ class PaymentOrder extends Component
     public $order;
     public $contar = 0;
     public $type=1;
+    public $methodPayment=3;
+    public $openMethodPayment=false;
     
     protected $listeners =['payOrder'];
 

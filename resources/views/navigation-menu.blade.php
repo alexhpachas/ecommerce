@@ -5,40 +5,56 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="/">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                    <a href="/" class="lg:mt-8">
+                        {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                        <img class="sm:h-16 sm:w-full h-24 w-full" src="{{asset('img/logo.png')}}" alt="">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
-                        PRODUCTOS
-                    </x-jet-nav-link>
+                    @can('admin.index')
+                        <x-jet-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
+                            PRODUCTOS
+                        </x-jet-nav-link>                        
+                    @endcan
+                    
+                    @can('admin.colors.index')
+                        <x-jet-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
+                            COLORES
+                        </x-jet-nav-link>    
+                    @endcan
+                    
+                    @can('admin.brands.index')
+                        <x-jet-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
+                            MARCAS
+                        </x-jet-nav-link>    
+                    @endcan
+                    
+                    @can('admin.categories.index')
+                        <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                            CATEGORIAS
+                        </x-jet-nav-link>                        
+                    @endcan
 
-                    <x-jet-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
-                        COLORES
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
-                        MARCAS
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
-                        CATEGORIAS
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                        ORDENES
-                    </x-jet-nav-link>                    
-
-                    <x-jet-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
-                        DEPARTAMENTOS
-                    </x-jet-nav-link>
-
-                    <x-jet-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
-                        USUARIOS
-                    </x-jet-nav-link>
+                    @can('admin.orders.index')
+                        <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
+                            ORDENES
+                        </x-jet-nav-link>                        
+                    @endcan
+            
+                    @can('admin.departments.index')
+                        <x-jet-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
+                            DEPARTAMENTOS
+                        </x-jet-nav-link>    
+                    @endcan
+                    
+                    @can('admin.users.index')
+                        <x-jet-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
+                            USUARIOS
+                        </x-jet-nav-link>    
+                    @endcan
+                    
                 </div>
             </div>
 
@@ -162,33 +178,48 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
-                PRODUCTOS
-            </x-jet-responsive-nav-link>
-
-            <x-jet-responsive-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
-                COLORES
-            </x-jet-responsive-nav-link>
-
-            <x-jet-responsive-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
-                MARCAS
-            </x-jet-responsive-nav-link>
-
-            <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
-                CATEGORIAS
-            </x-jet-responsive-nav-link>
+            @can('admin.index')
+                <x-jet-responsive-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
+                    PRODUCTOS
+                </x-jet-responsive-nav-link>    
+            @endcan
             
-            <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                ORDENES
-            </x-jet-responsive-nav-link>
+            @can('admin.colors.index')
+                <x-jet-responsive-nav-link href="{{route('admin.colors.index')}}" :active="request()->routeIs('admin.colors.*')">
+                    COLORES
+                </x-jet-responsive-nav-link>    
+            @endcan
             
-            <x-jet-responsive-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
-                DEPARTAMENTOS
-            </x-jet-responsive-nav-link>
-
-            <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
-                USUARIO
-            </x-jet-responsive-nav-link>
+            @can('admin.brands.index')
+                <x-jet-responsive-nav-link href="{{route('admin.brands.index')}}" :active="request()->routeIs('admin.brands.*')">
+                    MARCAS
+                </x-jet-responsive-nav-link>    
+            @endcan
+            
+            @can('admin.categories.index')
+                <x-jet-responsive-nav-link href="{{route('admin.categories.index')}}" :active="request()->routeIs('admin.categories.*')">
+                    CATEGORIAS
+                </x-jet-responsive-nav-link>    
+            @endcan
+            
+            @can('admin.orders.index')
+                <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
+                    ORDENES
+                </x-jet-responsive-nav-link>    
+            @endcan
+            
+            @can('admin.departments.index')
+                <x-jet-responsive-nav-link href="{{route('admin.departments.index')}}" :active="request()->routeIs('admin.departments.*')">
+                    DEPARTAMENTOS
+                </x-jet-responsive-nav-link>    
+            @endcan
+            
+            @can('admin.users.index')
+                <x-jet-responsive-nav-link href="{{route('admin.users.index')}}" :active="request()->routeIs('admin.users.*')">
+                    USUARIO
+                </x-jet-responsive-nav-link>    
+            @endcan
+            
         </div>
 
         <!-- Responsive Settings Options -->

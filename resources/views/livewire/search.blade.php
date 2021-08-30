@@ -4,8 +4,8 @@
 
         <div class="flex">
             
-            <select class="flex rounded-tl-full rounded-bl-full border-2 border-gray-700" onchange="location = this.options[this.selectedIndex].value;">
-                <option value="" disabled selected>Seleccione Categoria</option>
+            <select class="flex rounded-tl-full rounded-bl-full border-2 border-gray-700 w-40" onchange="location = this.options[this.selectedIndex].value;">
+                <option value="" disabled selected>Todas</option>
                 @foreach ($categories as $category)
                     <option value="{{route('categories.show',$category)}}"><a href="">{{$category->name}}</a></option>
                 @endforeach

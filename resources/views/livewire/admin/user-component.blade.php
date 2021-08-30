@@ -69,7 +69,10 @@
                                     {{-- <x-jet-button wire:click="edit({{$user->id}})">
                                         EDITAR
                                     </x-jet-button> --}}
-                                    <a wire:key="'usuario-'.{{$user->id}}" wire:click="edit({{$user}})" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    @can('admin.users.create')
+                                        <a wire:key="'usuario-'.{{$user->id}}" wire:click="edit({{$user}})" class="text-indigo-600 hover:text-indigo-900">Edit</a>    
+                                    @endcan
+                                    
                                     
                                 </td>
                             </tr>
@@ -98,24 +101,21 @@
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
-            ASIGNAR ROL DE USUARIO
-            
-            {{$roles}}            
-            
+            ASIGNAR ROL DE USUARIO                                              
         </x-slot>
-
+        
         <x-slot name="content">
             <div class="card">
                 <div class="card-body mb-4">
                     <p class="h5">Nombre</p>
-                    <x-jet-input wire:model="usuario" disabled type="text" class="w-full bg-gray-100" />
+                    <x-jet-input wire:model="usuarioName" disabled type="text" class="w-full bg-gray-100" />
                 </div>
 
-                <div class="grid grid-cols-4">
-                    @foreach ($roles as $role)
+                <div class="grid grid-cols-3">
+                    @foreach ($permisos as $permiso)
                         <x-jet-label>
-                            <x-jet-checkbox wire:model="rol" name="rol[]" value="{{$role->id}}" />
-                                {{$role->name}}
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permiso->id}}" />
+                                {{$permiso->description}}
                         
                         </x-jet-label>
                     @endforeach

@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 
 
 use Livewire\Component;
+use Spatie\Permission\Models\Permission;
 
 class UserComponent extends Component
 {
@@ -18,8 +19,9 @@ class UserComponent extends Component
     public $open = false;
     public $usuario;    
     public $user;
-    public $roles;
+    public $permisos;
     public $rol=[];
+    public $usuarioName;
     
     public $createForm = [                  
         'roles' =>[]
@@ -35,20 +37,22 @@ class UserComponent extends Component
         $this->resetPage();
     }
 
-    public function getRoles(){
-        $this->roles = Role::all();
+    public function getPermissions(){
+        $this->permisos = Permission::orderBy('description','desc')->get();
     }
 
     public function mount(){
-        $this->getRoles();
+        $this->getPermissions();
     }
 
     public function edit(User $user){
+        $this->createForm['roles'] = $user->permissions->pluck('id');
         
-        $this->rol = $user->roles->pluck('id');    
+        /* $this->rol = $user->roles->pluck('id');   */  
 
-        $this->open = true;                        
+        $this->open = true;           
         $this->usuario = User::find($user->id);
+        $this->usuarioName = $this->usuario->name;
         /* $this->user= $user; */
         /* $this->usuario = $user->name; */
         /* $this->usuario = $this->user; */
@@ -56,23 +60,18 @@ class UserComponent extends Component
     }
 
     public function updatedEditFormRoles(){
-        $this->createForm['roles'] = $this->rol;
+        /* $this->createForm['roles'] = $this->$this->createForm['roles']; */
     }
 
     
     public function update(){                       
 
-        
-        $this->usuario->roles()->sync($this->rol);
-        /* $user->assignRole($this->editForm['roles']); */
+        $this->usuario->givePermissionTo($this->createForm['roles']);             
         $this->reset('open','rol');
 
-        $this->getRoles();
-        /* $this->category->brands()->sync($this->editForm['brands']); */
+        $this->getPermissions();
+        /* $this->usuario->permissions()->attach($this->createForm['roles']); */
 
-        /* $this->reset(['editForm','editImage']);
-
-        $this->getCategories(); */
     }
 
     public function render()

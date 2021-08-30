@@ -6,9 +6,12 @@
                     PRODUCTOS
                 </h1>
 
-                <x-jet-danger-button wire:click="$emit('deleteProduct')">
-                    ELIMINAR
-                </x-jet-danger-button>
+                @can('admin.products.files')
+                    <x-jet-danger-button wire:click="$emit('deleteProduct')">
+                        ELIMINAR
+                    </x-jet-danger-button>    
+                @endcan
+                
 
             </div>
 
@@ -38,7 +41,7 @@
                                     wire:loading.attr="disabled"
                                     wire:target="deleteImage({{$image->id}})"
                                     wire:click="deleteImage({{$image->id}})" class=" w-5 h-5 absolute right-1 top-1">
-                                x
+                                
                             </x-jet-danger-button>
                         </li>
                         
@@ -162,14 +165,16 @@
                     Registro Actualizado
                 </x-jet-action-message>
 
-                <x-jet-button 
-                        wire:loading.attr="disabled"
-                        wire:target="save"
-                        wire:click="save"                    
-                        {{-- wire:click="$emit('save')" --}}
-                        >
-                    Actualizar Producto
-                </x-jet-button>
+                @can('admin.products.edit')                                    
+                    <x-jet-button 
+                            wire:loading.attr="disabled"
+                            wire:target="save"
+                            wire:click="save"                    
+                            {{-- wire:click="$emit('save')" --}}
+                            >
+                        Actualizar Producto
+                    </x-jet-button>
+                @endcan
             </div>
         </div>
 

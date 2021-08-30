@@ -320,29 +320,30 @@
                 </div>
 
                 <div class="flex text-center justify-center">
-                    <div class="mr-1">
-                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/soles.png')}}" alt="">
+                    
+                    <div class="mr-1 cursor-pointer hover:border-2 border-red-600">
+                        <img class="h-24 w-20 object-contain" src="{{asset('img/metodo_pago/soles.png')}}" alt="">
                     </div>
 
-                    <div class="mr-2">
-                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/lukita.png')}}" alt="">
+                    <div class="mr-2 cursor-pointer hover:border-2 border-red-600">
+                        <img class="h-24 w-20 object-contain" src="{{asset('img/metodo_pago/lukita.png')}}" alt="">
                     </div>
 
-                    <div class="mr-2">
-                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/tunki.png')}}" alt="">
+                    <div class="mr-2 cursor-pointer hover:border-2 border-red-600">
+                        <img class="h-24 w-20 object-contain" src="{{asset('img/metodo_pago/tunki.png')}}" alt="">
                     </div>
 
-                    <div class="mr-2">
-                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/yape.png')}}" alt="">
+                    <div class="mr-2 cursor-pointer hover:border-2 border-red-600">
+                        <img class="h-24 w-20 object-contain" src="{{asset('img/metodo_pago/yape.png')}}" alt="">
                     </div>
-                    <div class="mr-2">
-                        <img class="h-24 w-20 " src="{{asset('img/metodo_pago/plin2.png')}}" alt="">
+                    <div class="mr-2 cursor-pointer hover:border-2 border-red-600">
+                        <img class="h-24 w-20 object-contain" src="{{asset('img/metodo_pago/plin2.png')}}" alt="">
                     </div>
 
                 </div>                                                                      
             </div>
 
-        </div>        
+        </div>                  
     </div>
 
 

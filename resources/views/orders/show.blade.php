@@ -49,7 +49,7 @@
                 </p>
 
                 @if ($order->status == 1)
-                    <x-button-enlace class="ml-auto" href="{{route('orders.payment',$order)}}">
+                    <x-button-enlace class="ml-auto text-center" href="{{route('orders.payment',$order)}}">
                         Ir a Pagar
                     </x-button-enlace>                    
                 @endif
@@ -78,7 +78,7 @@
                 </div>
 
                 <div>
-                    <p class="text-lg font-semibold uppercase border-b-2 bg-gray-200 text-center">Datos de contacto
+                    <p class="text-lg font-semibold uppercase border-b-2 bg-gray-200 text-center">Datos contacto
                     </p>
                     <p class="text-sm font-bold">Persona que recibira el producto:</p>
                     <p class="text-sm uppercase">{{ $order->contact }}</p>
@@ -95,7 +95,7 @@
             <div class="{{ $order->cant_items > 4 ? 'overflow-y-auto h-64' : ''}}">
                 <table class="table-auto w-full">
                     <thead>
-                        <tr>
+                        <tr class="sm:text-sm">
                             <th></th>
                             <th>Precio</th>
                             <th>Cantidad</th>
@@ -105,7 +105,7 @@
 
                     <tbody class="divide-x divide-gray-200">
                         @foreach ($items as $item)
-                            <tr class="items-center ">
+                            <tr class="items-center sm:text-sm ">
                                 <td>
                                     <div class="flex items-center">
                                         <img class="h-15 w-20 object-cover object-center mr-4"

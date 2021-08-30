@@ -1,5 +1,88 @@
 <div class="container py-12">
-          
+    
+    {{-- LISTA DE CATEGORIAS --}}
+    <div class="container py-9">    
+        {{-- CABECERA DE LAS CATEGORIAS --}}
+        <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
+            <h2 class="font-semibold text-xl text-gray-600">
+                
+                <span class="uppercase">SUBCATEGORIAS DE - {{$category->name}}</span>
+            </h2>
+
+            @can('admin.subcategories.create')
+                <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
+                    NUEVA SUBCATEGORIA
+                </x-jet-button>    
+            @endcan
+            
+
+        </div>
+        <x-table-responsive>
+            @if ($subcategories->count())
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-full">
+                                Nombre de Subcategoria
+                            </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Editar</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($subcategories as $subcategory)
+                            <tr class="hover:bg-gray-200 hover:text-red-600">
+                                <td class="py-2">
+                                    
+
+                                    <a class="uppercase  ml-4">
+                                        {{ $subcategory->name }}
+                                    </a>
+
+                                </td>
+                                <td class="py-2">
+                                    <span class="flex">                                          
+                                                         
+                                        @can('admin.subcategories.edit')                                                                                    
+                                            <div wire:click="edit('{{$subcategory->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
+                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                </svg>
+                                            </div>
+                                        @endcan
+
+                                        @can('admin.subcategories.delete')                                                                                    
+                                            <div wire:click="$emit('deleteSubcategory','{{$subcategory->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </div>
+                                        @endcan
+                                    </span>
+                                </td>
+                            </tr>
+                        @endforeach
+
+                        <!-- More people... -->
+                    </tbody>
+                </table>
+            @else
+                <div class="px-6 py-4">
+                    No se encontraron categorias coincidente..!
+                </div>
+            @endif
+            
+        </x-table-responsive>
+    </div>
+
+
+
     {{-- MODAL PARA CREAR SUBCATEGORIA --}}
     <x-jet-dialog-modal wire:model="openSubcategoryCreate">
         <x-slot name="title">
@@ -95,82 +178,7 @@
             </x-jet-secondary-button>
             
         </x-slot>
-    </x-jet-dialog-modal>
-
-    {{-- LISTA DE CATEGORIAS --}}
-    <div class="container py-9">    
-        {{-- CABECERA DE LAS CATEGORIAS --}}
-        <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600">
-                
-                <span class="uppercase">SUBCATEGORIAS DE - {{$category->name}}</span>
-            </h2>
-
-            <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
-                NUEVA SUBCATEGORIA
-            </x-jet-button>
-
-        </div>
-        <x-table-responsive>
-            @if ($subcategories->count())
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-full">
-                                Nombre de Subcategoria
-                            </th>
-                            <th scope="col" class="relative px-6 py-3">
-                                <span class="sr-only">Editar</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @foreach ($subcategories as $subcategory)
-                            <tr class="hover:bg-gray-200 hover:text-red-600">
-                                <td class="py-2">
-                                    
-
-                                    <a class="uppercase  ml-4">
-                                        {{ $subcategory->name }}
-                                    </a>
-
-                                </td>
-                                <td class="py-2">
-                                    <span class="flex">                                          
-                                                                            
-                                        <div wire:click="edit('{{$subcategory->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
-                                            <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
-                                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                            </svg>
-                                        </div>
-
-                                        <div wire:click="$emit('deleteSubcategory','{{$subcategory->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                            </svg>
-                                        </div>
-
-                                    </span>
-                                </td>
-                            </tr>
-                        @endforeach
-
-                        <!-- More people... -->
-                    </tbody>
-                </table>
-            @else
-                <div class="px-6 py-4">
-                    No se encontraron categorias coincidente..!
-                </div>
-            @endif
-            
-        </x-table-responsive>
-    </div>
+    </x-jet-dialog-modal>    
     
     {{-- FORMULARIO CREAR CATEGORIAS --}}
     {{-- <x-jet-form-section submit="save" class="mb-6">

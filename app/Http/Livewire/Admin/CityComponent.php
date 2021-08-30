@@ -10,7 +10,8 @@ class CityComponent extends Component
 {
     protected $listeners = ['delete'];
 
-    public $city,$districts,$district;    
+    public $city,$districts,$district;   
+    public $openCreateDistricts=false; 
 
     public $createForm = [
         'name' =>''        
@@ -39,12 +40,12 @@ class CityComponent extends Component
     public function save(){
 
         $this->validate([
-            'createForm.name' => 'required',            
+            'createForm.name' => 'required|unique:districts,name',            
         ]);
 
         $this->city->districts()->create($this->createForm);
         /* City::create($this->createForm); */
-        $this->reset('createForm');
+        $this->reset('createForm','openCreateDistricts');
         $this->getDistrics();
         $this->emit('actualizar');
     }
@@ -55,6 +56,11 @@ class CityComponent extends Component
         $this->editForm['open'] = true;
         $this->editForm['name']= $district->name;   
           
+    }
+
+    public function cancelar(){
+        $this->resetValidation();
+        $this->reset('openCreateDistricts','editForm','createForm');
     }
 
     public function update(){

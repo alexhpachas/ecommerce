@@ -70,11 +70,13 @@
                     </x-jet-label>
                 </div>
 
-                <div class="flex mt-2">
-                    <x-jet-button class="ml-auto">
-                        Actualizar
-                    </x-jet-button>
-                </div>
+                @can('admin.orders.edit')                                    
+                    <div class="flex mt-2">
+                        <x-jet-button class="ml-auto">
+                            Actualizar
+                        </x-jet-button>
+                    </div>
+                @endcan
 
             </form>
     </div>

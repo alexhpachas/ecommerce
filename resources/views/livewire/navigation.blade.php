@@ -50,11 +50,11 @@
                         </x-jet-dropdown-link>
 
                         {{-- MIS COMPRAS --}}
-                        @role('superadmin')
+                        @can('admin.index')
                             <x-jet-dropdown-link href="{{ route('admin.index') }}">
                                 Dashboard
                             </x-jet-dropdown-link>
-                        @endrole
+                        @endcan
 
                         <div class="border-t border-gray-100"></div>
 
@@ -237,14 +237,14 @@
                 Mis compras
             </a>
 
-            @role('superadmin')
+            @can('admin.index')
                 <a href="{{ route('admin.index') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
                     <span class="flex justify-center w-9">
                         <i class="fas fa-tachometer-alt"></i>
                     </span>
                     Dashboard
                 </a>
-            @endrole
+            @endcan
 
             <a href=""
             onclick="event.preventDefault();
