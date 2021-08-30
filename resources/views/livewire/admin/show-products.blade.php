@@ -2,12 +2,12 @@
     
     <x-slot name="header">
         <div class="flex items-center">
-            <h2 class="font-semibold text-xl text-gray-600">
+            <h2 class="font-semibold text-xl sm:text-sm text-gray-600">
                 LISTA DE PRODUCTOS
             </h2>
 
             @can('admin.products.create')
-                <x-button-enlace class="ml-auto" href="{{route('admin.products.create')}}">
+                <x-button-enlace class="ml-auto text-center" href="{{route('admin.products.create')}}">
                     CREAR PRODUCTO
                 </x-button-enlace>                
             @endcan

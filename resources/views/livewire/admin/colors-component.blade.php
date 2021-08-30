@@ -2,11 +2,11 @@
     <div class="container">    
 
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600">
+            <h2 class="font-semibold text-xl sm:text-sm text-gray-600">
                 LISTA DE COLORES
             </h2>
 
-            <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openCreateColor',true)">
+            <x-jet-button class="ml-auto rounded-full sm:text-sm transform hover:scale-105" wire:click="$set('openCreateColor',true)">
                 NUEVO COLOR
             </x-jet-button>            
         </div>
