@@ -4,10 +4,10 @@
     <div class="container py-9">    
         {{-- CABECERA DE LAS CATEGORIAS --}}
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600">
+           
                 
-                <span class="uppercase sm:text-sm">SUBCATEGORIAS DE - {{$category->name}}</span>
-            </h2>
+                <span class="font-bold text-gray-600 uppercase xl:text-xl text-sm text-center">{{$category->name}}</span>
+        
 
             @can('admin.subcategories.create')
                 <x-jet-button class="ml-auto rounded-full sm:text-sm transform hover:scale-105" wire:click="$set('openSubcategoryCreate',true)">
@@ -36,7 +36,7 @@
                                 <td class="py-2">
                                     
 
-                                    <a class="uppercase  ml-4">
+                                    <a class="uppercase text-sm lg:text-lg   ml-4">
                                         {{ $subcategory->name }}
                                     </a>
 

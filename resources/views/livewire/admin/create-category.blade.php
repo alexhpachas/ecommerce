@@ -5,7 +5,7 @@
         
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
 
-            <span class="font-semibold lg:text-xl text-gray-600 sm:text-sm">LISTA DE CATEGORIAS</span>
+            <span class="font-semibold lg:text-xl text-gray-600 sm:text-sm">CATEGORIAS</span>
            
 
             @can('admin.categories.create')                            

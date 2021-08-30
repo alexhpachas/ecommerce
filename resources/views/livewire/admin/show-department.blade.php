@@ -1,9 +1,11 @@
 <div class="container py-12">
     <div class="container">    
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600">
-                LISTA DE PROVINCIAS
-            </h2>
+                            
+            <span class="font-semibold text-sm xl:text-xl lg:text-lg text-gray-600">
+                PROVINCIAS DEL DEPARTAMENTO :<p class="font-bold uppercase">{{$department->name}}</p>
+            </span>
+            
 
             @can('admin.cities.create')
                 <x-jet-button class="ml-auto rounded-full transform hover:scale-105" wire:click="$set('openCreateCity',true)">
@@ -33,12 +35,12 @@
                                 <td class="py-2" wire:key="{{$city->id}}">
 
                                     @can('admin.districts.index')
-                                        <a href="{{route('admin.cities.show',$city)}}" class="uppercase hover:underline hover:text-blue-600 ml-4">
+                                        <a href="{{route('admin.cities.show',$city)}}" class="uppercase text-sm lg:text-lg hover:underline hover:text-blue-600 ml-4">
                                             
                                             {{ $city->name }}
                                         </a>                                        
                                     @else
-                                        <a class="uppercase hover:underline hover:text-blue-600 ml-4">
+                                        <a class="uppercase text-sm lg:text-lg hover:underline hover:text-blue-600 ml-4">
                                             {{ $city->name }}
                                         </a>
                                     @endcan

@@ -3,8 +3,8 @@
     <div class="container">    
 
         <div class="container flex items-center mb-3  bg-white py-4 rounded-lg shadow-lg">
-            <h2 class="font-semibold text-xl text-gray-600 uppercase">
-                DISTRITOS DE LA PROVINCIA: {{$city->name}}
+            <h2 class="font-semibold text-sm xl:text-xl text-gray-600 uppercase ">
+                DISTRITOS DE LA PROVINCIA : <p class="font-bold">{{$city->name}}</p>
             </h2>
 
             @can('admin.districts.create')                            
