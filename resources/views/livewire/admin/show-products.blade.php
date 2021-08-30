@@ -20,7 +20,7 @@
 
         {{-- BOTON BUSCADOR --}}
         <div class="px-6 py-4">
-            <x-jet-input wire:model="search" class="w-full sm:w-auto" type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
+            <x-jet-input wire:model="search" class="w-full " type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
         </div>
 
         {{-- DIBUJAMOS LA TABLE DE PRODUCTOS --}}
