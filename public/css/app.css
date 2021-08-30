@@ -1461,11 +1461,11 @@ select {
 .w-1\/3 {
 	width: 33.333333%;
 }
-.w-9 {
-	width: 2.25rem;
-}
 .w-7 {
 	width: 1.75rem;
+}
+.w-9 {
+	width: 2.25rem;
 }
 .w-3\.5 {
 	width: 0.875rem;
@@ -2787,6 +2787,14 @@ select {
 		margin-right: 1rem;
 	}
 
+	.sm\:mr-1 {
+		margin-right: 0.25rem;
+	}
+
+	.sm\:mr-2 {
+		margin-right: 0.5rem;
+	}
+
 	.sm\:block {
 		display: block;
 	}
@@ -2938,6 +2946,16 @@ select {
 	.sm\:text-left {
 		text-align: left;
 	}
+
+	.sm\:text-xs {
+		font-size: 0.75rem;
+		line-height: 1rem;
+	}
+
+	.sm\:text-sm {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
 }
 @media (min-width: 768px) {
 
@@ -3041,6 +3059,10 @@ select {
 		margin-right: 1rem;
 	}
 
+	.lg\:mr-2 {
+		margin-right: 0.5rem;
+	}
+
 	.lg\:mt-8 {
 		margin-top: 2rem;
 	}
@@ -3068,6 +3090,15 @@ select {
 	.lg\:px-8 {
 		padding-left: 2rem;
 		padding-right: 2rem;
+	}
+
+	.lg\:text-xl {
+		font-size: 1.25rem;
+		line-height: 1.75rem;
+	}
+
+	.lg\:uppercase {
+		text-transform: uppercase;
 	}
 }
 @media (min-width: 1280px) {

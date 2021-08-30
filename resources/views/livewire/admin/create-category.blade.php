@@ -39,11 +39,11 @@
 
                                     @can('admin.categories.show')                                                                            
                                         <a href="{{ route('admin.categories.show', $category) }}"
-                                            class="lg:uppercase sm:capitalize sm:text-sm hover:underline hover:text-blue-600">
+                                            class="lg:uppercase capitalize sm:text-sm hover:underline hover:text-blue-600">
                                             {{ $category->name }}
                                         </a>
                                     @else
-                                        <a class="lg:uppercase sm:capitalize sm:text-sm hover:underline hover:text-blue-600">>
+                                        <a class="lg:uppercase capitalize sm:text-sm hover:underline hover:text-blue-600">>
                                             {{ $category->name }}
                                         </a>
                                         
@@ -55,7 +55,7 @@
 
 
                                         @can('admin.categories.show')                                                                                    
-                                            <a href="{{ route('admin.categories.show', $category) }}" class="cursor-pointer w-7 lg:mr-2 sm:mr-1 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
+                                            <a href="{{ route('admin.categories.show', $category) }}" class="cursor-pointer w-7 lg:mr-2 mr-1 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -64,8 +64,8 @@
                                         @endcan                                          
                                         
                                         @can('admin.categories.edit')                                                                                    
-                                            <div wire:click="edit('{{ $category->slug }}')" class="flex divide-x divide-gray-300 font-semibold text-right">
-                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                            <div wire:click="edit('{{ $category->slug }}')" class="flex divide-x divide-gray-300 font-semibold text-right lg:mr-2 mr-1">
+                                                <svg class="cursor-pointer focus:outline-none w-7 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -75,7 +75,7 @@
                                         @endcan
 
                                         @can('admin.categories.delete')                                                                                    
-                                            <div wire:click="$emit('deleteCategory','{{ $category->slug }}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <div wire:click="$emit('deleteCategory','{{ $category->slug }}')" class="cursor-pointer w-7 lg:mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

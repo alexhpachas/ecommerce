@@ -2,9 +2,8 @@
     
     <x-slot name="header">
         <div class="flex items-center">
-            <h2 class="font-semibold text-xl sm:text-xs text-gray-600">
-                LISTA DE PRODUCTOS
-            </h2>
+
+            <span class="font-semibold lg:text-xl text-sm text-gray-600 uppercase">LISTA DE PRODUCTOS</span>                 
 
             @can('admin.products.create')
                 <x-button-enlace class="ml-auto text-center" href="{{route('admin.products.create')}}">
@@ -21,7 +20,7 @@
 
         {{-- BOTON BUSCADOR --}}
         <div class="px-6 py-4">
-            <x-jet-input wire:model="search" class="w-full" type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
+            <x-jet-input wire:model="search" class="w-full sm:w-auto" type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
         </div>
 
         {{-- DIBUJAMOS LA TABLE DE PRODUCTOS --}}
