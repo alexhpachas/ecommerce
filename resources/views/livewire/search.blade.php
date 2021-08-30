@@ -11,7 +11,7 @@
                 @endforeach
             </select>
 
-            <x-jet-input name="name" wire:model="search" type="text" class="w-full border-2 border-gray-700" placeholder="¿Estas Buscando algún producto?" />    
+            <x-jet-input name="name" wire:model="search" type="text" class="w-full border-2 border-gray-700" style="z-index: 999" placeholder="¿Estas Buscando algún producto?" />    
         </div>
         
         <button class="absolute top-0 right-0 w-12 h-full bg-orange-500 flex items-center justify-center rounded-r-md ">
