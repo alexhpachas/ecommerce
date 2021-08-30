@@ -32,7 +32,7 @@
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($categories as $category)
                             <tr class="hover:bg-gray-200 hover:text-red-600">
-                                <td class="py-2">
+                                <td class="py-2 sm:text-sm">
                                     <span class="inline-block w-8 text-center ml-4">
                                         {!! $category->icon !!}
                                     </span>
