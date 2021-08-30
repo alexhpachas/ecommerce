@@ -39,11 +39,14 @@
 
                                     @can('admin.categories.show')                                                                            
                                         <a href="{{ route('admin.categories.show', $category) }}"
-                                            class="uppercase hover:underline hover:text-blue-600">
+                                            class="uppercase sm:text-sm hover:underline hover:text-blue-600">
                                             {{ $category->name }}
                                         </a>
                                     @else
-                                        {{ $category->name }}
+                                        <a class="uppercase sm:text-sm hover:underline hover:text-blue-600">>
+                                            {{ $category->name }}
+                                        </a>
+                                        
                                     @endcan
 
                                 </td>
