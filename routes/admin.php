@@ -13,6 +13,7 @@ use App\Http\Livewire\Admin\ShowProducts;
 use App\Http\Livewire\Admin\DepartmentComponent;
 use App\Http\Livewire\Admin\ShowDepartment;
 use App\Http\Livewire\Admin\UserComponent;
+use App\Http\Livewire\Reportes\ReportComponent;
 use Illuminate\Support\Facades\Route;
 
 /* RUTA PARA MOSTRAR LISTA DE PRODUCTOS */
@@ -45,3 +46,5 @@ Route::get('departments/{department}', ShowDepartment::class)->name('admin.depar
 Route::get('cities/{city}', CityComponent::class)->name('admin.cities.show');
 
 Route::get('users', UserComponent::class)->name('admin.users.index');
+
+Route::get('reports',ReportComponent::class)->name('admin.reports.index');

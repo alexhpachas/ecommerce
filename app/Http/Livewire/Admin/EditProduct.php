@@ -18,6 +18,11 @@ class EditProduct extends Component
 
     public $category_id;
 
+    public $cambio=true;
+
+    /* NUEVA LOGICA PARA REINICIAR EL STOCK AL CAMBIAR SUBCATEGORIA */
+    public $subcategory_id;
+
     protected $listeners = ['refreshProduct','delete'];
 
     protected $rules=[
@@ -57,6 +62,10 @@ class EditProduct extends Component
 
         $this->product->subcategory_id="";
         $this->product->brand_id="";
+
+        /* NUEVA LOGICA PARA EVITAR ERRORES EN EL REPORTE */
+        $this->product->quantity=null;
+        $this->cambio = false;
     }
 
     public function getSubcategoryProperty(){
@@ -88,7 +97,8 @@ class EditProduct extends Component
 
         /* Mensaje para que aparesca la Alerta */
         $this->emit('actualizar');
-
+        
+        $this->reset('cambio');
         
     }
 
@@ -111,6 +121,11 @@ class EditProduct extends Component
 
         $this->product = $this->product->fresh();
         
+    }
+
+    public function updatedProductSubCategoryId($value){
+        $this->product->quantity =null;
+        $this->cambio = false;
     }
 
 

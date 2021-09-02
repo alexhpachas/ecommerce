@@ -5,14 +5,14 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="/" class="lg:mt-8">
+                    <a href="/" class="">
                         {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                        <img class="sm:h-16 sm:w-full h-24 w-full" src="{{asset('img/logo.png')}}" alt="">
+                        <img class="h-16 w-full" src="{{asset('img/logo.png')}}" alt="">
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <div class="hidden space-x-7 sm:-my-px sm:ml-10 sm:flex">
                     @can('admin.index')
                         <x-jet-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
                             PRODUCTOS
@@ -54,6 +54,10 @@
                             USUARIOS
                         </x-jet-nav-link>    
                     @endcan
+
+                    <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
+                        REPORTES
+                    </x-jet-nav-link>    
                     
                 </div>
             </div>
@@ -219,6 +223,10 @@
                     USUARIO
                 </x-jet-responsive-nav-link>    
             @endcan
+
+            <x-jet-responsive-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
+                REPORTES
+            </x-jet-responsive-nav-link>  
             
         </div>
 

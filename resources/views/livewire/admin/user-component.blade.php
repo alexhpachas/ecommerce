@@ -101,7 +101,10 @@
 
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
-            ASIGNAR ROL DE USUARIO                                              
+            <div class="text-center border-b-2">
+                DAR ACCESOS DE USUARIO                                                  
+            </div>
+            
         </x-slot>
         
         <x-slot name="content">
@@ -111,9 +114,9 @@
                     <x-jet-input wire:model="usuarioName" disabled type="text" class="w-full bg-gray-100" />
                 </div>
 
-                <div class="grid grid-cols-3">
+                <div class="grid grid-cols-2 lg:grid-cols-3">
                     @foreach ($permisos as $permiso)
-                        <x-jet-label>
+                        <x-jet-label class="text-sm">
                             <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permiso->id}}" />
                                 {{$permiso->description}}
                         

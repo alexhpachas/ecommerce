@@ -75,6 +75,7 @@ class CreateOrder extends Component
         $order->content = Cart::content();
 
         $order->cant_items = Cart::content()->count();
+        $order->cant_total = Cart::count();
 
         if ($this->envio_type == 2) {
             $order->shipping_cost=$this->shipping_cost;

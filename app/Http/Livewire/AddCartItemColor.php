@@ -21,8 +21,10 @@ class AddCartItemColor extends Component
 
     /* MOUNT -> CAPTURAMOS LA VARIABLE PRODUCT QUE FUE ENVIADO DESDE EL COMPONENTE */
     public function mount(){
-        $this->colors = $this->product->colors;        
-        $this->options['image'] = Storage::url($this->product->images->first()->url);     
+        $this->colors = $this->product->colors;       
+        if ($this->product->images->count()) { 
+            $this->options['image'] = Storage::url($this->product->images->first()->url);     
+            }
                         
     }
 

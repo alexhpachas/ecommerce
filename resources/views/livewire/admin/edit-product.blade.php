@@ -180,9 +180,14 @@
 
         @if ($this->subcategory)
             @if ($this->subcategory->size)
-                @livewire('admin.size-product', ['product' => $product], key('size-product-'.$product->id))
+                <div class="{{$this->cambio == false? 'hidden' : ''}}">
+                    @livewire('admin.size-product', ['product' => $product], key('size-product-'.$product->id))    
+                </div>
+                
             @elseif($this->subcategory->color)
-                @livewire('admin.color-product', ['product' => $product], key('color-product-'.$product->id))
+                <div class="{{$this->cambio == false? 'hidden' : ''}}">
+                    @livewire('admin.color-product', ['product' => $product], key('color-product-'.$product->id))
+                </div>
 
             @endif
             
