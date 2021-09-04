@@ -1,8 +1,9 @@
 <x-admin-layout>
     <div class="container py-12">
-            <div class=" grid lg:grid-cols-4 gap-5 mb-10 ">
+            
+            <div class=" grid lg:grid-cols-6 gap-5 mb-10 ">
 
-                {{-- <a href="{{ route('admin.orders.index') . '?status=1' }}">
+                <a href="{{ route('admin.orders.index') . '?status=1' }}">
                     <div
                         class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-gray-500 rounded-2xl overflow-hidden opacity-75  hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
                         <div class="bg-gray-500  flex h-20  items-center justify-center">
@@ -25,7 +26,7 @@
                         <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene {{ $pendiente }} pedidos por pagar
                         </p>                       
                     </div>
-                </a> --}}
+                </a>
     
                 <a href="{{ route('admin.orders.index') . '?status=2' }}">
                     <div
@@ -86,7 +87,7 @@
                             </svg>
                             <p class="ml-4 text-white uppercase">CONFIRMADO</p>
                         </div>
-                        <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene {{ $recibido }} pedidos pagados
+                        <p class="py-6 px-6 text-lg tracking-wide text-center">{{ $recibido }} pedidos pagados
                         </p>
     
                         {{-- <div class="flex justify-center px-5 mb-2 text-sm ">
@@ -181,6 +182,29 @@
                             <p class="ml-4 text-white uppercase">ANULADO</p>
                         </div>
                         <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene {{ $anulado }} pedidos anulados
+                        </p>
+    
+                        {{-- <div class="flex justify-center px-5 mb-2 text-sm ">
+                            <button type="button" class="w-full border border-red-500 text-red-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                                Details
+                            </button>
+                        </div> --}}
+                    </div>
+                </a>
+
+                <a href="{{ route('admin.orders.index') . '?status=6' }}">
+                    <div
+                        class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-purple-500 rounded-2xl overflow-hidden opacity-75 hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
+                        <div class="bg-purple-500  flex h-20  items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                width="50" height="50"
+                                viewBox="0 0 172 172"
+                                style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M72.24,6.88v10.32h6.88v3.77594c-36.63491,3.47364 -65.36,34.36961 -65.36,71.90406c0,39.8563 32.3837,72.24 72.24,72.24c39.8563,0 72.24,-32.3837 72.24,-72.24c0,-37.53445 -28.72509,-68.43042 -65.36,-71.90406v-3.77594h6.88v-10.32zM138.41297,17.70391l-6.90015,6.90016l15.8764,15.87641l6.90015,-6.90016zM86,27.52c36.13808,0 65.36,29.22192 65.36,65.36c0,36.13808 -29.22192,65.36 -65.36,65.36c-36.13808,0 -65.36,-29.22192 -65.36,-65.36c0,-36.13808 29.22192,-65.36 65.36,-65.36zM51.5664,55.0064c-1.39982,0.00037 -2.65984,0.84884 -3.18658,2.14577c-0.52674,1.29693 -0.21516,2.7837 0.78799,3.76001l30.19406,30.19406c-0.15753,0.57819 -0.23884,1.17449 -0.24187,1.77375c0,3.79972 3.08028,6.88 6.88,6.88c0.60121,-0.00025 1.1998,-0.07931 1.78047,-0.23515l6.10735,6.10734c0.86281,0.89867 2.14404,1.26068 3.34956,0.94641c1.20552,-0.31427 2.14696,-1.2557 2.46122,-2.46122c0.31427,-1.20552 -0.04774,-2.48675 -0.94641,-3.34956l-6.11406,-6.11406c0.15753,-0.57819 0.23884,-1.17449 0.24187,-1.77375c0,-3.79972 -3.08028,-6.88 -6.88,-6.88c-0.60121,0.00025 -1.1998,0.07931 -1.78047,0.23515l-30.18735,-30.18734c-0.64765,-0.66575 -1.53698,-1.04135 -2.46578,-1.04141z"></path></g></g>
+                            </svg>
+    
+                            <p class="ml-4 text-white uppercase">RESERVADO</p>
+                        </div>
+                        <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene {{ $reservado }} pedidos reservados
                         </p>
     
                         {{-- <div class="flex justify-center px-5 mb-2 text-sm ">
@@ -488,6 +512,13 @@
                                                     </svg>
 
                                                 @break
+
+                                                @case(6)
+                                                    <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"                                                        
+                                                        viewBox="0 0 172 172"
+                                                        style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#9b59b6"><path d="M72.24,6.88v10.32h6.88v3.77594c-36.63491,3.47364 -65.36,34.36961 -65.36,71.90406c0,39.8563 32.3837,72.24 72.24,72.24c39.8563,0 72.24,-32.3837 72.24,-72.24c0,-37.53445 -28.72509,-68.43042 -65.36,-71.90406v-3.77594h6.88v-10.32zM138.41297,17.70391l-6.90015,6.90016l15.8764,15.87641l6.90015,-6.90016zM86,27.52c36.13808,0 65.36,29.22192 65.36,65.36c0,36.13808 -29.22192,65.36 -65.36,65.36c-36.13808,0 -65.36,-29.22192 -65.36,-65.36c0,-36.13808 29.22192,-65.36 65.36,-65.36zM51.5664,55.0064c-1.39982,0.00037 -2.65984,0.84884 -3.18658,2.14577c-0.52674,1.29693 -0.21516,2.7837 0.78799,3.76001l30.19406,30.19406c-0.15753,0.57819 -0.23884,1.17449 -0.24187,1.77375c0,3.79972 3.08028,6.88 6.88,6.88c0.60121,-0.00025 1.1998,-0.07931 1.78047,-0.23515l6.10735,6.10734c0.86281,0.89867 2.14404,1.26068 3.34956,0.94641c1.20552,-0.31427 2.14696,-1.2557 2.46122,-2.46122c0.31427,-1.20552 -0.04774,-2.48675 -0.94641,-3.34956l-6.11406,-6.11406c0.15753,-0.57819 0.23884,-1.17449 0.24187,-1.77375c0,-3.79972 -3.08028,-6.88 -6.88,-6.88c-0.60121,0.00025 -1.1998,0.07931 -1.78047,0.23515l-30.18735,-30.18734c-0.64765,-0.66575 -1.53698,-1.04135 -2.46578,-1.04141z"></path></g></g>
+                                                    </svg>
+                                                @break
                                                 @default
 
                                             @endswitch
@@ -539,6 +570,14 @@
                                                 class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 opacity-75 text-white">
                                                 ANULADO
                                             </span>
+
+                                        @break
+
+                                        @case(6)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-500 opacity-75 text-white">
+                                            RESERVADO
+                                        </span>
 
                                         @break
                                         @default

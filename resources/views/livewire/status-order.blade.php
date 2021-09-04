@@ -1,7 +1,8 @@
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <a href="javascript:history.back()"><i class="fas fa-arrow-circle-left"></i></a>
+    <a href="{{ URL::previous() }}">Go Back</a>
     <div class="bg-white rounded-lg shadow-lg px-12 py-8 mb-6 flex items-center">
-
+        
         <div class="relative items-center ">
             <div class="{{$order->status >= 2 && $order->status != 5 ? 'bg-blue-400' : 'bg-gray-500'}} flex rounded-full h-12 w-12 items-center justify-center">
                 <i class="fa fa-check text-white"></i>
@@ -50,6 +51,10 @@
             <form wire:submit.prevent="update">
                 <div class="flex space-x-5 mt-2 text-center lg:justify-center">
                     <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="1">
+                            PENDIENTE
+                    </x-jet-label>
+                    <x-jet-label class="cursor-pointer">
                         <input wire:model="status" class="mr-1" type="radio" name="status" value="2">
                             RECIBIDO
                     </x-jet-label>
@@ -62,6 +67,11 @@
                     <x-jet-label class="cursor-pointer">
                         <input wire:model="status" class="mr-1" type="radio" name="status" value="4">
                             ENTREGADO
+                    </x-jet-label>
+
+                    <x-jet-label class="cursor-pointer">
+                        <input wire:model="status" class="mr-1" type="radio" name="status" value="6">
+                            RESERVADO
                     </x-jet-label>
 
                     <x-jet-label class="cursor-pointer">

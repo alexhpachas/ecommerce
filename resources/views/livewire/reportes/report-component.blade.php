@@ -1,6 +1,6 @@
 <div class="container py-7">
 
-    <div class=" grid lg:grid-cols-4 gap-5 mb-10 ">
+    <div class=" grid lg:grid-cols-5 gap-5 mb-10 ">
 
         <a>
             <div
@@ -35,9 +35,8 @@
         </a>
 
         <a>
-            <div
-                class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-green-500 rounded-2xl overflow-hidden opacity-75 hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
-                <div class="bg-green-500  flex h-20 items-center justify-center">
+            <div class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-green-500 rounded-2xl overflow-hidden opacity-75 hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
+                <div class=" bg-green-500  flex h-20 items-center text-center justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 172 172"
                         style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
@@ -91,7 +90,7 @@
                                 stroke="none" opacity="0"></path>
                         </g>
                     </svg>
-                    <p class="ml-4 text-white uppercase text-sm">COSTO ENVÍO X CUIDAD</p>
+                    <p class=" text-white uppercase text-sm">COSTO POR ENVÍO</p>
                 </div>
                 {{-- <p class="py-6 px-6 text-lg tracking-wide text-center">REPORTES PRODUCTOS --}}
                 </p>
@@ -108,8 +107,8 @@
         <a >
             <div
                 class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-yellow-500 rounded-2xl overflow-hidden opacity-75  hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
-                <div class="bg-yellow-500  flex h-20  items-center justify-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                <div class="bg-yellow-500  flex h-20  items-center text-center justify-center">
+                    <svg class="text-center" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
                         viewBox="0 0 172 172" style=" fill:#000000;">
                         <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
                             stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
@@ -123,7 +122,7 @@
                             </g>
                         </g>
                     </svg>
-                    <p class="ml-4 text-white uppercase">STOCK POR PRODUCTO</p>
+                    <p class="ml-4 text-white text-sm uppercase">STOCK PRODUCTO</p>
                 </div>
                 {{-- <p class="py-6 px-6 text-lg tracking-wide text-center">REPORTES DE CLIENTES --}}
                 </p>
@@ -154,13 +153,44 @@
                             </g>
                         </g>
                     </svg>
-                    <p class="ml-4 text-white uppercase">PRODUCTOS VENDIDOS</p>
+                    <p class=" text-white text-sm uppercase">PRODUCTOS VENDIDOS</p>
                 </div>
                 {{-- <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene  pedidos entregados --}}
                 </p>
 
                 <div class="flex justify-center px-5 mb-2 text-sm ">
                     <button wire:click="openProductosVendidos" type="button" class="w-full border border-pink-500 text-pink-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-pink-600 focus:outline-none focus:shadow-outline">
+                        Ver Ahora
+                    </button>
+                </div>
+            </div>
+        </a>
+
+        <a >
+            <div
+                class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-purple-500 rounded-2xl overflow-hidden opacity-75  hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">
+                <div class="bg-purple-500  flex h-20  items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50"
+                        viewBox="0 0 172 172" style=" fill:#000000;">
+                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                            style="mix-blend-mode: normal">
+                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                            <g fill="#ffffff">
+                                <path
+                                    d="M63.64,10.32c-4.74965,0 -8.6,3.85035 -8.6,8.6c0,4.74965 3.85035,8.6 8.6,8.6c4.74965,0 8.6,-3.85035 8.6,-8.6c0,-4.74965 -3.85035,-8.6 -8.6,-8.6zM108.36,10.32c-4.74965,0 -8.6,3.85035 -8.6,8.6c0,4.74965 3.85035,8.6 8.6,8.6c4.74965,0 8.6,-3.85035 8.6,-8.6c0,-4.74965 -3.85035,-8.6 -8.6,-8.6zM117.04735,41.18594c-1.17822,-0.00775 -2.27846,0.588 -2.91594,1.57891c0,0 -11.15123,15.71515 -28.1314,15.71515c-16.98018,0 -28.1314,-15.71515 -28.1314,-15.71515c-0.65265,-0.97448 -1.75678,-1.54933 -2.92938,-1.52516c-1.27422,0.02755 -2.42881,0.75729 -3.00048,1.89641c-0.57167,1.13912 -0.46675,2.50095 0.27267,3.53906c0,0 12.66733,18.68485 33.7886,18.68485c21.12126,0 33.7886,-18.68485 33.7886,-18.68485c0.77164,-1.0408 0.8931,-2.42686 0.31424,-3.58601c-0.57886,-1.15914 -1.75987,-1.89477 -3.05549,-1.90321zM41.33375,50.85422c-0.4253,0.00088 -0.84674,0.08062 -1.24297,0.23515l-20.64,7.60563c-1.03516,0.33242 -1.85228,1.13459 -2.20375,2.16344l-16.72297,26.76078c-0.54672,0.87765 -0.6697,1.95465 -0.33492,2.93295c0.33479,0.97831 1.09184,1.75415 2.06164,2.11283l14.94922,5.50937v39.42563c0.00132,1.44013 0.89948,2.72705 2.25078,3.225l65.36,24.08c0.7676,0.28277 1.61084,0.28277 2.37844,0l65.36,-24.08c1.35131,-0.49795 2.24947,-1.78487 2.25078,-3.225v-39.42563l14.94922,-5.50937c0.9698,-0.35868 1.72685,-1.13452 2.06164,-2.11283c0.33479,-0.97831 0.2118,-2.05531 -0.33492,-2.93295l-16.72969,-26.77422c-0.35365,-1.02219 -1.16743,-1.81855 -2.19703,-2.15c-0.04446,-0.0166 -0.08926,-0.03228 -0.13437,-0.04703l-20.50563,-7.5586c-0.4303,-0.16589 -0.88955,-0.24357 -1.35047,-0.22844c-1.64861,0.0612 -3.0217,1.28405 -3.27268,2.91459c-0.25098,1.63054 0.69082,3.20971 2.24471,3.76385l11.88547,4.38063l-55.41625,20.41828l-55.41625,-20.41828l11.88547,-4.38063c1.57961,-0.55656 2.52892,-2.16976 2.24848,-3.82091c-0.28045,-1.65115 -1.70916,-2.86044 -3.38395,-2.86425zM22.07781,66.1125l58.76891,21.64781v0.00672l-13.47781,21.56047l-58.77562,-21.64781zM149.92219,66.1125l13.48453,21.56719l-58.77562,21.64781l-13.4711,-21.56047zM82.56,97.98625v58.75547l-58.48,-21.54031v-34.49406l43.53078,16.03765c1.52827,0.56252 3.24158,-0.02354 4.10515,-1.40422zM89.44,97.98625l10.84406,17.35453c0.86357,1.38068 2.57689,1.96674 4.10515,1.40422l43.53078,-16.03765v34.49406l-58.48,21.54031z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="sm:ml-4 text-white text-sm uppercase">VENTAS POR ENVIAR</p>
+                </div>
+                {{-- <p class="py-6 px-6 text-lg tracking-wide text-center">Tiene  pedidos entregados --}}
+                </p>
+
+                <div class="flex justify-center px-5 mb-2 text-sm ">
+                    <button wire:click="openVentaEnvios" type="button" class="w-full border border-purple-500 text-purple-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-purple-600 focus:outline-none focus:shadow-outline">
                         Ver Ahora
                     </button>
                 </div>
@@ -262,7 +292,7 @@
                         </th>
 
                         <th scope="col" class="relative px-6 py-3">
-                            <span class="sr-only">Edit</span>
+                            <span class="sr-only"></span>
                         </th>
 
                     </tr>
@@ -344,7 +374,7 @@
                                             <span>NO</span>
                                         @break
                                         @case(2)
-                                            <span>SI</span>
+                                            <span class="text-red-600 font-semibold">SI</span>
                                         @break
                                         @default
 
@@ -367,7 +397,7 @@
                                 @can('admin.orders.show')
                                     <a href="{{ route('admin.orders.show', $order) }}">
                                         <div
-                                            class="cursor-pointer w-7 mr-2 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">
+                                            class="cursor-pointer w-7  border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -550,8 +580,8 @@
                     
                 </div> --}}
                 <div class="flex items-center py-2 ml-4">
-                    <x-jet-danger-button>
-                        STOCK AGOTADO
+                    <x-jet-danger-button wire:click="getStockAgotado" wire:loading.attr="disabled" wire:target="getStockAgotado">
+                        VER STOCK AGOTADOS
                     </x-jet-danger-button>
                 </div>
 
@@ -572,8 +602,324 @@
         </div>
     @endif
 
-    @if (isset($productos))
+    {{-- LOGO DE CARGA STOCK AGOTADO --}}
+    @if (isset($productsAgotado))
+        <div wire:loading wire:target="getStockAgotado"
+            class="text-center mb-4 bg-green-100 border border-green-500 text-green-700 px-4 py-3 rounded relative w-full">
+            <strong class="font-bold">!Procesando Datos!</strong>
+            <span class="block sm:inline">Por favor espere...!</span>
+        </div>
+    @endif
+
+    {{-- DATOS SOLO DE STOCK AGOTADO --}}
+    @if (isset($productosAgotados))
+
+    <div class="px-6 py-4">
+        <x-jet-input wire:model="searchStock" class="w-full " type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
+    </div>
         <x-table-responsive class="mt-3">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="py-3 px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Codigo 
+                        </th>
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            producto
+                        </th>
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Publicado
+                        </th>
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Categoria
+                        </th> 
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Subcategoria
+                        </th>  
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Marca
+                        </th>   
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Talla
+                        </th> 
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Color
+                        </th> 
+                        
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Stock
+                        </th>   
+
+                        <th scope="col"
+                            class="py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Precio
+                        </th>   
+                    </tr>
+                </thead>
+
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($productosAgotados as $producto)
+                        @if ($producto->sizes->count())      
+                            @foreach ($producto->sizes as $size)     
+                                @if ($size->colors->count())
+                                    @foreach ($size->colors as $color)
+                                        @if ($color->pivot->quantity <= $this->minimoStock)                                                                                    
+                                                <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$color->pivot->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}">
+                                                    <td class="py-2 whitespace-nowrap">
+                                                        <div class="text-sm ml-2">
+                                                            {{$producto->id}}
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            {{$producto->name}}
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            @switch($producto->status)
+                                                                @case(1)
+                                                                    <span class="text-red-500 font-bold">NO</span>
+                                                                    @break
+                                                                @case(2)
+                                                                    <span class="text-green-600 font-bold">SI</span>
+                                                                    @break
+                                                                @default
+                                                                    
+                                                            @endswitch
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            {{$producto->subcategory->category->name}}
+                                                        </div>                                
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            {{$producto->subcategory->name}}
+                                                        </div>                                
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">                                    
+                                                            {{$producto->brand->name}}
+                                                        </div>                                       
+                                                    </td>
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            {{$size->name}}
+                                                        </div>                                       
+                                                    </td>
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">                                        
+                                                            {{__($color->name)}}
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm">
+                                                            <span >
+                                                                {{$color->pivot->quantity}}
+                                                            </span>
+                                                            
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="py-2 whitespace-nowrap uppercase">
+                                                        <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                                    </td>
+                                
+                                                </tr>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            @endforeach          
+                        @endif
+
+                        @if ($producto->colors->count())
+                                @foreach ($producto->colors as $item)      
+                                    @if ($item->pivot->quantity <= $this->minimoStock)
+                                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$item->pivot->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}" >
+                                            <td class="py-2 whitespace-nowrap">
+                                                <div class="text-sm ml-2">
+                                                    {{$producto->id}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->name}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    @switch($producto->status)
+                                                        @case(1)
+                                                            <span class="text-red-500 font-bold">NO</span>
+                                                            @break
+                                                        @case(2)
+                                                            <span class="text-green-600 font-bold">SI</span>
+                                                            @break
+                                                        @default
+                                                            
+                                                    @endswitch
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->subcategory->category->name}}
+                                                </div>                                
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->subcategory->name}}
+                                                </div>                                
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">                                    
+                                                    {{$producto->brand->name}}
+                                                </div>                                       
+                                            </td>
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                
+                                                </div>                                       
+                                            </td>
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">                                        
+                                                    {{__($item->name)}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    <span >
+                                                        {{$item->pivot->quantity}}
+                                                    </span>
+                                                    
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                            </td>                
+                                        </tr>
+                                    @endif
+                                @endforeach                            
+                        @endif
+
+                        @if ($producto->quantity != null)
+                                @if ($producto->quantity <= $this->minimoStock)
+                                    <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$producto->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}" >
+                                        <td class="py-2 whitespace-nowrap">
+                                            <div class="text-sm ml-2">
+                                                {{$producto->id}}
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                                {{$producto->name}}
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                                @switch($producto->status)
+                                                    @case(1)
+                                                        <span class="text-red-500 font-bold">NO</span>
+                                                        @break
+                                                    @case(2)
+                                                        <span class="text-green-600 font-bold">SI</span>
+                                                        @break
+                                                    @default
+                                                        
+                                                @endswitch
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                                {{$producto->subcategory->category->name}}
+                                            </div>                                
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                                {{$producto->subcategory->name}}
+                                            </div>                                
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">                                    
+                                                {{$producto->brand->name}}
+                                            </div>                                       
+                                        </td>
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                            
+                                            </div>                                       
+                                        </td>
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">                                        
+                                                
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm">
+                                                <span >
+                                                    {{$producto->quantity}}
+                                                </span>
+                                                
+                                            </div>
+                                        </td>
+
+                                        <td class="py-2 whitespace-nowrap uppercase">
+                                            <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                        </td>                
+                                    </tr>
+                                @endif
+                        @endif
+
+                    @endforeach
+
+                </tbody>
+            </table>
+        </x-table-responsive>                     
+    @endif
+
+    @if (isset($productos))
+        
+    {{-- BOTON BUSCADOR --}}
+    <div class="px-6 py-4">
+        <x-jet-input wire:model="search" class="w-full " type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
+    </div>
+        <x-table-responsive class="mt-3">            
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
@@ -630,7 +976,7 @@
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
                     @foreach ($productos as $producto)
-                        @if ($producto->colors->count())                                                    
+                        {{-- @if ($producto->colors->count())                                                    
                             @foreach ($producto->colors as $item)                                                    
                                 <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$item->pivot->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}">
                                     <td class="py-2 whitespace-nowrap">
@@ -683,8 +1029,7 @@
                                         </div>                                       
                                     </td>
                                     <td class="py-2 whitespace-nowrap uppercase">
-                                        <div class="text-sm">
-                                        {{-- <i class="fas fa-circle text-{{$item->name}}-600 {{$item->name == 'white' ? 'text-white rounded-full border-2' : ''}}"></i></p> --}}
+                                        <div class="text-sm">                                        
                                             <span class="">{{__($item->name)}}</span>
                                         </div>
                                     </td>
@@ -764,8 +1109,7 @@
                                             </td>
 
                                             <td class="py-2 whitespace-nowrap uppercase">
-                                                <div class="text-sm ">
-                                                    {{-- <i class="fas fa-circle ml-2 text-center justify-center text-{{$color->name}}-600 {{$color->name == 'white' ? 'text-white rounded-full border-2' : ''}}"></i></p> --}}
+                                                <div class="text-sm ">                                                    
                                                     <span class="">{{__($color->name)}}</span>
                                                 </div>                                                 
                                             </td>
@@ -923,10 +1267,235 @@
         
                         </tr>
                         @endif
+                        @endif --}}
+
+                        {{-- NUEVA LÓGICA PARA TRAER TODOS LOS STOCK DE TODOS LOS PRODUCTOS --}}
+                        @if ($producto->sizes->count())      
+                            @foreach ($producto->sizes as $size)     
+                                @if ($size->colors->count())
+                                    @foreach ($size->colors as $color)                                                                                                                                                
+                                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$color->pivot->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}">
+                                            <td class="py-2 whitespace-nowrap">
+                                                <div class="text-sm ml-2">
+                                                    {{$producto->id}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->name}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    @switch($producto->status)
+                                                        @case(1)
+                                                            <span class="text-red-500 font-bold">NO</span>
+                                                            @break
+                                                        @case(2)
+                                                            <span class="text-green-600 font-bold">SI</span>
+                                                            @break
+                                                        @default
+                                                            
+                                                    @endswitch
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->subcategory->category->name}}
+                                                </div>                                
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$producto->subcategory->name}}
+                                                </div>                                
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">                                    
+                                                    {{$producto->brand->name}}
+                                                </div>                                       
+                                            </td>
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    {{$size->name}}
+                                                </div>                                       
+                                            </td>
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">                                        
+                                                    {{__($color->name)}}
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm">
+                                                    <span >
+                                                        {{$color->pivot->quantity}}
+                                                    </span>
+                                                    
+                                                </div>
+                                            </td>
+
+                                            <td class="py-2 whitespace-nowrap uppercase">
+                                                <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                            </td>
+                        
+                                        </tr>
+                                    @endforeach
+                                @endif                                                                                   
+                            @endforeach          
                         @endif
+
+                        @if ($producto->colors->count())
+                            @foreach ($producto->colors as $item)                                                            
+                                <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$item->pivot->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}" >
+                                    <td class="py-2 whitespace-nowrap">
+                                        <div class="text-sm ml-2">
+                                            {{$producto->id}}
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                            {{$producto->name}}
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                            @switch($producto->status)
+                                                @case(1)
+                                                    <span class="text-red-500 font-bold">NO</span>
+                                                    @break
+                                                @case(2)
+                                                    <span class="text-green-600 font-bold">SI</span>
+                                                    @break
+                                                @default
+                                                    
+                                            @endswitch
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                            {{$producto->subcategory->category->name}}
+                                        </div>                                
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                            {{$producto->subcategory->name}}
+                                        </div>                                
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">                                    
+                                            {{$producto->brand->name}}
+                                        </div>                                       
+                                    </td>
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                        
+                                        </div>                                       
+                                    </td>
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">                                        
+                                            {{__($item->name)}}
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm">
+                                            <span >
+                                                {{$item->pivot->quantity}}
+                                            </span>
+                                            
+                                        </div>
+                                    </td>
+
+                                    <td class="py-2 whitespace-nowrap uppercase">
+                                        <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                    </td>                
+                                </tr>
+                            @endforeach                            
+                        @endif
+
+                        @if ($producto->quantity != null)
+                            <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600 {{$producto->quantity <= $this->minimoStock ? 'text-red-600 font-bold' : ''}}" >
+                                <td class="py-2 whitespace-nowrap">
+                                    <div class="text-sm ml-2">
+                                        {{$producto->id}}
+                                    </div>
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                        {{$producto->name}}
+                                    </div>
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                        @switch($producto->status)
+                                            @case(1)
+                                                <span class="text-red-500 font-bold">NO</span>
+                                                @break
+                                            @case(2)
+                                                <span class="text-green-600 font-bold">SI</span>
+                                                @break
+                                            @default
+                                                
+                                        @endswitch
+                                    </div>
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                        {{$producto->subcategory->category->name}}
+                                    </div>                                
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                        {{$producto->subcategory->name}}
+                                    </div>                                
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">                                    
+                                        {{$producto->brand->name}}
+                                    </div>                                       
+                                </td>
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                    
+                                    </div>                                       
+                                </td>
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">                                        
+                                        
+                                    </div>
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm">
+                                        <span >
+                                            {{$producto->quantity}}
+                                        </span>
+                                        
+                                    </div>
+                                </td>
+
+                                <td class="py-2 whitespace-nowrap uppercase">
+                                    <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
+                                </td>                
+                            </tr>
+                        @endif                                                                        
                     @endforeach
 
-                    <!-- More people... -->
                 </tbody>
             </table>
 
@@ -974,7 +1543,6 @@
         </div>
     @endif
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
     @if (isset($ventas))
     <x-table-responsive>
           <table class="min-w-full divide-y divide-gray-200">
@@ -1095,6 +1663,291 @@
             </tbody>
           </table>
     </x-table-responsive>
+    @endif
+
+    {{-- FIN VENTAS --}}
+
+    {{-- CABECERA VENTAS --}}
+    <div class="card w-full {{ $this->openVentaEnvio == false ? 'hidden' : '' }}">
+        <div class="card-header bg-purple-400 border text-white px-4 py-2">
+            <p class="ml-3 mt-1 mb-1"> GENERAR REPORTES DE VENTAS</p></span>
+        </div>
+
+        <div class="card-body mb-4 ">
+            <div class="container  flex border-2 bg-white">
+
+                <div class="flex items-center py-2">
+                    <x-jet-label class="___class_+?18___" value="Fecha Inicio :" />
+                    <input wire:model="fechaInicio" type="date" class="form-control w-full">
+                </div>
+
+                <div class="flex items-center py-2 ml-14">
+                    <x-jet-label class="___class_+?21___" value="Fecha Fin :" />
+
+                    <input wire:model="fechaFin" type="date" class="form-control w-full">
+                </div>
+
+                <div class="flex items-center py-2 ml-auto gap-4">
+
+
+                    <x-jet-secondary-button wire:click="getVentasEnvio" wire:loading.attr="disabled" wire:target="getVentasEnvio">
+                        VER REPORTE
+                    </x-jet-secondary-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (isset($ventasEnvio))
+        <div wire:loading wire:target="getVentasEnvio"
+            class="text-center mb-4 bg-green-100 border border-green-500 text-green-700 px-4 py-3 rounded relative w-full">
+            <strong class="font-bold">!Procesando Datos!</strong>
+            <span class="block sm:inline">Por favor espere...!</span>
+        </div>
+    @endif
+
+    @if (isset($ventasEnvios))
+        <x-table-responsive class="mt-3">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Compra
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Cant:
+                        </th>
+
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Cliente
+                        </th>
+
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Contacto
+                        </th>
+
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Celular
+                        </th>
+
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Fecha de compra
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Departamento
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Cuidad
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Distrito
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Dirección
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Referencia
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Estado de compra
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Envío
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Costo-Envío
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            SubTotal
+                        </th> 
+                        {{-- <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            IGV
+                        </th>    --}}                     
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Total
+                        </th>
+
+                        <th scope="col" class="relative px-6 py-3">
+                            <span class="sr-only"></span>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($ventasEnvios as $ventasEnvio)
+                        @php
+                            $direccionEnvio = json_decode($ventasEnvio->envio);
+                        @endphp                                        
+                        <tr class="hover:bg-gray-100 hover:text-red-500 cursor-pointer">
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="flex items-center">
+
+                                    <div class="">
+                                        <div class="text-sm font-medium">
+                                            ORDER : {{ $ventasEnvio->id }}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                <div class="text-sm">{{ $ventasEnvio->cant_total }}</div>
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                <div class="text-sm">{{ $ventasEnvio->user->name }}</div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                <div class="text-sm">{{ $ventasEnvio->contact }}</div>
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">{{ $ventasEnvio->phone }}</div>
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">{{ $ventasEnvio->created_at->format('d/m/Y') }}</div>
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                @if (isset($direccionEnvio->department))
+                                    <div class="text-sm">{{ $direccionEnvio->department }}</div>    
+                                @endif                                
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                @if (isset($direccionEnvio->city))
+                                    <div class="text-sm">{{ $direccionEnvio->city }}</div>    
+                                @endif                                  
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                @if (isset($direccionEnvio->district))
+                                    <div class="text-sm">{{ $direccionEnvio->district }}</div>    
+                                @endif                                
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                @if (isset($direccionEnvio->address))
+                                    <div class="text-sm">{{ $direccionEnvio->address }}</div>    
+                                @endif                                
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap uppercase">
+                                @if (isset($direccionEnvio->references))
+                                    <div class="text-sm">{{ $direccionEnvio->references }}</div>    
+                                @endif 
+                            </td>
+
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                @switch($ventasEnvio->status)
+                                    @case(1)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-500 opacity-75 text-white">
+                                            POR PAGAR
+                                        </span>
+
+                                    @break
+                                    @case(2)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 opacity-75 text-white">
+                                            PAGADO
+                                        </span>
+
+                                    @break
+                                    @case(3)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-500 opacity-75 text-black">
+                                            ENVIADO
+                                        </span>
+
+                                    @break
+                                    @case(4)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-pink-500 opacity-75 text-white">
+                                            ENTREGADO
+                                        </span>
+
+                                    @break
+                                    @case(5)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 opacity-75 text-white">
+                                            ANULADO
+                                        </span>
+
+                                    @break
+                                    @default
+
+                                @endswitch
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">
+                                    @switch($ventasEnvio->envio_type)
+                                        @case(1)
+                                            <span>NO</span>
+                                        @break
+                                        @case(2)
+                                            <span class="text-red-600 font-semibold">SI</span>
+                                        @break
+                                        @default
+
+                                    @endswitch
+                                </div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">S/. {{ $ventasEnvio->shipping_cost}}</div>
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">S/.{{ $ventasEnvio->total - $ventasEnvio->shipping_cost }}</div>
+                            </td>   
+                            {{-- <td class="px-6 py-2 whitespace-nowrap">
+                                <div class="text-sm">S/.{{ ($ventasEnvio->total - $ventasEnvio->shipping_cost -($ventasEnvio->total - $ventasEnvio->shipping_cost)/1.18)}}</div>
+                            </td> --}}
+                            <td class="px-6 py-2 whitespace-nowrap text-sm text-red-500">
+                                S/. {{ $ventasEnvio->total }}
+                            </td>
+                            <td class="px-6 py-2 whitespace-nowrap text-right text-sm font-medium flex justify-end">
+                                @can('admin.orders.show')
+                                    <a href="{{ route('admin.orders.show', $ventasEnvio) }}">
+                                        <div
+                                            class="cursor-pointer w-7  border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            </svg>
+
+                                        </div>
+                                    </a>
+                                @endcan
+                            </td>
+                        </tr>
+                        
+                    @endforeach
+
+                    <!-- More people... -->
+                </tbody>
+            </table>
+        </x-table-responsive>            
     @endif
 
     {{-- @foreach ($ventas as $venta)            

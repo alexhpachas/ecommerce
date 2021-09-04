@@ -19,6 +19,7 @@ class ReportComponent extends Component
     public $orders=[];
     public $cities=[];
     public $products=[];
+    public $productsAgotado=[];
     public $brands;
     public $fechaInicio = null;
     public $fechaFin = null;
@@ -33,6 +34,7 @@ class ReportComponent extends Component
     public $brand_id="";
     public $openProducto;
     public $productos;
+    public $productosAgotados;
     public $categories;
     public $sizes;
     public $subcategories=[];
@@ -42,6 +44,12 @@ class ReportComponent extends Component
     public $ventas;
     public $openProductoVendido=false;
     public $minimoStock=5;
+    public $openVentaEnvio=false;
+    public $ventasEnvios;
+    public $ventasEnvio=[];
+    public $search;
+    public $searchStock;
+
     
 
     public $newFechaInicio,$newFechaFin;
@@ -54,11 +62,7 @@ class ReportComponent extends Component
         if ($this->fechaInicio != null & $this->fechaFin != null) {
             $orders = $orders->whereBetween('created_at', [$this->fechaInicio, Carbon::parse($this->fechaFin)->addDay(1)]);
             /* $orders = $orders->where('created_at','>=',Carbon::createFromFormat('Y-m-d', $this->fechaInicio)->where('create_at','>=',Carbon::createFromFormat('Y-m-d',$this->fechaFin))); */
-        }
-
-
-
-        
+        }        
 
         $orders = $orders->orderBy('created_at','desc')->get();
 
@@ -80,6 +84,8 @@ class ReportComponent extends Component
     }
 
     public function getProducts(){
+        $this->reset('searchStock');
+        $this->reset('productosAgotados');
         $products = Product::query();        
 
         if ($this->category_id) {
@@ -102,8 +108,38 @@ class ReportComponent extends Component
             $products = $products->where('brand_id',$this->brand_id);
         }
 
-        $products = $products->orderBy('subcategory_id','desc')->get();
+        $products = $products->orderBy('subcategory_id','desc')->where('name','LIKE','%'.$this->search.'%')->get();
         $this->productos = $products;
+
+    }
+
+    public function getStockAgotado(){
+        $this->reset('productos');
+        $this->reset('search');
+        $productsAgotado = Product::query();        
+
+        if ($this->category_id) {
+            $productsAgotado = $productsAgotado->whereHas('subcategory.category',function(Builder $query){
+                $query->where('id',$this->category_id);
+            });            
+        }
+
+        if ($this->size_id) {
+            $productsAgotado = $productsAgotado->whereHas('sizes',function(Builder $query){
+                $query->where('name',$this->size_id);
+            });            
+        }
+
+        if ($this->subcategory_id) {
+            $productsAgotado = $productsAgotado->where('subcategory_id',$this->subcategory_id);
+        }
+
+        if ($this->brand_id) {
+            $productsAgotado = $productsAgotado->where('brand_id',$this->brand_id);
+        }
+
+        $productsAgotado = $productsAgotado->orderBy('subcategory_id','desc')->where('name','LIKE','%'.$this->searchStock.'%')->get();
+        $this->productosAgotados = $productsAgotado;
 
     }
 
@@ -118,38 +154,66 @@ class ReportComponent extends Component
         $this->ventas = $ventasProductos;
     }
 
+    public function getVentasEnvio(){
+
+        $this->reset('ventasEnvios','ventasEnvio');
+
+        $ventasEnvio = Order::query()->where('envio_type','<>',1)->where('status',2);
+
+        if ($this->fechaInicio != null & $this->fechaFin != null) {
+            $ventasEnvio = $ventasEnvio->whereBetween('created_at', [$this->fechaInicio, Carbon::parse($this->fechaFin)->addDay(1)]);            
+        }
+        
+        $ventasEnvio = $ventasEnvio->orderBy('created_at','desc')->get();
+
+        $this->ventasEnvios = $ventasEnvio;
+    }
+
+
     public function openCities(){
-        $this->reset('openVenta','ordenes','ciudades','openProducto','productos','openProductoVendido','ventas');
+        $this->reset('openVenta','ordenes','ciudades','openProducto','productos','openProductoVendido','ventas','openVentaEnvio','ventasEnvios','productosAgotados');
         $this->openCity = true;        
     }
 
     public function openVentas(){
-        $this->reset('openCity','ciudades','openProducto','productos','openProductoVendido','ventas','fechaInicio','fechaFin');
+        $this->reset('openCity','ciudades','openProducto','productos','openProductoVendido','ventas','fechaInicio','fechaFin','openVentaEnvio','ventasEnvios','productosAgotados');
         $this->openVenta = true;
     }
 
     public function openProductos(){
-        $this->reset('openCity','openVenta','ordenes','ciudades','openProductoVendido','ventas');
+        $this->reset('openCity','openVenta','ordenes','ciudades','openProductoVendido','ventas','openVentaEnvio','ventasEnvios');
         $this->openProducto = true;
     }
 
     public function openProductosVendidos(){        
-        $this->reset('openCity','openVenta','openProducto','ordenes','ciudades','productos','fechaInicio','fechaFin');
+        $this->reset('openCity','openVenta','openProducto','ordenes','ciudades','productos','fechaInicio','fechaFin','openVentaEnvio','ventasEnvios','productosAgotados');
         $this->openProductoVendido = true;
+    }
+
+    public function openVentaEnvios(){        
+        $this->reset('openCity','ciudades','openVenta','ordenes','openProducto','productos','openProductoVendido','ventas','fechaInicio','fechaFin','productosAgotados');
+        $this->openVentaEnvio = true;
+
     }
 
     public function updatedFechaInicio(){
         $this->reset('ordenes');
         $this->reset('ventas');
+        $this->reset('ventasEnvios');
     }
 
-
-
+    
     public function cancelar(){
         $this->reset('orders','fechaInicio','fechaFin','ordenes','ciudades');
     }
 
-    
+    public function updatedSearch(){
+        $this->getProducts();
+    }
+
+    public function updatedSearchStock(){
+        $this->getStockAgotado();
+    }
 
     public function updatedCategoryId($value){
         $this->reset('subcategory_id');
@@ -165,9 +229,7 @@ class ReportComponent extends Component
 
     public function render()
     {    
-           
-       
-                
+                                  
         return view('livewire.reportes.report-component')->layout('layouts.admin');
     }
 }

@@ -17,6 +17,7 @@ class Order extends Model
     const ENVIADO = 3;  /* EL PEDIDO FUE ENVIADO */
     const ENTREGADO = 4; /* EL PEDIDO FUE ENTREGADO */
     const ANULADO = 5;  /* EL CLIENTE NO PAGO, ASI QUE SE PASA A ANULADO */
+    const RESERVADO = 6;
     
     /* RELACION UNO A MUCHOS ENTRE DEPARTAMENT Y ORDERS -> INVERSA */
 

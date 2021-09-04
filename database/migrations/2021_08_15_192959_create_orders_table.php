@@ -20,7 +20,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('contact');
             $table->string('phone');
-            $table->enum('status',[Order::PENDIENTE, Order::RECIBIDO, Order::ENVIADO, Order::ENTREGADO, Order::ANULADO])->default(Order::PENDIENTE);
+            $table->enum('status',[Order::PENDIENTE, Order::RECIBIDO, Order::ENVIADO, Order::ENTREGADO, Order::ANULADO, Order::RESERVADO])->default(Order::PENDIENTE);
             $table->enum('envio_type',[1,2]); /* TIPO DE ENVIO 1. LO RECOJE EN TIENDA - 2. LO ENVIAMOS A SU DOMICILIO */
             $table->float('shipping_cost');
             $table->float('total');
