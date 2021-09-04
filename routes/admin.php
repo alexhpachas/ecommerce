@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ExportController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Livewire\Admin\BrandComponent;
@@ -48,3 +49,5 @@ Route::get('cities/{city}', CityComponent::class)->name('admin.cities.show');
 Route::get('users', UserComponent::class)->name('admin.users.index');
 
 Route::get('reports',ReportComponent::class)->name('admin.reports.index');
+
+Route::get('export', [ExportController::class,'exportPDF'])->name('admin.export.index');

@@ -363,6 +363,13 @@
                                         </span>
 
                                     @break
+                                    @case(6)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-500 opacity-75 text-white">
+                                            RESERVADO
+                                        </span>
+
+                                    @break
                                     @default
 
                                 @endswitch
@@ -585,7 +592,8 @@
                     </x-jet-danger-button>
                 </div>
 
-                <div class="flex items-center py-2 ml-auto gap-4">                   
+                <div class="flex items-center py-2 ml-auto gap-4">    
+                    <span><a href="{{route('admin.export.index')}}" target="_blank">PDF</a></span>               
                     <x-jet-secondary-button wire:click="getProducts" wire:loading.attr="disabled" wire:target="getProducts">
                         VER REPORTE
                     </x-jet-secondary-button>
@@ -614,8 +622,9 @@
     {{-- DATOS SOLO DE STOCK AGOTADO --}}
     @if (isset($productosAgotados))
 
-    <div class="px-6 py-4">
+    <div class="px-6 py-4 flex">
         <x-jet-input wire:model="searchStock" class="w-full " type="text" placeholder="Ingrese el nombre del producto que quiere buscar" />
+        
     </div>
         <x-table-responsive class="mt-3">
             <table class="min-w-full divide-y divide-gray-200">
@@ -1574,7 +1583,7 @@
                     SubTotal
                 </th>                
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Envío
+                   Costo Envío
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Total
@@ -1890,6 +1899,13 @@
                                         <span
                                             class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-500 opacity-75 text-white">
                                             ANULADO
+                                        </span>
+
+                                    @break
+                                    @case(6)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-500 opacity-75 text-white">
+                                            RESERVADO
                                         </span>
 
                                     @break

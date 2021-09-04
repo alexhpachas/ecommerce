@@ -64,7 +64,7 @@ class ReportComponent extends Component
             /* $orders = $orders->where('created_at','>=',Carbon::createFromFormat('Y-m-d', $this->fechaInicio)->where('create_at','>=',Carbon::createFromFormat('Y-m-d',$this->fechaFin))); */
         }        
 
-        $orders = $orders->orderBy('created_at','desc')->get();
+        $orders = $orders->orderBy('created_at','desc')->where('status','<>',5)->where('status','<>',6)->get();
 
         /* $this->reset('orders'); */
         /* $this->orders = Order::query()->where('status','<>',1)->get(); */
@@ -150,7 +150,7 @@ class ReportComponent extends Component
             $ventasProductos = $ventasProductos->whereBetween('created_at', [$this->fechaInicio, Carbon::parse($this->fechaFin)->addDay(1)]);
         }
         
-        $ventasProductos = $ventasProductos->where('status','<>',1)->get();
+        $ventasProductos = $ventasProductos->where('status','<>',1)->where('status','<>',5)->get();
         $this->ventas = $ventasProductos;
     }
 
