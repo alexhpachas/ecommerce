@@ -11,8 +11,7 @@ class ExportController extends Controller
 {
     public function exportPDF(){
 
-        $productos = Product::all(); 
-        
+        $productos = Product::all();         
         $pdf = PDF::loadView('admin.reportePDF.pdf',compact('productos'));
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream('usuariosReporte.pdf');
