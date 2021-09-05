@@ -131,7 +131,7 @@
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($productos as $producto)     
                 
-                    {{-- @if ($producto->sizes->count())      
+                    @if ($producto->sizes->count())      
                         @foreach ($producto->sizes as $size)     
                             @if ($size->colors->count())
                                 @foreach ($size->colors as $color)
@@ -222,8 +222,8 @@
                             @endif                                                                                   
                         @endforeach          
                     @endif
-     --}}
-                    {{-- @if ($producto->colors->count())
+    
+                    @if ($producto->colors->count())
                         @foreach ($producto->colors as $item)     
                                                                       
                             <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
@@ -306,7 +306,7 @@
                             @endphp
                  
                         @endforeach                            
-                    @endif --}}
+                    @endif
     
                     @if ($producto->quantity != null)
                    
@@ -352,12 +352,12 @@
                             </td>
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
-                                    
+                                    --
                                 </div>                                       
                             </td>
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">                                        
-                                    
+                                    --
                                 </div>
                             </td>
     
