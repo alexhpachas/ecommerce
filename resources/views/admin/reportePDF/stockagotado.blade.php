@@ -14,7 +14,7 @@
     <tr>
         <th>
             <div width="30%" style="padding-left: 10%; margin-bottom: 3%">
-                <img src="{{asset('img/logo.png')}}" width="150" height="85">
+                <img width="150" height="85" src="https://mundodetalles.com.pe/img/LOGO.png" />
             </div>
             
         </th>
