@@ -129,9 +129,8 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($productos as $producto)
-     
-                    @if ($producto->sizes->count())      
+                @foreach ($productos as $producto)     
+                    {{-- @if ($producto->sizes->count())      
                         @foreach ($producto->sizes as $size)     
                             @if ($size->colors->count())
                                 @foreach ($size->colors as $color)
@@ -222,7 +221,7 @@
                             @endif                                                                                   
                         @endforeach          
                     @endif
-    
+     --}}
                     @if ($producto->colors->count())
                         @foreach ($producto->colors as $item)     
                                                                       
