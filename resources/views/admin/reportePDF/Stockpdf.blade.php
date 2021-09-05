@@ -333,7 +333,41 @@
                                 </div>
                             </td>
     
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->category->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                    
+                                    {{$producto->brand->name}}
+                                </div>                                       
+                            </td>
                             
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    <span >
+                                        {{$producto->quantity}}
+                                    </span>
+                                    
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm text-red-600">{{ $producto->price }}</div>
+                            </td>    
+                            
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm text-red-600">S/. {{ $producto->price * $producto->quantity }}</div>
+                            </td> 
                         </tr>
 
                         @php
