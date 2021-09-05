@@ -11,10 +11,11 @@ use Barryvdh\DomPDF\Facade as PDF;
 class PDFexportcostoEnvio extends Controller
 {
     public function envioPDF(){
-        $cities = City::query();       
+        $cities = City::all();       
         $department_id ='A'; 
+        $departamento = 'TODOS LOS DEPARTAMENTOS';
 
-        if(request('department_id') != null || (request('department_id') != "" )) {
+        /* if(request('department_id') != null || (request('department_id') != "" )) {
             $cities = $cities->where('department_id',request('department_id'));
             $department_id = request('department_id');
             $cities = $cities->orderBy('id','desc')->get();
@@ -24,7 +25,7 @@ class PDFexportcostoEnvio extends Controller
         if (request('department_id') == null || request('department_id') == "" || request('department_id') == 0 ) {
             $cities = $cities->orderBy('id','desc')->get();
             $departamento = 'TODOS LOS DEPARTAMENTOS';            
-        }
+        } */
 
         
 
