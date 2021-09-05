@@ -329,23 +329,7 @@
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->category->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">                                    
-                                    {{$producto->brand->name}}
-                                </div>                                       
-                            </td>
+                            
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
                                 
