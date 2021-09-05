@@ -19,7 +19,7 @@ class PDFexportcostoEnvio extends Controller
             $cities = $cities->where('department_id',request('department_id'));
             $department_id = request('department_id');
             $cities = $cities->orderBy('id','desc')->get();
-            $departamento = Department::find($department_id)->name;
+            $departamento = 'DEPARTAMENTO: ' . Department::find($department_id)->name;
         }
 
         if (request('department_id') == null || request('department_id') == "" || request('department_id') == 0 ) {
