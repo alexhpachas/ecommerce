@@ -39,6 +39,8 @@
 
 <body>
 
+    {{$ciudades}}
+
     @php
         $total = 0;
     @endphp
