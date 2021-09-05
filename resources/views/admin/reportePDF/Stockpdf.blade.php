@@ -38,7 +38,7 @@
         $total = 0;
     @endphp
 
-    {{$productos}}
+   
 
     <x-table-responsive class="mt-3">          
         <table class="min-w-full divide-y divide-gray-200">

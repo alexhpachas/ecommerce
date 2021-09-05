@@ -40,7 +40,7 @@ class PDFExportController extends Controller
 
         $pdf = PDF::loadView('admin.reportePDF.Stockpdf',compact('productos','titulo','categoria','subcategoria'));
         $pdf->setPaper('letter', 'landscape');
-        return $pdf->download('stock.pdf');
+        return $pdf->stream('stock.pdf');
 
     }
 }
