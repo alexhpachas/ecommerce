@@ -73,62 +73,51 @@
                 
                 </style>
                 <tr class="cabecera">
-                    <th scope="col"
-                        class="py-1 px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Codigo 
                     </th>
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         producto
                     </th>
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Sistema
                     </th>
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Categoria
                     </th> 
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Subcategoria
                     </th>  
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Marca
                     </th>   
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Talla
                     </th> 
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Color
                     </th> 
                     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Stock
                     </th>   
     
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         Precio
                     </th>   
-                    <th scope="col"
-                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    <th>
                         TOTAL
                     </th> 
                 </tr>
             </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
+            <tbody >
                 @foreach ($productos as $producto)     
                 
                     {{-- @if ($producto->sizes->count())      
@@ -333,41 +322,7 @@
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->category->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">                                    
-                                    {{$producto->brand->name}}
-                                </div>                                       
-                            </td>
                             
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    <span >
-                                        {{$producto->quantity}}
-                                    </span>
-                                    
-                                </div>
-                            </td>
-    
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm text-red-600">{{ $producto->price }}</div>
-                            </td>    
-                            
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm text-red-600">S/. {{ $producto->price * $producto->quantity }}</div>
-                            </td> 
                         </tr>
 
                         @php
