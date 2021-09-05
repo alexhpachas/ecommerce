@@ -28,6 +28,12 @@ class UserSeeder extends Seeder
             'password'=>bcrypt('123456789')
         ])->assignRole('superadmin');;
 
+        User::create([
+            'name'=>'Angemar Huaman Pachas',
+            'email'=>'angemar@autonomadeica.edu.pe',
+            'password'=>bcrypt('48256335')
+        ])->assignRole('superadmin');;
+
         User::factory(50)->create();
     }
 }
