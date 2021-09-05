@@ -69,7 +69,10 @@
                             </td>                            
                             <td class="px-6 py-2 whitespace-nowrap uppercase">
                                 <div class="text-sm ">
-                                   
+                                   {{--  @php
+                                        $departamento = \App\Models\Department::find($ciudade->department_id);
+                                    @endphp
+                                     {{$departamento->name}} --}}
                                 </div>
                             </td>
 
@@ -86,7 +89,7 @@
                         </tr>
                     @endforeach
 
-             
+                <!-- More people... -->
             </tbody>
         </table>
     
