@@ -30,15 +30,15 @@ class ReportComponent extends Component
     public $ciudades;
     public $departments;
     public $department_id=null;
-    public $category_id=0;
-    public $brand_id="";
+    public $category_id=null;
+    public $brand_id=null;
     public $openProducto;
     public $productos;
     public $productosAgotados;
     public $categories;
     public $sizes;
     public $subcategories=[];
-    public $subcategory_id="";
+    public $subcategory_id=null;
     public $size_id="";
     public $ventasProductos=[];
     public $ventas;
