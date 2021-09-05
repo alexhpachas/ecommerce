@@ -38,7 +38,7 @@
 </table>
 
 <body>
-    {{$ciudades}}
+    
 
     @php
         $total = 0;
