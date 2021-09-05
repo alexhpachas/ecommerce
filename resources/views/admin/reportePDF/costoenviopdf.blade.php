@@ -26,7 +26,7 @@
 
                 <h2 style="font-size: 16px"><strong>{{$titulo}}</strong></h2>
                 <p style="font-size: 14px"><strong>Usuario : {{ $usuario }}</strong></p>
-                {{-- <p style="font-size: 14px; text-transform: uppercase;"><strong>{{$departamento}} - SEGUN FECHA :{{date('d-m-Y')}}</strong></p> --}}
+                <p style="font-size: 14px; text-transform: uppercase;"><strong>{{$departamento}} - SEGUN FECHA :{{date('d-m-Y')}}</strong></p>
                 {{-- <p style="font-size: 14px"><strong>Fecha :{{date('d-m-Y')}}</strong></p>    --}}
                                                 
             </div>

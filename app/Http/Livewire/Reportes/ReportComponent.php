@@ -29,7 +29,7 @@ class ReportComponent extends Component
     public $nombreCuidad;
     public $ciudades;
     public $departments;
-    public $department_id=null;
+    public $department_id;
     public $category_id=0;
     public $brand_id="";
     public $openProducto;
