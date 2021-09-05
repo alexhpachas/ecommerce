@@ -19,7 +19,7 @@ class PDFexportcostoEnvio extends Controller
             $department_id = request('department_id');
         }
 
-        $cities = $cities->orderBy('id','desc')->get();
+        $cities = $cities->orderBy('id','desc')->all();
         $ciudades = $cities;
         
 
