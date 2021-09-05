@@ -458,7 +458,7 @@
 
                 <div class="flex items-center py-2 ml-auto gap-4">
                     @if (isset($ciudades))                                            
-                        <a href="{{ route('admin.costo.index')}}" target="_blank">                            
+                        <a href="{{ route('admin.costo.index').'?department_id='.$this->department_id}}" target="_blank">                            
                             <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                 width="30" height="30"
                                 viewBox="0 0 226 226"
