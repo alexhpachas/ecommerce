@@ -46,7 +46,7 @@
                 @foreach ($ciudades as $ciudade)
                         <tr class="cuerpo hover:bg-gray-100 hover:text-red-500 cursor-pointer">
                             <td class="px-6 py-2 whitespace-nowrap">
-                                {{$cuidade->id}}
+                                {{$ciudade->id}}
                             </td>                            
                             
         
