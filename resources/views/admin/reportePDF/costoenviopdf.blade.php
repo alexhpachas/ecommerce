@@ -10,32 +10,7 @@
 
 </head>
 
-<div align="center" style="font-size: 25px">
-    SISTEMA MUNDO DETALLES
-</div>
-<table>
-    <tr>
-        <th>
-            <div width="30%" style="padding-left: 10%; margin-bottom: 3%">
-                <img src="{{ asset('img/logo.png') }}" width="150" height="85">
-            </div>
 
-        </th>
-        <th>
-            <div width="70%" align="center" style="vertical-align: top; padding-top: 10px">
-
-                <h2 style="font-size: 16px"><strong>{{$titulo}}</strong></h2>
-                <p style="font-size: 14px"><strong>Usuario : {{ $usuario }}</strong></p>
-                <p style="font-size: 14px; text-transform: uppercase;"><strong>{{$departamento}} - SEGUN FECHA :{{date('d-m-Y')}}</strong></p>
-                {{-- <p style="font-size: 14px"><strong>Fecha :{{date('d-m-Y')}}</strong></p>    --}}
-                                                
-            </div>
-        </th>
-    </tr>
-
-
-
-</table>
 
 <body>
 
