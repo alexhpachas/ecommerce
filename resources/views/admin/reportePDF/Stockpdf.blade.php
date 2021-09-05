@@ -352,12 +352,12 @@
                             </td>
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
-                                    <span>A</span>
+                                    {{$producto->id}}
                                 </div>                                       
                             </td>
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">                                        
-                                    <span>B</span>
+                                    {{$producto->id}}
                                 </div>
                             </td>
     
