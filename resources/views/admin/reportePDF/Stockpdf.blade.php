@@ -36,9 +36,7 @@
 <body>
     @php
         $total = 0;
-    @endphp
-
-    {{$productos}}
+    @endphp    
 
     <x-table-responsive class="mt-3">          
         <table class="min-w-full divide-y divide-gray-200">
@@ -273,7 +271,7 @@
                                 </td>
                                 <td class="py-1 whitespace-nowrap uppercase">
                                     <div class="text-sm">
-                                    
+                                        --
                                     </div>                                       
                                 </td>
                                 <td class="py-1 whitespace-nowrap uppercase">
