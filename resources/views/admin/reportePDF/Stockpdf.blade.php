@@ -310,20 +310,20 @@
     
                     @if ($producto->quantity != null)
                    
-                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
-                            <td class="py-1 whitespace-nowrap">
+                        <tr >
+                            <td class="">
                                 <div class="text-sm ml-1">
                                     {{$producto->id}}
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">
                                     {{$producto->name}}
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">
                                     @if ($producto->status == 1)
                                         <span class="text-red-500 font-bold">NO</span>
@@ -333,26 +333,26 @@
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">
                                     {{$producto->subcategory->category->name}}
                                 </div>                                
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">
                                     {{$producto->subcategory->name}}
                                 </div>                                
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">                                    
                                     {{$producto->brand->name}}
                                 </div>                                       
                             </td>
                             
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm">
                                     <span >
                                         {{$producto->quantity}}
@@ -361,11 +361,11 @@
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm text-red-600">{{ $producto->price }}</div>
                             </td>    
                             
-                            <td class="py-1 whitespace-nowrap uppercase">
+                            <td class="">
                                 <div class="text-sm text-red-600">S/. {{ $producto->price * $producto->quantity }}</div>
                             </td> 
                         </tr>
