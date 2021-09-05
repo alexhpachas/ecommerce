@@ -58,7 +58,7 @@ Route::get('reports',ReportComponent::class)->name('admin.reports.index');
 
 /* RUTA PARA EXPORTAR LOS REPORTES A PDF */
 
-Route::get('export', [PDFExportController::class,'exportPDF'])->name('admin.export.index');
+Route::get('export/', [PDFExportController::class,'exportPDF'])->name('admin.export.index');
 
 Route::get('export/stockagotado',[PDFStockAgotadoController::class,'stockAgotadoPDF'])->name('admin.agotado.index');
 
