@@ -350,15 +350,6 @@
                                 </div>
                             </td>
     
-                            <td>
-                                <div>
-                                </div>
-                            </td>    
-                            
-                            <td>
-                                <div>
-                                </div>
-                            </td> 
                         </tr>
 
                         @php
