@@ -350,7 +350,16 @@
                                     {{$producto->brand->name}}
                                 </div>                                       
                             </td>
-                            
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    
+                                </div>                                       
+                            </td>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                        
+                                    
+                                </div>
+                            </td>
     
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
