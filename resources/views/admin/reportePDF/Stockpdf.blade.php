@@ -310,7 +310,7 @@
     
                     @if ($producto->quantity != null)
                    
-                        <tr class="cuerpo" >
+                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
                             <td class="py-1 whitespace-nowrap">
                                 <div class="text-sm ml-1">
                                     {{$producto->id}}
@@ -323,6 +323,39 @@
                                 </div>
                             </td>
     
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    @switch($producto->status)
+                                        @case(1)
+                                            <span class="text-red-500 font-bold">NO</span>
+                                            @break
+                                        @case(2)
+                                            <span class="text-green-600 font-bold">SI</span>
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->category->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                    
+                                    {{$producto->brand->name}}
+                                </div>                                       
+                            </td>
+                            
     
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
