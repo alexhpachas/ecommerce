@@ -71,48 +71,59 @@
                         width: 100%;
                     }
                 
-            </style>
-                <tr >
-                    <th>
+                </style>
+                <tr class="cabecera">
+                    <th scope="col"
+                        class="py-1 px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Codigo 
                     </th>
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         producto
                     </th>
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Sistema
                     </th>
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Categoria
                     </th> 
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Subcategoria
                     </th>  
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Marca
                     </th>   
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Talla
                     </th> 
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Color
                     </th> 
                     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Stock
                     </th>   
     
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Precio
                     </th>   
-                    <th>
+                    <th scope="col"
+                        class="py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         TOTAL
                     </th> 
                 </tr>
@@ -299,50 +310,59 @@
     
                     @if ($producto->quantity != null)
                    
-                        <tr >
-                            <td>
-                                <div>
+                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
+                            <td class="py-1 whitespace-nowrap">
+                                <div class="text-sm ml-1">
                                     {{$producto->id}}
                                 </div>
                             </td>
     
-                            <td>
-                                <div>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
                                     {{$producto->name}}
                                 </div>
                             </td>
     
-                            <td>
-                                <div>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
                                     @if ($producto->status == 1)
-                                        <span>
+                                        <span class="text-red-500 font-bold">NO</span>
                                     @else
-                                        <span>
+                                        <span class="text-green-600 font-bold">SI</span>
                                     @endif
                                 </div>
                             </td>
     
-                            <td>
-                                <div>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
                                     {{$producto->subcategory->category->name}}
                                 </div>                                
                             </td>
     
-                            <td>
-                                <div>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
                                     {{$producto->subcategory->name}}
                                 </div>                                
                             </td>
     
-                            <td>
-                                <div> 
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                    
                                     {{$producto->brand->name}}
                                 </div>                                       
                             </td>
-                            
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    <span>A</span>
+                                </div>                                       
+                            </td>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                        
+                                    <span>B</span>
+                                </div>
+                            </td>
     
-                            <td>
-                                <div>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
                                     <span >
                                         {{$producto->quantity}}
                                     </span>
@@ -350,6 +370,13 @@
                                 </div>
                             </td>
     
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm text-red-600">{{ $producto->price }}</div>
+                            </td>    
+                            
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm text-red-600">S/. {{ $producto->price * $producto->quantity }}</div>
+                            </td> 
                         </tr>
 
                         @php
