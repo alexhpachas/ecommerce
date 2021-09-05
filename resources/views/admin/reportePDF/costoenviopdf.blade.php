@@ -104,11 +104,7 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($ciudades as $ciudade)
-                        {{$ciudade->id}}
-                    @endforeach
-
-                <!-- More people... -->
+                {{$ciudades}}
             </tbody>
         </table>
     </x-table-responsive>      
