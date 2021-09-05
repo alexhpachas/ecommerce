@@ -310,7 +310,7 @@
     
                     @if ($producto->quantity != null)
                    
-                        <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
+                        <tr class="cuerpo" >
                             <td class="py-1 whitespace-nowrap">
                                 <div class="text-sm ml-1">
                                     {{$producto->id}}
