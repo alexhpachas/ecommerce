@@ -18,8 +18,10 @@ class PDFexportcostoEnvio extends Controller
             $cities = $cities->where('department_id',request('department_id'));
             $department_id = request('department_id');
             $cities = $cities->orderBy('id','desc')->get();
+            $departamento = Department::find($department_id)->name;
         }else{
             $cities = $cities->orderBy('id','desc')->get();
+            $departamento = 'TODOS LOS DEPARTAMENTOS'
         }
 
         
@@ -32,7 +34,7 @@ class PDFexportcostoEnvio extends Controller
 
         $usuario = auth()->user()->name;
 
-        $departamento = $department_id != null & $department_id != "" ? 'DEPARTAMENTO: '. Department::find($department_id)->name : 'TODOS LOS DEPARTAMENTOS';
+        /* $departamento = $department_id != null & $department_id != "" ? 'DEPARTAMENTO: '. Department::find($department_id)->name : 'TODOS LOS DEPARTAMENTOS'; */
 
         $pdf = PDF::loadView('admin.reportePDF.costoenviopdf',compact('ciudades','usuario','titulo','departamento'));
         /* $pdf->setPaper('letter', 'landscape'); */
