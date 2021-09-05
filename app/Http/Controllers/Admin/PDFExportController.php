@@ -35,8 +35,8 @@ class PDFExportController extends Controller
 
         $titulo ="REPORTE DE STOCK DE PRODUCTOS";
 
-        $categoria = request('category_id') == null ? 'TODAS LAS CATEGORIAS' : 'CATEGORIA: ' . Category::find(request('category_id'))->name;
-        $subcategoria = request('subcategory_id') == null ? '' : 'SUBCATEGORIA: ' . Subcategory::find(request('subcategory_id'))->name;
+        $categoria = request('category_id') == 0 ? 'TODAS LAS CATEGORIAS' : 'CATEGORIA: ' . Category::find(request('category_id'))->name;
+        $subcategoria = request('subcategory_id') == "" ? '' : 'SUBCATEGORIA: ' . Subcategory::find(request('subcategory_id'))->name;
 
         $pdf = PDF::loadView('admin.reportePDF.Stockpdf',compact('productos','titulo','categoria','subcategoria'));
         $pdf->setPaper('letter', 'landscape');
