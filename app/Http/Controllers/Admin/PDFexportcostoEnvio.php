@@ -14,14 +14,14 @@ class PDFexportcostoEnvio extends Controller
         $cities = City::query();       
         $department_id ='A'; 
 
-        if(request('department_id') != null & (request('department_id') != "" )) {
+        if(request('department_id') != null || (request('department_id') != "" )) {
             $cities = $cities->where('department_id',request('department_id'));
             $department_id = request('department_id');
             $cities = $cities->orderBy('id','desc')->get();
             $departamento = Department::find($department_id)->name;
         }else{
             $cities = $cities->orderBy('id','desc')->get();
-            $departamento = 'TODOS LOS DEPARTAMENTOS'
+            $departamento = 'TODOS LOS DEPARTAMENTOS';
         }
 
         
