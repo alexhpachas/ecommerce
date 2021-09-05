@@ -11,7 +11,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 class PDFexportcostoEnvio extends Controller
 {
     public function envioPDF(){
-        $cities = City::query();        
+        $cities = City::query();       
+        $department_id =0; 
 
         if (request('department_id') != 0) {
             $cities = $cities->where('department_id',request('department_id'));
@@ -20,11 +21,13 @@ class PDFexportcostoEnvio extends Controller
         $cities = $cities->orderBy('id','desc')->get();
         $ciudades = $cities;
 
+        $department_id = request('department_id');
+
         $titulo ="REPORTE COSTO DE ENVÍO POR CIUDAD";        
 
         $usuario = auth()->user()->name;
 
-        $departamento = request('department_id') == 0 ? 'TODOS LOS DEPARTAMENTOS' : 'DEPARTAMENTO: '. Department::find(request('department_id'))->name;
+        $departamento = $department_id == 0 ? 'TODOS LOS DEPARTAMENTOS' : 'DEPARTAMENTO: '. Department::find($department_id)->name;
 
         $pdf = PDF::loadView('admin.reportePDF.costoenviopdf',compact('ciudades','usuario','titulo','departamento'));
         /* $pdf->setPaper('letter', 'landscape'); */
