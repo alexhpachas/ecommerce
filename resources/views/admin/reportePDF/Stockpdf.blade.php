@@ -323,20 +323,7 @@
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
-                                    @switch($producto->status)
-                                        @case(1)
-                                            <span class="text-red-500 font-bold">NO</span>
-                                            @break
-                                        @case(2)
-                                            <span class="text-green-600 font-bold">SI</span>
-                                            @break
-                                        @default
-                                            
-                                    @endswitch
-                                </div>
-                            </td>
+                            
     
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
