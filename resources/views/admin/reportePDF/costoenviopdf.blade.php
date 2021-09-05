@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -14,9 +14,7 @@
 
 <body>
 
-    @php
-        $total = 0;
-    @endphp
+    
 
     <x-table-responsive class="mt-3">
         <table class="min-w-full divide-y divide-gray-200">
