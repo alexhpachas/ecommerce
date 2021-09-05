@@ -105,7 +105,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($ciudades as $ciudade)
-                        {{$ciudade}}
+                        {{$ciudade->id}}
                     @endforeach
 
                 <!-- More people... -->
