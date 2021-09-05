@@ -222,7 +222,7 @@
                         @endforeach          
                     @endif
      --}}
-                    @if ($producto->colors->count())
+                    {{-- @if ($producto->colors->count())
                         @foreach ($producto->colors as $item)     
                                                                       
                             <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
@@ -305,7 +305,7 @@
                             @endphp
                  
                         @endforeach                            
-                    @endif
+                    @endif --}}
     
                     @if ($producto->quantity != null)
                    
