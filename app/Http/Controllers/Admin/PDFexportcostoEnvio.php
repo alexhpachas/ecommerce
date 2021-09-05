@@ -16,12 +16,12 @@ class PDFexportcostoEnvio extends Controller
 
         if (request('department_id') != 0) {
             $cities = $cities->where('department_id',request('department_id'));
+            $department_id = request('department_id');
         }
 
         $cities = $cities->orderBy('id','desc')->get();
         $ciudades = $cities;
-
-        $department_id = request('department_id');
+        
 
         $titulo ="REPORTE COSTO DE ENVÍO POR CIUDAD";        
 
