@@ -105,39 +105,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($ciudades as $ciudade)
-                        <tr class="cuerpo hover:bg-gray-100 hover:text-red-500 cursor-pointer">
-                            <td class="px-6 py-2 whitespace-nowrap">
-                                <div class="flex items-center">
-
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium ">
-                                            {{ $ciudade->id }}
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-2 whitespace-nowrap uppercase">
-                                {{-- <div class="text-sm ">
-                                    @php
-                                        $departamento = \App\Models\Department::find($ciudade->department_id);
-                                    @endphp
-                                     {{$departamento->name}}
-                                </div> --}}
-                            </td>
-
-                            <td class="px-6 py-2 whitespace-nowrap uppercase">
-                                <div class="text-sm ">
-                                    {{$ciudade->name}}
-                                </div>
-                            </td>
-
-                            <td class="px-6 py-2 whitespace-nowrap uppercase">
-                                <div class="text-sm font-bold text-red-600">S/. {{ $ciudade->cost }}</div>
-                            </td>
-        
-                        </tr>
+                        {{$ciudade}}
                     @endforeach
 
                 <!-- More people... -->
