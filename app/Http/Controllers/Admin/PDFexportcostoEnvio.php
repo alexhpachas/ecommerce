@@ -27,9 +27,9 @@ class PDFexportcostoEnvio extends Controller
 
         $usuario = auth()->user()->name;
 
-        $departamento = $department_id == 0 ? 'TODOS LOS DEPARTAMENTOS' : 'DEPARTAMENTO: '. Department::find($department_id)->name;
+        /* $departamento = $department_id == 0 ? 'TODOS LOS DEPARTAMENTOS' : 'DEPARTAMENTO: '. Department::find($department_id)->name; */
 
-        $pdf = PDF::loadView('admin.reportePDF.costoenviopdf',compact('ciudades','usuario','titulo','departamento'));
+        $pdf = PDF::loadView('admin.reportePDF.costoenviopdf',compact('ciudades','usuario','titulo'));
         /* $pdf->setPaper('letter', 'landscape'); */
 
         
