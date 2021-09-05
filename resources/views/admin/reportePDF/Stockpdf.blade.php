@@ -317,7 +317,69 @@
                                 </div>
                             </td>
     
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->name}}
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    @switch($producto->status)
+                                        @case(1)
+                                            <span class="text-red-500 font-bold">NO</span>
+                                            @break
+                                        @case(2)
+                                            <span class="text-green-600 font-bold">SI</span>
+                                            @break
+                                        @default
+                                            
+                                    @endswitch
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->category->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    {{$producto->subcategory->name}}
+                                </div>                                
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                    
+                                    {{$producto->brand->name}}
+                                </div>                                       
+                            </td>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                
+                                </div>                                       
+                            </td>
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">                                        
+                                    
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    <span >
+                                        {{$producto->quantity}}
+                                    </span>
+                                    
+                                </div>
+                            </td>
+    
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm text-red-600">{{ $producto->price }}</div>
+                            </td>    
                             
+                           
                         </tr>
 
                         @php
