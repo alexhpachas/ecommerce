@@ -71,8 +71,8 @@
                         width: 100%;
                     }
                 
-                </style>
-                <tr class="cabecera">
+            </style>
+                <tr >
                     <th>
                         Codigo 
                     </th>
@@ -117,7 +117,7 @@
                     </th> 
                 </tr>
             </thead>
-            <tbody >
+            <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($productos as $producto)     
                 
                     {{-- @if ($producto->sizes->count())      
@@ -300,29 +300,65 @@
                     @if ($producto->quantity != null)
                    
                         <tr >
-                            <td class="py-1 whitespace-nowrap">
-                                <div class="text-sm ml-1">
+                            <td>
+                                <div>
                                     {{$producto->id}}
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
+                            <td>
+                                <div>
                                     {{$producto->name}}
                                 </div>
                             </td>
     
-                            <td class="py-1 whitespace-nowrap uppercase">
-                                <div class="text-sm">
+                            <td>
+                                <div>
                                     @if ($producto->status == 1)
-                                        <span class="text-red-500 font-bold">NO</span>
+                                        <span>
                                     @else
-                                        <span class="text-green-600 font-bold">SI</span>
+                                        <span>
                                     @endif
                                 </div>
                             </td>
     
+                            <td>
+                                <div>
+                                    {{$producto->subcategory->category->name}}
+                                </div>                                
+                            </td>
+    
+                            <td>
+                                <div>
+                                    {{$producto->subcategory->name}}
+                                </div>                                
+                            </td>
+    
+                            <td>
+                                <div> 
+                                    {{$producto->brand->name}}
+                                </div>                                       
+                            </td>
                             
+    
+                            <td>
+                                <div>
+                                    <span >
+                                        {{$producto->quantity}}
+                                    </span>
+                                    
+                                </div>
+                            </td>
+    
+                            <td>
+                                <div>
+                                </div>
+                            </td>    
+                            
+                            <td>
+                                <div>
+                                </div>
+                            </td> 
                         </tr>
 
                         @php
