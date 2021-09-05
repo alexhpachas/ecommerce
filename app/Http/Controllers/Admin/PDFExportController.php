@@ -17,17 +17,17 @@ class PDFExportController extends Controller
 
 
         $productos = Product::query();         
-        if (request('category_id')) {
+        if (request('category_id') != null || request('category_id') != "" ) {
             $productos = $productos->whereHas('subcategory.category',function(Builder $query){
                 $query->where('id',request('category_id'));
             });            
         }
 
-        if (request('subcategory_id')) {
+        if (request('subcategory_id') != null || request('subcategory_id') != "") {
             $productos = $productos->where('subcategory_id',request('subcategory_id'));
         }
 
-        if (request('brand_id')) {
+        if (request('brand_id') != null || request('brand_id') != "" ) {
             $productos = $productos->where('brand_id',request('brand_id'));
         }
 
