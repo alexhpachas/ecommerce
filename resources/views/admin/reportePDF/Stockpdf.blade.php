@@ -323,7 +323,16 @@
                                 </div>
                             </td>
     
-                            
+                            <td class="py-1 whitespace-nowrap uppercase">
+                                <div class="text-sm">
+                                    @if ($producto->status == 1)
+                                        <span class="text-red-500 font-bold">NO</span>
+                                    @else
+                                        <span class="text-green-600 font-bold">SI</span>
+                                    @endif
+                                    
+                                </div>
+                            </td>
     
                             <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
