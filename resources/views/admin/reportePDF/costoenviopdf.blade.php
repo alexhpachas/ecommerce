@@ -16,7 +16,7 @@
 
     
 
-    <x-table-responsive class="mt-3">
+   
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <style>
@@ -115,28 +115,10 @@
                 <!-- More people... -->
             </tbody>
         </table>
-    </x-table-responsive>      
+    
 
 </body>
 
-<footer id='Footer'>
-    <section class="footer">
-        <table cellpadding="0" cellspacing="0" class="table-items" width="100%">
-            <tr>
-                <td width="40%">
-                    <span>Sistema Mundo Detalles</span>
-                </td>
-                <td width="50%" class="text-center">
-                    Athantyc System
-                </td>
-                <td class="text-center" width="10%">
-                    Pagina :<span class="pagenum"></span>
 
-                </td>
-            </tr>
-
-        </table>
-    </section>
-</footer>
 
 </html>
