@@ -1,9 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\ExportController;
+use App\Http\Controllers\Admin\PDFExportController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PDFexportcostoEnvio;
+use App\Http\Controllers\Admin\PDFexportProductosVendidoController;
+use App\Http\Controllers\Admin\PDFexportVentaController;
+use App\Http\Controllers\Admin\PDFexportVentasporEnviarController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PDFStockAgotadoController;
 use App\Http\Livewire\Admin\BrandComponent;
 use App\Http\Livewire\Admin\CityComponent;
 use App\Http\Livewire\Admin\ColorsComponent;
@@ -50,4 +55,17 @@ Route::get('users', UserComponent::class)->name('admin.users.index');
 
 Route::get('reports',ReportComponent::class)->name('admin.reports.index');
 
-Route::get('export', [ExportController::class,'exportPDF'])->name('admin.export.index');
+
+/* RUTA PARA EXPORTAR LOS REPORTES A PDF */
+
+Route::get('export', [PDFExportController::class,'exportPDF'])->name('admin.export.index');
+
+Route::get('export/stockagotado',[PDFStockAgotadoController::class,'stockAgotadoPDF'])->name('admin.agotado.index');
+
+Route::get('export/ventas', [PDFexportVentaController::class,'ventasPDF'])->name('admin.ventas.index');
+
+Route::get('export/costoenvio',[PDFexportcostoEnvio::class,'envioPDF'])->name('admin.costo.index');
+
+Route::get('export/productosvendidos', [PDFexportProductosVendidoController::class,'productosvendidosPDF'])->name('admin.vendidos.index');
+
+Route::get('export/ventasporenviar',[PDFexportVentasporEnviarController::class,'ventasporenviarPDF'])->name('admin.ventasporenviar.index');

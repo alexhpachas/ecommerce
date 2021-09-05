@@ -21,8 +21,8 @@
         <th>
             <div width="70%" align="center" style="vertical-align: top; padding-top: 10px" >
             
-                <h2 style="font-size: 16px"><strong>REPORTE DE STOCK DE PRODUCTOS</strong></h2>
-                <p style="font-size: 14px"><strong>Fecha : 04-09-2021</strong></p>   
+                <h2 style="font-size: 16px"><strong>REPORTE DE STOCK AGOTADOS</strong></h2>
+                <p style="font-size: 14px"><strong>Fecha :{{date('d-m-Y')}}</strong></p>   
             </div>
         </th>
     </tr>
@@ -37,23 +37,36 @@
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                
-            <style>
-                table {
-                
-                border-collapse: collapse;
-                width: 100%;
-                }
-                
-                td, th {
-                text-align: left;
-                padding: 2px;
-                }
-                
-                tr:nth-child(even) {
-                background-color: #dddddd;
-                }
+                <style>
+                    table {
+                    
+                    border-collapse: collapse;
+                    width: 100%;
+                    }
+                    
+                    td, th {
+                    text-align: left;
+                    padding: 2px;
+                    
+                    }
+    
+                    tr.cabecera {
+                        font-size: 12px;
+                        text-transform: uppercase;
+                        background-color: #dddddd;
+                    }
+
+                    #Footer{                            
+                        border-top: 2px solid rgba(0, 0, 0, 0.24);  
+                        /*  poner footer abajo */
+                        position: fixed;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                    }
+                    
                 </style>
-                <tr>
+                <tr class="cabecera">
                     <th scope="col"
                         class="py-1 px-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Codigo 
@@ -106,12 +119,14 @@
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($productos as $producto)
+                @foreach ($productosAgotados as $producto)
      
                     @if ($producto->sizes->count())      
                         @foreach ($producto->sizes as $size)     
                             @if ($size->colors->count())
-                                @foreach ($size->colors as $color)                                                                                                                                                
+                                @foreach ($size->colors as $color)
+                                @if ($color->pivot->quantity <= 5)                                                                                    
+                                
                                     <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600">
                                         <td class="py-1 whitespace-nowrap">
                                             <div class="text-sm">
@@ -182,13 +197,16 @@
                                         </td>
                     
                                     </tr>
+
+                                @endif
                                 @endforeach
                             @endif                                                                                   
                         @endforeach          
                     @endif
     
                     @if ($producto->colors->count())
-                        @foreach ($producto->colors as $item)                                                            
+                        @foreach ($producto->colors as $item)     
+                        @if ($item->pivot->quantity <= 5)                                                       
                             <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
                                 <td class="py-1 whitespace-nowrap">
                                     <div class="text-sm ml-1">
@@ -258,10 +276,12 @@
                                     <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
                                 </td>                
                             </tr>
+                        @endif
                         @endforeach                            
                     @endif
     
                     @if ($producto->quantity != null)
+                    @if ($producto->quantity <= 5)
                         <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
                             <td class="py-1 whitespace-nowrap">
                                 <div class="text-sm ml-1">
@@ -331,6 +351,7 @@
                                 <div class="text-sm text-red-600">S/. {{ $producto->price }}</div>
                             </td>                
                         </tr>
+                    @endif
                     @endif                                                                        
                 @endforeach
     
@@ -343,7 +364,7 @@
                             <span><b>TOTALES</b></span>
                         </td>
                         <td>
-                            <span><strong>9</strong></span>
+                            <span><strong>{{count($productosAgotados)}}</strong></span>
                         </td>
                         <td class="text-center">
                             
@@ -356,23 +377,27 @@
     
     </x-table-responsive> 
 
-    <section class="footer">
-        <table cellpadding="0" cellspacing="0" class="table-items" width="100%">
-            <tr>
-                <td width="20%">
-                    <span>Sistema Mundo Detalles</span>
-                </td>
-                <td width="60%" class="text-center">
-                    Alex Pachas
-                </td>
-                <td class="text-center" width="20%">
-                    Pagina :<span class="pagenum"></span>
-
-                </td>
-            </tr>
-
-        </table>
-    </section>
+    
     
 </body>
+
+<footer id='Footer'>
+<section class="footer">
+    <table cellpadding="0" cellspacing="0" class="table-items" width="100%">
+        <tr>
+            <td width="40%">
+                <span>Sistema Mundo Detalles</span>
+            </td>
+            <td width="50%" class="text-center">
+                Athantyc System
+            </td>
+            <td class="text-center" width="10%">
+                Pagina :<span class="pagenum"></span>
+
+            </td>
+        </tr>
+
+    </table>
+</section>
+</footer>
 </html>

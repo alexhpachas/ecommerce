@@ -30,7 +30,7 @@ class ReportComponent extends Component
     public $ciudades;
     public $departments;
     public $department_id="";
-    public $category_id="";
+    public $category_id=0;
     public $brand_id="";
     public $openProducto;
     public $productos;
@@ -85,8 +85,10 @@ class ReportComponent extends Component
 
     public function getProducts(){
         $this->reset('searchStock');
-        $this->reset('productosAgotados');
+        $this->reset('productosAgotados'); 
+        $this->reset('productos','products');        
         $products = Product::query();        
+        
 
         if ($this->category_id) {
             $products = $products->whereHas('subcategory.category',function(Builder $query){
@@ -110,6 +112,7 @@ class ReportComponent extends Component
 
         $products = $products->orderBy('subcategory_id','desc')->where('name','LIKE','%'.$this->search.'%')->get();
         $this->productos = $products;
+        
 
     }
 
@@ -217,7 +220,22 @@ class ReportComponent extends Component
 
     public function updatedCategoryId($value){
         $this->reset('subcategory_id');
+        $this->reset('productos');
+        $this->reset('productosAgotados');
         $this->subcategories = Subcategory::where('category_id',$value)->get();
+    }
+
+    public function updatedSubCategoryId(){
+        $this->reset('productos');
+        $this->reset('productosAgotados');
+    }
+
+    public function updatedDepartmentId(){
+        $this->reset('ciudades');
+    }
+
+    public function updatedBrandId(){
+        $this->reset('productos');
     }
 
     public function mount(){
