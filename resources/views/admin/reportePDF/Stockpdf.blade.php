@@ -38,7 +38,7 @@
         $total = 0;
     @endphp
 
-   
+    {{$productos}}
 
     <x-table-responsive class="mt-3">          
         <table class="min-w-full divide-y divide-gray-200">
@@ -311,19 +311,19 @@
                     @if ($producto->quantity != null)
                    
                         <tr >
-                            <td class="">
+                            <td class="py-1 whitespace-nowrap">
                                 <div class="text-sm ml-1">
                                     {{$producto->id}}
                                 </div>
                             </td>
     
-                            <td class="">
+                            <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
                                     {{$producto->name}}
                                 </div>
                             </td>
     
-                            <td class="">
+                            <td class="py-1 whitespace-nowrap uppercase">
                                 <div class="text-sm">
                                     @if ($producto->status == 1)
                                         <span class="text-red-500 font-bold">NO</span>
@@ -333,41 +333,7 @@
                                 </div>
                             </td>
     
-                            <td class="">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->category->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="">
-                                <div class="text-sm">
-                                    {{$producto->subcategory->name}}
-                                </div>                                
-                            </td>
-    
-                            <td class="">
-                                <div class="text-sm">                                    
-                                    {{$producto->brand->name}}
-                                </div>                                       
-                            </td>
                             
-    
-                            <td class="">
-                                <div class="text-sm">
-                                    <span >
-                                        {{$producto->quantity}}
-                                    </span>
-                                    
-                                </div>
-                            </td>
-    
-                            <td class="">
-                                <div class="text-sm text-red-600">{{ $producto->price }}</div>
-                            </td>    
-                            
-                            <td class="">
-                                <div class="text-sm text-red-600">S/. {{ $producto->price * $producto->quantity }}</div>
-                            </td> 
                         </tr>
 
                         @php
