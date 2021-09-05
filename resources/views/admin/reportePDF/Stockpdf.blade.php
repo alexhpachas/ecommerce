@@ -307,7 +307,7 @@
                         @endforeach                            
                     @endif --}}
     
-                    @if ($producto->quantity != null)
+                    
                    
                         <tr class="hover:bg-gray-100 hover:cursor-pointer hover:text-red-600" >
                             <td class="py-1 whitespace-nowrap">
@@ -388,7 +388,7 @@
                             $total = $total + $producto->price * $producto->quantity;
                         @endphp
                  
-                    @endif                                                                        
+                                                                                   
                 @endforeach
     
             </tbody>
