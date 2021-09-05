@@ -13,7 +13,7 @@ class PDFexportcostoEnvio extends Controller
     public function envioPDF(){
         $cities = City::query();        
 
-        if (request('department_id')) {
+        if (request('department_id') != null) {
             $cities = $cities->where('department_id',request('department_id'));
         }
 
