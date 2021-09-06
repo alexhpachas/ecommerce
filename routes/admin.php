@@ -69,3 +69,7 @@ Route::get('export/costoenvio',[PDFexportcostoEnvio::class,'envioPDF'])->name('a
 Route::get('export/productosvendidos', [PDFexportProductosVendidoController::class,'productosvendidosPDF'])->name('admin.vendidos.index');
 
 Route::get('export/ventasporenviar',[PDFexportVentasporEnviarController::class,'ventasporenviarPDF'])->name('admin.ventasporenviar.index');
+
+/* RUTA PARA EXPORTAR A EXCEL */
+
+Route::get('exportExcel/costoenvio',[PDFexportcostoEnvio::class,'envioExcel'])->name('admin.costoE.index');

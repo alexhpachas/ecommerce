@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\PrecioEnvioExport;
 use App\Http\Controllers\Controller;
 use App\Models\City;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class PDFexportcostoEnvio extends Controller
 {
@@ -40,11 +44,14 @@ class PDFexportcostoEnvio extends Controller
         /* $departamento = $department_id != null & $department_id != "" ? 'DEPARTAMENTO: '. Department::find($department_id)->name : 'TODOS LOS DEPARTAMENTOS'; */
 
         $pdf = PDF::loadView('admin.reportePDF.costoenviopdf',compact('ciudades','usuario','titulo','departamento'));
-        /* $pdf->setPaper('letter', 'landscape'); */
-
-        
-        
+                        
         return $pdf->stream('costoenvio.pdf');
 
+    }
+
+    public function envioExcel(){
+        $reportName = 'Reporte de precio por envio_'. uniqid(). '.xlsx';
+        return Excel::download(new PrecioEnvioExport(), $reportName);
+        
     }
 }
