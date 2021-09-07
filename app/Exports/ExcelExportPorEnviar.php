@@ -2,8 +2,8 @@
 
 namespace App\Exports;
 
-use App\Models\City;
-use App\Models\Department;
+use App\Models\Order;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\WithHeadings;            //COLOCAR EMCABEZADO
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;        //INTERACTUAR CON EL LIBRO
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;     //PARA INDICAR EN QUE CELDA INICIARA EL REPORTE
@@ -16,41 +16,29 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;          //PARA QUE SE AUTOAJUSTE
 use Maatwebsite\Excel\Concerns\WithEvents;              //PARA APLICAR ESTYLOS AL REPORTE EXCEL
 use Maatwebsite\Excel\Events\AfterSheet;
 
-
-class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, WithTitle, WithStyles, ShouldAutoSize, WithEvents
+class ExcelExportPorEnviar implements FromView, WithHeadings, WithCustomStartCell, WithTitle, WithStyles, ShouldAutoSize, WithEvents
 {
-    protected $department_id;
-
-    /* CONSULTA PARA TRAER LAS CUIDADES PARA ARMAR LA TABLA */
+    
     public function view(): View
     {
-        $cities = City::query();                      
+        $ventasEnvio = Order::query()->where('envio_type','<>',1)->where('status',2);
+        $fechaInicio=0;
+        $fechaFin=0;
 
-        if(request('department_id') != null || (request('department_id') != "" )) {
-            $cities = $cities->where('department_id',request('department_id'));
-            $department_id = request('department_id');
-            $cities = $cities->orderBy('id','desc')->get();
-            $departamento = 'DEPARTAMENTO: ' . Department::find($department_id)->name;
+        if (request('fechaInicio') != null & (request('fechaFin')) != null) {
+            $ventasEnvio = $ventasEnvio->whereBetween('created_at', [request('fechaInicio'), Carbon::parse(request('fechaFin'))->addDay(1)]);       
+            $fechaInicio = Carbon::parse(request('fechaInicio'))->format('d-m-Y');
+            $fechaFin = Carbon::parse(request('fechaFin'))->format('d-m-Y');     
         }
-
-        if (request('department_id') == null || request('department_id') == "" || request('department_id') == 0 ) {
-            $cities = $cities->orderBy('id','desc')->get();
-            $departamento = 'TODOS LOS DEPARTAMENTOS';            
-        }        
         
-        $ciudades = $cities;
-
-        $titulo ="REPORTE COSTO DE ENVÍO POR CIUDAD";        
-
-        $usuario = auth()->user()->name;
-
-        return view('admin.reportePDF.costoenvioexcel',compact('ciudades','titulo','usuario','departamento') );
+        $ventasEnvio = $ventasEnvio->orderBy('created_at','desc')->get();
+        $ventasEnvios = $ventasEnvio;
+        return view('admin.reporteEXCEL.porenviarexcel',compact('ventasEnvios','fechaInicio','fechaFin') );
     }
-
 
     /* CABECERA DEL REPORTE */
     public function headings(): array{
-        return ["REPORTE DE VENTAS "];
+        return ["REPORTE DE VENTAS POR ENVIAR "];
     }
 
     /* DEFINIR EN QUE CELDA SE ARMARA EL REPORTE */
@@ -65,9 +53,8 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
                 [
                     AfterSheet::class    => function(AfterSheet $event)             
                     {
-                        
-                        $event->sheet->getDelegate()->setMergeCells(['A2:D2']);     //COMBINAR CELDAS DE LA A2 HASTA D2
-                        $cellRange = 'A2:D2';       //FIJAMOS EL RAGO A2 HASTA D2
+                        $cellRange = 'A2:P2';       //FIJAMOS EL RAGO A2 HASTA D2
+                        $event->sheet->getDelegate()->setMergeCells([$cellRange]);     //COMBINAR CELDAS DE LA A2 HASTA D2                        
                         $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(14); // APLICAMOS TAMAÑO A TODO ESE RANGO DE CELDAS
 
                         /* APLICAMOS BORDE Y COLOR DE BORDE */
@@ -80,15 +67,11 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
                             ]
                         ];
                         
-                        $event->sheet->getDelegate()->getStyle('A2:D2')->applyFromArray($styleArray);//APLICAMOS EL BORDE A LAS CELDAS A2 HASTA D2
+                        $event->sheet->getDelegate()->getStyle($cellRange)->applyFromArray($styleArray);//APLICAMOS EL BORDE A LAS CELDAS A2 HASTA D2
                     },
                 
                 ];              
-       }
-    
-    
-    
-
+       }            
 
     /* APLICANDO STYLO NEGRITA  EL 2 REPRESENTA LAFILA DE EXCEL DONDE SE APLICARA EL BOLD */
     public function styles(Worksheet $sheet){      
@@ -103,11 +86,6 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
     /* NOMBRE DEL LIBRO */
     public function title(): string
     {
-        return 'Reporte Precio de Envio';
+        return 'Reporte Ventas por Enviar';
     }
-
-
-   
-
-
 }

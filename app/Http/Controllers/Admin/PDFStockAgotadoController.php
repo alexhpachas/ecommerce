@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ExcelExportAgotado;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Database\Eloquent\Builder;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PDFStockAgotadoController extends Controller
 {
@@ -32,5 +34,10 @@ class PDFStockAgotadoController extends Controller
         $pdf->setPaper('letter', 'landscape');
         
         return $pdf->stream('stockagotado.pdf');
+    }
+
+    public function agotadosExcel(){
+        $reportName = 'Reporte de stock Agotado_'. uniqid(). '.xlsx';
+        return Excel::download(new ExcelExportAgotado(), $reportName);
     }
 }

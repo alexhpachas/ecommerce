@@ -2,8 +2,8 @@
 
 namespace App\Exports;
 
-use App\Models\City;
-use App\Models\Department;
+use App\Models\Order;
+use Carbon\Carbon;
 use Maatwebsite\Excel\Concerns\WithHeadings;            //COLOCAR EMCABEZADO
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;        //INTERACTUAR CON EL LIBRO
 use Maatwebsite\Excel\Concerns\WithCustomStartCell;     //PARA INDICAR EN QUE CELDA INICIARA EL REPORTE
@@ -16,41 +16,29 @@ use Maatwebsite\Excel\Concerns\ShouldAutoSize;          //PARA QUE SE AUTOAJUSTE
 use Maatwebsite\Excel\Concerns\WithEvents;              //PARA APLICAR ESTYLOS AL REPORTE EXCEL
 use Maatwebsite\Excel\Events\AfterSheet;
 
-
-class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, WithTitle, WithStyles, ShouldAutoSize, WithEvents
+class ExcelExportVendidos implements FromView, WithHeadings, WithCustomStartCell, WithTitle, WithStyles, ShouldAutoSize, WithEvents
 {
-    protected $department_id;
-
-    /* CONSULTA PARA TRAER LAS CUIDADES PARA ARMAR LA TABLA */
     public function view(): View
     {
-        $cities = City::query();                      
-
-        if(request('department_id') != null || (request('department_id') != "" )) {
-            $cities = $cities->where('department_id',request('department_id'));
-            $department_id = request('department_id');
-            $cities = $cities->orderBy('id','desc')->get();
-            $departamento = 'DEPARTAMENTO: ' . Department::find($department_id)->name;
-        }
-
-        if (request('department_id') == null || request('department_id') == "" || request('department_id') == 0 ) {
-            $cities = $cities->orderBy('id','desc')->get();
-            $departamento = 'TODOS LOS DEPARTAMENTOS';            
-        }        
+        $ventasProductos = Order::query();   
+        $fechaInicio=0;
+        $fechaFin=0;
         
-        $ciudades = $cities;
+        if (request('fechaInicio') != null & (request('fechaFin')) != null) {
+            $ventasProductos = $ventasProductos->whereBetween('created_at', [request('fechaInicio'), Carbon::parse(request('fechaFin'))->addDay(1)]);
+            $fechaInicio = Carbon::parse(request('fechaInicio'))->format('d-m-Y');
+            $fechaFin = Carbon::parse(request('fechaFin'))->format('d-m-Y');
+        }
+        
+        $ventasProductos = $ventasProductos->where('status','<>',1)->where('status','<>',5)->get();
+        $ventas = $ventasProductos;
 
-        $titulo ="REPORTE COSTO DE ENVÍO POR CIUDAD";        
-
-        $usuario = auth()->user()->name;
-
-        return view('admin.reportePDF.costoenvioexcel',compact('ciudades','titulo','usuario','departamento') );
+        return view('admin.reporteEXCEL.vendidosexcel',compact('ventas','fechaInicio','fechaFin') );
     }
-
 
     /* CABECERA DEL REPORTE */
     public function headings(): array{
-        return ["REPORTE DE VENTAS "];
+        return ["REPORTE DE PRODUCTOS VENDIDOS "];
     }
 
     /* DEFINIR EN QUE CELDA SE ARMARA EL REPORTE */
@@ -65,10 +53,9 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
                 [
                     AfterSheet::class    => function(AfterSheet $event)             
                     {
-                        
-                        $event->sheet->getDelegate()->setMergeCells(['A2:D2']);     //COMBINAR CELDAS DE LA A2 HASTA D2
-                        $cellRange = 'A2:D2';       //FIJAMOS EL RAGO A2 HASTA D2
-                        $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(14); // APLICAMOS TAMAÑO A TODO ESE RANGO DE CELDAS
+                        $cellRange = 'A2:L2';       //FIJAMOS EL RAGO A2 HASTA D2
+                        $event->sheet->getDelegate()->setMergeCells([$cellRange]);     //COMBINAR CELDAS DE LA A2 HASTA D2                        
+                        /* $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(14); */ // APLICAMOS TAMAÑO A TODO ESE RANGO DE CELDAS
 
                         /* APLICAMOS BORDE Y COLOR DE BORDE */
                         $styleArray = [
@@ -80,7 +67,9 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
                             ]
                         ];
                         
-                        $event->sheet->getDelegate()->getStyle('A2:D2')->applyFromArray($styleArray);//APLICAMOS EL BORDE A LAS CELDAS A2 HASTA D2
+                        $event->getDelegate()->getStyle($cellRange)->applyFromArray($styleArray);//APLICAMOS EL BORDE A LAS CELDAS A2 HASTA D2
+                        
+        
                     },
                 
                 ];              
@@ -96,18 +85,16 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
         return [
             2 => ['font' => ['bold' => true, 'size' => 14],'alignment' => ['horizontal'=>'center']],    //APLICAMOS NEGRITA, TAMAÑO Y CENTRADO A LA FILA 2
             3 => ['font' => ['bold' => true, 'size' => 11]],         //APLICAMOS NEGRITA Y TAMAÑO A LA FILA 3
-            /* 8 => ['font' => ['bold' => true, 'italic' => true, 'size' => 14], 'fill' => ['fillType' => 'solid', 'color' => array('rgb' => 'B5B8B1')],'alignment' => ['horizontal'=>'center']], */
+            /* 8 => ['font' => ['bold' => true, 'italic' => true, 'size' => 14], 'fill' => ['fillType' => 'solid', 'color' => array('rgb' => 'B5B8B1')],'alignment' => ['horizontal'=>'center']], */            
         ];
+        
     }
 
     /* NOMBRE DEL LIBRO */
     public function title(): string
     {
-        return 'Reporte Precio de Envio';
+        return 'Reporte de productos vendidos';
     }
-
-
-   
 
 
 }

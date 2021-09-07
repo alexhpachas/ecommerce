@@ -318,7 +318,7 @@
                             $total = $total + $ventasEnvio->total;
                         @endphp
                         
-                    @endforeach
+                @endforeach
                 
               
             </tbody>

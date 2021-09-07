@@ -73,3 +73,13 @@ Route::get('export/ventasporenviar',[PDFexportVentasporEnviarController::class,'
 /* RUTA PARA EXPORTAR A EXCEL */
 
 Route::get('exportExcel/costoenvio',[PDFexportcostoEnvio::class,'envioExcel'])->name('admin.costoE.index');
+
+Route::get('exportExcel/ventas',[PDFexportVentaController::class,'ventasExcel'])->name('admin.ventasE.index');
+
+Route::get('exportExcel/vendidos',[PDFexportProductosVendidoController::class,'vendidosExcel'])->name('admin.vendidosE.index');
+
+Route::get('exportExcel/porenviar',[PDFexportVentasporEnviarController::class,'porEnviarExcel'])->name('admin.ventasporenviarE.index');
+
+Route::get('exportExcel/stockproductos',[PDFExportController::class,'sctokExcel'])->name('admin.stockE.index');
+
+Route::get('exportExcel/productosagotados',[PDFStockAgotadoController::class,'agotadosExcel'])->name('admin.stockagotadoE.index');

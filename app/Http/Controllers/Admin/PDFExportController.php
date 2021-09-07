@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ExcelExportStock;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
@@ -9,6 +10,7 @@ use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Database\Eloquent\Builder;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PDFExportController extends Controller
 {
@@ -42,5 +44,11 @@ class PDFExportController extends Controller
         $pdf->setPaper('letter', 'landscape');
         return $pdf->stream('stock.pdf');
 
+    }
+
+    public function sctokExcel(){
+        $reportName = 'Reporte de stock_'. uniqid(). '.xlsx';
+        return Excel::download(new ExcelExportStock(), $reportName);
+        
     }
 }

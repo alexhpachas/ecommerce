@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\ExcelExportVendidos;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PDFexportProductosVendidoController extends Controller
 {
@@ -34,4 +36,9 @@ class PDFexportProductosVendidoController extends Controller
         return $pdf->stream('productovendidos.pdf');
 
     }    
+
+    public function vendidosExcel(){
+        $reportName = 'Reporte productos vendidos_'. uniqid(). '.xlsx';
+        return Excel::download(new ExcelExportVendidos(), $reportName);
+    }
 }
