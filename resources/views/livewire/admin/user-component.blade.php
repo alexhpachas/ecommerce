@@ -114,7 +114,7 @@
                     <x-jet-input wire:model="usuarioName" disabled type="text" class="w-full bg-gray-100" />
                 </div>
 
-                <div class="grid grid-cols-2 lg:grid-cols-3">
+                {{-- <div class="grid grid-cols-2 lg:grid-cols-4">
                     @foreach ($permisos as $permiso)
                         <x-jet-label class="text-sm">
                             <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permiso->id}}" />
@@ -123,7 +123,7 @@
                         </x-jet-label>
                     @endforeach
 
-                </div>
+                </div> --}}
 
                 {{-- <div class="grid grid-cols-4">
                     @foreach ($roles as $role)
@@ -138,7 +138,175 @@
                 
 
             </div>
-            
+
+            <div class="flex lg:space-x-14 md:space-x-8">
+                {{-- <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="w-full">
+                                MODULOS
+                            </th>
+                            <th>
+                                VER
+                            </th>
+                            <th>
+                                CREAR
+                            </th>
+                            <th>
+                                EDITAR
+                            </th>
+                            <th>
+                                ELIMINAR
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td >
+                                <div>
+                                    <p class="border-b-2 text-sm">PRODUCTOS</p>
+                                    <p class="border-b-2 text-sm">MARCAS</p>
+                                    <p class="border-b-2 text-sm">CATEGORIA</p>
+                                    <p class="border-b-2 text-sm">SUBCATEGORIA</p>
+                                    <p class="border-b-2 text-sm">DEPARTAMENTO</p>
+                                    <p class="border-b-2 text-sm">PROVINCIA</p>
+                                    <p class="border-b-2 text-sm">DISTRITO</p>
+                                    <p class="border-b-2 text-sm">COLORES</p>
+                                    <p class="border-b-2 text-sm">COMPRAS</p>
+                                    <p class="border-b-2 text-sm">USUARIOS</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mt-5">
+                                    @foreach ($permisosList as $permisoList)
+                                        <x-jet-label class="text-sm border-b-2">
+                                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoList->id}}" />                                            
+                                        </x-jet-label>
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="mt-5">
+                                    @foreach ($permisosCreate as $permisoCreate)
+                                        <x-jet-label class="text-sm border-b-2">
+                                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoCreate->id}}" />                            
+                                        </x-jet-label>                                                                                       
+                                    @endforeach
+                                    <x-jet-label>
+                                        <x-jet-checkbox disabled />    
+                                    </x-jet-label>
+                                    <x-jet-label>
+                                        <x-jet-checkbox disabled />
+                                    </x-jet-label>   
+                                    <x-jet-label>
+                                        <x-jet-checkbox disabled />
+                                    </x-jet-label>   
+                                                                                                                                                                                                                                                                                         
+                                </div>
+                            </td>
+                            <td>
+                                <div class="-mt-1">
+                                    @foreach ($permisosEdit as $permisoEdit)
+                                        <x-jet-label class="text-sm border-b-2">
+                                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoEdit->id}}" />                                                
+                                        </x-jet-label>
+                                    @endforeach
+                                    <x-jet-label>
+                                        <x-jet-checkbox disabled />    
+                                    </x-jet-label>
+                                      
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    @foreach ($permisosDelete as $permisoDelete)
+                                        <x-jet-label class="text-sm">
+                                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoDelete->id}}" />
+                                                
+                                        </x-jet-label>
+                                    @endforeach
+
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table> --}}
+                <div class="col-span-2 ">
+                    <span class="font-bold -mb-1 ">MODULOS </span>
+                    <p class="text-sm mt-1  ">PRODUCTOS</p>
+                    <p class="text-sm -mb-0">MARCAS</p>
+                    <p class="text-sm ">CATEGORIA</p>
+                    <p class="text-sm -mb-0">SUBCATEGORIA</p>
+                    <p class="text-sm ">DEPARTAMENTO</p>
+                    <p class="text-sm ">PROVINCIA</p>
+                    <p class="text-sm ">DISTRITO</p>
+                    <p class="text-sm ">COLORES</p>
+                    <p class="text-sm">VENTAS</p>
+                    <p class="text-sm">NOSE</p>
+                    <p class="text-sm">USUARIOS</p>
+                    <p class="text-sm">DASHBOARD</p>
+                    <p class="text-sm">DAR ACCESOS</p>
+                    <p class="text-sm">PUBLICAR PRODUCTO</p>
+
+                </div>
+                
+                <div class="w-8 lg:space-x-12">
+                    <span class="lg:font-bold lg:ml-11 text-sm">ver</span>
+                    @foreach ($permisosList as $permisoList)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoList->id}}" />                                                            
+                        </x-jet-label>
+                    @endforeach
+                    @foreach ($permisosDashbor as $dash)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$dash->id}}" />                                
+                        </x-jet-label>                        
+                    @endforeach
+                    
+                    @foreach ($permisosAcceso as $permisoAcceso)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoAcceso->id}}" />                                
+                        </x-jet-label>                        
+                    @endforeach
+                    @foreach ($permisospublicar as $permisopublicar)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisopublicar->id}}" />                                
+                        </x-jet-label>                        
+                    @endforeach
+                </div>
+                
+                <div class="w-8 lg:space-x-8">
+                    <span class="lg:font-bold lg:ml-4 text-sm">crear</span>
+                    @foreach ($permisosCreate as $permisoCreate)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoCreate->id}}" />
+                                
+                        </x-jet-label>
+                    @endforeach
+                </div>
+
+                <div class="w-8 lg:space-x-5 text-sm mt-1">
+                    <span class="lg:font-bold -m-2 ml-1">edit</span>                    
+                    @foreach ($permisosEdit as $permisoEdit)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoEdit->id}}" />
+                                                                 
+                        </x-jet-label>
+                    @endforeach
+                
+                </div>
+
+                <div class="w-8 lg:space-x-5 text-sm mt-1">
+                    <span class="lg:font-bold">delete</span>                    
+                    @foreach ($permisosDelete as $permisoDelete)
+                        <x-jet-label class="text-sm">
+                            <x-jet-checkbox wire:model.defer="createForm.roles" name="createForm.roles[]" value="{{$permisoDelete->id}}" />
+                                
+                        </x-jet-label>
+                    @endforeach                    
+                </div>
+            </div>            
         </x-slot>
 
         <x-slot name="footer">

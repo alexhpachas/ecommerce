@@ -43,7 +43,7 @@
                                             {{ $category->name }}
                                         </a>
                                     @else
-                                        <a class="lg:uppercase capitalize sm:text-sm hover:underline hover:text-blue-600">>
+                                        <a class="lg:uppercase capitalize sm:text-sm hover:underline hover:text-blue-600">
                                             {{ $category->name }}
                                         </a>
                                         

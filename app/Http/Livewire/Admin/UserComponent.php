@@ -20,8 +20,16 @@ class UserComponent extends Component
     public $usuario;    
     public $user;
     public $permisos;
+    public $permisosEdit;
+    public $permisosCreate;
+    public $permisosList;
     public $rol=[];
     public $usuarioName;
+    public $permisosDelete;
+    public $permisosDashbor;
+    public $permisosAcceso;
+    public $permisospublicar;
+
     
     public $createForm = [                  
         'roles' =>[]
@@ -38,7 +46,16 @@ class UserComponent extends Component
     }
 
     public function getPermissions(){
-        $this->permisos = Permission::orderBy('description','desc')->get();
+        $this->permisos = Permission::orderBy('id','asc')->get();
+
+        $this->permisosList = Permission::where('description','like','%'.'Ver'.'%')->get();
+        $this->permisosCreate = Permission::where('description','like','%'.'Crear'.'%')->get();
+        $this->permisosEdit = Permission::where('description','like','%'.'editar'.'%')->get();
+        $this->permisosDelete = Permission::where('description','like','%'.'eliminar'.'%')->get();
+        $this->permisosDashbor = Permission::where('description','like','%'.'dash'.'%')->get();
+        $this->permisosAcceso = Permission::where('description','like','%'.'accesos'.'%')->get();
+        $this->permisospublicar = Permission::where('description','like','%'.'publicar'.'%')->get();
+        
     }
 
     public function mount(){
