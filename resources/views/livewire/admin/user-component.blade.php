@@ -242,8 +242,7 @@
                     <p class="text-sm ">PROVINCIA</p>
                     <p class="text-sm ">DISTRITO</p>
                     <p class="text-sm ">COLORES</p>
-                    <p class="text-sm">VENTAS</p>
-                    <p class="text-sm">NOSE</p>
+                    <p class="text-sm">VENTAS</p>                    
                     <p class="text-sm">USUARIOS</p>
                     <p class="text-sm">DASHBOARD</p>
                     <p class="text-sm">DAR ACCESOS</p>
