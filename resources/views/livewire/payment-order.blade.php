@@ -345,12 +345,6 @@
     </div>
 
     @slot('js')
-        
-
-    @endslot
-
-    @push('script')
-
     <script>
         document.addEventListener('livewire:load', function() {
             stripe();
@@ -406,6 +400,13 @@
             });
         }
     </script>
+        
+
+    @endslot
+
+    @push('script')
+
+    
         {{-- CDN PARA MERCADO PAGO --}}
 
         <script src="https://sdk.mercadopago.com/js/v2"></script>
