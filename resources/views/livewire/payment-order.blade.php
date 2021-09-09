@@ -367,7 +367,7 @@
 
     <script>
         function stripe() {
-            const stripe = Stripe("{{ config('services.stripe.stripe_id') }}");
+            const stripe = Stripe("'{{ config('services.stripe.stripe_id') }}'");
 
             const elements = stripe.elements();
             const cardElement = elements.create('card');
