@@ -373,7 +373,7 @@
 
     <script>
         function stripe() {
-            const stripe = Stripe('{{ env('STRIPE_KEY') }}');
+            const stripe = Stripe("{{ env('STRIPE_KEY') }}");
 
             const elements = stripe.elements();
             const cardElement = elements.create('card');
