@@ -10,12 +10,16 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+/*  CLASE PARA USAR CASHIER */
+use Laravel\Cashier\Billable;
+
 /* IMPORTAMOS ESA CLASE PARA IMPLEMENTAR LARAVEL PERMISSION */
 use Spatie\Permission\Traits\HasRoles;
 
 
 class User extends Authenticatable
 {
+    use Billable; //Clase para poder usar metodos de cashier
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;

@@ -41,6 +41,13 @@
         {{-- FLEX SLIDER JS --}}
 
         <script src="{{asset('vendor/FlexSlider/jquery.flexslider-min.js')}}"></script>
+
+        {{-- JS STRIPE --}}
+        <script src="https://js.stripe.com/v3/"></script>
+
+        @isset($css)
+            {{$css}}
+        @endisset
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -67,6 +74,10 @@
         @stack('modals')
 
         @livewireScripts
+
+        @isset($js)
+            {{$js}}
+        @endisset
 
         <script>
             function dropdown(){

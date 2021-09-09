@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\BillingController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
@@ -38,6 +40,8 @@ Route::get('products/{product}', [ProductController::class,'show'])->name('produ
 /* RUTA PARA INGRESAR AL CARRITO DE COMPRAS */
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
+Route::get('products/{product}/pay', [ProductController::class,'pay'])->name('products.pay');
+
 
 Route::middleware('auth')->group(function(){
 
@@ -59,5 +63,11 @@ Route::middleware('auth')->group(function(){
     /* RUTA PARA RECIBIR NOTIFICACIONES CADA VEZ QUE SE HACE UN PAGO EN MERCADO PAGO */
     Route::post('webhooks', WebhooksController::class);
 
+    /* RUTA PARA METODO DE PAGOS STRIPE */
+
+    Route::get('billing', [BillingController::class,'index'])->name('billing.index');
+
 });
+
+
 

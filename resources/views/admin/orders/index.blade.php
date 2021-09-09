@@ -1,8 +1,7 @@
 <x-admin-layout>
     <div class="container py-12">
             
-            <div class=" grid lg:grid-cols-6 gap-5 mb-10 ">
-
+            <div class=" grid lg:grid-cols-6 gap-5 mb-10 ">               
                 <a href="{{ route('admin.orders.index') . '?status=1' }}">
                     <div
                         class="bg-white max-w-full shadow-lg   mx-auto border-b-4 border-gray-500 rounded-2xl overflow-hidden opacity-75  hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer">

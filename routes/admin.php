@@ -83,3 +83,4 @@ Route::get('exportExcel/porenviar',[PDFexportVentasporEnviarController::class,'p
 Route::get('exportExcel/stockproductos',[PDFExportController::class,'sctokExcel'])->name('admin.stockE.index');
 
 Route::get('exportExcel/productosagotados',[PDFStockAgotadoController::class,'agotadosExcel'])->name('admin.stockagotadoE.index');
+

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\Order;
+use Exception;
 use Livewire\Component;
+
 
 /* PARA USAR POLICE EN UN COMPONENTE DE LIVEWIRE */
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -18,8 +20,13 @@ class PaymentOrder extends Component
     public $type=1;
     public $methodPayment=3;
     public $openMethodPayment=false;
+    /* public $coupon; */
+
+    /* PAGO STRIPE */
     
-    protected $listeners =['payOrder'];
+
+    
+    protected $listeners =['payOrder','paymentMethodCreate'];
 
     public function payOrder(){
 
@@ -46,5 +53,22 @@ class PaymentOrder extends Component
         
 
         return view('livewire.payment-order',compact('items','envio'));
+    }
+
+    public function paymentMethodCreate($paymentMethod){
+        try {
+            /* if ($this->coupon) {
+                auth()->user()->charge($this->order->total * 100,$paymentMethod)->withCoupon($this->coupon);               
+            }else{ */
+                auth()->user()->charge($this->order->total * 100,$paymentMethod);
+                $this->emit('resetStripe');
+                $this->emit('payOrder');
+           /*  }     */                    
+            
+        } catch (Exception $e) {
+            $this->emit('errorPayment');
+            
+        }
+        
     }
 }

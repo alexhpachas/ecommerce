@@ -44,6 +44,11 @@
                             {{ __('Profile') }}
                         </x-jet-dropdown-link>
 
+                        {{-- ADD METODO DE PAGO --}}
+                        {{-- <x-jet-dropdown-link href="{{ route('billing.index') }}">
+                            Facturación
+                        </x-jet-dropdown-link> --}}
+
                         {{-- MIS COMPRAS --}}
                         <x-jet-dropdown-link href="{{ route('orders.index') }}">
                             Mis compras
@@ -229,6 +234,13 @@
                 </span>
                 Perfil
             </a>
+
+            {{-- <a href="{{ route('billing.index') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+                <span class="flex justify-center w-9">
+                    <i class="fas fa-address-card"></i>
+                </span>
+                Facturación
+            </a> --}}
             
 
             <a href="{{ route('orders.index') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
