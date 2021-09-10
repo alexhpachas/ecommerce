@@ -44,7 +44,7 @@ class ExcelExportStock implements FromView, WithHeadings, WithCustomStartCell, W
         $subcategoria = request('subcategory_id') == "" ? '' : 'SUBCATEGORIA: ' . Subcategory::find(request('subcategory_id'))->name;
         $marca = request('brand_id') == "" ? '' : 'MARCA: ' . Brand::find(request('brand_id'))->name;
 
-        return view('admin.reporteExcel.stockexcel',compact('productos','categoria','subcategoria','marca'));
+        return view('admin.reporteEXCEL.stockexcel',compact('productos','categoria','subcategoria','marca'));
 
     }
 

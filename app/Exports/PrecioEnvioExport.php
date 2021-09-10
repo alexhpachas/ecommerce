@@ -44,7 +44,7 @@ class PrecioEnvioExport implements FromView, WithHeadings, WithCustomStartCell, 
 
         $usuario = auth()->user()->name;
 
-        return view('admin.reportePDF.costoenvioexcel',compact('ciudades','titulo','usuario','departamento') );
+        return view('admin.reporteEXCEL.costoenvioexcel',compact('ciudades','titulo','usuario','departamento') );
     }
 
 
