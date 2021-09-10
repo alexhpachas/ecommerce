@@ -367,7 +367,7 @@
 
     <script>
         function stripe() {
-            const stripe = Stripe("{{ env('STRIPE_KEY') }}");
+            const stripe = Stripe('{{ env('STRIPE_KEY') }}');
             /* const stripe = Stripe("'{{ config('services.stripe.stripe_id') }}'"); */
 
             const elements = stripe.elements();
