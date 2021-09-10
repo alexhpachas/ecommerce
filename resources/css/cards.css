@@ -6,7 +6,7 @@
     @apply px-6 py-4;
 }
 
-.card-footer, .card-header{
+.card-footer{
     @apply bg-gray-50;
 }
 

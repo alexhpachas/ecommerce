@@ -2645,7 +2645,7 @@ select {
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 }
-.card-footer, .card-header {
+.card-footer {
 	--tw-bg-opacity: 1;
 	background-color: rgba(249, 250, 251, var(--tw-bg-opacity));
 }
