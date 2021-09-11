@@ -56,7 +56,7 @@ class PaymentOrder extends Component
     }
 
     public function paymentMethodCreate($paymentMethod){
-        try {
+    
             /* if ($this->coupon) {
                 auth()->user()->charge($this->order->total * 100,$paymentMethod)->withCoupon($this->coupon);               
             }else{ */
@@ -65,10 +65,7 @@ class PaymentOrder extends Component
                 $this->emit('payOrder');
            /*  }     */                    
             
-        } catch (Exception $e) {
-            $this->emit('errorPayment');
-            
-        }
+        
         
     }
 }
