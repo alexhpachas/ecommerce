@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Qualify;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
 
 class OrderController extends Controller
 {
+    
+
     /* METODO QUE PERMITE VER NUESTRAS COMPRAS */
     public function index(){
 
@@ -38,6 +41,20 @@ class OrderController extends Controller
         $envio = json_decode($order->envio);
 
         return view('orders.show',compact('order','items','envio'));
+    }
+
+    public function qualify(Order $order){
+
+        /* LLAMAMOS AL POLICE QUE CREAMOS EN app/Polices/OrderPolicy/autorize */
+        $this->authorize('author',$order);
+
+        $items = json_decode($order->content);
+        $envio = json_decode($order->envio);
+        
+
+        $qualifications = Qualify::where('order_id',$order->id)->get();
+
+        return view('orders.qualify',compact('order','items','envio','qualifications'));
     }
 
     /* METODO PARA OBTENER EL ID DE COMPRA POR MERCADO PAGO */

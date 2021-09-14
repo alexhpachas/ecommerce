@@ -18,7 +18,10 @@ class AddCartItemSize extends Component
     public $colors=[];
     public $qty = 1;
     public $quantity;
-    public $options = [];
+    public $options = [
+        'qualified' =>0,
+        'qualification' =>0,        
+    ];
 
     public function updatedSizeId($value){
         $size = Size::find($value);
@@ -47,6 +50,7 @@ class AddCartItemSize extends Component
         if ($this->product->images->count()) {
             $this->options['image']= Storage::url($this->product->images->first()->url);
         }
+        $this->options['description'] = $this->product->description;
         
 
     }    

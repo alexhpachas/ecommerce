@@ -17,12 +17,16 @@ class AddCartItem extends Component
     /* VARIABLE AQUI VAMOS A ALMACENAR LA URL DE LA IMAGEN DEL PRODUCTO QUE VAMOS A AGREGAR AL CARRITO DE COMPRAS */
     public $options = [ 
         'color_id'=>null,
-        'size_id' =>null
+        'size_id' =>null,
+        'qualified' =>0,
+        'qualification' =>0,
+        'description' =>null
     ]; 
 
     public function mount(){
         $this->quantity = aty_avaliable($this->product->id);
         $this->options['image'] = Storage::url($this->product->images->first()->url);
+        $this->options['description'] = $this->product->description;
     }
 
     /* METODO PARA INCREMENTAR LA CANTIDAD DE PRODUCTOS QUE VAMOS A COMPRAR */
@@ -46,7 +50,7 @@ class AddCartItem extends Component
         if($this->quantity > 0){
 
             Cart::add(['id' => $this->product->id, 
-                        'name' => $this->product->name, 
+                        'name' => $this->product->name,                         
                         'qty' => $this->qty, 
                         'price' => $this->product->price, 
                         'weight' => 550, 

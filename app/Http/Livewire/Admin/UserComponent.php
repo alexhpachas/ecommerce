@@ -29,6 +29,16 @@ class UserComponent extends Component
     public $permisosDashbor;
     public $permisosAcceso;
     public $permisospublicar;
+    public $productos;
+    public $marcas;
+    public $categorias;
+    public $subcategorias;
+    public $departamentos;
+    public $provincias;
+    public $distritos;
+    public $colores;
+    public $ventas;
+    public $usuarios;
 
     
     public $createForm = [                  
@@ -55,6 +65,17 @@ class UserComponent extends Component
         $this->permisosDashbor = Permission::where('description','like','%'.'dash'.'%')->get();
         $this->permisosAcceso = Permission::where('description','like','%'.'accesos'.'%')->get();
         $this->permisospublicar = Permission::where('description','like','%'.'publicar'.'%')->get();
+        $this->productos = Permission::where('description','like','%'.'produc'.'%')->get();
+        $this->marcas = Permission::where('description','like','%'.'marca'.'%')->get();
+        $this->categorias = Permission::where('description','like','%'.' categoria'.'%')->get();
+        $this->subcategorias = Permission::where('description','like','%'.'sub'.'%')->get();
+        $this->departamentos = Permission::where('description','like','%'.'departamento'.'%')->get();
+        $this->provincias = Permission::where('description','like','%'.'provincia'.'%')->get();
+        $this->distritos = Permission::where('description','like','%'.'distrito'.'%')->get();
+        $this->colores = Permission::where('description','like','%'.'colores'.'%')->get();
+        $this->ventas = Permission::where('description','like','%'.'compra'.'%')->get();
+        $this->usuarios = Permission::where('description','like','%'.'usuarios'.'%')->get();
+
         
     }
 

@@ -15,7 +15,10 @@ class AddCartItemColor extends Component
     public $color_id=""; /* VARIABLE PARA CAPTURAR EL COLOR QUE SE HA SELECCIONADO */
     public $quantity; /* VARIABLE PARA STOCK */
     public $options = [
-        'size_id'=>null
+        'size_id'=>null,
+        'qualified' =>0,
+        'qualification' =>0,
+        'description' =>null
     ];
     
 
@@ -25,6 +28,7 @@ class AddCartItemColor extends Component
         if ($this->product->images->count()) { 
             $this->options['image'] = Storage::url($this->product->images->first()->url);     
             }
+        $this->options['description'] = $this->product->description;
                         
     }
 

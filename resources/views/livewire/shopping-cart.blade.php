@@ -47,7 +47,7 @@
 
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">
-                                            {{$item->name}}
+                                            {{$item->name}}                                                                                        
                                         </div>
 
                                         <div class="text-sm text-gray-500">

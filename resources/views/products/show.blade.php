@@ -36,8 +36,10 @@
 
                 <div class="flex">
                     <p class="text-trueGray-700 font-semibold">Marca : <a class="underline capitalize hover:text-orange-500" href="">{{$product->brand->name}}</a></p>
-                    <p class="text-trueGray-700 mx-6">5 <i class="fas fa-star text-sm text-yellow-400"></i></p>
-                    <a class="text-orange-500 hover:text-orange-700 underline" href="">39 Reseñas</a>
+                    <p class="text-trueGray-700 mx-6">
+                        {{$qualifications->sum('qualification')/$qualifications->count()}}  
+                    <i class="fas fa-star text-sm text-yellow-400"></i></p>
+                    <a class="text-orange-500 hover:text-orange-700 underline" href="">{{$qualifications->count()}} Reseñas</a>
                 </div>
 
                 <p class="text-gray-700 text-2xl font-semibold my-4">S/. {{$product->price}}</p>

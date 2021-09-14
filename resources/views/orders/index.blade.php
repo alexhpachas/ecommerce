@@ -224,13 +224,16 @@
                             <th scope="col" class="relative px-6 py-3">
                                 <span class="sr-only">Edit</span>
                             </th>
+                            <th scope="col" class="relative px-6 py-3">
+                                <span class="sr-only">Edit</span>
+                            </th>
 
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($orders as $order)
                             <tr class="hover:bg-gray-100">
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-3 py-1 whitespace-nowrap">
                                     <div class="flex items-center">
                                         <div class="flex-shrink-0">
                                             @switch($order->status)
@@ -419,11 +422,11 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-3 py-1 whitespace-nowrap">
                                     <div class="text-sm text-gray-900">{{ $order->created_at->format('d/m/Y') }}</div>
                                     {{-- <div class="text-sm text-gray-500">Optimization</div> --}}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
+                                <td class="px-3 py-1 whitespace-nowrap">
                                     @switch($order->status)
                                         @case(1)
                                             <span
@@ -464,10 +467,20 @@
 
                                     @endswitch
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-red-500">
+                                <td class="px-3 py-1 whitespace-nowrap text-sm text-red-500">
                                     S/. {{ $order->total }}
                                 </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium flex justify-end">
+                                <td class="px-3 py-1 whitespace-nowrap text-sm text-red-500">
+                                    @if ($order->status == 4 )  
+                                        <div class="flex flex-1">
+                                            <x-button-enlace href="{{route('orders.qualify',$order)}}" class="ml-auto">
+                                                Calificar
+                                            </x-button-enlace>
+                                        </div>
+                                    @endif
+                                    
+                                </td>
+                                <td class="px-3 py-1 whitespace-nowrap text-right text-sm font-medium flex justify-end">
                                     <a href="{{ route('orders.show', $order) }}">
                                         <div class="cursor-pointer w-7 mr-2 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

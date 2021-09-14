@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function(){
     /* RUTA PARA CUANDO EL PAGO SEA APROBADO PASARELA MERCADOPAGO */
     Route::get('orders/{order}', [OrderController::class,'show'])->name('orders.show');
 
+    /* RUTA PARA CALIFICAR  UN PRODUCTO */
+    Route::get('orders/qualify/{order}', [OrderController::class,'qualify'])->name('orders.qualify');
+
     /* RUTA PARA CUANDO YA CREAMOS UNA ORDEN DE COMPRA Y NECESITAMOS PAGARLO  */    
     Route::get('orders/{order}/payment',PaymentOrder::class)->name('orders.payment');
 
