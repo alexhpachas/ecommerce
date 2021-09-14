@@ -18,6 +18,7 @@ class CreateQualifiesTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
+            $table->text('row_id');
             $table->string('comment');
             $table->enum('qualification',[1,2,3,4,5]);
             $table->enum('status',[1,2]);
