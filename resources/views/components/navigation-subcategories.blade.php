@@ -3,14 +3,17 @@
     <div>
         <p class="text-lg font-bold text-center text-trueGray-500 mb-3">SubCategorias</p>
         <ul>
-            @foreach ($category->subcategories as $subcategory)
-                <li>
-                    <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-orange-500"
-                        href="{{route('categories.show',$category).'?subcategoria='.$subcategory->slug}}">
-                        {{ $subcategory->name }}
-                    </a>
-                </li>
-            @endforeach
+            
+                @foreach ($category->subcategories as $subcategory)
+                    <li>
+                        <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-orange-500"
+                            href="{{route('categories.show',$category).'?subcategoria='.$subcategory->slug}}">
+                            {{ $subcategory->name }}
+                                                        
+                            
+                        </a>
+                    </li>
+                @endforeach
         </ul>
     </div>
 

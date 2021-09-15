@@ -51,7 +51,7 @@ class CategoryFilter extends Component
         }
 
         /* ARMAMOS LA LISTA DE PRODUCTOS DEACUERDO A LA BUSQUEDA */
-        $products = $productsQuery->paginate(20);
+        $products = $productsQuery->where('status',2)->paginate(20);
 
         /* PASAMOS LOS PRODUCTOS A LA VISTA */
         return view('livewire.category-filter',compact('products'));
