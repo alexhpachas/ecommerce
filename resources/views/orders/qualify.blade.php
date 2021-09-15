@@ -14,7 +14,7 @@
                 </template>
             </ul>
 
-            <div class="w-full bg-white py-6 -mt-4 text-center mx-auto border">
+            <div class="w-full bg-white py-6 -mt-4 text-left mx-auto border">
                 <div x-show="activeTab===0">
                     <div class="container ">
 
