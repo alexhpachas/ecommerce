@@ -121,20 +121,20 @@
                                                     
                         </td>
                         <td align="right" class="px-6 py-2 whitespace-nowrap">
-                            <div class="text-sm ">S/. {{number_format($contenido->price)}}</div>                        
+                            <div class="text-sm ">S/ {{number_format($contenido->price)}}</div>                        
                         </td>
                         <td class="px-6 py-2 whitespace-nowrap">
                         <div class="text-sm ">{{$contenido->qty}}</div>                        
                         </td>
                         <td align="right" class="px-6 py-2 whitespace-nowrap">
-                            <div class="text-sm ">S/. {{number_format($contenido->qty * $contenido->price,2)}}</div>                        
+                            <div class="text-sm ">S/ {{number_format($contenido->qty * $contenido->price,2)}}</div>                        
                         </td>
 
                         <td align="right" class="px-6 py-2 whitespace-nowrap">
-                            <div class="text-sm ">S/. {{number_format($venta->shipping_cost,2)}}</div>                        
+                            <div class="text-sm ">S/ {{number_format($venta->shipping_cost,2)}}</div>                        
                         </td>
                         <td align="right" class="px-6 py-2 whitespace-nowrap">
-                            <div class="text-sm text-green-600 font-bold ">S/. {{number_format($venta->shipping_cost + $contenido->qty * $contenido->price,2)}}</div>                        
+                            <div class="text-sm text-green-600 font-bold ">S/ {{number_format($venta->shipping_cost + $contenido->qty * $contenido->price,2)}}</div>                        
                         </td>                                                                       
                     </tr>
 

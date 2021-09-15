@@ -386,7 +386,7 @@
     <table cellpadding="0" cellspacing="0" class="table-items" width="100%">
         <tr>
             <td width="40%">
-                <span>Sistema Mundo Detalles</span>
+                <span>Mundo Detalles</span>
             </td>
             <td width="50%" class="text-center">
                 Athantyc System

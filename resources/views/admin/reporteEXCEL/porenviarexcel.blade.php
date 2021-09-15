@@ -213,16 +213,16 @@
                                 </div>
                             </td>
                             <td align="right" class="px-6 py-2 whitespace-nowrap">
-                                <div class="text-sm">S/. {{ number_format($ventasEnvio->shipping_cost)}}</div>
+                                <div class="text-sm">S/ {{ number_format($ventasEnvio->shipping_cost)}}</div>
                             </td>
                             <td align="right" class="px-6 py-2 whitespace-nowrap">
-                                <div class="text-sm">S/.{{ number_format($ventasEnvio->total - $ventasEnvio->shipping_cost,2) }}</div>
+                                <div class="text-sm">S/ {{ number_format($ventasEnvio->total - $ventasEnvio->shipping_cost,2) }}</div>
                             </td>   
                             {{-- <td class="px-6 py-2 whitespace-nowrap">
                                 <div class="text-sm">S/.{{ ($ventasEnvio->total - $ventasEnvio->shipping_cost -($ventasEnvio->total - $ventasEnvio->shipping_cost)/1.18)}}</div>
                             </td> --}}
                             <td align="right" class="px-6 py-2 whitespace-nowrap text-sm text-red-500">
-                                S/. {{ number_format($ventasEnvio->total,2) }}
+                                S/ {{ number_format($ventasEnvio->total,2) }}
                             </td>
                             
                         </tr>
