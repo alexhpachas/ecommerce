@@ -46,7 +46,7 @@
                                                         </p>
 
                                                         <p class="flex mt-6 text-sm font-semibold text-gray-700">
-                                                            {{$item->options->description}}
+                                                            {!!$item->options->description!!}
                                                         </p>                                                        
                                                     </div>  
                                                     

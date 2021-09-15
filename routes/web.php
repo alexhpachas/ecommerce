@@ -14,7 +14,11 @@ use App\Http\Livewire\ShoppingCart;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\PaymentOrder;
+use App\Mail\NotificationsMailable;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +45,14 @@ Route::get('products/{product}', [ProductController::class,'show'])->name('produ
 Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 
 Route::get('products/{product}/pay', [ProductController::class,'pay'])->name('products.pay');
+
+Route::get('notifications', function () {
+    $correo = new NotificationsMailable;
+
+    Mail::to('alex.h.pachas@gmail.com')->send($correo);
+
+    return "Mensaje Enviado";
+});
 
 
 Route::middleware('auth')->group(function(){
