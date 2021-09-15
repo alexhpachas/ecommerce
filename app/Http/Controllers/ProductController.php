@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     public function show(Product $product){
-        $qualifications = Qualify::where('product_id',$product->id)->get();
+        $qualifications = Qualify::where('product_id',$product->id)->orderBy('created_at','desc')->get();
         return view('products.show',compact('product','qualifications'));
     }
 }

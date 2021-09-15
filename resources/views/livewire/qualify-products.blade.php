@@ -22,43 +22,43 @@
            
         <x-slot name="content">
             <div class="flex space-x-6 justify-center">
-                <div wire:click="$set('qualification',1)" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',1)" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 1 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                        
+                        <i class="fas fa-star fa-lg"></i>                        
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',2)" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',2)" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 2 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                              
+                        <i class="fas fa-star fa-lg"></i>                                              
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',3)" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',3)" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 3 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                              
+                        <i class="fas fa-star fa-lg"></i>                                              
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',4)" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',4)" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 4 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                          
+                        <i class="fas fa-star fa-lg"></i>                                          
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',5)" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',5)" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification == 5 )
                         <i class="fas fa-star fa-lg "></i>                       
                     @else
-                        <i class="far fa-star fa-lg"></i>                                               
+                        <i class="fas fa-star fa-lg"></i>                                               
                     @endif                    
                 </div>                                    
             </div>
@@ -69,7 +69,7 @@
 
             <div class="flex mt-6">   
                 <span class="flex justify-start text-sm ">Tú opinión acerca de este producto, es importante. </span>
-                <span class="text-sm font-bold">(Maximo 300 caracteres)</span>            
+                <span class="text-sm font-bold">(Maximo 255 caracteres)</span>            
             </div>
             <div class=" flex flex-1">
                 <textarea wire:model="comment" class="w-full" name="" id="" cols="" rows="4">Lorem ipsum, Suscipit laborum quisquam sed amet, corrupti rerum cumque ab vitae autem perspiciatis eius ipsum.</textarea>                
@@ -100,52 +100,49 @@
         <x-slot name="title">
             <div class="font-bold text-xl">
                 MODIFICAR CALIFICACIÓN
-                {{$order->id}}
-                {{$item}}
-                {{$orden}}
-                {{$qualification}}
+           
             </div>
         </x-slot>
            
         <x-slot name="content">
             <div class="flex space-x-6 justify-center">
-                <div wire:click="$set('qualification',1)" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',1)" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 1 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                        
+                        <i class="fas fa-star fa-lg"></i>                        
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',2)" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',2)" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 2 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                              
+                        <i class="fas fa-star fa-lg"></i>                                              
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',3)" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',3)" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 3 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                              
+                        <i class="fas fa-star fa-lg"></i>                                              
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',4)" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',4)" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification >= 4 )
                         <i class="fas fa-star fa-lg"></i>                        
                     @else
-                        <i class="far fa-star fa-lg"></i>                                          
+                        <i class="fas fa-star fa-lg"></i>                                          
                     @endif                    
                 </div>
 
-                <div wire:click="$set('qualification',5)" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : ''}}">
+                <div wire:click="$set('qualification',5)" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
                     @if ($qualification == 5 )
                         <i class="fas fa-star fa-lg "></i>                       
                     @else
-                        <i class="far fa-star fa-lg"></i>                                               
+                        <i class="fas fa-star fa-lg"></i>                                               
                     @endif                    
                 </div>                                    
             </div>
@@ -156,7 +153,7 @@
 
             <div class="flex mt-6">   
                 <span class="flex justify-start text-sm ">Tú opinión acerca de este producto, es importante. </span>
-                <span class="text-sm font-bold">(Maximo 300 caracteres)</span>            
+                <span class="text-sm font-bold">(Maximo 255 caracteres)</span>            
             </div>
             <div class=" flex flex-1">
                 <textarea wire:model="comment" class="w-full" name="" id="" cols="" rows="4">Lorem ipsum, Suscipit laborum quisquam sed amet, corrupti rerum cumque ab vitae autem perspiciatis eius ipsum.</textarea>                

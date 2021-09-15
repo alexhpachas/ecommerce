@@ -35,7 +35,7 @@ class QualifyProducts extends Component
         'order_id' => 'required',
         'product_id'=>'required',
         'user_id'=>'required',   
-        'comment'=>'required|max:300',  
+        'comment'=>'required|max:255',  
         'qualification'=>'required',  
         'status' => 'required'      
     ];

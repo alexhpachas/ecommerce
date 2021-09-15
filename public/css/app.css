@@ -1065,6 +1065,9 @@ select {
 	white-space: nowrap;
 	border-width: 0;
 }
+.visible {
+	visibility: visible;
+}
 .fixed {
 	position: fixed;
 }
@@ -1149,6 +1152,9 @@ select {
 }
 .col-span-2 {
 	grid-column: span 2 / span 2;
+}
+.col-span-1 {
+	grid-column: span 1 / span 1;
 }
 .m-2 {
 	margin: 0.5rem;
@@ -1281,9 +1287,6 @@ select {
 .mr-auto {
 	margin-right: auto;
 }
-.mt-56 {
-	margin-top: 14rem;
-}
 .-mt-px {
 	margin-top: -1px;
 }
@@ -1313,6 +1316,9 @@ select {
 }
 .-mt-10 {
 	margin-top: -2.5rem;
+}
+.ml-5 {
+	margin-left: 1.25rem;
 }
 .mt-12 {
 	margin-top: 3rem;
@@ -1680,6 +1686,11 @@ select {
 	margin-right: calc(1.5rem * var(--tw-space-x-reverse));
 	margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-x-reverse: 0;
+	margin-right: calc(1rem * var(--tw-space-x-reverse));
+	margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .space-x-7 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-x-reverse: 0;
 	margin-right: calc(1.75rem * var(--tw-space-x-reverse));
@@ -1805,11 +1816,11 @@ select {
 .border-r {
 	border-right-width: 1px;
 }
-.border-b-8 {
-	border-bottom-width: 8px;
-}
 .border-l-2 {
 	border-left-width: 2px;
+}
+.border-b-8 {
+	border-bottom-width: 8px;
 }
 .border-t-2 {
 	border-top-width: 2px;
@@ -2334,13 +2345,13 @@ select {
 	--tw-text-opacity: 1;
 	color: rgba(251, 191, 36, var(--tw-text-opacity));
 }
-.text-gray-200 {
-	--tw-text-opacity: 1;
-	color: rgba(229, 231, 235, var(--tw-text-opacity));
-}
 .text-gray-300 {
 	--tw-text-opacity: 1;
 	color: rgba(209, 213, 219, var(--tw-text-opacity));
+}
+.text-gray-200 {
+	--tw-text-opacity: 1;
+	color: rgba(229, 231, 235, var(--tw-text-opacity));
 }
 .text-orange-500 {
 	--tw-text-opacity: 1;
@@ -2414,6 +2425,10 @@ select {
 }
 .shadow-inner {
 	--tw-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-none {
+	--tw-shadow: 0 0 #0000;
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .ring-1 {
@@ -3333,6 +3348,10 @@ select {
 		margin-right: 1.25rem;
 	}
 
+	.lg\:mt-12 {
+		margin-top: 3rem;
+	}
+
 	.lg\:mr-2 {
 		margin-right: 0.5rem;
 	}
@@ -3355,6 +3374,10 @@ select {
 
 	.lg\:w-9 {
 		width: 2.25rem;
+	}
+
+	.lg\:w-10 {
+		width: 2.5rem;
 	}
 
 	.lg\:max-w-screen-lg {
@@ -3383,6 +3406,12 @@ select {
 
 	.lg\:justify-center {
 		justify-content: center;
+	}
+
+	.lg\:space-x-1 > :not([hidden]) ~ :not([hidden]) {
+		--tw-space-x-reverse: 0;
+		margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+		margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
 	}
 
 	.lg\:space-x-14 > :not([hidden]) ~ :not([hidden]) {
@@ -3432,6 +3461,11 @@ select {
 	.lg\:text-base {
 		font-size: 1rem;
 		line-height: 1.5rem;
+	}
+
+	.lg\:text-5xl {
+		font-size: 3rem;
+		line-height: 1;
 	}
 
 	.lg\:font-bold {

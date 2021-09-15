@@ -52,9 +52,7 @@
                                                     
                                                     {{-- {{$item->rowId}}
                                                     {{$item->options->qualified}} --}}
-                                                    
-                                                    Order {{$order->id}}
-                                                    Producto {{$item->id}}
+                                              
 
                                                     @php
                                                         $qualification = $item->options->qualification
@@ -72,43 +70,43 @@
                                                         
                                                             class="flex mt-2 items-center text-center justify-center mb-2">
                                                             <ul class="flex text-sm">
-                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : ''}}">
+                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
                                                                     @if ($qualification >= 1 )
                                                                         <i class="fas fa-star"></i>                        
                                                                     @else
-                                                                        <i class="far fa-star"></i>                        
+                                                                        <i class="fas fa-star"></i>                        
                                                                     @endif                    
                                                                 </div>
                                                 
-                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : ''}}">
+                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
                                                                     @if ($qualification >= 2 )
                                                                         <i class="fas fa-star"></i>                        
                                                                     @else
-                                                                        <i class="far fa-star"></i>                                              
+                                                                        <i class="fas fa-star"></i>                                              
                                                                     @endif                    
                                                                 </div>
                                                 
-                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : ''}}">
+                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
                                                                     @if ($qualification >= 3 )
                                                                         <i class="fas fa-star"></i>                        
                                                                     @else
-                                                                        <i class="far fa-star"></i>                                              
+                                                                        <i class="fas fa-star"></i>                                              
                                                                     @endif                    
                                                                 </div>
                                                 
-                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : ''}}">
+                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
                                                                     @if ($qualification >= 4 )
                                                                         <i class="fas fa-star"></i>                        
                                                                     @else
-                                                                        <i class="far fa-star"></i>                                          
+                                                                        <i class="fas fa-star"></i>                                          
                                                                     @endif                    
                                                                 </div>
                                                 
-                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : ''}}">
+                                                                <div wire:model="qualification" class="cursor-pointer {{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
                                                                     @if ($qualification == 5 )
                                                                         <i class="fas fa-star "></i>                       
                                                                     @else
-                                                                        <i class="far fa-star"></i>                                               
+                                                                        <i class="fas fa-star"></i>                                               
                                                                     @endif                    
                                                                 </div>  
                                                             </ul>
@@ -142,7 +140,7 @@
             return {
                 activeTab: 0,
                 tabs: [
-                    "MI COMPRA  ORDER-{{ $order->id }}  ->  FECHA DE COMPRA {{ $order->created_at}}",
+                    "COMPRA ORDER-{{ $order->id }}  -  FECHA DE COMPRA {{ $order->created_at->format('d-m-Y')}}",
 
                 ]
             };
