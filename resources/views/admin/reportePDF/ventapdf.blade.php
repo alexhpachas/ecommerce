@@ -10,7 +10,7 @@
 </head>
 
 <div align="center" style="font-size: 25px">
-    SISTEMA MUNDO DETALLES
+    MUNDO DETALLES
 </div>
 <table>
     <tr>
@@ -140,7 +140,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach ($ordenes as $order)
-                    <tr class="cuerpo hover:bg-gray-100 hover:text-red-500 cursor-pointer">
+                    <tr class="cuerpo hover:bg-gray-100 hover:text-red-500 cursor-pointer border-b">
                         <td class="px-6 py-2 whitespace-nowrap">
                             <div class="flex items-center">
 
