@@ -209,10 +209,10 @@
                             </a>
                         @endif
 
-                        <x-jet-secondary-button class="ml-auto" wire:click="getVentas" wire:loading.attr="disabled"
+                        <x-jet-danger-button class="ml-auto text-white" wire:click="getVentas" wire:loading.attr="disabled"
                             wire:target="getVentas">
                             VER REPORTE
-                        </x-jet-secondary-button>
+                        </x-jet-danger-button>
                     </div>
                 </div>
             </div>
@@ -478,9 +478,9 @@
                         @endif
 
 
-                        <x-jet-secondary-button class="lg:ml-2 ml-auto" wire:click="getCities" wire:loading.attr="disabled" wire:target="getCities">
+                        <x-jet-danger-button class="lg:ml-2 ml-auto text-white" wire:click="getCities" wire:loading.attr="disabled" wire:target="getCities">
                             VER REPORTE
-                        </x-jet-secondary-button>
+                        </x-jet-danger-button>
                     </div>
                 </div>
             </div>
@@ -708,9 +708,9 @@
                             </a>
                         @endif
 
-                        <x-jet-secondary-button class="ml-auto mr-1 lg:mr-8" wire:click="getProducts" wire:loading.attr="disabled" wire:target="getProducts">
+                        <x-jet-danger-button class="ml-auto mr-1 text-white lg:mr-8" wire:click="getProducts" wire:loading.attr="disabled" wire:target="getProducts">
                             VER REPORTE
-                        </x-jet-secondary-button>
+                        </x-jet-danger-button>
                     </div>
                 </div>
             </div>
@@ -1388,10 +1388,10 @@
                             </a>
                         @endif
 
-                        <x-jet-secondary-button class="ml-auto" wire:click="getProductosVendidos" wire:loading.attr="disabled"
+                        <x-jet-danger-button class="ml-auto text-white" wire:click="getProductosVendidos" wire:loading.attr="disabled"
                             wire:target="getProductosVendidos">
                             VER REPORTE
-                        </x-jet-secondary-button>
+                        </x-jet-danger-button>
                     </div>
                 </div>
             </div>
@@ -1608,10 +1608,10 @@
                             </a>
                         @endif
 
-                        <x-jet-secondary-button class="ml-auto" wire:click="getVentasEnvio" wire:loading.attr="disabled"
+                        <x-jet-danger-button class="ml-auto text-white" wire:click="getVentasEnvio" wire:loading.attr="disabled"
                             wire:target="getVentasEnvio">
                             VER REPORTE
-                        </x-jet-secondary-button>
+                        </x-jet-danger-button>
                     </div>
                 </div>
             </div>
