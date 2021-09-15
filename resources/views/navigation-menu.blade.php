@@ -7,7 +7,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="/" class="">
                         {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                        <img class="h-16 w-full" src="{{asset('img/logo.png')}}" alt="">
+                        <img class="h-16 w-full" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
                     </a>
                 </div>
 
