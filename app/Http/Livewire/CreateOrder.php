@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\NotificationsMailable;
 use App\Models\City;
 use App\Models\Department;
 use App\Models\District;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class CreateOrder extends Component
@@ -50,7 +52,7 @@ class CreateOrder extends Component
         $this->reset('district_id');
     }
 
-    public function create_order(){
+    public function create_order(){        
 
         $rules = $this->rules;
 
@@ -105,10 +107,13 @@ class CreateOrder extends Component
         $this->emitTo('dropdown-cart','render');
 
         /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
-        $this->emitTo('cart-mobil','render');
-
+        $this->emitTo('cart-mobil','render');                
 
         return redirect()->route('orders.payment',$order);
+
+        $correo = new NotificationsMailable;
+
+        Mail::to('alex.h.pachas@gmail.com')->send($correo);
         
     }
 

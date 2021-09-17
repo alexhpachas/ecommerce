@@ -97,7 +97,7 @@ class CreateCategory extends Component
         $category = Category::create([
             'name' =>$this->createForm['name'],
             'slug' =>$this->createForm['slug'],
-            'icon' =>$this->createForm['icon'],
+            'icon' =>"<i class='".$this->createForm['icon']."'></i>",
             'image' =>$image            
         ]);
 

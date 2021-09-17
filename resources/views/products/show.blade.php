@@ -119,10 +119,32 @@
                     </ul>
                 </div>
 
-                <div class="-mt-10 text-gray-700">
+                {{-- <div class="-mt-10 text-gray-700">
                     <h2 class="font-bold text-lg">Descripción</h2>
                     {!!$product->description!!}
-                </div>
+                </div> --}}
+
+                {{-- DESCRIPTION DEL PRODUCTO --}}
+
+               
+                    <div class="rounded-lg p-3 w-full -mt-6">                       
+                       <div class="shadow-md bg-white rounded-lg w-full container">                                                    
+                          <div class="tab bg-white w-full overflow-hidden border-t">
+                             <input class="absolute opacity-0" id="tab-multi-three" type="checkbox" name="tabs">
+                             <label class="block p-5 leading-normal cursor-pointer font-bold" for="tab-multi-three">DESCRIPCIÓN</label>
+                             
+                             <div class="tab-content overflow-hidden  bg-white border-indigo-500 leading-normal">
+                                <p class="p-5">
+                                    
+                                    {!!$product->description!!}
+                                </p>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                           
+
+                {{-- FIN --}}
                 
             </div>
 
@@ -175,6 +197,271 @@
                     @livewire('add-cart-item', ['product' => $product])
                 
                 @endif
+
+
+                {{-- ICONOS DE CALIFICACIÓN DEL PRODUCTO --}}                
+                
+                <label class="block p-1 leading-normal cursor-pointer font-bold mt-11" for="tab-multi-ten">CALIFICACIÓN DEL PRODUCTO</label>
+                <div class="flex flex-1 mt-3">                    
+                    <div class="grid grid-cols-6 w-full ">
+                        <div class="col-span-1 mt-5 items-center text-center content-center justify-center ">
+                            <p class="flex ml-4 items-center text-center content-center font-semibold text-2xl lg:text-5xl justify-center">
+                                
+                                @if ($qualifications->count())
+                                                                                        
+                                    {{round($qualification = $qualifications->sum('qualification')/$qualifications->count(),1)}}  
+                                    @php
+                                        $totalRegistro = $qualifications->count();
+                                    @endphp
+                                @else                                                                                                                                 
+                                    {{$qualification = 0}}
+                                    @php
+                                        $totalRegistro = 1;
+                                    @endphp
+                                @endif
+                            </p>
+                            <div class="flex ml-4 lg:space-x-1 justify-center">
+                                <div class="{{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                    @if ($qualification >= 1 )
+                                        <i class="fas fa-star fa-xs"></i>                        
+                                    @else
+                                        <i class="fas fa-star fa-xs"></i>                        
+                                    @endif                    
+                                </div>
+                
+                                <div class="{{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                    @if ($qualification >= 2 )
+                                        <i class="fas fa-star fa-xs"></i>                        
+                                    @else
+                                        <i class="fas fa-star fa-xs"></i>                                              
+                                    @endif                    
+                                </div>
+                
+                                <div class="{{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                    @if ($qualification >= 3 )
+                                        <i class="fas fa-star fa-xs"></i>                        
+                                    @else
+                                        <i class="fas fa-star fa-xs"></i>                                              
+                                    @endif                    
+                                </div>
+                
+                                <div class="{{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                    @if ($qualification >= 4 )
+                                        <i class="fas fa-star fa-xs"></i>                        
+                                    @else
+                                        <i class="fas fa-star fa-xs"></i>                                          
+                                    @endif                    
+                                </div>
+                
+                                <div class="{{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                    @if ($qualification == 5 )
+                                        <i class="fas fa-star fa-xs "></i>                       
+                                    @else
+                                        <i class="fas fa-star fa-xs"></i>                                               
+                                    @endif                    
+                                </div>                                    
+                            </div>
+
+                            <p class="flex text-center ml-2 text-sm lg:justify-center">
+                                
+                                @if ($qualifications->count())
+                                    {{$qualifications->count()}} Reseñas    
+                                @else
+                                    0 Reseñas
+                                @endif
+                                
+                            </p>
+                        </div>
+                        
+                                                                              
+                        <div class="col-span-5 ml-5 flex flex-col items-center justify-center ">
+                            <div class="flex items-center flex-1 w-full">
+                                <div class="lg:w-10 w-20">
+                                    <span class="">5</span> <i class="ml-1  fas fa-star fa-xs text-yellow-400"></i>                                                                                                                      
+                                </div>
+
+                                @php
+                                    $calificacionCinco=0;
+                                @endphp
+
+                                @if ($qualifications->count())                                                            
+                                    @forelse ($qualifications as $qualification)
+                                        @if ($qualification->qualification == 5)
+                                            
+                                            @php
+                                                $calificacionCinco = $calificacionCinco + 1
+                                            @endphp                                                           
+                                        @endif
+                                    @empty
+                                        @php
+                                            $calificacionCinco = 0;
+                                        @endphp
+                                    @endforelse
+                                    
+                                @endif
+
+                                
+                                 
+                                <div class="relative pt-1 w-full ">
+                                    <div class="ml-3 overflow-hidden h-2 text-xs flex rounded bg-gray-400">
+                                        <div style="width:{{$calificacionCinco * 100 / $totalRegistro}}%"
+                                            class="shadow-none flex flex-col text-center whitespace-nowrap rounded text-white justify-center bg-greenLime-600">
+                                        </div>
+                                    </div>
+                                </div>  
+                                <span class="ml-3">                                                                                                                                                                                             
+                                    {{$calificacionCinco}}                                                                
+                                </span>                                                                                                                                                                                
+                            </div>
+
+                            <div class="flex items-center flex-1 w-full">
+                                <div class="lg:w-10 w-20">
+                                    <span class="">4</span> <i class="ml-1  fas fa-star fa-xs text-yellow-400"></i>                                                                                                                      
+                                </div>
+
+                                @php
+                                    $calificacionCuatro=0;
+                                @endphp
+
+                                @if ($qualifications->count())
+                                    @forelse ($qualifications as $qualification)
+                                        @if ($qualification->qualification == 4)                                                                        
+                                            @php
+                                                $calificacionCuatro = $calificacionCuatro + 1;
+                                            @endphp                                                                  
+                                        @endif
+                                    @empty
+                                        @php
+                                            $calificacionCuatro = 0;
+                                        @endphp
+                                    @endforelse                                                                
+                                @endif
+                                
+
+                                <div class="relative pt-1 w-full ">
+                                    <div class="ml-3 overflow-hidden h-2 text-xs flex rounded bg-gray-400">
+                                        <div style="width:{{$calificacionCuatro * 100 / $totalRegistro}}%"
+                                            class="shadow-none flex flex-col text-center whitespace-nowrap rounded text-white justify-center bg-greenLime-600">
+                                        </div>
+                                    </div>
+                                </div>
+                                                                                             
+                                <span class="ml-3">                                                                
+                                    {{$calificacionCuatro}}
+                                </span>                                                                                                                                                                                
+                            </div>
+
+                            <div class="flex items-center flex-1 w-full">
+                                <div class="lg:w-10 w-20">
+                                    <span class="">3</span> <i class="ml-1  fas fa-star fa-xs text-yellow-400"></i>                                                                                                                      
+                                </div>
+
+                                @php
+                                    $calificacionTres=0;
+                                @endphp
+
+                                @if ($qualifications->count())
+                                    @forelse ($qualifications as $qualification)
+                                        @if ($qualification->qualification == 3)                                                                        
+                                            @php
+                                                $calificacionTres = $calificacionTres + 1;
+                                            @endphp                                                                   
+                                        @endif
+                                    @empty
+                                        @php
+                                            $calificacionTres = 0;
+                                        @endphp
+                                    @endforelse                                                                
+                                @endif
+                                
+                                 
+                                <div class="relative pt-1 w-full ">
+                                    <div class="ml-3 overflow-hidden h-2 text-xs flex rounded bg-gray-400">
+                                        <div style="width:{{$calificacionTres * 100 / $totalRegistro}}%"
+                                            class="shadow-none flex flex-col text-center whitespace-nowrap rounded text-white justify-center bg-greenLime-600">
+                                        </div>
+                                    </div>
+                                </div>   
+                                <span class="ml-3">                                                                
+                                    {{$calificacionTres}}
+                                </span>                                                                                                                                                                                
+                            </div>
+
+                            <div class="flex items-center flex-1 w-full">
+                                <div class="lg:w-10 w-20">
+                                    <span class="">2</span> <i class="ml-1  fas fa-star fa-xs text-yellow-400"></i>                                                                                                                      
+                                </div>
+                                @php
+                                    $calificacionDos=0;
+                                @endphp
+
+                                @if ($qualifications->count())
+                                    @forelse ($qualifications as $qualification)
+                                        @if ($qualification->qualification == 2)                                                                        
+                                            @php
+                                                $calificacionDos = $calificacionDos + 1;
+                                            @endphp                                                                                                                                         
+                                        @endif
+                                    @empty
+                                        @php
+                                            $calificacionDos = 0;
+                                        @endphp
+                                    @endforelse                                                                 
+                                @endif
+                                                                                                                                                        
+                                <div class="relative pt-1 w-full ">
+                                    <div class="ml-3 overflow-hidden h-2 text-xs flex rounded bg-gray-400">
+                                        <div style="width:{{$calificacionDos * 100 / $totalRegistro}}%"
+                                            class="shadow-none flex flex-col text-center whitespace-nowrap rounded text-white justify-center bg-greenLime-600">
+                                        </div>
+                                    </div>
+                                </div> 
+                                <span class="ml-3">
+                                    {{$calificacionDos}}
+                                </span>                                                                                                                                                                                
+                            </div>
+
+                            <div class="flex items-center flex-1 w-full">
+                                <div class="lg:w-10 w-20">
+                                    <span class="">1</span> <i class="ml-1  fas fa-star fa-xs text-yellow-400"></i>                                                                                                                      
+                                </div>
+                                @php
+                                    $calificacionUno=0;
+                                @endphp
+
+                                @if ($qualifications->count())
+                                    @forelse ($qualifications as $qualification)
+                                        @if ($qualification->qualification == 1)
+                                            @php
+                                                $calificacionUno = $calificacionUno + 1;
+                                            @endphp                                                                                                                                      
+                                        @endif                                                                    
+                                    @empty
+                                        @php
+                                            $calificacionUno = 0;
+                                        @endphp 
+                                    @endforelse                                                                 
+                                @endif                                                                                                                       
+                                 
+                                <div class="relative pt-1 w-full ">
+                                    <div class="ml-3 overflow-hidden h-2 text-xs flex rounded bg-gray-400">
+                                        <div style="width:{{$calificacionUno * 100 / $totalRegistro}}%"
+                                            class="shadow-none flex flex-col text-center whitespace-nowrap rounded text-white justify-center bg-greenLime-600">
+                                        </div>
+                                    </div>
+                                </div>   
+                                <span class="ml-3">
+                                    {{$calificacionUno}}
+                                </span>                                                                                                                                                                                
+                            </div>                                                                                                                                                                               
+                        </div>                                                                                                                                                            
+
+                    </div>
+                    
+                    
+                </div>
+
+                {{-- FIN --}}
                                
                     <script type="text/javascript">
                         function visualiza_primero() {
@@ -194,7 +481,7 @@
                             document.getElementById('primero').style.visibility='hidden';
                             document.getElementById('primero').style.display='none';
                         };      
-                    </script>                                                                    
+                    </script>                                         
                 
                
                 @php
@@ -209,7 +496,7 @@
                         }
                 </script>
 
-                <div class="lg:mt-12">
+                {{-- <div class="lg:mt-12">
                     <div class="flex flex-1">
                         
                             <div class="w-full  p-2">                                
@@ -217,15 +504,87 @@
                                     <div class="tab w-full overflow-hidden border-t">
                                         <input class="absolute opacity-0" id="tab-multi-ten" type="radio" name="tabs2">
                                         <label class="block p-1 leading-normal cursor-pointer font-bold" for="tab-multi-ten">RESEÑAS DEL PRODUCTO</label>
-                                        <div id='contenido' class="tab-content {{-- overflow-hidden --}} {{$verMas == 1 ? 'overflow-x-auto h-30' : ''}} border-l-2 bg-gray-100  leading-normal">
-                                           
+                                        <div id='contenido' class="tab-content  {{$verMas == 1 ? 'overflow-x-auto h-30' : ''}} border-l-2 bg-gray-100  leading-normal">
+                                            @if ($qualifications->count())                                                                                            
+                                            @foreach ($qualifications as $qualificat)
+                                                                                            
+                                                <div class=" bg-gray-100 flex items-center border-b-2 mt-3 ">
+                                                    
+                                                    <div class=" w-full px-4 mb-4 ">
+                                                    
+                                                        <div class="flex items-center space-x-4 py-1">
+                                                            <div class="">
+                                                                <img class="w-12 h-12 rounded-full" src="{{$qualificat->user()->first()->profile_photo_url}}" alt="" />
+                                                            </div>
+                                
+                                                            <div class="text-sm font-semibold">{{$qualificat->user()->first()->name}} 
+                                
+                                                            </div>
+                                                        </div> 
+                                                        @php
+                                                            $qualification = $qualificat->qualification;
+                                                        @endphp
+                                                        
+                                                        <div class="flex">
+                                                            <div class="{{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                                @if ($qualification >= 1 )
+                                                                    <i class="fas fa-star fa-xs"></i>                        
+                                                                @else
+                                                                    <i class="fas fa-star fa-xs"></i>                        
+                                                                @endif                    
+                                                            </div>
+                                            
+                                                            <div class="{{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                                @if ($qualification >= 2 )
+                                                                    <i class="fas fa-star fa-xs"></i>                        
+                                                                @else
+                                                                    <i class="fas fa-star fa-xs"></i>                                              
+                                                                @endif                    
+                                                            </div>
+                                            
+                                                            <div class="{{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                                @if ($qualification >= 3 )
+                                                                    <i class="fas fa-star fa-xs"></i>                        
+                                                                @else
+                                                                    <i class="fas fa-star fa-xs"></i>                                              
+                                                                @endif                    
+                                                            </div>
+                                            
+                                                            <div class="{{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                                @if ($qualification >= 4 )
+                                                                    <i class="fas fa-star fa-xs"></i>                        
+                                                                @else
+                                                                    <i class="fas fa-star fa-xs"></i>                                          
+                                                                @endif                    
+                                                            </div>
+                                            
+                                                            <div class="{{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                                @if ($qualification == 5 )
+                                                                    <i class="fas fa-star fa-xs "></i>                       
+                                                                @else
+                                                                    <i class="fas fa-star fa-xs"></i>                                               
+                                                                @endif                    
+                                                            </div>    
+                                                            
+                                                            <span class="ml-2 text-sm mt-1">{{$qualificat->created_at}}</span>
+                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                    
+                                                        <article class="mt-4 text-md content-center text-gray-600">
+                                                            {{$qualificat->comment}}
+                                                        </article>
+                                                    
+                                                    </div>
+                                
+                                                </div>
+                                            @endforeach
+                                        @endif                                           
                                             <div class="flex flex-1">
                                                 <div class="grid grid-cols-6 w-full ">
                                                     <div class="col-span-1 mt-5 items-center text-center content-center justify-center ">
                                                         <p class="flex ml-4 items-center text-center content-center font-semibold text-2xl lg:text-5xl justify-center">
                                                             
                                                             @if ($qualifications->count())
-                                                                {{-- {{$qualifications->sum('qualification')/$qualifications->count()}}     --}}                                                                
+                                                                                                                    
                                                                 {{round($qualification = $qualifications->sum('qualification')/$qualifications->count(),1)}}  
                                                                 @php
                                                                     $totalRegistro = $qualifications->count();
@@ -304,7 +663,7 @@
                                                             @if ($qualifications->count())                                                            
                                                                 @forelse ($qualifications as $qualification)
                                                                     @if ($qualification->qualification == 5)
-                                                                            {{-- {{$calificacionCinco = $calificacionCinco + 1}} --}}
+                                                                        
                                                                         @php
                                                                             $calificacionCinco = $calificacionCinco + 1
                                                                         @endphp                                                           
@@ -557,12 +916,106 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>                       
+                            </div>
+                       
                     </div>
-                </div>                                    
-            </div>              
-        </div>
+                </div>    --}}                                                 
+            </div>                                      
+        </div>      
+        
+        {{-- LISTA DE RESEÑAS --}}        
+        @if ($qualifications->count())                    
+        <div class="lg:mt-8 mt-4">
+            <div class="flex flex-1">                
+                <div class="w-full  p-2">                                
+                    <div class="">
+                        <div class="tab w-full overflow-hidden border-t">
+                            <input class="absolute opacity-0" id="tab-multi-ten" type="radio" name="tabs2">
+                            <label class="block p-1 leading-normal cursor-pointer font-bold" for="tab-multi-ten">RESEÑAS DEL PRODUCTO</label>
+                            <div id='contenido' class="tab-content {{-- overflow-hidden --}} {{$verMas == 1 ? 'overflow-x-auto h-30' : ''}} border-l-2 bg-gray-100  leading-normal">
+                                <p id="primero" class="text-red-500 cursor-pointer mt-3 ml-3" style="visibility:visible; display:block;" id="segundo" onclick="visualiza_segundo()">Ver todas las reseñas</p>
+                                <p id="segundo" class="text-red-500 cursor-pointer mt-3 ml-3" style="visibility:hidden; display:none;" id="segundo" onclick="visualiza_primero()">Ver Menos</p>                                    
+                                @if ($qualifications->count())                                                                                            
+                                    @foreach ($qualifications as $qualificat)
+                                                                                        
+                                        <div class=" bg-gray-100 flex items-center border-b-2 mt-3 ">
+                                                
+                                            <div class=" w-full px-4 mb-4 ">
+                                                
+                                                <div class="flex items-center space-x-4 py-1">
+                                                    <div class="">
+                                                        <img class="w-12 h-12 rounded-full" src="{{$qualificat->user()->first()->profile_photo_url}}" alt="" />
+                                                    </div>
+                            
+                                                    <div class="text-sm font-semibold">{{$qualificat->user()->first()->name}} 
+                            
+                                                    </div>
+                                                </div> 
 
+                                                    @php
+                                                        $qualification = $qualificat->qualification;
+                                                    @endphp
+                                                    
+                                                <div class="flex">
+                                                <div class="{{$qualification >= 1 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                    @if ($qualification >= 1 )
+                                                            <i class="fas fa-star fa-xs"></i>                        
+                                                    @else
+                                                        <i class="fas fa-star fa-xs"></i>                        
+                                                    @endif                    
+                                                </div>
+                                        
+                                                <div class="{{$qualification >= 2 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                    @if ($qualification >= 2 )
+                                                        <i class="fas fa-star fa-xs"></i>                        
+                                                    @else
+                                                        <i class="fas fa-star fa-xs"></i>                                              
+                                                    @endif                    
+                                                </div>
+                                        
+                                                <div class="{{$qualification >= 3 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                    @if ($qualification >= 3 )
+                                                        <i class="fas fa-star fa-xs"></i>                        
+                                                    @else
+                                                        <i class="fas fa-star fa-xs"></i>                                              
+                                                    @endif                    
+                                                </div>
+                                        
+                                                <div class="{{$qualification >= 4 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                    @if ($qualification >= 4 )
+                                                        <i class="fas fa-star fa-xs"></i>                        
+                                                    @else
+                                                        <i class="fas fa-star fa-xs"></i>                                          
+                                                    @endif                    
+                                                </div>
+                                        
+                                                <div class="{{$qualification == 5 ? 'text-yellow-400' : 'text-gray-300'}}">
+                                                    @if ($qualification == 5 )
+                                                        <i class="fas fa-star fa-xs "></i>                       
+                                                    @else
+                                                        <i class="fas fa-star fa-xs"></i>                                               
+                                                    @endif                    
+                                                </div>    
+                                                        
+                                                <span class="ml-2 text-sm mt-1">{{$qualificat->created_at}}</span>
+                                                </div>
+                                                                                                                                                                                                                                                                                                                                                
+                                                <article class="mt-4 text-md content-center text-gray-600">
+                                                    {{$qualificat->comment}}
+                                                </article>
+                                                
+                                            </div>
+                            
+                                        </div>
+                                    @endforeach
+                                @endif                                                                                                                                                      
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>          
+        @endif
     </div>
 
     {{-- SCRIPT PARA FLEX SLIDER --}}

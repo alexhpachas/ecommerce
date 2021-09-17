@@ -47,13 +47,13 @@ Route::get('shopping-cart', ShoppingCart::class)->name('shopping-cart');
 Route::get('products/{product}/pay', [ProductController::class,'pay'])->name('products.pay');
 
 Route::get('notifications', function () {
+
     $correo = new NotificationsMailable;
 
     Mail::to('alex.h.pachas@gmail.com')->send($correo);
 
     return "Mensaje Enviado";
 });
-
 
 Route::middleware('auth')->group(function(){
 
