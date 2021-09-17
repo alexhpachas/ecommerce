@@ -12,5 +12,6 @@
     @foreach ($order as $item)
         {{$item}}
     @endforeach
+    {{$order}}
 </body>
 </html>

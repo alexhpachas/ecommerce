@@ -20,7 +20,7 @@ class NotificationsMailable extends Mailable
      *
      * @return void
      */
-    public function __construct($order)
+    public function __construct(Order $order)
     {
         $this->order = $order;
     }
