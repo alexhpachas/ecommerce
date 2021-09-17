@@ -109,9 +109,9 @@ class CreateOrder extends Component
         /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
         $this->emitTo('cart-mobil','render');      
         
-        $correo = new NotificationsMailable;
+        
 
-        Mail::to('alex.h.pachas@gmail.com')->send($correo,$order);
+        Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsMailable($order));
 
         return redirect()->route('orders.payment',$order);
 

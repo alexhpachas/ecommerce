@@ -9,5 +9,8 @@
 <body>
     <h1>HAN INTENTADO COMPRAR</h1>
     <p>Primera notificacion por laravel</p>
+    @foreach ($order as $item)
+        {{$item}}
+    @endforeach
 </body>
 </html>
