@@ -107,13 +107,15 @@ class CreateOrder extends Component
         $this->emitTo('dropdown-cart','render');
 
         /* ACTUALIZAMOS EL CARRITO DE COMPRAS VISTA MOBIL */
-        $this->emitTo('cart-mobil','render');                
-
-        return redirect()->route('orders.payment',$order);
-
+        $this->emitTo('cart-mobil','render');      
+        
         $correo = new NotificationsMailable;
 
         Mail::to('alex.h.pachas@gmail.com')->send($correo);
+
+        return redirect()->route('orders.payment',$order);
+
+        
         
     }
 
