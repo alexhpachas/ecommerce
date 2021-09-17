@@ -111,7 +111,7 @@ class CreateOrder extends Component
         
         $correo = new NotificationsMailable;
 
-        Mail::to('alex.h.pachas@gmail.com')->send($correo);
+        Mail::to('alex.h.pachas@gmail.com')->send($correo,$order);
 
         return redirect()->route('orders.payment',$order);
 

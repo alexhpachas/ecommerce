@@ -9,6 +9,7 @@ use Illuminate\Queue\SerializesModels;
 
 class NotificationsMailable extends Mailable
 {
+    public $order;
     use Queueable, SerializesModels;
 
         public $subjet = "Información de Contacto";
@@ -30,6 +31,7 @@ class NotificationsMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.notifications');
+        /* return $this->view('emails.notifications'); */
+        return $this->view('orders.payment',$this->order);
     }
 }
