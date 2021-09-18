@@ -12,6 +12,7 @@
     @foreach ($order as $item)
         {{$item}}
     @endforeach
-    {{$order}}
+    {{$order['user_id']}}
+    
 </body>
 </html>

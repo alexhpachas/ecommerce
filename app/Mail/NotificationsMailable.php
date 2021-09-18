@@ -32,8 +32,8 @@ class NotificationsMailable extends Mailable
      */
     public function build()
     {
-        $order = json_decode($this->order);
+        $order = $this->order;
         return $this->view('emails.notifications',compact('order'));
-        /* return $this->view('orders.payment',$this->order); */
+        /* return $this->view('orders.payment',$order); */
     }
 }
