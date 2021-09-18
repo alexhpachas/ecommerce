@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+
+use App\Mail\NotificationsPaymentMailable;
 use App\Models\Order;
 use Exception;
 use Livewire\Component;
@@ -9,7 +11,7 @@ use Livewire\Component;
 
 /* PARA USAR POLICE EN UN COMPONENTE DE LIVEWIRE */
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
+use Illuminate\Support\Facades\Mail;
 
 class PaymentOrder extends Component
 {
@@ -32,6 +34,8 @@ class PaymentOrder extends Component
 
         $this->order->status = 2;
         $this->order->save();
+
+        Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsPaymentMailable($this->order));
 
         return redirect()->route('orders.show',$this->order);
     }

@@ -110,8 +110,8 @@ class CreateOrder extends Component
         $this->emitTo('cart-mobil','render');      
         
         
-
-        Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsMailable($order));
+        /* DESCOMENTAR PARA ENVIAR NOTIFICACION VIA CORREO -> EN LOCAL NO ENVIA CORREO */
+        /* Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsMailable($order)); */
 
         return redirect()->route('orders.payment',$order);
 
