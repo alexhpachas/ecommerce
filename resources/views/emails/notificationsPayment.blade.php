@@ -33,13 +33,12 @@
     </head>
 
 
-    <h1>Se ha generado una nueva compra ORDER-{{ $order['id'] }}</h1>
+    <h1>SE HA PAGADO ESTA COMPRA ORDER-{{ $order['id'] }}</h1>
     <p>Notificación de compra</p>
 
-    {{$order}}
 
     <!-- This example requires Tailwind CSS v2.0+ -->
-    {{-- <div class="flex flex-col">
+    <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -118,7 +117,9 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+
+    <a href="{{route('orders.show',$order['id'])}}">IR A LA COMPRA</a>
 
 
 
