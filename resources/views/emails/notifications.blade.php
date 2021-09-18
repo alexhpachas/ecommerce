@@ -27,39 +27,10 @@
         </style>
     </head>
     
-    <body>
-        <h2>Hola Mundo!</h3>
-        <h3>Aquí veras una Tabla basica</h5>
-    
-        <!-- Desde Aquí comienza la maquetación de la tabla -->
-        <table>
-            <tr>
-                <th>Name</th>
-                <th colspan="2">Telephone</th>
-            </tr>
-            <tr>
-                <td>Bill Gates</td>
-                <td>55577854</td>
-                <td>55577855</td>
-            </tr>
-        </table>
-    </body>
-
     
     <h1>Se ha Generado una nueva Orden</h1>
     <p>Notificación de compra</p>
-  
-    <p>Usuario : {{$order->user['name']}}</p>
-    {{-- <p>Dni : {{$order->user['dni']}}</p> --}}
-    <p>Contacto : {{$order['contact']}}</p>
-    <p>Celular : {{$order['phone']}}</p>
-    @if ($order['envio_type'] != 1)
-    <p>Envio : SI</p>    
-    @else
-    <p>Envio : NO</p>
-    @endif
 
-    <p>Total Compra : S/. {{$order['total']}}</p>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col">
@@ -84,18 +55,16 @@
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Total Compra
                 </th>
-                <th scope="col" class="relative px-6 py-3">
-                  <span class="sr-only">Edit</span>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Fecha
                 </th>
+              
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
               <tr>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                      <img class="h-10 w-10 rounded-full" src="{{$order->user['profile_photo_url']}}" alt="">
-                    </div>
+                  <div class="flex items-center">                    
                     <div class="ml-4">
                       <div class="text-sm font-medium text-gray-900">
                         {{$order->user['name']}}
@@ -127,7 +96,7 @@
                     S/. {{$order['total']}}
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    {{$order['created_at']}}
                 </td>
               </tr>
   
