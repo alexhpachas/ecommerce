@@ -111,7 +111,7 @@ class CreateOrder extends Component
         
         
         /* DESCOMENTAR PARA ENVIAR NOTIFICACION VIA CORREO -> EN LOCAL NO ENVIA CORREO */
-        /* Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsMailable($order)); */
+        Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsMailable($order));
 
         return redirect()->route('orders.payment',$order);
 
