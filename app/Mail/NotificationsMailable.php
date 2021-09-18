@@ -22,7 +22,7 @@ class NotificationsMailable extends Mailable
      */
     public function __construct(Order $order)
     {
-        $this->order = json_decode($order);
+        $this->order = $order;
     }
 
     /**
@@ -32,7 +32,7 @@ class NotificationsMailable extends Mailable
      */
     public function build()
     {
-        $order = $this->order;
+        $order = json_decode($this->order);
         return $this->view('emails.notifications',compact('order'));
         /* return $this->view('orders.payment',$this->order); */
     }
