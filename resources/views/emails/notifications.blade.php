@@ -13,7 +13,7 @@
     Usuario : <p>{{$order->user['user_id']}}</p>
     Contacto : <p>{{$order['contact']}}</p>
     Celular : <p>{{$order['phone']}}</p>
-    @if ({{$order['envio_type'] != 1}})
+    @if ($order['envio_type'] != 1)
     Envio : <p>SI</p>    
     @else
     Envio : <p>NO</p>
