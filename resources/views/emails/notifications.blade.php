@@ -12,7 +12,11 @@
     @foreach ($order as $item)
         {{$item}}
     @endforeach
-    {{$order['user_id']}}
+    <p>{{$order->user['user_id']}}</p>
+    <p>{{$order['contact']}}</p>
+    <p>{{$order['phone']}}</p>
+    <p>{{$order['total']}}</p>
+    
     
 </body>
 </html>
