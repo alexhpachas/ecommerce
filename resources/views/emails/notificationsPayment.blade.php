@@ -33,7 +33,7 @@
     </head>
 
 
-    <h1>SE HA PAGADO ESTA COMPRA ORDER-{{ $order['id'] }}</h1>
+    <h1>SE HA PAGADO LA COMPRA ORDER-{{ $order['id'] }}</h1>
     <p>Notificación de compra</p>
 
 
@@ -64,6 +64,10 @@
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Total Compra
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Estado
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -108,6 +112,20 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     S/. {{ $order['total'] }}
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if ($order['status'] != 1)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            PAGADO
+                                        </span>
+                                    @else
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                            PENDIENTE
+                                        </span>
+                                    @endif
+                                    
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     {{ $order['created_at'] }}
                                 </td>
@@ -119,7 +137,7 @@
         </div>
     </div>
 
-    <a href="{{route('orders.show',$order['id'])}}">IR A LA COMPRA</a>
+    <a href="{{route('admin.orders.show',$order['id'])}}">IR A LA COMPRA</a>
 
 
 
