@@ -7,15 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>HAN INTENTADO COMPRAR</h1>
-    <p>Primera notificacion por laravel</p>
-    @foreach ($order as $item)
-        {{$item}}
-    @endforeach
-    <p>{{$order->user['user_id']}}</p>
-    <p>{{$order['contact']}}</p>
-    <p>{{$order['phone']}}</p>
-    <p>{{$order['total']}}</p>
+    <h1>Se ha Generado una nueva Orden</h1>
+    <p>Notificación de compra</p>
+  
+    Usuario : <p>{{$order->user['user_id']}}</p>
+    Contacto : <p>{{$order['contact']}}</p>
+    Celular : <p>{{$order['phone']}}</p>
+    @if ({{$order['envio_type'] != 1}})
+    Envio : <p>SI</p>    
+    @else
+    Envio : <p>NO</p>
+    @endif
+    Total Compra : <p>{{$order['total']}}</p>
     
     
 </body>
