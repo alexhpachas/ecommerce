@@ -17,18 +17,20 @@
             td {
                 border: 1px solid black;
                 border-collapse: collapse;
+                text-transform: uppercase;
             }
     
             th,
             td {
                 padding: 5px;
                 text-align: left;
+                text-transform: uppercase;
             }
         </style>
     </head>
     
     
-    <h1>Se ha Generado una nueva Orden {{$order['id']}}</h1>
+    <h1>Se ha generado una nueva compra ORDER-{{$order['id']}}</h1>
     <p>Notificación de compra</p>
 
 
