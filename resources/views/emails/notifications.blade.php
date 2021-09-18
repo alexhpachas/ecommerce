@@ -10,7 +10,7 @@
     <h1>Se ha Generado una nueva Orden</h1>
     <p>Notificación de compra</p>
   
-    <p>Usuario : {{$order->user}}</p>
+    <p>Usuario : {{$order->user['name']}}</p>
     <p>Contacto : {{$order['contact']}}</p>
     <p>Celular : {{$order['phone']}}</p>
     @if ($order['envio_type'] != 1)
