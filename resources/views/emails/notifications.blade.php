@@ -10,15 +10,16 @@
     <h1>Se ha Generado una nueva Orden</h1>
     <p>Notificación de compra</p>
   
-    Usuario : <p>{{$order->user['user_id']}}</p>
-    Contacto : <p>{{$order['contact']}}</p>
-    Celular : <p>{{$order['phone']}}</p>
+    <p>Usuario : {{$order->user}}</p>
+    <p>Contacto : {{$order['contact']}}</p>
+    <p>Celular : {{$order['phone']}}</p>
     @if ($order['envio_type'] != 1)
-    Envio : <p>SI</p>    
+    <p>Envio : SI</p>    
     @else
-    Envio : <p>NO</p>
+    <p>Envio : NO</p>
     @endif
-    Total Compra : <p>{{$order['total']}}</p>
+
+    <p>Total Compra : S/. {{$order['total']}}</p>
     
     
 </body>
