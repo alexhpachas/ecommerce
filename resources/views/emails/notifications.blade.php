@@ -28,7 +28,7 @@
     </head>
     
     
-    <h1>Se ha Generado una nueva Orden</h1>
+    <h1>Se ha Generado una nueva Orden {{$order['id']}}</h1>
     <p>Notificación de compra</p>
 
 
