@@ -107,6 +107,10 @@
       </div>
     </div>
   </div>
+
+  <hr>
+
+  <a href="{{route('admin.orders.show',$order['id'])}}">GESTIONAR COMPRA</a>
   
     
     

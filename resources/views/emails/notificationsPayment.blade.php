@@ -137,7 +137,9 @@
         </div>
     </div>
 
-    <a href="{{route('admin.orders.show',$order['id'])}}">IR A LA COMPRA</a>
+    <hr>
+
+    <a href="{{route('admin.orders.show',$order['id'])}}">GESTIONAR COMPRA</a>
 
 
 
