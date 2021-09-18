@@ -7,9 +7,59 @@
     <title>Document</title>
 </head>
 <body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Listas de definiciones</title>
+    
+        <style>
+            table,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+    
+            th,
+            td {
+                padding: 5px;
+                text-align: left;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h2>Hola Mundo!</h3>
+        <h3>Aquí veras una Tabla basica</h5>
+    
+        <!-- Desde Aquí comienza la maquetación de la tabla -->
+        <table>
+            <tr>
+                <th>Name</th>
+                <th colspan="2">Telephone</th>
+            </tr>
+            <tr>
+                <td>Bill Gates</td>
+                <td>55577854</td>
+                <td>55577855</td>
+            </tr>
+        </table>
+    </body>
 
     
-    
+    <h1>Se ha Generado una nueva Orden</h1>
+    <p>Notificación de compra</p>
+  
+    <p>Usuario : {{$order->user['name']}}</p>
+    {{-- <p>Dni : {{$order->user['dni']}}</p> --}}
+    <p>Contacto : {{$order['contact']}}</p>
+    <p>Celular : {{$order['phone']}}</p>
+    @if ($order['envio_type'] != 1)
+    <p>Envio : SI</p>    
+    @else
+    <p>Envio : NO</p>
+    @endif
+
+    <p>Total Compra : S/. {{$order['total']}}</p>
 
     <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="flex flex-col">
@@ -57,8 +107,10 @@
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <div class="text-sm text-gray-900">{{$order['phone']}}</div>
-                  <div class="text-sm text-gray-500">Optimization</div>
+                    <div class="text-sm text-gray-900">{{$order['contact']}}</div>                    
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm text-gray-900">{{$order['phone']}}</div>            
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
                     @if ($order['envio_type'] != 1)
