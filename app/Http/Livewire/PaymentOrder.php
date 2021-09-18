@@ -34,6 +34,7 @@ class PaymentOrder extends Component
 
         $this->order->status = 2;
         $this->order->save();
+        
 
         Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsPaymentMailable($this->order));
 

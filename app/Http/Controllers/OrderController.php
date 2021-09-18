@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NotificationsPaymentMailable;
 use App\Models\Order;
 use App\Models\Qualify;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -70,6 +72,7 @@ class OrderController extends Controller
         if($status == 'approved'){
             $order->status = 2;
             $order->save();
+            Mail::to('alex.h.pachas@gmail.com')->send(new NotificationsPaymentMailable($order));
         }
 
         return redirect()->route('orders.show',$order);       
