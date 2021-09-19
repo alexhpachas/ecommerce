@@ -943,8 +943,14 @@
                                             <div class=" w-full px-4 mb-4 ">
                                                 
                                                 <div class="flex items-center space-x-4 py-1">
-                                                    <div class="">
-                                                        <img class="w-12 h-12 rounded-full" src="{{$qualificat->user()->first()->profile_photo_url}}" alt="" />
+                                                    <div class="">                                                        
+                                                        @if (auth()->user()->image())
+                                                            <img class="h-8 w-8 rounded-full object-cover" src="{{auth()->user()->image()}}" alt="{{ Auth::user()->name }}" />                                        
+                                                        @else
+                                                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                                        @endif
+                                                        
+
                                                     </div>
                             
                                                     <div class="text-sm font-semibold">{{$qualificat->user()->first()->name}} 
