@@ -28,24 +28,22 @@ class LoginFacebookController extends Controller
         if ($request->get('error')) {
             return redirect()->route('login');
         }
+        $userSocialite = Socialite::driver($driver)->stateless()->user();    
 
-        $userSocialite = Socialite::driver($driver)->stateless()->user();            
+        $user = User::where('email',$userSocialite->getEmail())->first();
+        
+        if (!$user) {
+            $user = User::create([
+                'name' => $userSocialite->getName(),
+                'email' => $userSocialite->getEmail(),
+    
+            ]);    
+        }
 
         $socialProfile_id = SocialProfile::where('social_id',$userSocialite->getId())
                             ->where('social_name',$driver)->first();
                                
         if (!$socialProfile_id) {
-
-            $user = User::where('email',$userSocialite->getEmail())->first();
-        
-            if (!$user) {
-                $user = User::create([
-                    'name' => $userSocialite->getName(),
-                    'email' => $userSocialite->getEmail(),
-        
-                ]);    
-            }
-
             SocialProfile::create([
                 'user_id' => $user->id,
                 'social_id' => $userSocialite->getId(),
@@ -55,7 +53,7 @@ class LoginFacebookController extends Controller
         
         }
 
-        auth()->login($socialProfile_id->user);
+        auth()->login($user);
 
         return redirect()->route('index');        
         
