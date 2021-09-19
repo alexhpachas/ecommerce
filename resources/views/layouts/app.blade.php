@@ -113,19 +113,20 @@
         @stack('script')
     </body>
 
-    <footer class="bg-white shadow">        
+    <footer class="bg-white shadow py-6">        
 
         <div class="container flex">
                                                    
-            <p class="mb-0 text-secondary">Copyright © 2021-2025 <span class="text-info font-weight-bold">Atlantyc System</span></p>
+            <p class="text-sm text-gray-700 mb-0 text-secondary">Copyright © 2021 <span class="text-sm text-info font-bold text-green-600">Atlantyc System</span></p>
     
-            <div class="ml-auto">
-                <a href="{{route('politicas.index')}}">Politicas de privacidad</a>
-                <a href="{{route('terminos.index')}}" class="ml-3">Terminos y condiciones</a>
+            <div class="ml-auto ">
+                <a class="text-sm text-blue-400 hover:underline hover:text-blue-600" href="{{route('politicas.index')}}">Politicas de privacidad</a>
+                <a class="text-sm text-blue-400 hover:underline hover:text-blue-600 ml-4" href="{{route('terminos.index')}}" >Terminos y condiciones</a>
             </div>
             
         </div>
     
     
     </footer>
+    
 </html>

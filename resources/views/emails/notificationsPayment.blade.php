@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ORDEN PAGADA</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -33,7 +34,7 @@
     </head>
 
 
-    <h1>SE HA PAGADO LA COMPRA ORDER-{{ $order['id'] }}</h1>
+    <h1>SE HA PAGADO LA VENTA ORDER-{{ $order['id'] }}</h1>
     <p>Notificación de compra</p>
 
 
