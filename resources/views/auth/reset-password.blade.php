@@ -1,13 +1,21 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            {{-- <x-jet-authentication-card-logo /> --}}
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.update') }}">
             @csrf
+
+            <div class="flex flex-1 justify-center items-center mt-1 mb-3">
+                <img class="h-16 w-36 object-center" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+            </div>
+
+            <div class="flex flex-1 justify-center items-center">
+                <img class="h-16 w-36 object-center" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+            </div>
 
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 

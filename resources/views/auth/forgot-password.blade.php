@@ -1,8 +1,12 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            {{-- <x-jet-authentication-card-logo /> --}}            
         </x-slot>
+
+        <div class="flex flex-1 justify-center items-center mt-1 mb-3">
+            <img class="h-16 w-36 object-center" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+        </div>
 
         <div class="mb-4 text-sm text-gray-600">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
