@@ -92,7 +92,7 @@ Route::middleware('auth')->group(function(){
 
 });
 
-    Route::get('policitas', [Politicas::class,'politicas'])->name('politicas.index');
+    Route::get('politicas', [Politicas::class,'politicas'])->name('politicas.index');
     Route::get('terminos', [Terminos::class,'terminos'])->name('terminos.index');
 
     Route::get('login/{driver}',[LoginFacebookController::class,'redirect'])->name('login.facebook');
