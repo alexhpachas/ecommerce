@@ -112,4 +112,20 @@
         
         @stack('script')
     </body>
+
+    <footer class="bg-white shadow">        
+
+        <div class="container flex">
+                                                   
+            <p class="mb-0 text-secondary">Copyright © 2014-2019 <span class="text-info font-weight-bold">Coders Free</span></p>
+    
+            <div class="ml-auto">
+                <a href="{{route('politicas.index')}}">Politicas de privacidad</a>
+                <a href="{{route('terminos.index')}}" class="ml-3">Terminos y condiciones</a>
+            </div>
+            
+        </div>
+    
+    
+    </footer>
 </html>

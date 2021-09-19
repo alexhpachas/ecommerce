@@ -13,6 +13,13 @@
             </div>
         @endif
 
+        @if (session('info'))
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 " role="alert">
+                <p class="font-bold ml-3">Información</p>
+                <p class="text-sm ml-3">{{session('info')}}</p>
+            </div>
+        @endif       
+
         <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css')</style>
 
         <form method="POST" action="{{ route('login') }}">
@@ -78,18 +85,20 @@
                         <hr class="border-gray-300 border-1 w-full rounded-md">
                     </div>
 
+                   
+
                     <div class="flex mt-7 justify-center w-full">
-                        <button
+                        <a href="{{route('login.facebook','facebook')}}"
                             class="mr-5 bg-blue-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
 
                             Facebook
-                        </button>
-
-                        <button
+                        </a>
+                        
+                        <a href="{{route('login.facebook','google')}}"
                             class="bg-red-500 border-none px-4 py-2 rounded-xl cursor-pointer text-white shadow-xl hover:shadow-inner transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
 
                             Google
-                        </button>
+                        </a>
                     </div>
 
                     <div class="mt-7">

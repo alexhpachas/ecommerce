@@ -43,6 +43,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -81,6 +83,24 @@ class User extends Authenticatable
     public function qualifies(){
         return $this->hasMany(Qualify::class);
     }
+
+    public function image(){
+
+        $social_profile = $this->socialProfiles()->first();
+
+        if ($social_profile) {
+            return $social_profile->social_avatar;
+        }
+        
+    }
+
+    /* RELACION UNO A MUCHOS  */
+
+    public function socialProfiles(){
+        return $this->hasMany(SocialProfile::class);
+    }
+
+    
 
   
 }

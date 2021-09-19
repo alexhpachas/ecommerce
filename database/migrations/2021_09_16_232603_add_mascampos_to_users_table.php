@@ -14,9 +14,9 @@ class AddMascamposToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('lastname');
-            $table->char('dni',8)->unique();
-            $table->char('phone',9);
+            $table->string('lastname')->nullable();
+            $table->char('dni',8)->unique()->nullable();
+            $table->char('phone',9)->nullable();
         });
     }
 

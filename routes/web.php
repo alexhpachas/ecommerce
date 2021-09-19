@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginFacebookController;
 use App\Http\Controllers\BillingController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Politicas;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Terminos;
 use App\Http\Controllers\WebhooksController;
 use App\Http\Livewire\ShoppingCart;
 
@@ -16,7 +19,12 @@ use App\Http\Livewire\CreateOrder;
 use App\Http\Livewire\PaymentOrder;
 use App\Mail\NotificationsMailable;
 use App\Models\Order;
+use App\Models\SocialProfile;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
+
+/* IMPORTAMOS CLASE PARA HACER LOGIN POR FB Y GOOGLE */
+use Laravel\Socialite\Facades\Socialite;
 
 
 
@@ -31,7 +39,7 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', WelcomeController::class);
+Route::get('/', WelcomeController::class)->name('index');
 
 Route::get('search', SearchController::class)->name('search');
 
@@ -83,6 +91,14 @@ Route::middleware('auth')->group(function(){
     Route::get('billing', [BillingController::class,'index'])->name('billing.index');
 
 });
+
+    Route::get('policitas', [Politicas::class,'politicas'])->name('politicas.index');
+    Route::get('terminos', [Terminos::class,'terminos'])->name('terminos.index');
+
+    Route::get('login/{driver}',[LoginFacebookController::class,'redirect'])->name('login.facebook');
+    Route::get('login/{driver}/callback',[LoginFacebookController::class,'callback']);
+
+    
 
 
 

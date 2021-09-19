@@ -26,10 +26,13 @@
             @auth
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button
-                            class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                            <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}"
-                                alt="{{ Auth::user()->name }}" />
+                        <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                            @if (auth()->user()->image())
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{auth()->user()->image()}}" alt="{{ Auth::user()->name }}" />                                        
+                            @else
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            @endif
+                            
                         </button>
                     </x-slot>
 
