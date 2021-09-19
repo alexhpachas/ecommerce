@@ -125,9 +125,12 @@
                 </div> --}}
 
                 {{-- DESCRIPTION DEL PRODUCTO --}}
+                <p class="p-5 -mt-10">                                    
+                    {!!$product->description!!}
+                </p>
 
                
-                    <div class="rounded-lg p-3 w-full -mt-6">                       
+                    {{-- <div class="rounded-lg p-3 w-full -mt-6">                       
                        <div class="shadow-md bg-white rounded-lg w-full container">                                                    
                           <div class="tab bg-white w-full overflow-hidden border-t">
                              <input class="absolute opacity-0" id="tab-multi-three" type="checkbox" name="tabs">
@@ -141,7 +144,7 @@
                              </div>
                           </div>
                        </div>
-                    </div>
+                    </div> --}}
                            
 
                 {{-- FIN --}}

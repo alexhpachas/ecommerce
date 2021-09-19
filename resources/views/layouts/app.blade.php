@@ -117,7 +117,7 @@
 
         <div class="container flex">
                                                    
-            <p class="mb-0 text-secondary">Copyright © 2014-2019 <span class="text-info font-weight-bold">Coders Free</span></p>
+            <p class="mb-0 text-secondary">Copyright © 2021-2025 <span class="text-info font-weight-bold">Atlantyc System</span></p>
     
             <div class="ml-auto">
                 <a href="{{route('politicas.index')}}">Politicas de privacidad</a>
