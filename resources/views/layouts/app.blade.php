@@ -117,7 +117,7 @@
 
         <div class="container flex">
                                                    
-            <p class="text-sm text-gray-700 mb-0 text-secondary">Copyright © 2021 <span class="text-sm text-info font-bold text-green-600">Atlantyc System</span></p>
+            <p class="text-sm text-gray-700 mb-0 text-secondary hidden md:block">Copyright © 2021</p><span class="block md:ml-3 text-sm text-info font-bold text-green-600">Atlantyc System</span>
     
             <div class="ml-auto ">
                 <a class="text-sm text-blue-400 hover:underline hover:text-blue-600" href="{{route('politicas.index')}}">Politicas de privacidad</a>
