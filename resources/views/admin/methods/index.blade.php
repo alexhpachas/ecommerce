@@ -39,7 +39,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($methods as $method)                                                  
-                            <tr class="hover:bg-gray-200">                        
+                            <tr class="hover:bg-gray-200 uppercase">                        
                                 <td class="px-6 py-2 whitespace-nowrap">
                                     <div class="text-sm">
                                       {{$method->name}}
