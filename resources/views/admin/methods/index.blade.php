@@ -39,25 +39,25 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($methods as $method)                                                  
-                            <tr>                        
+                            <tr class="hover:bg-gray-200">                        
                                 <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm">
                                       {{$method->name}}
                                     </div>
                                 </td>
                                 <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm">
                                      {{$method->celular}}
                                     </div>
                                 </td>
 
                                 <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm">
                                         {{$method->description}}
                                     </div>
                                 </td>
                                 <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm">
                                         @if ($method->status != 0)
                                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 opacity-75 text-white">
                                                 ACTIVO
@@ -70,7 +70,7 @@
                                     </div>
                                 </td>
                                 <td class="px-6 py-2 whitespace-nowrap text-sm text-gray-500">
-                                    <div class="text-sm text-gray-900">
+                                    <div class="text-sm">
                                         
                                         @if ($method->qr != null)
                                             <img class="w-24 h-24" src="{{Storage::url($method->qr)}}" alt="">    

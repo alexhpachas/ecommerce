@@ -40,7 +40,7 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         /* CREAR USUARIO EN LA PLATAFORMA DE STRIPE */
-        $user->createAsStripeCustomer();
+        /* $user->createAsStripeCustomer(); */
 
         return $user;
     }
