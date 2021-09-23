@@ -10,9 +10,13 @@ use Dompdf\Options;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class QualifyProducts extends Component
 {
+    /* protected $listeners = ['render']; */
+
+
     public $open = false;
     public $openM = false;
     public $products;
@@ -30,7 +34,9 @@ class QualifyProducts extends Component
     public $todo;
     public $orden;
 
-
+    public $totalCaracteres = 255;
+    
+    
     public $rules =[
         'order_id' => 'required',
         'product_id'=>'required',
@@ -74,6 +80,10 @@ class QualifyProducts extends Component
 
     public function update(){        
 
+        $rules = $this->rules;
+
+        $this->validate($rules);
+        
         DB::table('qualifies')
               ->where('id', $this->orden)
               ->update(['qualification' => $this->qualification,'comment' => $this->comment]);
@@ -116,6 +126,8 @@ class QualifyProducts extends Component
             ]);
 
             return redirect()->route('orders.qualify',$this->order->id);
+
+            /* $this->emitTo('qualify-products','render'); */
         }                        
         
     }

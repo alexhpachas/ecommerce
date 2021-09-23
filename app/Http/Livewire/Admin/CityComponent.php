@@ -47,7 +47,7 @@ class CityComponent extends Component
         /* City::create($this->createForm); */
         $this->reset('createForm','openCreateDistricts');
         $this->getDistrics();
-        $this->emit('actualizar');
+        $this->emit('create','El distrito ha sido creado');
     }
 
     public function edit(District $district){
@@ -73,10 +73,12 @@ class CityComponent extends Component
         $this->district->save();
         $this->reset('editForm');
         $this->getDistrics();
+        $this->emit('update','El Distrito ha sido actualizado');
     }
 
     public function delete(District $district){
-        $district->delete();
+        $this->district = $district;
+        $this->district->delete();
         $this->getDistrics();
 
         /* EMITIMOS PARA MOSTRAR UNA ALERTA SWEET ALERT 2 */        

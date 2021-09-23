@@ -46,7 +46,7 @@ class ShowDepartment extends Component
         /* City::create($this->createForm); */
         $this->reset('createForm','openCreateCity');
         $this->getCities();
-        $this->emit('actualizar');
+        $this->emit('create','La Provincia ha sido creada');
     }
 
     public function edit(City $city){
@@ -73,13 +73,15 @@ class ShowDepartment extends Component
         $this->city->save();
         $this->reset('editForm');
         $this->getCities();
+        $this->emit('update','La Provincia ha sido actualizada');
     }
 
     public function delete(City $city){
-        $city->delete();
+        $this->city = $city;
+        $this->city->delete();
         $this->getCities();
 
-        $this->emit('eliminar','La Cuidad fue, Eliminada');
+        $this->emit('eliminar','La Provincia fue, Eliminada');
     }
 
     public function mount(Department $department){

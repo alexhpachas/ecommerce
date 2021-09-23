@@ -96,7 +96,7 @@ class EditProduct extends Component
         $this->emit('saved');
 
         /* Mensaje para que aparesca la Alerta */
-        $this->emit('actualizar');
+        $this->emit('update','El Producto fue Actualizado');
         
         $this->reset('cambio');
         

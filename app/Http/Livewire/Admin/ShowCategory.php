@@ -67,6 +67,7 @@ class ShowCategory extends Component
         $this->category->subcategories()->create($this->createForm);
         $this->reset('createForm','openSubcategoryCreate');
         $this->getSubCategories();
+        $this->emit('create','Se ha creado la Subcategoria');
     }
 
     public function edit(Subcategory $subcategory){
@@ -95,13 +96,16 @@ class ShowCategory extends Component
         $this->subcategory->update($this->editForm);
         $this->getSubCategories();
         $this->reset('editForm');
+        $this->emit('update','La Subcategoria se ha actualizado');
         
     }
 
     public function delete(Subcategory $subcategory){
-        $subcategory->delete();
+        $this->subcategory = $subcategory;
+        $this->subcategory->delete();
         $this->getSubCategories();
 
+        $this->emit('eliminar','La Subcategoria fue Eliminada');
     }
 
     public function render()

@@ -161,58 +161,64 @@
 
                     <div class="flex items-center py-2 ml-auto gap-4">
 
-                        @if (isset($ordenes))
-                            <a href="{{ route('admin.ventasE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z"
-                                                fill="#2e7d32"></path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                    
+                            @if (isset($ordenes))
+                                <a href="{{ route('admin.ventasE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                            stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                            stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                            font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z"
+                                                    fill="#2e7d32"></path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($ordenes))
-                            <a href="{{ route('admin.ventas.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
-                                        stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
-                                        stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
-                                        font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                    
+                            @if (isset($ordenes))
+                                <a href="{{ route('admin.ventas.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                            stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                            stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                            font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
-
-                        <x-jet-danger-button class="ml-auto text-white" wire:click="getVentas" wire:loading.attr="disabled"
-                            wire:target="getVentas">
-                            VER REPORTE
-                        </x-jet-danger-button>
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
+                        
+                        @can('admin.reports.create')                                                    
+                            <x-jet-danger-button class="ml-auto text-white" wire:click="getVentas" wire:loading.attr="disabled"
+                                wire:target="getVentas">
+                                VER REPORTE
+                            </x-jet-danger-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -429,58 +435,63 @@
 
                     <div class="flex items-center py-3 lg:ml-auto gap-4">
 
-                        @if (isset($ciudades))
-                            <a href="{{ route('admin.costoE.index') . '?department_id=' . $this->department_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
-                                            </path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                
+                            @if (isset($ciudades))
+                                <a href="{{ route('admin.costoE.index') . '?department_id=' . $this->department_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
+                                                </path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($ciudades))
-                            <a href="{{ route('admin.costo.index') . '?department_id=' . $this->department_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                
+                            @if (isset($ciudades))
+                                <a href="{{ route('admin.costo.index') . '?department_id=' . $this->department_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-
-                        <x-jet-danger-button class="lg:ml-2 ml-auto text-white" wire:click="getCities" wire:loading.attr="disabled" wire:target="getCities">
-                            VER REPORTE
-                        </x-jet-danger-button>
+                        @can('admin.reports.create')                                                    
+                            <x-jet-danger-button class="lg:ml-2 ml-auto text-white" wire:click="getCities" wire:loading.attr="disabled" wire:target="getCities">
+                                VER REPORTE
+                            </x-jet-danger-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -603,114 +614,126 @@
 
                         </div>                                           
 
-                        <div class="flex items-center ml-1 mr-1 py-2">
-                            <x-jet-danger-button class="w-full lg:ml-4" wire:click="getStockAgotado" wire:loading.attr="disabled"
-                                wire:target="getStockAgotado">
-                                AGOTADOS
-                            </x-jet-danger-button>
-                        </div>
+                        @can('admin.reports.create')                                                    
+                            <div class="flex items-center ml-1 mr-1 py-2">
+                                <x-jet-danger-button class="w-full lg:ml-4" wire:click="getStockAgotado" wire:loading.attr="disabled"
+                                    wire:target="getStockAgotado">
+                                    AGOTADOS
+                                </x-jet-danger-button>
+                            </div>
+                        @endcan
                     </div>
 
                     <div class="flex items-center py-2 ml-auto gap-4">
-                        @if (isset($productosAgotados))
-                            <a href="{{ route('admin.stockagotadoE.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
-                                            </path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                    
+                            @if (isset($productosAgotados))
+                                <a href="{{ route('admin.stockagotadoE.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
+                                                </path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($productos))
-                            <a href="{{ route('admin.stockE.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
-                                            </path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                    
+                            @if (isset($productos))
+                                <a href="{{ route('admin.stockE.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
+                                                </path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($productosAgotados))
-                            <a href="{{ route('admin.agotado.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                    
+                            @if (isset($productosAgotados))
+                                <a href="{{ route('admin.agotado.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($productos))
-                            <a href="{{ route('admin.export.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                    
+                            @if (isset($productos))
+                                <a href="{{ route('admin.export.index') . '?category_id=' . $this->category_id . '&' . 'subcategory_id=' . $this->subcategory_id . '&' . 'brand_id=' . $this->brand_id }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        <x-jet-danger-button class="ml-auto mr-1 text-white lg:mr-8" wire:click="getProducts" wire:loading.attr="disabled" wire:target="getProducts">
-                            VER REPORTE
-                        </x-jet-danger-button>
+                        @can('admin.reports.create')                                                    
+                            <x-jet-danger-button class="ml-auto mr-1 text-white lg:mr-8" wire:click="getProducts" wire:loading.attr="disabled" wire:target="getProducts">
+                                VER REPORTE
+                            </x-jet-danger-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -1340,58 +1363,64 @@
 
                     <div class="flex items-center py-2 ml-auto gap-4">
 
-                        @if (isset($ventas))
-                            <a href="{{ route('admin.vendidosE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
-                                            </path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                    
+                            @if (isset($ventas))
+                                <a href="{{ route('admin.vendidosE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
+                                                </path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($ventas))
-                            <a href="{{ route('admin.vendidos.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                    
+                            @if (isset($ventas))
+                                <a href="{{ route('admin.vendidos.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        <x-jet-danger-button class="ml-auto text-white" wire:click="getProductosVendidos" wire:loading.attr="disabled"
-                            wire:target="getProductosVendidos">
-                            VER REPORTE
-                        </x-jet-danger-button>
+                        @can('admin.reports.create')                                                    
+                            <x-jet-danger-button class="ml-auto text-white" wire:click="getProductosVendidos" wire:loading.attr="disabled"
+                                wire:target="getProductosVendidos">
+                                VER REPORTE
+                            </x-jet-danger-button>
+                        @endcan
                     </div>
                 </div>
             </div>
@@ -1560,58 +1589,64 @@
                     </div>
 
                     <div class="flex items-center py-2 ml-auto gap-4">
-                        @if (isset($ventasEnvios))
-                            <a href="{{ route('admin.ventasporenviarE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
-                                    viewBox="0 0 172 172" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,172v-172h172v172z" fill="none"></path>
-                                        <g>
-                                            <path
-                                                d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
-                                                fill="#4caf50"></path>
-                                            <path
-                                                d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
-                                                fill="#ffffff"></path>
-                                            <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
-                                            </path>
-                                            <path
-                                                d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
-                                                fill="#ffffff"></path>
+                        @can('admin.reports.excel')                                                    
+                            @if (isset($ventasEnvios))
+                                <a href="{{ route('admin.ventasporenviarE.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="39"
+                                        viewBox="0 0 172 172" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,172v-172h172v172z" fill="none"></path>
+                                            <g>
+                                                <path
+                                                    d="M146.91667,35.83333h-57.33333v100.33333h57.33333c1.98158,0 3.58333,-1.60175 3.58333,-3.58333v-93.16667c0,-1.98158 -1.60175,-3.58333 -3.58333,-3.58333z"
+                                                    fill="#4caf50"></path>
+                                                <path
+                                                    d="M114.66667,53.75h25.08333v10.75h-25.08333zM114.66667,89.58333h25.08333v10.75h-25.08333zM114.66667,107.5h25.08333v10.75h-25.08333zM114.66667,71.66667h25.08333v10.75h-25.08333zM89.58333,53.75h17.91667v10.75h-17.91667zM89.58333,89.58333h17.91667v10.75h-17.91667zM89.58333,107.5h17.91667v10.75h-17.91667zM89.58333,71.66667h17.91667v10.75h-17.91667z"
+                                                    fill="#ffffff"></path>
+                                                <path d="M96.75,150.5l-75.25,-14.33333v-100.33333l75.25,-14.33333z" fill="#2e7d32">
+                                                </path>
+                                                <path
+                                                    d="M68.54558,111.08333l-8.63942,-16.34358c-0.32967,-0.61275 -0.6665,-1.73075 -1.01767,-3.36117h-0.13258c-0.16483,0.77042 -0.55183,1.93858 -1.161,3.50808l-8.67525,16.19667h-13.46258l15.98883,-25.08692l-14.63075,-25.07975h13.74925l7.17025,15.03567c0.559,1.18608 1.06067,2.59792 1.505,4.22475h0.14333c0.2795,-0.97108 0.80267,-2.43667 1.57308,-4.37167l7.9765,-14.88875h12.59542l-15.04642,24.86475l15.46567,25.29475h-13.40167z"
+                                                    fill="#ffffff"></path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        @if (isset($ventasEnvios))
-                            <a href="{{ route('admin.ventasporenviar.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
-                                target="_blank">
-                                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
-                                    viewBox="0 0 226 226" style=" fill:#000000;">
-                                    <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
-                                        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
-                                        font-family="none" font-weight="none" font-size="none" text-anchor="none"
-                                        style="mix-blend-mode: normal">
-                                        <path d="M0,226v-226h226v226z" fill="none"></path>
-                                        <g fill="#e74c3c">
-                                            <path
-                                                d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
-                                            </path>
+                        @can('admin.reports.pdf')                                                    
+                            @if (isset($ventasEnvios))
+                                <a href="{{ route('admin.ventasporenviar.index') . '?fechaInicio=' . $this->fechaInicio . '&' . 'fechaFin=' . $this->fechaFin }}"
+                                    target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30"
+                                        viewBox="0 0 226 226" style=" fill:#000000;">
+                                        <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt"
+                                            stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0"
+                                            font-family="none" font-weight="none" font-size="none" text-anchor="none"
+                                            style="mix-blend-mode: normal">
+                                            <path d="M0,226v-226h226v226z" fill="none"></path>
+                                            <g fill="#e74c3c">
+                                                <path
+                                                    d="M27.12,0v226h171.76v-160.07156l-65.92844,-65.92844zM36.16,9.04h90.4v63.28h63.28v144.64h-153.68zM135.6,15.43156l47.84844,47.84844h-47.84844zM78.27016,110.70469c-3.61953,0 -6.99188,0.38844 -9.605,1.00641v51.00891h8.13953v-20.21641c0.77688,0.08828 1.46547,0.08828 2.31297,0.08828c4.37875,0 9.37547,-1.76562 12.44766,-5.38516c2.38359,-2.77203 3.84906,-6.30328 3.84906,-11.51187c0,-4.46703 -1.39484,-8.45734 -4.16688,-11.07047c-3.07219,-2.91328 -7.52156,-3.91969 -12.97734,-3.91969zM111.00484,110.70469c-3.53125,0 -6.83297,0.38844 -9.21656,1.00641v50.85c1.85391,0.30016 4.69656,0.52969 7.53922,0.52969c6.67406,0 11.75906,-1.67734 15.20203,-5.22625c3.91969,-3.83141 6.69172,-10.82328 6.69172,-21.96437c0,-10.38188 -2.61312,-17.12656 -6.85063,-20.905c-3.07219,-2.84266 -7.38031,-4.29047 -13.36578,-4.29047zM137.89531,110.93422v51.78578h8.22781v-22.35281h12.21812v-6.83297h-12.21812v-15.44922h13.06563v-7.15078zM112.31141,117.30812c7.15078,0 10.43484,6.76234 10.43484,18.52141c0,15.74938 -5.13797,20.51656 -10.82328,20.51656c-0.52969,0 -1.30656,0 -1.99516,-0.15891v-38.64953c0.68859,-0.14125 1.53609,-0.22953 2.38359,-0.22953zM79.64734,117.37875c5.52641,0 7.52156,4.07859 7.52156,8.91641c0,5.91484 -2.98391,9.605 -8.35141,9.605c-0.8475,0 -1.39484,0 -2.01281,-0.15891v-17.97406c0.68859,-0.22953 1.695,-0.38844 2.84266,-0.38844z">
+                                                </path>
+                                            </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </a>
-                        @endif
+                                    </svg>
+                                </a>
+                            @endif
+                        @endcan
 
-                        <x-jet-danger-button class="ml-auto text-white" wire:click="getVentasEnvio" wire:loading.attr="disabled"
-                            wire:target="getVentasEnvio">
-                            VER REPORTE
-                        </x-jet-danger-button>
+                        @can('admin.reports.create')                                                    
+                            <x-jet-danger-button class="ml-auto text-white" wire:click="getVentasEnvio" wire:loading.attr="disabled"
+                                wire:target="getVentasEnvio">
+                                VER REPORTE
+                            </x-jet-danger-button>
+                        @endcan
                     </div>
                 </div>
             </div>

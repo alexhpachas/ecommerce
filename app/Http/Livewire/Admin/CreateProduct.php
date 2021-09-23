@@ -78,9 +78,11 @@ class CreateProduct extends Component
             }
         }
 
-        $product->save();
+        $product->save();        
 
         return redirect()->route('admin.products.edit',$product);
+
+        $this->emit('create','El Producto ha sido creado');
         
     }
 

@@ -2,13 +2,13 @@
     <div class="bg-white my-12 shadow-lg rounded-lg p-6">
         {{-- COLOR --}}
         <div class="mb-6">
-            <x-jet-label value="Color" />
+            <x-jet-label value="COLOR" class="mb-3" />
 
             <div class="grid grid-cols-6 gap-6">
                 @foreach ($colors as $color)
                     <label class="cursor-pointer">
-                        <input wire:model.defer="color_id" type="radio" name="color_id" value="{{$color->id}}">
-                        <span class="ml-1 text-gray-700 capitalize ">
+                        <input wire:model.defer="color_id" class="uppercase" type="radio" name="color_id" value="{{$color->id}}">
+                        <span class="ml-1 text-gray-700 uppercase ">
                             {{__($color->name)}}
                         </span>
                     </label>
@@ -47,21 +47,21 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="px-4 py-2 w-1/3">Color</th>
-                        <th class="px-4 py-2 w-1/3">Stock</th>
+                        <th class="px-4 py-2 w-1/3">COLOR</th>
+                        <th class="px-4 py-2 w-1/3">STOCK</th>
                         <th class="px-4 py-2 w-1/3"></th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($product_colors as $product_color)
                         <tr wire:key="product_color-{{$product_color->pivot->color_id}}">
-                            <td class="capitalize px-4 py-2">
+                            <td class="uppercase px-4 py-2">
                                 {{-- ACCEDER A LA TABLA PIVOT --}}
                                 {{-- {{$product_color->pivot}} --}}
                                 {{__($colors->find($product_color->pivot->color_id)->name)}}
                             </td>
                             <td class="px-4 py-2">
-                                {{$product_color->pivot->quantity}} unidades                            
+                                {{$product_color->pivot->quantity}} UNIDADES                            
                             </td>
                             <td class="px-4 py-2 flex">
                                 <x-jet-secondary-button 
@@ -100,7 +100,7 @@
                     Color
                 </x-jet-label>
 
-                <select wire:model="pivot_color_id" class=" form-control w-full">
+                <select wire:model="pivot_color_id" class=" form-control w-full uppercase">
                     <option value="" disabled selected>Seleccione un color</option>
 
                     @foreach ($colors as $color)

@@ -81,7 +81,10 @@
         <x-slot name="footer">
             <div class="flex-1">
                 @if ($this->qualification > 0 & $this->comment != null)
-                    <x-jet-secondary-button wire:click="save({{$order->id}})" class="w-full text-center justify-center">
+                    <x-jet-secondary-button wire:loading.attr="disabled"
+                                            wire:target="save({{$order->id}})"
+                                            wire:click="save({{$order->id}})"
+                                            class="w-full text-center justify-center">
                         ENVIAR
                     </x-jet-secondary-button>
                 @else
@@ -153,11 +156,30 @@
 
             <div class="flex mt-6">   
                 <span class="flex justify-start text-sm ">Tú opinión acerca de este producto, es importante. </span>
-                <span class="text-sm font-bold">(Maximo 255 caracteres)</span>            
+                <span class="text-sm font-bold">(Maximo 255 caracteres)</span>                           
             </div>
             <div class=" flex flex-1">
                 <textarea wire:model="comment" class="w-full" name="" id="" cols="" rows="4">Lorem ipsum, Suscipit laborum quisquam sed amet, corrupti rerum cumque ab vitae autem perspiciatis eius ipsum.</textarea>                
             </div>  
+
+            @php
+                $total = Str::length($comment);
+                $total2 = 0;
+            @endphp
+
+            <div class="flex flex-1">
+                @if (($totalCaracteres - $total) < 0)
+                    <span class="flex mr-auto w-full">Max: {{$total2}} caracteres</span>
+                @else    
+                    <span class="flex mr-auto w-full">Max: {{$totalCaracteres - $total }} caracteres</span>
+                @endif
+                
+
+                @if (($totalCaracteres - $total) < 0)
+                    <span class="mr-auto text-sm w-full font-bold text-red-400">Sobre paso el limite...</span>    
+                @endif
+                
+            </div>
             <x-jet-input-error for="comment" />
             
         </x-slot>
@@ -165,7 +187,9 @@
         <x-slot name="footer">
             <div class="flex-1">
                 @if ($this->qualification > 0 & $this->comment != null)
-                    <x-jet-secondary-button wire:click="update" class="w-full text-center justify-center">
+                    <x-jet-secondary-button wire:click="update" 
+                                            wire:loading.attr="disabled"
+                                            wire:target="update" class="w-full text-center justify-center {{($totalCaracteres - $total) < 0 ? 'hidden' : ''}}">
                         ACTUALIZAR
                     </x-jet-secondary-button>
                 @else

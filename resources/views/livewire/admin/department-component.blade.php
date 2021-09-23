@@ -50,7 +50,7 @@
                                     <span class="flex">        
                                         
                                         @can('admin.cities.index')                                                                                    
-                                            <a href="{{route('admin.departments.show',$department)}}" class="cursor-pointer w-7 mr-2 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
+                                            <a href="{{route('admin.departments.show',$department)}}" class="cursor-pointer w-7 mr-2 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -60,7 +60,7 @@
                                                                           
                                         @can('admin.departments.edit')                                                                                    
                                             <div wire:click="edit('{{$department->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
-                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,7 +70,7 @@
                                         @endcan
                                         
                                         @can('admin.departments.delete')                                                                                    
-                                            <div wire:click="$emit('deleteDepartment','{{$department->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <div wire:click="$emit('deleteDepartment','{{$department->id}}')" class="cursor-pointer w-7 mr-2 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -106,7 +106,9 @@
     <div class="container">
         <x-jet-dialog-modal wire:model="openCreateDepartamento">
             <x-slot name="title">
-                NUEVO DEPARTAMENTO
+                <div class="border-b-2 text-center">
+                    NUEVO DEPARTAMENTO
+                </div>
             </x-slot>
 
             <x-slot name="content">
@@ -115,7 +117,7 @@
                         Nombre
                     </x-jet-label>
     
-                    <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full" />
+                    <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full uppercase" />
                     <x-jet-input-error for="createForm.name" />
                 </div>                
             </x-slot>
@@ -133,79 +135,7 @@
         </x-jet-dialog-modal>
     </div>
 
-    {{-- FORMULARIO CREAR DEPARTAMENTO --}}
-    {{-- <x-jet-form-section submit="save" class="mb-6">
-        <x-slot name="title">
-            Agregar nuevo departamento
-        </x-slot>
-
-        <x-slot name="description">
-            Complete la información necesaria para poder agregar un departamento
-        </x-slot>
-
-        <x-slot name="form">
-            <div class="col-span-6 sm:col-span-4">             
-                <x-jet-label>
-                    Nombre
-                </x-jet-label>
-
-                <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full" />
-                <x-jet-input-error for="createForm.name" />
-            </div>
-        </x-slot>
-
-        <x-slot name="actions">
-
-            <x-jet-button>
-                Agregar
-            </x-jet-button>
-            
-        </x-slot>
-
-    </x-jet-form-section> --}}
-
-    {{-- LISTA DEPARTAMENTOS --}}
-    {{-- <x-jet-action-section>
-        <x-slot name="title">
-            LISTA DE DEPARTAMENTOS
-        </x-slot>
-
-        <x-slot name="description">
-            Aqui encontrara todas los departamentos agregadas
-        </x-slot>
-
-        <x-slot name="content">
-            <table class=" text-gray-600">
-                <thead class="border-b border-gray-300">
-                    <tr class="text-left">
-                        <th class="py-2 w-full">Nombre</th>
-                        <th class="py-2">Accion</th>
-                    </tr>
-                </thead>
-
-                <tbody class="divide-y divide-gray-300">
-                    @foreach ($departments as $department)
-                        <tr>
-                            <td class="py-2">                           
-                                <a href="{{route('admin.departments.show',$department)}}" class="uppercase hover:underline hover:text-blue-600">
-                                    {{$department->name}}                                    
-                                </a>
-                            </td>
-                            <td class="py-2">
-                                <span>
-                                    <div class="flex divide-x divide-gray-300 font-semibold">
-                                        <a wire:click="edit({{$department}})" class="pr-2 hover:text-blue-600 cursor-pointer" >Editar</a>
-                                        <a wire:click="$emit('deleteDepartment',{{$department}})" class="pl-2 hover:text-rojo-600 cursor-pointer">Eliminar</a>
-                                    </div>
-                                    
-                                </span>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </x-slot>
-    </x-jet-action-section> --}}
+    
 
     {{-- MODAL PARA EDITAR DEPARTAMENTO --}}
     <x-jet-dialog-modal wire:model="editForm.open">
@@ -221,7 +151,7 @@
                         Nombre
                     </x-jet-label>
 
-                    <x-jet-input wire:model.defer="editForm.name" class="w-full mt-1" type="text" />
+                    <x-jet-input wire:model.defer="editForm.name" class="w-full mt-1 uppercase" type="text" />
 
                     <x-jet-input-error for="editForm.name" />
                 </div>

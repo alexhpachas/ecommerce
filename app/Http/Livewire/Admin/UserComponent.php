@@ -39,6 +39,8 @@ class UserComponent extends Component
     public $colores;
     public $ventas;
     public $usuarios;
+    public $reportes;
+    public $metodos;
 
     
     public $createForm = [                  
@@ -75,6 +77,8 @@ class UserComponent extends Component
         $this->colores = Permission::where('description','like','%'.'colores'.'%')->get();
         $this->ventas = Permission::where('description','like','%'.'compra'.'%')->get();
         $this->usuarios = Permission::where('description','like','%'.'usuarios'.'%')->get();
+        $this->reportes = Permission::where('description','like','%'.'reportes'.'%')->get();
+        $this->metodos = Permission::where('description','like','%'.'pagos'.'%')->get();
 
         
     }
@@ -117,7 +121,7 @@ class UserComponent extends Component
         
         $users = User::where('name','LIKE','%'.$this->search.'%')
                      ->orWhere('email','LIKE','%'.$this->search.'%')
-                     ->paginate();
+                     ->paginate(5);
         return view('livewire.admin.user-component',compact('users'))->layout('layouts.admin');
     }
 }

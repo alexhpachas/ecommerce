@@ -11,7 +11,7 @@
             <select class="w-full form-control" wire:model="category_id">
                 <option value="" selected disabled>Seleccione una categoria</option>
                 @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option class="capitalize" value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
             </select>
 
@@ -25,7 +25,7 @@
             <select class="w-full form-control" wire:model="subcategory_id">
                 <option  value="" selected disabled>Seleccione una sub categoria</option>
                 @foreach ($subcategories as $subcategory)
-                    <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                    <option class="capitalize" value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                 @endforeach
             </select>
 
@@ -36,7 +36,7 @@
     {{-- NOMBRE DEL PRODUCTO --}}
     <div class="mb-4">
         <x-jet-label value="Nombre" />
-        <x-jet-input wire:model="name" class="w-full" type="text" placeholder="Ingrese nombre del producto" />
+        <x-jet-input wire:model="name" class="w-full capitalize" type="text" placeholder="Ingrese nombre del producto" />
 
         <x-jet-input-error for="name" />
     </div>
@@ -77,7 +77,7 @@
             <select wire:model="brand_id" class="form-control w-full">
                 <option value="" disabled selected>Seleccione un marca</option>
                 @foreach ($brands as $brand)
-                    <option value="{{$brand->id}}">{{$brand->name}}</option>
+                    <option class="capitalize" value="{{$brand->id}}">{{$brand->name}}</option>
                 @endforeach
             </select>
 

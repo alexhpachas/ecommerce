@@ -41,6 +41,8 @@ class SizeProduct extends Component
         $this->reset('name');
         
         $this->product = $this->product->fresh();
+
+        $this->emit('create','La Talla ha sido creada');
     }
 
     public function edit(Size $size){
@@ -51,7 +53,8 @@ class SizeProduct extends Component
     }
 
     public function delete(Size $size){
-        $size->delete();
+        $this->size = $size;
+        $this->size->delete();
         $this->product = $this->product->fresh();
     }
 
@@ -66,6 +69,8 @@ class SizeProduct extends Component
         $this->open=false;
 
         $this->product = $this->product->refresh();
+
+        $this->emit('update','La talla ha sido Actualizada');
         
     }
 

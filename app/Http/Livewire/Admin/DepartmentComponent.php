@@ -44,7 +44,7 @@ class DepartmentComponent extends Component
         Department::create($this->createForm);
         $this->reset('createForm','openCreateDepartamento');
         $this->getDepartments();
-        $this->emit('actualizar');
+        $this->emit('create','El departamento ha sido creado');
     }
 
     public function edit(Department $department){
@@ -63,14 +63,16 @@ class DepartmentComponent extends Component
         $this->department->save();
         $this->reset('editForm');
         $this->getDepartments();
+        $this->emit('update','El departamento ha sido actualizado');
     }
 
     public function delete(Department $department){
-        $department->delete();
+        $this->department = $department;
+        $this->department->delete();
         $this->getDepartments();
 
         /* EMITIMOS MENSAJE PARA SWEET ALERT2 */
-        $this->emit('eliminar','Departamento fue Eliminado');
+        $this->emit('eliminar','El Departamento fue Eliminado');
     }
 
     public function cancelar(){

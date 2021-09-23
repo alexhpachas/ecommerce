@@ -48,6 +48,7 @@ class BrandComponent extends Component
         Brand::create($this->createForm);
         $this->reset('createForm','openMarcaCreate');
         $this->getBrands();
+        $this->emit('create','La Marca ha sido creada');
     }
 
     public function edit(Brand $brand){
@@ -55,6 +56,7 @@ class BrandComponent extends Component
         $this->brand = $brand;
         $this->editForm['open'] = true;
         $this->editForm['name'] = $brand->name;
+        $this->render();
     }
 
     public function update(){
@@ -65,8 +67,10 @@ class BrandComponent extends Component
         $this->reset('editForm');        
         
         $this->getBrands();
+        $this->emit('update','La Marca ha sido Actualizada');
         
-        return redirect()->route('admin.brands.index');
+        
+        /* return redirect()->route('admin.brands.index'); */
 
     }
 
@@ -75,15 +79,21 @@ class BrandComponent extends Component
         $this->resetValidation();
     }
 
-    public function delete(Brand $brand){    
-        $this->emit('eliminar',"La Marca Fue Eliminada");
-        $brand->delete();
+    public function delete(Brand $brand){              
+        $this->brand = $brand;
+        $this->brand->delete();        
+        $this->getBrands();
+        $this->emit('eliminar',"La Marca Fue Eliminada");      
+    }
+
+    public function updatingBrand(){
         $this->getBrands();
     }
 
     public function render()
     {
         return view('livewire.admin.brand-component')->layout('layouts.admin');
+        
     }
 
 }

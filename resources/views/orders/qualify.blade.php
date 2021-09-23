@@ -113,9 +113,8 @@
                                                         </div>
                                                             @foreach ($qualifications as $qualificatio)
                                                                 @if ($qualificatio->product_id == $item->id)
-                                                                    <textarea disabled class="text-sm form-control " name="" id="" cols="20" rows="3">{{$qualificatio->comment}}</textarea>                                                                   
-                                                                @endif
-                                                                
+                                                                    <textarea maxlength="255" disabled class="text-sm form-control " name="" id="" cols="20" rows="3">{{$qualificatio->comment}}</textarea>                                                                   
+                                                                @endif                                                                
                                                             @endforeach                                                                                                              
                                                             
                                                         

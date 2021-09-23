@@ -45,6 +45,8 @@ class ColorProduct extends Component
 
         /* EMITIMOS PARA MOSTRAR UN TEXTO ROJO ACTUALIZADO */
         $this->emit('saved');
+
+        $this->emit('AgregarColor');
         
 
 
@@ -57,6 +59,7 @@ class ColorProduct extends Component
         $this->pivot->save();
         $this->open=false;
         $this->product = $this->product->fresh();
+        $this->emit('ActualizarColor');
     }
 
     public function delete(Pivot $pivot){

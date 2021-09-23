@@ -20,7 +20,7 @@ class StatusProduct extends Component
         $this->product->status = $this->status;
         $this->product->save();
 
-        $this->emit('actualizar');
+        $this->emit('update','El Estado del producto ha sido actualizado');
 
         /* if ($this->status==1) {
             $this->product->status = 2;

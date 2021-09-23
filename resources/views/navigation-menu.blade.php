@@ -13,7 +13,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-7 sm:-my-px sm:ml-10 sm:flex">
-                    @can('admin.index')
+                    @can('admin.products.index')
                         <x-jet-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
                             PRODUCTOS
                         </x-jet-nav-link>                        
@@ -39,7 +39,7 @@
 
                     @can('admin.orders.index')
                         <x-jet-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                            ORDENES
+                            VENTAS
                         </x-jet-nav-link>                        
                     @endcan
             
@@ -55,9 +55,17 @@
                         </x-jet-nav-link>    
                     @endcan
 
-                    <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
-                        REPORTES
-                    </x-jet-nav-link>    
+                    @can('admin.reports.index')                                            
+                        <x-jet-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
+                            REPORTES
+                        </x-jet-nav-link>
+                    @endcan
+
+                    @can('admin.payment.index')                                            
+                        <x-jet-nav-link href="{{route('admin.methods.index')}}" :active="request()->routeIs('admin.methods.*')">
+                            PAGOS
+                        </x-jet-nav-link>
+                    @endcan
                     
                 </div>
             </div>
@@ -195,7 +203,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @can('admin.index')
+            @can('admin.products.index')
                 <x-jet-responsive-nav-link href="{{route('admin.index')}}" :active="request()->routeIs('admin.index')">
                     PRODUCTOS
                 </x-jet-responsive-nav-link>    
@@ -221,7 +229,7 @@
             
             @can('admin.orders.index')
                 <x-jet-responsive-nav-link href="{{route('admin.orders.index')}}" :active="request()->routeIs('admin.orders.*')">
-                    ORDENES
+                    VENTAS
                 </x-jet-responsive-nav-link>    
             @endcan
             
@@ -237,9 +245,17 @@
                 </x-jet-responsive-nav-link>    
             @endcan
 
-            <x-jet-responsive-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
-                REPORTES
-            </x-jet-responsive-nav-link>  
+            @can('admin.reports.index')                            
+                <x-jet-responsive-nav-link href="{{route('admin.reports.index')}}" :active="request()->routeIs('admin.reports.*')">
+                    REPORTES
+                </x-jet-responsive-nav-link>  
+            @endcan
+
+            @can('admin.payment.index')                            
+                <x-jet-responsive-nav-link href="{{route('admin.methods.index')}}" :active="request()->routeIs('admin.methods.*')">
+                    METODOS DE PAGO
+                </x-jet-responsive-nav-link>
+            @endcan
             
         </div>
 

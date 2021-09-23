@@ -29,20 +29,19 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($brands as $brand)
-                            <tr class="hover:bg-gray-200 hover:text-red-600">
-                                <td class="py-2" wire:key="{{$brand->id}}">
+                            <tr wire:key="{{$brand->id}}" class="hover:bg-gray-200 hover:text-red-600">
+                                <td class="py-2">
                                     
-                                    <a class="uppercase hover:underline hover:text-blue-600 ml-4">
-                                        
+                                    <a class="uppercase hover:underline hover:text-blue-600 ml-4">                                        
                                         {{ $brand->name }}
-                                    </a>
+                                    </a>                                                                        
 
                                 </td>
                                 <td class="py-2">
                                     <span class="flex">                                          
                                         @can('admin.brands.edit')                                                                                    
                                             <div wire:click="edit('{{$brand->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
-                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -52,7 +51,7 @@
                                         @endcan                                  
                                                
                                         @can('admin.brands.delete')                                                                                    
-                                            <div wire:click="$emit('deleteBrand','{{$brand->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <div wire:click="$emit('deleteBrand','{{$brand->id}}')" class="cursor-pointer w-7 mr-2 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -99,7 +98,7 @@
                     Nombre
                 </x-jet-label>
 
-                <x-jet-input wire:model="createForm.name" class="w-full" type="text" />
+                <x-jet-input wire:model="createForm.name" class="w-full uppercase" type="text" />
 
                 <x-jet-input-error for="createForm.name" />
             </div>
@@ -203,7 +202,7 @@
                 Nombre
             </x-jet-label>
 
-            <x-jet-input wire:model="editForm.name" type="text" class="w-full" />
+            <x-jet-input wire:model="editForm.name" type="text" class="w-full uppercase" />
 
             <x-jet-input-error for="editForm.name" />
         </x-slot>

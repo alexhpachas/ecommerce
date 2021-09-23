@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Stock Agotado</title>
     
 </head>
 <div align="center" style="font-size: 25px">
@@ -357,21 +357,7 @@
     
             </tbody>
 
-            <tfoot>
             
-                    <tr>
-                        <td>
-                            <span><b>TOTALES</b></span>
-                        </td>
-                        <td>
-                            <span><strong>{{count($productosAgotados)}}</strong></span>
-                        </td>
-                        <td class="text-center">
-                            
-                        </td>
-                    </tr>
-               
-            </tfoot>
         </table>
     
     

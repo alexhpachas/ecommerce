@@ -33,10 +33,10 @@
                 
             <section class="bg-white shadow-xl rounded-lg p-6 mb-4">
                 <h1 class=" text-2xl text-center font-semibold mb-2">Imagenes del producto</h1>
-                <ul class="flex flex-wrap ">
+                <ul class="flex flex-wrap   justify-center ">
                     @foreach ($product->images as $image)
-                        <li class="relative" wire:key="'image-{{$image->id}}'">
-                            <img class="w-32 h-20 object-cover" src="{{Storage::url($image->url)}}" alt="">
+                        <li class="relative justify-center" wire:key="'image-{{$image->id}}'">
+                            <img class="w-28 lg:w-32 h-20 object-cover" src="{{Storage::url($image->url)}}" alt="">
                             <x-jet-danger-button 
                                     wire:loading.attr="disabled"
                                     wire:target="deleteImage({{$image->id}})"
@@ -59,10 +59,10 @@
                 <div>
                     <x-jet-label value="Categorias" />
 
-                    <select class="w-full form-control" wire:model="category_id">
+                    <select class="w-full form-control capitalize" wire:model="category_id">
                         <option value="" selected disabled>Seleccione una categoria</option>
                         @foreach ($categories as $category)
-                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option class="capitalize" value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
 
@@ -73,10 +73,10 @@
                 <div class="mb-4">
                     <x-jet-label value="Sub Categorias" />
 
-                    <select class="w-full form-control" wire:model="product.subcategory_id">
+                    <select class="w-full form-control capitalize" wire:model="product.subcategory_id">
                         <option  value="" selected disabled>Seleccione una sub categoria</option>
                         @foreach ($subcategories as $subcategory)
-                            <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                            <option class="capitalize" value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                         @endforeach
                     </select>
 
@@ -87,7 +87,7 @@
             {{-- NOMBRE DEL PRODUCTO --}}
             <div class="mb-4">
                 <x-jet-label value="Nombre" />
-                <x-jet-input wire:model="product.name" class="w-full" type="text" placeholder="Ingrese nombre del producto" />
+                <x-jet-input wire:model="product.name" class="w-full uppercase" type="text" placeholder="Ingrese nombre del producto" />
 
                 <x-jet-input-error for="product.name" />
             </div>
@@ -125,10 +125,10 @@
                 <div class="">
                     <x-jet-label value="Marca" />
 
-                    <select wire:model="product.brand_id" class="form-control w-full">
+                    <select wire:model="product.brand_id" class="form-control w-full capitalize">
                         <option value="" disabled selected>Seleccione un marca</option>
                         @foreach ($brands as $brand)
-                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            <option class="capitalize" value="{{$brand->id}}">{{$brand->name}}</option>
                         @endforeach
                     </select>
 
@@ -235,12 +235,20 @@
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.size-product','delete',sizeId)
-                        Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Eliminado Correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'La talla ha sido Eliminada'
                         })
                     }
                     })
@@ -260,12 +268,21 @@
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.color-product','delete',pivot)
-                        Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Eliminado Correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
+                        
+                        const Toast = Swal.mixin({
+                                toast: true,
+                                position: 'center',
+                                showConfirmButton: false,
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didOpen: (toast) => {
+                                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                }
+                            })
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'El Color ha sido Eliminado'
                         })
                     }
                     })
@@ -273,7 +290,7 @@
 
                 Livewire.on('deleteColorSize', pivot =>{            
                     Swal.fire({
-                    title: 'Desea Eliminar el Color?',
+                    title: 'Desea Eliminar el Color de esta Talla?',
                     text: "No podra recuperar el registro!",
                     icon: 'warning',
                     showCancelButton: true,
@@ -285,13 +302,22 @@
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.color-size','delete',pivot)
-                        Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'Eliminado Correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
                         })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'El color y Stock ha sido eliminado'
+                        })
+                        
                     }
                     })
                 })
@@ -311,12 +337,27 @@
                     if (result.isConfirmed) {
 
                         Livewire.emitTo('admin.edit-product','delete')
-                        Swal.fire({
+                        /* Swal.fire({
                         position: 'center',
                         icon: 'success',
                         title: 'Eliminado Correctamente',
                         showConfirmButton: false,
                         timer: 1500
+                        }) */
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'center',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'El Producto ha sido Eliminado'
                         })
                     }
                     })

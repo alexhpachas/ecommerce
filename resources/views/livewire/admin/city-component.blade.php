@@ -43,7 +43,7 @@
                                     <span class="flex">                                          
                                         @can('admin.districts.edit')                                                                                    
                                             <div wire:click="edit('{{$district->id}}')" class="flex divide-x divide-gray-300 font-semibold text-right">
-                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                <svg class="cursor-pointer focus:outline-none w-7 mr-2 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -53,7 +53,7 @@
                                         @endcan                                  
                                                
                                         @can('admin.districts.delete')                                                                                    
-                                            <div wire:click="$emit('deleteDistrict','{{$district->id}}')" class="cursor-pointer w-7 mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <div wire:click="$emit('deleteDistrict','{{$district->id}}')" class="cursor-pointer w-7 mr-2 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -85,6 +85,7 @@
 
     </div>    
         
+    {{-- MODAL PARA CREAR DISTRITO --}}
     <x-jet-dialog-modal wire:model="openCreateDistricts">
         <x-slot name="title">
             CREAR NUEVO DISTRITO
@@ -96,7 +97,7 @@
                     Nombre
                 </x-jet-label>
 
-                <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full" />
+                <x-jet-input wire:model.defer="createForm.name" type="text" class="w-full uppercase" />
                 <x-jet-input-error for="createForm.name" />
             </div>
         </x-slot>
@@ -131,7 +132,7 @@
                             Nombre
                         </x-jet-label>
     
-                        <x-jet-input wire:model="editForm.name" class="w-full mt-1" type="text" />
+                        <x-jet-input wire:model="editForm.name" class="w-full mt-1 uppercase" type="text" />
     
                         <x-jet-input-error for="editForm.name" />
                     </div>

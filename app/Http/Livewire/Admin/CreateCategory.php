@@ -107,6 +107,8 @@ class CreateCategory extends Component
         $this->getCategories();
 
         $this->emit('saved');
+
+        $this->emit('create','La categoria ha sido creada');
     }
 
     public function updatedEditFormName($value){
@@ -156,15 +158,19 @@ class CreateCategory extends Component
         $this->reset(['editForm','editImage']);
 
         $this->getCategories();
+
+        $this->emit('update','La categoria ha sido Actualizada');
     }
 
     public function cancelar(){
         $this->resetValidation();
         $this->reset('editForm','createForm','openCreate');
+        $this->rand= rand();
     }
 
     public function delete(Category $category){
-        $category->delete();
+        $this->category = $category;
+        $this->category->delete();
         $this->getCategories();
 
         $this->emit('eliminar','La Categoria fue Eliminada');

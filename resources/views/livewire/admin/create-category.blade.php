@@ -55,7 +55,7 @@
 
 
                                         @can('admin.categories.show')                                                                                    
-                                            <a href="{{ route('admin.categories.show', $category) }}" class="cursor-pointer w-7 lg:mr-2 mr-1 border-gray-900 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
+                                            <a href="{{ route('admin.categories.show', $category) }}" class="cursor-pointer w-7 lg:mr-2 mr-1 bg-blue-500 text-white border rounded-lg p-1 transform hover:text-white hover:bg-blue-700 hover:scale-110">                                        
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -65,7 +65,7 @@
                                         
                                         @can('admin.categories.edit')                                                                                    
                                             <div wire:click="edit('{{ $category->slug }}')" class="flex divide-x divide-gray-300 font-semibold text-right lg:mr-2 mr-1">
-                                                <svg class="cursor-pointer focus:outline-none w-7 border-gray-900 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
+                                                <svg class="cursor-pointer focus:outline-none w-7 bg-yellow-500 text-white border rounded-lg p-1 transform  hover:bg-yellow-700 hover:scale-110"
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -75,7 +75,7 @@
                                         @endcan
 
                                         @can('admin.categories.delete')                                                                                    
-                                            <div wire:click="$emit('deleteCategory','{{ $category->slug }}')" class="cursor-pointer w-7 lg:mr-2 border-gray-900 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
+                                            <div wire:click="$emit('deleteCategory','{{ $category->slug }}')" class="cursor-pointer w-7 lg:mr-2 bg-red-500 text-white border rounded-lg p-1 transform hover:bg-red-700 hover:scale-110">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                     stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -108,16 +108,32 @@
     {{-- MODAL PARA CREAR CATEGORIA --}}
     <x-jet-dialog-modal wire:model="openCreate">
         <x-slot name="title">
-            CREAR NUEVA CATEGORIA
+            <div class="border-b-2 text-center">
+                CREAR NUEVA CATEGORIA
+            </div>
         </x-slot>
 
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4 mt-3">
+
+                <div class="mb-3">
+                    @if ($createForm['image'])
+                        <img class="w-full h-32 object-cover object-center" src="{{ $createForm['image']->temporaryUrl() }}"
+                            alt="">
+                    @else                        
+                        <div class="w-full h-32 border">
+
+                        </div>
+                    @endif
+
+                </div>
+
+
                 <x-jet-label>
                     Nombre
                 </x-jet-label>
 
-                <x-jet-input wire:model="createForm.name" class="w-full mt-1" type="text" />
+                <x-jet-input wire:model="createForm.name" class="w-full mt-1 uppercase" type="text" />
 
                 <x-jet-input-error for="createForm.name" />
             </div>
@@ -149,7 +165,7 @@
                 <link rel="stylesheet" href="{{asset('vendor/fontawesome-free/css/all.min.css')}}">
 
                 <select wire:model="createForm.icon">
-                    <option value="fab fa-500px">&#xf26e;</option>
+                        <option value="fab fa-500px">&#xf26e;</option>
                         <option value="fab fa-accessible-icon">&#xf368;</option>
                         <option value="fab fa-accusoft">&#xf369;</option>
                         <option value="fab fa-acquisitions-incorporated">&#xf6af;</option>
@@ -1584,514 +1600,8 @@
                         <option value="fab fa-yoast">&#xf2b1;Yoast</option>
                         <option value="fab fa-youtube">&#xf167;Youtube</option>
                         <option value="fab fa-youtube-square">&#xf431;Youtube Square</option>
-                        <option value="fab fa-zhihu">&#xf63f;Zhihu</option>
-                                                                     
-
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                         
-                        
-                  </select>
+                        <option value="fab fa-zhihu">&#xf63f;Zhihu</option>                                                 
+                </select>
 
                 <x-jet-input wire:model.defer="createForm.icon" class="w-full mt-1" type="text" />
 
@@ -2105,7 +1615,7 @@
 
                 <div class="grid grid-cols-4 mt-3">
                     @foreach ($brands as $brand)
-                        <x-jet-label>
+                        <x-jet-label class="capitalize">
                             <x-jet-checkbox wire:model.defer="createForm.brands" name="brands[]"
                                 value="{{ $brand->id }}" />
                             {{ $brand->name }}
@@ -2134,7 +1644,7 @@
                 Registro Creado
             </x-jet-action-message>            
 
-            <x-jet-button wire:click="save">
+            <x-jet-button wire:click="save" wire:target="createForm.image,save" wire:loading.attr="disabled">
                 CREAR CATEGORIA
             </x-jet-button>
 
@@ -2147,7 +1657,9 @@
     {{-- MODAL PARA EDITAR CATEGORIA --}}
     <x-jet-dialog-modal wire:model="editForm.open">
         <x-slot name="title">
-            EDITAR CATEGORIA
+            <div class="border-b-2 text-center">
+                EDITAR CATEGORIA
+            </div>
         </x-slot>
 
         <x-slot name="content">
@@ -2155,10 +1667,10 @@
 
                 <div>
                     @if ($editImage)
-                        <img class="w-full h-64 object-cover object-center" src="{{ $editImage->temporaryUrl() }}"
+                        <img class="w-full h-32 object-cover object-center" src="{{ $editImage->temporaryUrl() }}"
                             alt="">
                     @else
-                        <img class="w-full h-64 object-cover object-center" src="{{ Storage::url($editForm['image']) }}"
+                        <img class="w-full h-32 object-cover object-center" src="{{ Storage::url($editForm['image']) }}"
                             alt="">
                     @endif
 
@@ -2169,7 +1681,7 @@
                         Nombre
                     </x-jet-label>
 
-                    <x-jet-input wire:model="editForm.name" class="w-full mt-1" type="text" />
+                    <x-jet-input wire:model="editForm.name" class="w-full mt-1 uppercase" type="text" />
 
                     <x-jet-input-error for="editForm.name" />
                 </div>
@@ -2201,7 +1713,7 @@
 
                     <div class="grid grid-cols-4">
                         @foreach ($brands as $brand)
-                            <x-jet-label>
+                            <x-jet-label class="capitalize">
                                 <x-jet-checkbox wire:model.defer="editForm.brands" name="brands[]"
                                     value="{{ $brand->id }}" />
                                 {{ $brand->name }}

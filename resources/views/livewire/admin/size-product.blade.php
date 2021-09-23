@@ -2,11 +2,11 @@
     <div class="bg-white shadow-lg rounded-lg p-6 mt-12">
         {{-- FORMULARIO PARA AGREGAR NUEVA TALLA --}}
         <div>
-            <x-jet-label>
+            <x-jet-label class="mb-3">
                 Talla
             </x-jet-label>
 
-            <x-jet-input wire:model="name" class="w-full" type="text" placeholder="Ingrese una talla" />
+            <x-jet-input wire:model="name" class="w-full uppercase" type="text" placeholder="Ingrese una talla" />
 
             <x-jet-input-error for="name" />
         </div>
@@ -28,7 +28,7 @@
         @foreach ($sizes as $size)
             <li wire:key="size-{{$size->id}}" class="bg-white shadow-lg rounded-lg p-6 ">
                 <div class="flex items-center">
-                    <span class="text-xl font-medium ">{{$size->name}}</span>
+                    <span class="text-xl font-medium uppercase ">{{$size->name}}</span>
                     
                     
                     <div class="ml-auto">
@@ -37,18 +37,19 @@
                                 wire:loading.attr="disabled"
                                 wire:target="edit({{$size->id}})"
                                 wire:click="edit({{$size->id}})" class="bg-yellow-300">
-                            <i class="fas fa-edit"></i>
+                            <i class="fas fa-edit"> </i>
                         </x-jet-button>
                         
                         {{-- BOTON ELIMINAR STOCK--}}
                         <x-jet-danger-button wire:click="$emit('deleteSize',{{$size}})">
-                            <i class="fas fa-trash"></i>
+                            <i class="fas fa-trash"> </i>
                         </x-jet-danger-button>
                         
                     </div>               
                 </div>
 
                 @livewire('admin.color-size', ['size' => $size], key('color-size'.$size->id))
+                
             </li>
         @endforeach
     </ul>
@@ -66,24 +67,21 @@
                 Talla
             </x-jet-label>
 
-            <x-jet-input wire:model="name_edit" type="text" class="w-full" />
+            <x-jet-input wire:model="name_edit" type="text" class="w-full uppercase" />
 
             <x-jet-input-error for="name_edit" />
         </x-slot>
 
         <x-slot name="footer">
-
-            <x-jet-danger-button wire:click="$set('open',false)">
-                CANCELAR
-            </x-jet-danger-button>
-
             <x-jet-secondary-button 
                         wire:loading.attr="disabled"
                         wire:target="update"
                         wire:click="update">
                 ACTUALIZAR
             </x-jet-secondary-button>
-            
+            <x-jet-danger-button wire:click="$set('open',false)">
+                CANCELAR
+            </x-jet-danger-button>                    
         </x-slot>
     </x-jet-dialog-modal>
 

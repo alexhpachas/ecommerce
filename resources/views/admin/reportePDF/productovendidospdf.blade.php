@@ -252,7 +252,7 @@
                     Athantyc System
                 </td>
                 <td class="text-center" width="10%">
-                    Pagina :<span class="pagenum"></span>
+                   {{--  Pagina :<span class="pagenum"></span> --}}
 
                 </td>
             </tr>

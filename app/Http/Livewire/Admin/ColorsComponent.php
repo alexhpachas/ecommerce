@@ -41,6 +41,8 @@ class ColorsComponent extends Component
         Color::create($this->createForm);
         $this->reset('createForm','openCreateColor');
         $this->getColors();
+
+        $this->emit('create','El color ha sido creado');
     }
 
     public function edit(Color $color){
@@ -58,7 +60,9 @@ class ColorsComponent extends Component
         $this->reset('editForm');                
         $this->getColors();
         $this->color = $this->color->refresh();
+        $this->emit('update','El color ha sido Actualizado');
         $this->emitTo('admin.colors-component','render');
+        
         
         /* return redirect()->route('admin.brands.index'); */
 
@@ -71,9 +75,9 @@ class ColorsComponent extends Component
     }
 
     public function delete(Color $color){
-        $color->delete();
-        $this->getColors();
+        $color->delete();        
         $this->emit('eliminar','El Color fue Eliminado');
+        $this->getColors();
     }
 
     public function mount(){

@@ -264,7 +264,7 @@
                     <div class="card-body ">
                         <div class="lg:flex">   
                             <div class="cho-container  content-center lg:flex-1 mb-3 " >
-                                <div class="flex lg:mb-1 mb-3 lg:mr-5">
+                                {{-- <div class="flex lg:mb-1 mb-3 lg:mr-5">
                                     <div class="cursor-pointer hover:border-2 border-red-600">
                                         <img class="lg:h-10 lg:w-9 h-30 w-20 object-contain" src="{{asset('img/metodo_pago/soles.png')}}" alt="">
                                     </div>
@@ -283,7 +283,8 @@
                                     <div class=" cursor-pointer hover:border-2 border-red-600">
                                         <img class="lg:h-10 lg:w-9 h-30 w-20 object-contain" src="{{asset('img/metodo_pago/plin2.png')}}" alt="">
                                     </div>
-                                </div>
+                                </div> --}}
+                                @livewire('methods-payment',['total' => $order->total,'orderId'=>$order->id])                                
 
                             </div>                                                         
                             <div id="paypal-button-container" >
@@ -298,6 +299,8 @@
 
                 </div>
             </div>
+
+            
 
 
             {{-- <div class="bg-white items-center justify-center content-center py-2 border-t-2"> --}}
@@ -343,6 +346,8 @@
 
         </div>
     </div>
+
+  
 
     @slot('js')
     <script>

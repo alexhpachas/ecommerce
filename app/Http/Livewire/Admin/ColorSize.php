@@ -18,6 +18,7 @@ class ColorSize extends Component
     public $open=false;
     public $pivot_color_id;
     public $pivot_quantity;
+    public $openDelete;
 
     protected $listeners =['delete'];
 
@@ -50,6 +51,8 @@ class ColorSize extends Component
         /* EMITIMOS PARA MOSTRAR UN TEXTO ROJO ACTUALIZADO */
         $this->emit('saved');
 
+        $this->emit('create','El Stock ha sido agregado');
+
         $this->size = $this->size->fresh();
 
     }
@@ -58,34 +61,49 @@ class ColorSize extends Component
         $this->open=true;
         $this->pivot = $pivot;
         $this->pivot_color_id = $pivot->color_id;
-        $this->pivot_quantity = $pivot->quantity;
+        $this->pivot_quantity = $pivot->quantity;        
+    }
+
+    public function editDelete(Pivot $pivot){
+        $this->openDelete=true;
+        $this->pivot = $pivot;
+        $this->pivot_color_id = $pivot->color_id;
+        $this->pivot_quantity = $pivot->quantity;        
     }
 
     public function update(){
-        /* PROBANDO HISTORIAL DE MOVIMIENTOS */
-        /* $historial = new Historial();
-        $historial->motivo="actualizar";
-        $historial->color_id = $this->pivot_color_id;
-        $historial->quantity_anterior = $this->pivot->quantity;
-        $historial->quantity_nuevo = $this->pivot_quantity;
-        $historial->usuario = auth()->user()->name;
-        $historial->save(); */
-        /* HISTORIAL DE MOVIMIENTO  */
 
         $this->pivot->color_id = $this->pivot_color_id;
         $this->pivot->quantity = $this->pivot_quantity;
              
         $this->pivot->save();        
-        $this->reset(['pivot_color_id','pivot_quantity','open']);
-        $this->size = $this->size->fresh();        
+        $this->reset(['pivot_quantity','open']);
+        $this->size = $this->size->fresh();      
+        $this->emit('update','El Stock y Color ha sido actualizado');  
+        
 
     }
 
+    public function updateDelete(){
+
+        $this->pivot->color_id = $this->pivot_color_id;
+        $this->pivot->quantity = $this->pivot_quantity;
+             
+        $this->pivot->delete();        
+        $this->reset(['pivot_quantity','openDelete']);
+        $this->size = $this->size->fresh();      
+        $this->emit('update','El Stock y Color ha sido eliminado');  
+        
+
+    }
+
+    /* ESTE METODO DELETE NO SE ESTA UTILIZANDO YA QUE DA ERROR AL EJECUTAR, SE ESTA UTILIZANDO EL METODO UpdateDelete */
     public function delete(Pivot $pivot){
-        $pivot->delete();
+        
+        $this->pivot = $pivot;
+        $this->pivot->delete();
         $this->size = $this->size->fresh();  
         
-        /* $this->emit('render'); */
     }
 
     public function mount(){
