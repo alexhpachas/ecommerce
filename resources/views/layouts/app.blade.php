@@ -78,7 +78,7 @@
                     <i class="material-icons icon-font-color">close</i>
                 </button>
 
-                <p> <img src="{{asset('img/logo.png')}}" width="90"> </p>
+                <p> <img src="https://mundodetalles.com.pe/img/LOGO.png" width="90"> </p>
                 <p class="mt-3"> Hola, ¿en que podemos ayudarle?</p>
 
             </div>
