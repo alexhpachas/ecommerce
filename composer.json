@@ -12,6 +12,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/date": "^4.0",
+        "jeroennoten/laravel-adminlte": "^3.7",
         "laravel/cashier": "^13.5",
         "laravel/framework": "^8.40",
         "laravel/jetstream": "^2.3",

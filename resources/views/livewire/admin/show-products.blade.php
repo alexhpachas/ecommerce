@@ -2,7 +2,7 @@
     
     @can('admin.products.index')            
     <x-slot name="header">
-        <div class="flex items-center">
+        <div class="flex items-center w-full">
 
             <span class="font-semibold lg:text-xl text-sm text-gray-600 uppercase">LISTA DE PRODUCTOS</span>                 
 

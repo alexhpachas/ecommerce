@@ -124,12 +124,13 @@ class CreateCategory extends Component
         $this->editForm['slug'] = $category->slug;
         $this->editForm['icon'] = $category->icon;
         $this->editForm['image'] = $category->image;
-        $this->editForm['brands'] = $category->brands->pluck('id');
+        $this->editForm['brands'] = $this->category->brands->pluck('id');
          
         
     }
 
     public function update(){
+        $this->category->brands()->detach($this->editForm['brands']);
         $rules = [
             'editForm.name' =>'required',
             'editForm.slug' =>'required|unique:categories,slug,'.$this->category->id,
@@ -149,8 +150,8 @@ class CreateCategory extends Component
             $this->editForm['image'] = $this->editImage->store('categories');            
         }
 
-        $this->category->update($this->editForm);
-
+        $this->category->update($this->editForm);        
+        
         $this->category->brands()->sync($this->editForm['brands']);
 
         $this->randEdit = rand();

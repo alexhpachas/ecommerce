@@ -1,4 +1,5 @@
 <x-admin-layout>
+    
     <div class="container py-12">
             
             <div class=" grid lg:grid-cols-6 gap-5 mb-10 ">               

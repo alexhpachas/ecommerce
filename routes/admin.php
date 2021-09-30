@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MethodsPayment;
 use App\Http\Controllers\Admin\PDFExportController;
 use App\Http\Controllers\Admin\OrderController;
@@ -24,6 +25,9 @@ use App\Http\Livewire\Reportes\ReportComponent;
 use Illuminate\Support\Facades\Route;
 
 /* RUTA PARA MOSTRAR LISTA DE PRODUCTOS */
+
+Route::get('/adm', [HomeController::class,'index'])->name('home.index');
+
 Route::get('/', ShowProducts::class)->middleware('can:admin.index')->name('admin.index');
 
 Route::get('products/create', CreateProduct::class)->middleware('can:admin.products.create')->name('admin.products.create');
