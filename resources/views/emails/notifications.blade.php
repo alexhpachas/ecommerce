@@ -43,9 +43,9 @@
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead>
-              <tr colspan="6">
+              <tr>
                 
-                <th>
+                <th colspan="6">
                   <center>
                   <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
                   </center>
