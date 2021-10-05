@@ -123,14 +123,16 @@
                                     {{ $order['created_at'] }}
                                 </td>
                             </tr>
-                        
+                        </tbody>
 
-                        
+                        <tfoot>
                             <tr>
-                                <td colspan="6">Mensaje enviado desde servidor mundo detalles</td>                                
+                                <td colspan="6">
+                                    {{ $order['created_at'] }}
+                                </td>
                             </tr>
 
-                          </tbody>
+                        </tfoot>
                     </table>
                 </div>
             </div>
