@@ -98,6 +98,10 @@ Route::middleware('auth')->group(function(){
     Route::get('login/{driver}',[LoginFacebookController::class,'redirect'])->name('login.facebook');
     Route::get('login/{driver}/callback',[LoginFacebookController::class,'callback']);
 
+    Route::get('probar', function () {
+        return view('emails.notifications');
+    });
+
     
 
 

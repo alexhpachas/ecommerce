@@ -75,7 +75,7 @@ class UserComponent extends Component
         $this->provincias = Permission::where('description','like','%'.'provincia'.'%')->get();
         $this->distritos = Permission::where('description','like','%'.'distrito'.'%')->get();
         $this->colores = Permission::where('description','like','%'.'colores'.'%')->get();
-        $this->ventas = Permission::where('description','like','%'.'compra'.'%')->get();
+        $this->ventas = Permission::where('description','like','%'.'venta'.'%')->get();
         $this->usuarios = Permission::where('description','like','%'.'usuarios'.'%')->get();
         $this->reportes = Permission::where('description','like','%'.'reportes'.'%')->get();
         $this->metodos = Permission::where('description','like','%'.'pagos'.'%')->get();

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <head>
@@ -41,8 +42,20 @@
       <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
-              <tr>
+            <thead>
+              <tr style="">
+                
+                <td>
+                  <center>
+                  <img class="w-56 h-28" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+                  </center>
+                </td>
+              </tr>
+            </thead>
+        </table>
+          <table class="min-w-full divide-y divide-gray-200">                      
+            <thead class="bg-gray-50">    
+              <tr style="background: black; color: white ">
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Nombre de Usuario
                 </th>
@@ -60,8 +73,7 @@
                 </th>
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Fecha
-                </th>
-              
+                </th>              
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
