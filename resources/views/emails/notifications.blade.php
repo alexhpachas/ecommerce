@@ -51,8 +51,7 @@
                     <br>
                     <h1 style="text-align: center;">Se ha generado la venta ORDER-{{ $order['id'] }}</h1>
                     <br>
-                    <table style="width: 100%; margin-left: auto; margin-right: auto; class="
-                        >
+                    <table style="width: 100%; margin-left: auto; margin-right: auto;">
                       <thead class="bg-gray-50">
                         <tr style="background: #3db9df;color: #fdfdfd;">
                             <th scope="col"
@@ -142,6 +141,8 @@
                             </tr>
                         </tbody>
                     </table>
+                    <br>
+                    <br>
                     <a href="{{ route('admin.orders.show', $order['id']) }} target="_blank"
                         style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR
                         COMPRA</a>
