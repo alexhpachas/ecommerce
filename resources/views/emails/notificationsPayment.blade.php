@@ -46,8 +46,8 @@
                     <center>
                         <img style="width:220px" src="https://mundodetalles.com.pe/img/LOGO.png">
                     </center>
-                    <br>
-                    <h1 style="text-align: center;">Se ha pagado la venta ORDER-{{ $order['id'] }}</h1>                    
+                    <hr>
+                    <h1 style="text-align: center;">SE HA PAGADO LA VENTA ORDER-{{ $order['id'] }}</h1>                    
                     <br>
                     <table style="width: 100%; margin-left: auto; margin-right: auto;">
                         <thead class="bg-gray-50">                            
@@ -141,7 +141,7 @@
                     </table>
                     <br>
                     <br>
-                    <a href="https://mundodetalles.com.pe/admin/orders/15" target="_blank"  style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
+                    <a href="{{route('admin.orders.show',$order['id'])}}" target="_blank"  style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
                 </div>
             </div>
         </div>

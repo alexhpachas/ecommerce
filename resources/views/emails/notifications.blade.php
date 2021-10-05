@@ -47,9 +47,9 @@
                 <div style="background-color: #dddddd; padding: 15px;">
                     <center>
                         <img style="width:220px" src="https://mundodetalles.com.pe/img/LOGO.png">
-                    </center>
-                    <br>
-                    <h1 style="text-align: center;">Se ha generado la venta ORDER-{{ $order['id'] }}</h1>
+                    </center>                    
+                    <hr>
+                    <h1 style="text-align: center;">SE HA GENERADO LA VENTA ORDER-{{ $order['id'] }}</h1>
                     <br>
                     <table style="width: 100%; margin-left: auto; margin-right: auto;">
                       <thead class="bg-gray-50">
