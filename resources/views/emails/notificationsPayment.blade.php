@@ -143,7 +143,8 @@
                     </table>
                     <br>
                     <br>
-                    <a href="{{route('admin.orders.show',$order['id'])}}" target="_blank"  style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
+                    <a href="{{route('admin.orders.show',$order['id'])}}" target="_blank" style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
+                    <br>
                 </div>
             </div>
         </div>
