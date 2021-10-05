@@ -45,11 +45,11 @@
             <thead>
               <tr style="">
                 
-                <td>
+                <th>
                   <center>
-                  <img style="width: 10%; margin-left: 10%" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+                  <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
                   </center>
-                </td>
+                </th>
               </tr>
             </thead>
         </table>
