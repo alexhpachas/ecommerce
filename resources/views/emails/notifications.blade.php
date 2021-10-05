@@ -47,7 +47,7 @@
                 
                 <td>
                   <center>
-                  <img class="w-56 h-28" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+                  <img style="width: 10%; margin-left: 10%" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
                   </center>
                 </td>
               </tr>
