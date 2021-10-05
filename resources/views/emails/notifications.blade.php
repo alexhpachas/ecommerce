@@ -34,9 +34,7 @@
 
         </style>
     </head>
-
-
-    <h1>Se ha generado una nueva venta ORDER-{{ $order['id'] }}</h1>
+    
     <p>Notificación de compra</p>
 
 
@@ -143,7 +141,7 @@
                     </table>
                     <br>
                     <br>
-                    <a href="{{ route('admin.orders.show', $order['id']) }} target="_blank"
+                    <a href="{{ route('admin.orders.show', $order['id']) }}" target="_blank"
                         style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR
                         COMPRA</a>
                 </div>
