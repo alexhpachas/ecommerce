@@ -42,7 +42,7 @@
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div style="background-color: #dddddd;">
+                <div style="background-color: #dddddd; padding: 15px;">
                     <center>
                         <img style="width:220px" src="https://mundodetalles.com.pe/img/LOGO.png">
                     </center>
@@ -141,10 +141,10 @@
                             </tr>
                         </tbody>                                               
                     </table>
-                    <br>
-                    <br>
+                    <br>      
+                    <br>              
                     <a href="{{route('admin.orders.show',$order['id'])}}" target="_blank" style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
-                    <br>
+                    
                 </div>
             </div>
         </div>
