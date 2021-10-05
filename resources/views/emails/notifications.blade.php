@@ -128,7 +128,7 @@
                         <tfoot>
                             <tr>
                                 <td colspan="6">
-                                    {{ $order['created_at'] }}
+                                    Mensaje enviado
                                 </td>
                             </tr>
 
