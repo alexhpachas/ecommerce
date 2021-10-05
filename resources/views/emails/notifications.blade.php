@@ -43,7 +43,7 @@
         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead>
-              <tr>
+              <tr colspan="6">
                 
                 <th colspan="6">
                   <center>
@@ -55,6 +55,14 @@
         </table>
           <table class="min-w-full divide-y divide-gray-200">                      
             <thead class="bg-gray-50">    
+              <tr colspan="6">
+                
+                <th colspan="6">
+                  <center>
+                  <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
+                  </center>
+                </th>
+              </tr>
               <tr style="background: black; color: white ">
                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Nombre de Usuario
