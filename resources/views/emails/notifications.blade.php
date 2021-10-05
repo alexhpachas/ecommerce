@@ -49,8 +49,8 @@
                     <hr>
                     <h1 style="text-align: center;">SE HA GENERADO LA VENTA ORDER-{{ $order['id'] }}</h1>
                     <br>
-                    <p><b>Nombre: </b>{{ $order->user['name'] }}</p>
-                    <p><b>Correo: </b>{{ $order->user['email'] }}</p>
+                    <p><b>Nombre: </b>{{ $order->user['name'] }}<b> Correo: </b>{{ $order->user['email'] }}</p>
+                    
                     <p><b>Celular: </b>{{ $order->user['phone'] }}</p>
                     <table style="width: 100%; margin-left: auto; margin-right: auto;">
                       <thead class="bg-gray-50">
