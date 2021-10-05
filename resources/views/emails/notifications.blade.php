@@ -44,44 +44,47 @@
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <div style="background-color: #dddddd; padding: 15px;">
+                    <center>
+                        <img style="width:220px" src="https://mundodetalles.com.pe/img/LOGO.png">
+                    </center>
+                    <br>
+                    <h1 style="text-align: center;">Se ha generado la venta ORDER-{{ $order['id'] }}</h1>
+                    <br>
+                    <table style="width: 100%; margin-left: auto; margin-right: auto; class="
+                        >
+                      <thead class="bg-gray-50">
+                        <tr style="background: #3db9df;color: #fdfdfd;">
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Nombre de Usuario
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Contacto
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Celular
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Envio
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Total Compra
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Estado
+                            </th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Fecha
+                            </th>
 
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-
-                                <th colspan="6">
-                                    <center>
-                                        <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
-                                    </center>
-                                </th>
-                            </tr>
-                            <tr style="background: black; color: white ">
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Nombre de Usuario
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Contacto
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Celular
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Envio
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Total Compra
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Fecha
-                                </th>
-                            </tr>
+                        </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             <tr>
@@ -119,21 +122,29 @@
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                     S/. {{ $order['total'] }}
                                 </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    @if ($order['status'] != 1)
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            PAGADO
+                                        </span>
+                                    @else
+                                        <span
+                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                            PENDIENTE
+                                        </span>
+                                    @endif
+
+                                </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     {{ $order['created_at'] }}
                                 </td>
                             </tr>
                         </tbody>
-
-                        <tfoot>
-                            <tr>
-                                <td colspan="6">
-                                    Mensaje enviado
-                                </td>
-                            </tr>
-
-                        </tfoot>
                     </table>
+                    <a href="{{ route('admin.orders.show', $order['id']) }} target="_blank"
+                        style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR
+                        COMPRA</a>
                 </div>
             </div>
         </div>
@@ -141,7 +152,7 @@
 
     <hr>
 
-    <a href="{{ route('admin.orders.show', $order['id']) }}">GESTIONAR COMPRA</a>
+  
 
 
 

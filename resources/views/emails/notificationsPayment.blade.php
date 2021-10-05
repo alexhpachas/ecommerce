@@ -34,7 +34,7 @@
     </head>
 
 
-    <h1>SE HA PAGADO LA VENTA ORDER-{{ $order['id'] }}</h1>
+    
     <p>Notificación de compra</p>
 
 
@@ -42,19 +42,16 @@
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                
-                                <th colspan="6">
-                                  <center>
-                                  <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
-                                  </center>
-                                </th>
-                            </tr>
-                            <tr>
+                <div style="background-color: #dddddd; padding: 15px;">
+                    <center>
+                        <img style="width:220px" src="https://mundodetalles.com.pe/img/LOGO.png">
+                    </center>
+                    <br>
+                    <h1 style="text-align: center;">Se ha pagado la venta ORDER-{{ $order['id'] }}</h1>                    
+                    <br>
+                    <table style="width: 100%; margin-left: auto; margin-right: auto; class=">
+                        <thead class="bg-gray-50">                            
+                            <tr style="background: #3db9df;color: #fdfdfd;">
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Nombre de Usuario
@@ -140,14 +137,9 @@
                                     {{ $order['created_at'] }}
                                 </td>
                             </tr>
-                        
-                        
-                            <tr>
-                                <td colspan="6">Mensaje enviado desde servidor mundo detalles</td>                                
-                            </tr>
-
-                        </tbody>
+                        </tbody>                                               
                     </table>
+                    <a href="https://mundodetalles.com.pe/admin/orders/15" target="_blank"  style="padding: 10px; background: red; color: white; text-decoration: none; border-radius: 10px;">GESTIONAR COMPRA</a>
                 </div>
             </div>
         </div>
@@ -155,7 +147,7 @@
 
     <hr>
 
-    <a href="{{route('admin.orders.show',$order['id'])}}">GESTIONAR COMPRA</a>
+    {{-- <a href="{{route('admin.orders.show',$order['id'])}}">GESTIONAR COMPRA</a> --}}
 
 
 
