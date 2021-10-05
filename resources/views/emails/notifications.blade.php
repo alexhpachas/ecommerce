@@ -46,7 +46,7 @@
             <thead class="bg-gray-50">    
               <tr>
                 
-                <th colspan="3">
+                <th colspan="6">
                   <center>
                   <img style="width: 10%;" src="https://mundodetalles.com.pe/img/LOGO.png" alt="">
                   </center>
