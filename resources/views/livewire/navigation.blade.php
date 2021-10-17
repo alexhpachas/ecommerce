@@ -1,6 +1,9 @@
-<header class="bg-trueGray-700 sticky top-0" style="z-index: 900" x-data="dropdown()">
+@php
+    $colorPrincipal='teal';
+@endphp
+<header class="bg-fuchsia-800 sticky top-0" style="z-index: 900" x-data="dropdown()">
     <div class="container flex items-center h-16 justify-between md:justify-start">
-        <a :class="{'bg-opacity-100 text-orange-500': open}" x-on:click="show()"
+        <a :class="{'bg-opacity-100 text-{{$colorPrincipal}}-500': open}" x-on:click="show()"
             class="flex flex-col items-center justify-center px-6 md:px-4 bg-white bg-opacity-25 text-white cursor-pointer font-semibold h-full order-last md:order-first">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                 <path class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -9,7 +12,7 @@
 
             <span class="text-sm hidden md:block">Categoria</span>
         </a>
-
+        
         {{-- <a href="/" class="mx-6">
             <x-jet-application-mark class="block h-9 w-auto" />
         </a> --}}
@@ -124,7 +127,7 @@
 
                     @foreach ($categories as $category)
                         <li
-                            class="navigation-link text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+                            class="navigation-link text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                             <a href="{{route('categories.show',$category)}}" class="py-2 px-4 text-sm flex items-center">
                                 <span class="flex justify-center w-9">
                                     {!! $category->icon !!}
@@ -141,7 +144,7 @@
                                         <ul>
                                             @foreach ($category->subcategories as $subcategory)
                                                 <li>
-                                                    <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-orange-500"
+                                                    <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-{{$colorPrincipal}}-500"
                                                         href="">
                                                         {{ $subcategory->name }}
                                                     </a>
@@ -158,7 +161,7 @@
                                 </div> --}}
 
 
-                                <x-navigation-subcategories :category="$category">
+                                <x-navigation-subcategories :category="$category" :colorPrincipal="$colorPrincipal">
                                 </x-navigation-subcategories>
                             </div>
                         </li>
@@ -174,7 +177,7 @@
                             <ul>
                                 @foreach ($categories->first()->subcategories as $subcategory)
                                     <li>
-                                        <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-orange-500"
+                                        <a class="text-trueGray-500 inline-block font-semibold py-1 px-4 hover:text-{{$colorPrincipal}}-500"
                                             href="">
                                             {{ $subcategory->name }}
                                         </a>
@@ -206,7 +209,7 @@
             </div>
             <ul>
                 @foreach ($categories as $category)
-                    <li class="text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+                    <li class="text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                         <a href="{{route('categories.show',$category)}}" class="py-2 px-4 text-sm flex items-center">
                             <span class="flex justify-center w-9">
                                 {!! $category->icon !!}
@@ -231,14 +234,14 @@
 
             @auth            
 
-            <a href="{{ route('profile.show') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+            <a href="{{ route('profile.show') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                 <span class="flex justify-center w-9">
                     <i class="fas fa-address-card"></i>
                 </span>
                 Perfil
             </a>
 
-            {{-- <a href="{{ route('billing.index') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+            {{-- <a href="{{ route('billing.index') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                 <span class="flex justify-center w-9">
                     <i class="fas fa-address-card"></i>
                 </span>
@@ -267,7 +270,7 @@
             <a href=""
             onclick="event.preventDefault();
             document.getElementById('logout-form').submit()"
-             class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+             class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                 <span class="flex justify-center w-9">
                     <i class="fas fa-sign-out-alt"></i>
                 </span>
@@ -280,14 +283,14 @@
 
             @else
 
-            <a href="{{ route('login') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+            <a href="{{ route('login') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                 <span class="flex justify-center w-9">
                     <i class="fas fa-user-circle"></i>
                 </span>
                 Iniciar sesión
             </a>
 
-            <a href="{{ route('register') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-orange-500 hover:text-white">
+            <a href="{{ route('register') }}" class="py-2 px-4 text-sm flex items-center text-trueGray-500 cursor-pointer hover:bg-{{$colorPrincipal}}-500 hover:text-white">
                 <span class="flex justify-center w-9">
                     <i class="fas fa-fingerprint"></i>
                 </span>
@@ -301,4 +304,11 @@
         </div>
 
     </nav>
+
+    <div class="flex bg-white">
+        <div class="flex p-2">
+            {{-- <a href="/"><img class="h-20 object-cover" src="http://mundodetalles.test/img/LOGO.png" alt=""></a> --}}
+        </div>
+        <div class="flex items-center ml-auto font-bold pr-4">MUNDO DETALLES</div>
+    </div>
 </header>
