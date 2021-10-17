@@ -4,7 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-    mode: 'jit',
+    // mode: 'jit',  PARA QUE FUNCIONE NPM RUN DEV
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -20,7 +20,11 @@ module.exports = {
             colors: {
                 trueGray: colors.trueGray, 
                 orange: colors.orange,  
-                greenLime: colors.lime, 
+                greenLime: colors.lime,
+                fuchsia: colors.fuchsia,
+                teal: colors.teal,
+                rose: colors.rose,
+
               },
         },
     },
