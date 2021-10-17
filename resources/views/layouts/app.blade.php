@@ -105,6 +105,9 @@
 
     <div class="min-h-screen bg-gray-100">
         @livewire('navigation')
+        @if (request()->routeIs('index'))
+            <x-slide></x-slide>
+        @endif
 
         <!-- Page Heading -->
         {{-- @if (isset($header))
