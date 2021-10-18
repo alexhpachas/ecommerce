@@ -1,5 +1,5 @@
 <div class="glider-contain container">
-    <div class="glider">
+    <div id="glider" class="glider">
       @foreach ($slides as $slide)
           <div class=""><img src="{{$slide->image}}" alt=""></div>
       @endforeach
