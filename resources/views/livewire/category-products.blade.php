@@ -6,7 +6,9 @@
             <ul class="glider-{{$category->id}}">
                 @foreach ($products as $product)
                     <li class="bg-white rounded-xl shadow hover:shadow-inner hover:bg-gray-200 hover:border-b-2 hover:border-red-500 {{ $loop->last ? '' : 'sm:mr-4' }}">
+                        <a href="{{route('products.show',$product)}}">
                         <article>
+                            
                             <figure>
                                 @if ($product->images->count())                                                            
                                     <img class="h-48 w-full object-cover object-center" src="{{ Storage::url($product->images->first()->url) }}" alt="">
@@ -14,6 +16,7 @@
                                     <img class="h-48 w-full object-cover object-center" src="{{ asset('img/product-default.png') }}" alt="">
                                 @endif
                             </figure>
+                        
 
                             <div class="my-4 mx-6 item">
                                 <h1 class="text-lg font-semibold">
@@ -23,17 +26,20 @@
                                         </a>
                                    
                                 </h1>
-
-                                <p class="font-bold text-trueGray-700"> S/. {{ $product->price }}</p>
+                                <div class="flex text-center items-center content-center">                                
+                                    <p class="font-bold text-sm text-gray-400 line-through  float-left"> S/. {{ $product->price }}</p>
+                                    <span class="font-bold text-red-500 ml-4"> S/. {{ $product->price }}</span>
+                                </div>
                                 
-                                <a href="{{route('products.show',$product)}}">
+                                {{-- <a href="{{route('products.show',$product)}}">
                                     <x-boton class="w-full justify-center" href="dsa">
                                         Comprar Ahora
                                     </x-boton>
-                                </a>    
+                                </a>   --}}  
                             </div>
 
                         </article>
+                    </a>
                     </li>
                 @endforeach
             </ul>

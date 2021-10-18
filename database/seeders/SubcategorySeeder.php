@@ -32,7 +32,7 @@ class SubcategorySeeder extends Seeder
             [
                 'category_id'=>1,
                 'name'=>'Smartwatches',
-                'slug'=>Str::slug('Accesorios para celulares'),                
+                'slug'=>Str::slug('smartwatches'),                
             ],
 
             /* SUBCATEGORIA PARA TV AUDIO */
